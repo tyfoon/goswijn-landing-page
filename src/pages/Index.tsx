@@ -43,7 +43,7 @@ const Index = () => {
               </ul>
             </div>
 
-            <div className="pt-4">
+            <div className="relative z-20 pt-4">
               <ContactDialog />
             </div>
           </div>
