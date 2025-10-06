@@ -79,7 +79,7 @@ const Index = () => {
           <div className="relative mt-auto pointer-events-none">
             <div className="absolute inset-x-0 bottom-0 h-96 bg-gradient-to-t from-background via-background/95 to-transparent" />
             <div className="relative px-6 py-12 md:px-12 lg:px-16 pointer-events-auto">
-              <p className="w-full text-lg leading-tight text-foreground md:text-xl lg:text-2xl">
+              <p className="w-full text-sm leading-tight text-foreground md:text-base lg:text-lg">
                 I am an entrepreneurial and results-driven commercial executive with extensive
                 leadership experience in technology and SaaS within international scale-ups and
                 organisations like Google and Microsoft. My career is centered around building
