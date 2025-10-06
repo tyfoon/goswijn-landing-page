@@ -14,6 +14,27 @@ const Index = () => {
 
   return (
     <div className="relative w-full">
+      {/* Fixed Header */}
+      <header className="fixed top-0 left-0 right-0 z-50 px-6 py-6 md:px-12 lg:px-16 bg-background/80 backdrop-blur-sm border-b border-foreground/10">
+        <div className="flex items-center gap-3">
+          <button
+            onClick={() => scrollToSection("hero")}
+            className="text-2xl font-bold tracking-tight text-foreground hover:opacity-80 transition-opacity"
+          >
+            Goswijn Thijssen
+          </button>
+          <a
+            href="https://www.linkedin.com/in/goswijn/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-8 h-8 hover:opacity-80 transition-opacity"
+            aria-label="LinkedIn Profile"
+          >
+            <img src={linkedinIcon} alt="LinkedIn" className="w-full h-full rounded" />
+          </a>
+        </div>
+      </header>
+
       {/* Hero Section */}
       <section id="hero" className="relative min-h-screen w-full overflow-hidden">
         {/* Background Image with Parallax */}
@@ -25,25 +46,7 @@ const Index = () => {
         />
 
         {/* Content Container */}
-        <div className="relative z-10 flex min-h-screen flex-col">
-          {/* Header */}
-          <header className="px-6 py-8 md:px-12 lg:px-16">
-            <div className="flex items-center gap-3">
-              <h1 className="text-2xl font-bold tracking-tight text-foreground">
-                Goswijn Thijssen
-              </h1>
-              <a
-                href="https://www.linkedin.com/in/goswijn/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-8 h-8 hover:opacity-80 transition-opacity"
-                aria-label="LinkedIn Profile"
-              >
-                <img src={linkedinIcon} alt="LinkedIn" className="w-full h-full rounded" />
-              </a>
-            </div>
-          </header>
-
+        <div className="relative z-10 flex min-h-screen flex-col pt-24">
           {/* Main Content */}
           <main className="flex flex-1 items-start px-6 pt-16 md:px-12 lg:px-16 md:pt-24">
             <div className="max-w-xl space-y-8">
@@ -129,7 +132,7 @@ const Index = () => {
       {/* Booking Section */}
       <section
         id="booking"
-        className="relative py-24 px-6 md:px-12 lg:px-16 overflow-hidden"
+        className="relative py-16 px-6 md:px-12 lg:px-16 overflow-hidden"
       >
         {/* Parallax Background */}
         <div
