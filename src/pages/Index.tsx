@@ -140,17 +140,18 @@ const Index = () => {
         />
 
         <div className="relative z-10 max-w-7xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-12 items-center mb-12">
-            <div className="text-center lg:text-left">
-              <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
-                Book a Session
-              </h2>
-              <p className="text-lg text-foreground/70 max-w-2xl">
-                Schedule a focused consultation to discuss your Go-to-Market strategy and growth
-                objectives.
-              </p>
-            </div>
-            <div className="flex justify-center lg:justify-end">
+          <div className="text-center lg:text-left mb-8">
+            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
+              Book a Session
+            </h2>
+            <p className="text-lg text-foreground/70 max-w-2xl">
+              Schedule a focused consultation to discuss your Go-to-Market strategy and growth
+              objectives.
+            </p>
+          </div>
+          
+          <div className="grid lg:grid-cols-2 gap-12 items-start">
+            <div className="flex justify-center lg:justify-start">
               <img
                 src={speakingImage}
                 alt="Goswijn Thijssen Speaking"
@@ -160,8 +161,10 @@ const Index = () => {
                 }}
               />
             </div>
+            <div>
+              <BookingSection />
+            </div>
           </div>
-          <BookingSection />
         </div>
       </section>
     </div>
