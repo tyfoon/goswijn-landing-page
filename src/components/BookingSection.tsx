@@ -3,11 +3,12 @@ import { Card } from "@/components/ui/card";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Clock, Calendar, Loader2, CheckCircle2 } from "lucide-react";
+import { Clock, Calendar, Loader2, CheckCircle2, ChevronLeft, ChevronRight } from "lucide-react";
 import { useState, useEffect } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 import { SkeletonLoader } from "./SkeletonLoader";
+import { format, addDays, startOfWeek, isSameDay } from "date-fns";
 
 interface TimeSlot {
   id: string;
@@ -28,6 +29,9 @@ export const BookingSection = () => {
   const [description, setDescription] = useState("");
   const [attachment, setAttachment] = useState<File | null>(null);
   const [showSuccess, setShowSuccess] = useState(false);
+  const [currentWeekStart, setCurrentWeekStart] = useState(() => startOfWeek(new Date(), { weekStartsOn: 1 }));
+  const [selectedDay, setSelectedDay] = useState<Date | null>(null);
+  const [showConfirmation, setShowConfirmation] = useState(false);
   const { toast } = useToast();
 
   const bookingOptions = [
@@ -75,10 +79,23 @@ export const BookingSection = () => {
     setSelectedDuration(duration);
     setIsDialogOpen(true);
     setSelectedSlot(null);
+    setSelectedDay(null);
+    setShowConfirmation(false);
     setAttendeeName("");
     setAttendeeEmail("");
     setDescription("");
     setAttachment(null);
+    setCurrentWeekStart(startOfWeek(new Date(), { weekStartsOn: 1 }));
+  };
+
+  const handleSlotSelection = (slot: TimeSlot) => {
+    setSelectedSlot(slot);
+    setShowConfirmation(true);
+  };
+
+  const handleConfirmBooking = () => {
+    setShowConfirmation(false);
+    handleBooking();
   };
 
   const handleBooking = async () => {
@@ -157,6 +174,35 @@ export const BookingSection = () => {
       hour: "2-digit",
       minute: "2-digit",
     }).format(date);
+  };
+
+  const formatTime24h = (dateString: string) => {
+    return format(new Date(dateString), "HH:mm");
+  };
+
+  const getWorkDays = () => {
+    const days = [];
+    for (let i = 0; i < 5; i++) {
+      days.push(addDays(currentWeekStart, i));
+    }
+    return days;
+  };
+
+  const getDaySlotsCount = (day: Date) => {
+    return getAvailableSlotsForDuration().filter(slot => 
+      isSameDay(new Date(slot.start), day)
+    ).length;
+  };
+
+  const getSlotsForDay = (day: Date) => {
+    return getAvailableSlotsForDuration().filter(slot => 
+      isSameDay(new Date(slot.start), day)
+    );
+  };
+
+  const navigateWeek = (direction: 'prev' | 'next') => {
+    setCurrentWeekStart(prev => addDays(prev, direction === 'next' ? 7 : -7));
+    setSelectedDay(null);
   };
 
   const getAvailableSlotsForDuration = () => {
@@ -291,55 +337,135 @@ export const BookingSection = () => {
             </div>
 
             <div className="space-y-4">
-              <Label>Select a Time Slot</Label>
+              <Label>Select a Day</Label>
               {isLoadingSlots ? (
                 <SkeletonLoader />
-              ) : getAvailableSlotsForDuration().length === 0 ? (
-                <div className="text-center py-8 px-4 bg-muted/50 rounded-lg">
-                  <p className="text-foreground/70">
-                    No available slots found. Please try again later or choose a different duration.
-                  </p>
-                </div>
               ) : (
-                <div className="grid gap-3">
-                  {getAvailableSlotsForDuration().map((slot) => (
-                    <button
-                      key={slot.id}
-                      onClick={() => setSelectedSlot(slot)}
-                      className={`flex items-center gap-3 p-4 rounded-lg border-2 transition-all duration-300 text-left ${
-                        selectedSlot?.id === slot.id
-                          ? "border-foreground bg-foreground/5 shadow-md scale-[1.02]"
-                          : "border-border hover:border-foreground/40 hover:shadow-sm hover:scale-[1.01]"
-                      }`}
+                <>
+                  <div className="flex items-center justify-between mb-2">
+                    <Button
+                      variant="outline"
+                      size="icon"
+                      onClick={() => navigateWeek('prev')}
                     >
-                      <Calendar className="h-5 w-5 text-foreground flex-shrink-0" />
-                      <div>
-                        <p className="font-medium text-foreground">
-                          {formatDate(slot.start)}
-                        </p>
+                      <ChevronLeft className="h-4 w-4" />
+                    </Button>
+                    <span className="text-sm font-medium">
+                      {format(currentWeekStart, 'MMM d')} - {format(addDays(currentWeekStart, 4), 'MMM d, yyyy')}
+                    </span>
+                    <Button
+                      variant="outline"
+                      size="icon"
+                      onClick={() => navigateWeek('next')}
+                    >
+                      <ChevronRight className="h-4 w-4" />
+                    </Button>
+                  </div>
+
+                  <div className="grid grid-cols-5 gap-2">
+                    {getWorkDays().map((day) => {
+                      const slotsCount = getDaySlotsCount(day);
+                      const hasSlots = slotsCount > 0;
+                      const isSelected = selectedDay && isSameDay(day, selectedDay);
+
+                      return (
+                        <button
+                          key={day.toISOString()}
+                          onClick={() => hasSlots && setSelectedDay(day)}
+                          disabled={!hasSlots}
+                          className={`p-3 rounded-lg border-2 transition-all duration-300 ${
+                            isSelected
+                              ? "border-foreground bg-foreground/10 shadow-md"
+                              : hasSlots
+                              ? "border-green-500 bg-green-500/10 hover:bg-green-500/20 cursor-pointer"
+                              : "border-border bg-muted/30 cursor-not-allowed opacity-50"
+                          }`}
+                        >
+                          <div className="text-xs font-medium mb-1">
+                            {format(day, 'EEE')}
+                          </div>
+                          <div className="text-lg font-bold">
+                            {format(day, 'd')}
+                          </div>
+                        </button>
+                      );
+                    })}
+                  </div>
+
+                  {selectedDay && (
+                    <div className="space-y-2 mt-4">
+                      <Label>Available Times</Label>
+                      <div className="grid grid-cols-3 gap-2">
+                        {getSlotsForDay(selectedDay).map((slot) => (
+                          <button
+                            key={slot.id}
+                            onClick={() => handleSlotSelection(slot)}
+                            className="p-3 rounded-lg border-2 border-border hover:border-foreground/40 hover:bg-foreground/5 transition-all duration-300 text-center font-medium"
+                          >
+                            {formatTime24h(slot.start)}
+                          </button>
+                        ))}
                       </div>
-                    </button>
-                  ))}
-                </div>
+                    </div>
+                  )}
+                </>
               )}
             </div>
-
-            <Button
-              onClick={handleBooking}
-              disabled={!selectedSlot || !attendeeName || !attendeeEmail || !description || isBooking}
-              className="w-full shadow-md hover:shadow-lg transition-all duration-300"
-              size="lg"
-            >
-              {isBooking ? (
-                <>
-                  <Loader2 className="h-4 w-4 mr-2 animate-spin" />
-                  Booking...
-                </>
-              ) : (
-                "Confirm Booking"
-              )}
-            </Button>
           </div>
+          )}
+        </DialogContent>
+      </Dialog>
+
+      <Dialog open={showConfirmation} onOpenChange={setShowConfirmation}>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>Confirm Your Booking</DialogTitle>
+            <DialogDescription>
+              Please review your booking details
+            </DialogDescription>
+          </DialogHeader>
+          
+          {selectedSlot && (
+            <div className="space-y-4 py-4">
+              <div className="bg-muted/50 p-4 rounded-lg space-y-2">
+                <div className="flex justify-between items-center">
+                  <span className="text-sm text-muted-foreground">Date:</span>
+                  <span className="font-medium">{format(new Date(selectedSlot.start), 'EEEE, MMMM d, yyyy')}</span>
+                </div>
+                <div className="flex justify-between items-center">
+                  <span className="text-sm text-muted-foreground">Time:</span>
+                  <span className="font-medium">{formatTime24h(selectedSlot.start)}</span>
+                </div>
+                <div className="flex justify-between items-center">
+                  <span className="text-sm text-muted-foreground">Duration:</span>
+                  <span className="font-medium">{selectedDuration} minutes</span>
+                </div>
+              </div>
+
+              <div className="flex gap-3">
+                <Button
+                  variant="outline"
+                  onClick={() => setShowConfirmation(false)}
+                  className="flex-1"
+                >
+                  Cancel
+                </Button>
+                <Button
+                  onClick={handleConfirmBooking}
+                  disabled={isBooking}
+                  className="flex-1"
+                >
+                  {isBooking ? (
+                    <>
+                      <Loader2 className="h-4 w-4 mr-2 animate-spin" />
+                      Booking...
+                    </>
+                  ) : (
+                    "Confirm"
+                  )}
+                </Button>
+              </div>
+            </div>
           )}
         </DialogContent>
       </Dialog>
