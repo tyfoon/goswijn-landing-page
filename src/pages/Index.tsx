@@ -95,22 +95,13 @@ const Index = () => {
       {/* Contact Section */}
       <section id="contact" className="relative bg-background py-24 px-6 md:px-12 lg:px-16">
         <div className="max-w-7xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="space-y-6">
-              <div className="mb-8">
-                <img
-                  src={portraitImage}
-                  alt="Goswijn Thijssen"
-                  className="w-full max-w-md rounded-lg shadow-2xl"
-                />
-              </div>
-              <h2 className="text-4xl md:text-5xl font-bold text-foreground">
-                Let's Connect
-              </h2>
-              <p className="text-lg text-foreground/70 leading-relaxed">
-                Ready to drive real step changes in your organization? Reach out and let's discuss
-                how we can work together to achieve breakthrough results.
-              </p>
+          <div className="grid lg:grid-cols-2 gap-12 items-end">
+            <div className="flex justify-center lg:justify-start">
+              <img
+                src={portraitImage}
+                alt="Goswijn Thijssen"
+                className="w-full max-w-md rounded-lg shadow-2xl"
+              />
             </div>
             <div>
               <ContactForm />
