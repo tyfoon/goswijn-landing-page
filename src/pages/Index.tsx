@@ -109,9 +109,9 @@ const Index = () => {
       <section id="contact" className="relative bg-background py-24 px-6 md:px-12 lg:px-16 overflow-hidden">
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-12 items-end">
-            <div className="flex justify-center">
+            <div className="flex justify-center lg:justify-start">
               <div 
-                className="w-full max-w-[224px] h-[300px] rounded-lg shadow-2xl"
+                className="w-full max-w-md h-[600px] rounded-lg shadow-2xl"
                 style={{
                   backgroundImage: `url(${portraitImage})`,
                   backgroundSize: 'cover',
