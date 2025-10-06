@@ -113,14 +113,14 @@ const Index = () => {
         {/* Content Container */}
         <div className="relative z-10 flex min-h-screen flex-col pt-14">
           {/* Main Content */}
-          <main className="flex flex-1 items-start px-6 pt-16 md:px-12 lg:px-16 md:pt-24">
-            <div className="max-w-xl space-y-8 animate-on-scroll">
-              <div className="space-y-6">
-                <h2 className="text-4xl font-bold leading-tight tracking-tight text-foreground md:text-5xl lg:text-6xl">
+          <main className="flex flex-1 items-start px-6 pt-16 md:px-12 lg:px-16 md:pt-24 relative z-30">
+            <div className="max-w-xl space-y-8 animate-on-scroll relative z-30">
+              <div className="space-y-6 relative z-30">
+                <h2 className="text-4xl font-bold leading-tight tracking-tight text-foreground md:text-5xl lg:text-6xl relative z-30">
                   Real step changes. Proven impact.
                 </h2>
 
-                <ul className="relative z-20 space-y-4 text-lg font-medium text-foreground md:text-xl">
+                <ul className="relative z-30 space-y-4 text-lg font-medium text-foreground md:text-xl">
                   <li className="flex items-start transition-transform duration-300 hover:translate-x-2">
                     <span className="mr-3 mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-foreground" />
                     <span>Building Go to Market strategies</span>
@@ -136,7 +136,7 @@ const Index = () => {
                 </ul>
               </div>
 
-              <div className="relative z-20 pt-4 flex flex-col sm:flex-row gap-4">
+              <div className="relative z-30 pt-4 flex flex-col sm:flex-row gap-4">
                 <Button
                   size="lg"
                   onClick={() => scrollToSection("contact")}
@@ -157,9 +157,9 @@ const Index = () => {
           </main>
 
           {/* Bottom Gradient with Bio */}
-          <div className="relative mt-auto pointer-events-none">
-            <div className="absolute inset-x-0 bottom-0 h-96 bg-gradient-to-t from-background via-background/95 to-transparent" />
-            <div className="relative px-6 py-12 md:px-12 lg:px-16 pointer-events-auto">
+          <div className="relative mt-auto pointer-events-none z-20">
+            <div className="absolute inset-x-0 bottom-0 h-96 bg-gradient-to-t from-background via-background/95 to-transparent z-10" />
+            <div className="relative px-6 py-12 md:px-12 lg:px-16 pointer-events-auto z-20">
               <p className="w-full text-sm leading-tight text-foreground md:text-base lg:text-lg">
                 I am an entrepreneurial and results-driven commercial executive with extensive
                 leadership experience in technology and SaaS within international scale-ups and
