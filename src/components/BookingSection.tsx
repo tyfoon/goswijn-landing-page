@@ -194,6 +194,7 @@ export const BookingSection = () => {
         {bookingOptions.map((option, index) => (
           <Card
             key={option.duration}
+            onClick={() => handleBookNow(option.duration)}
             className="group p-6 bg-background/50 backdrop-blur-sm border-border/50 hover:border-foreground/40 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 cursor-pointer animate-on-scroll"
             style={{ animationDelay: `${index * 0.1}s` }}
           >
@@ -213,8 +214,7 @@ export const BookingSection = () => {
                 <p className="text-2xl font-bold text-foreground">{option.price}</p>
                 <Button
                   size="lg"
-                  className="whitespace-nowrap shadow-md hover:shadow-xl transition-all duration-300"
-                  onClick={() => handleBookNow(option.duration)}
+                  className="whitespace-nowrap shadow-md hover:shadow-xl transition-all duration-300 pointer-events-none"
                 >
                   Book Now
                 </Button>
