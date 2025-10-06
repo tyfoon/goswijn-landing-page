@@ -119,11 +119,11 @@ async function getAvailableSlots(
   calendarId: string
 ): Promise<AvailableSlot[]> {
   const now = new Date();
-  const twoWeeksLater = new Date(now.getTime() + 14 * 24 * 60 * 60 * 1000);
+  const threeMonthsLater = new Date(now.getTime() + 90 * 24 * 60 * 60 * 1000);
 
   const url = `https://www.googleapis.com/calendar/v3/calendars/${encodeURIComponent(
     calendarId
-  )}/events?timeMin=${now.toISOString()}&timeMax=${twoWeeksLater.toISOString()}&q=available%20for%20booking&singleEvents=true&orderBy=startTime`;
+  )}/events?timeMin=${now.toISOString()}&timeMax=${threeMonthsLater.toISOString()}&q=available%20for%20booking&singleEvents=true&orderBy=startTime`;
 
   const response = await fetch(url, {
     headers: {
