@@ -17,27 +17,29 @@ export const BookingSection = () => {
   ];
 
   return (
-    <div className="grid md:grid-cols-2 gap-8">
+    <div className="space-y-6">
       {bookingOptions.map((option) => (
         <Card
           key={option.duration}
-          className="p-8 bg-background/50 backdrop-blur-sm border-foreground/20 hover:border-foreground/40 transition-all"
+          className="p-6 bg-background/50 backdrop-blur-sm border-foreground/20 hover:border-foreground/40 transition-all"
         >
-          <div className="flex items-start gap-4 mb-4">
-            <Clock className="h-8 w-8 text-foreground mt-1" />
-            <div>
-              <h3 className="text-2xl font-bold text-foreground mb-2">
-                {option.duration}
-              </h3>
-              <p className="text-foreground/70 mb-4">{option.description}</p>
+          <div className="flex items-center justify-between gap-6">
+            <div className="flex items-center gap-4 flex-1">
+              <Clock className="h-8 w-8 text-foreground flex-shrink-0" />
+              <div>
+                <h3 className="text-xl font-bold text-foreground mb-1">
+                  {option.duration}
+                </h3>
+                <p className="text-foreground/70 text-sm">{option.description}</p>
+              </div>
+            </div>
+            <div className="flex items-center gap-6">
+              <p className="text-2xl font-bold text-foreground">{option.price}</p>
+              <Button size="lg" className="whitespace-nowrap">
+                Book Now
+              </Button>
             </div>
           </div>
-          <div className="mb-6">
-            <p className="text-3xl font-bold text-foreground">{option.price}</p>
-          </div>
-          <Button className="w-full" size="lg">
-            Book Now
-          </Button>
         </Card>
       ))}
     </div>
