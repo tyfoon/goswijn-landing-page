@@ -161,7 +161,7 @@ const Index = () => {
           <div className="relative mt-auto pointer-events-none z-20">
             <div className="absolute inset-x-0 bottom-0 h-96 bg-gradient-to-t from-background via-background/95 to-transparent z-10" />
             <div className="relative px-6 py-12 md:px-12 lg:px-16 pointer-events-auto z-20">
-              <p className="w-full text-sm leading-tight text-foreground md:text-base lg:text-lg">
+              <p className="w-full text-xs leading-tight text-foreground md:text-sm lg:text-base">
                 I am an entrepreneurial and results-driven commercial executive with extensive
                 leadership experience in technology and SaaS within international scale-ups and
                 organisations like Google and Microsoft. My career is centered around building
