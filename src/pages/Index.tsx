@@ -126,8 +126,8 @@ const Index = () => {
             <div className="max-w-xl space-y-8 animate-on-scroll relative z-30">
               <div className="space-y-6 relative z-30">
                 <h2 className="text-4xl font-bold leading-tight tracking-tight text-foreground md:text-5xl lg:text-6xl relative z-30">
-                  <span className="block whitespace-nowrap">Breakthrough changes.</span>
-                  <span className="block whitespace-nowrap">Proven impact.</span>
+                  <span className="inline-block whitespace-nowrap w-fit">Breakthrough changes.</span>
+                  <span className="inline-block whitespace-nowrap w-fit">Proven impact.</span>
                 </h2>
 
                 <ul className="relative z-30 space-y-4 text-lg font-medium text-foreground md:text-xl">
