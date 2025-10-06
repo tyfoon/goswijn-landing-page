@@ -3,7 +3,7 @@ import { BookingSection } from "@/components/BookingSection";
 import { Button } from "@/components/ui/button";
 import backgroundImage from "@/assets/goswijn-background.png";
 import portraitImage from "@/assets/goswijn-portrait.png";
-import speakingImage from "@/assets/goswijn-speaking.jpg";
+import speakingImage from "@/assets/goswijn-thinking.jpg";
 import linkedinIcon from "@/assets/linkedin-icon.jpg";
 
 const Index = () => {
