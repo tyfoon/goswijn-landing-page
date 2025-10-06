@@ -20,6 +20,7 @@ interface AvailableSlot {
 
 interface BookingRequest {
   slotId: string;
+  slotStart: string;
   duration: number;
   attendeeEmail: string;
   attendeeName: string;
@@ -147,13 +148,13 @@ async function bookSlot(
   booking: BookingRequest,
   originalEvent: any
 ): Promise<void> {
-  const startTime = new Date(originalEvent.start.dateTime);
+  const startTime = new Date(booking.slotStart);
   const endTime = new Date(startTime.getTime() + booking.duration * 60 * 1000);
 
-  // Create the booking event
+  // Create the booking event without automatic invites (to avoid Domain-Wide Delegation requirement)
   const bookingEvent = {
     summary: `Consultation with ${booking.attendeeName}`,
-    description: `${booking.duration}-minute consultation booked via website`,
+    description: `${booking.duration}-minute consultation booked via website\n\nAttendee Details:\nName: ${booking.attendeeName}\nEmail: ${booking.attendeeEmail}\n\n⚠️ Action Required: Please manually send a calendar invite to ${booking.attendeeEmail}`,
     start: {
       dateTime: startTime.toISOString(),
       timeZone: originalEvent.start.timeZone || "Europe/Amsterdam",
@@ -162,10 +163,6 @@ async function bookSlot(
       dateTime: endTime.toISOString(),
       timeZone: originalEvent.end.timeZone || "Europe/Amsterdam",
     },
-    attendees: [
-      { email: calendarId },
-      { email: booking.attendeeEmail, displayName: booking.attendeeName },
-    ],
     reminders: {
       useDefault: false,
       overrides: [
@@ -173,7 +170,6 @@ async function bookSlot(
         { method: "popup", minutes: 30 },
       ],
     },
-    sendUpdates: "all",
   };
 
   const createResponse = await fetch(
@@ -273,7 +269,7 @@ const handler = async (req: Request): Promise<Response> => {
       const booking: BookingRequest = await req.json();
       
       // Validate input
-      if (!booking.attendeeEmail || !booking.attendeeName || !booking.slotId || !booking.duration) {
+      if (!booking.attendeeEmail || !booking.attendeeName || !booking.slotId || !booking.duration || !booking.slotStart) {
         throw new Error("Missing required booking information");
       }
       
@@ -298,7 +294,7 @@ const handler = async (req: Request): Promise<Response> => {
       await bookSlot(accessToken, calendarId, booking, originalEvent);
       
       return new Response(
-        JSON.stringify({ success: true, message: "Booking confirmed! You will receive a calendar invite shortly." }),
+        JSON.stringify({ success: true, message: "Booking confirmed! The appointment has been added to the calendar. You will be contacted shortly with meeting details." }),
         {
           status: 200,
           headers: {

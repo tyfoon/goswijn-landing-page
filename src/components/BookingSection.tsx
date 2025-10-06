@@ -12,6 +12,7 @@ interface TimeSlot {
   id: string;
   start: string;
   end: string;
+  originalSlotId?: string;
 }
 
 export const BookingSection = () => {
@@ -90,7 +91,8 @@ export const BookingSection = () => {
         "calendar-booking/book",
         {
           body: {
-            slotId: selectedSlot.id,
+            slotId: selectedSlot.originalSlotId || selectedSlot.id,
+            slotStart: selectedSlot.start,
             duration: selectedDuration,
             attendeeEmail,
             attendeeName,
@@ -132,12 +134,30 @@ export const BookingSection = () => {
   const getAvailableSlotsForDuration = () => {
     if (!selectedDuration) return [];
     
-    return availableSlots.filter((slot) => {
+    const slots: TimeSlot[] = [];
+    
+    availableSlots.forEach(slot => {
       const start = new Date(slot.start);
       const end = new Date(slot.end);
-      const durationMinutes = (end.getTime() - start.getTime()) / (1000 * 60);
-      return durationMinutes >= selectedDuration;
+      const slotDuration = (end.getTime() - start.getTime()) / (1000 * 60);
+      
+      // Generate multiple slots if the available time is longer than the booking duration
+      const numberOfSlots = Math.floor(slotDuration / selectedDuration);
+      
+      for (let i = 0; i < numberOfSlots; i++) {
+        const slotStart = new Date(start.getTime() + (i * selectedDuration * 60 * 1000));
+        const slotEnd = new Date(slotStart.getTime() + (selectedDuration * 60 * 1000));
+        
+        slots.push({
+          id: `${slot.id}_slot${i}`,
+          start: slotStart.toISOString(),
+          end: slotEnd.toISOString(),
+          originalSlotId: slot.id,
+        });
+      }
     });
+    
+    return slots;
   };
 
   return (
