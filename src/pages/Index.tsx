@@ -117,21 +117,21 @@ const Index = () => {
             <div className="max-w-xl space-y-8 animate-on-scroll relative z-30">
               <div className="space-y-6 relative z-30">
                 <h2 className="text-4xl font-bold leading-tight tracking-tight text-foreground md:text-5xl lg:text-6xl relative z-30">
-                  Real step changes. Proven impact.
+                  Breakthrough changes. Proven impact.
                 </h2>
 
                 <ul className="relative z-30 space-y-4 text-lg font-medium text-foreground md:text-xl">
                   <li className="flex items-start transition-transform duration-300 hover:translate-x-2">
                     <span className="mr-3 mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-foreground" />
-                    <span>Building Go to Market strategies</span>
+                    <span>Building innovative Go to Market strategies</span>
                   </li>
                   <li className="flex items-start transition-transform duration-300 hover:translate-x-2">
                     <span className="mr-3 mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-foreground" />
-                    <span>Generating sustained revenue growth</span>
+                    <span>Creating scalable and sustained revenue growth</span>
                   </li>
                   <li className="flex items-start transition-transform duration-300 hover:translate-x-2">
                     <span className="mr-3 mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-foreground" />
-                    <span>Flawless execution</span>
+                    <span>Assuring flawless execution across teams</span>
                   </li>
                 </ul>
               </div>
