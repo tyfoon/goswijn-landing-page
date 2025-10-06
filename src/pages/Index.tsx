@@ -35,10 +35,10 @@ const Index = () => {
                 href="https://www.linkedin.com/in/goswijn/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-foreground hover:text-primary transition-colors"
+                className="flex items-center justify-center w-8 h-8 bg-[#0A66C2] rounded hover:bg-[#004182] transition-colors"
                 aria-label="LinkedIn Profile"
               >
-                <Linkedin size={24} />
+                <Linkedin size={20} className="text-white" fill="white" />
               </a>
             </div>
           </header>
