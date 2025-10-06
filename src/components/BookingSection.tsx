@@ -23,7 +23,7 @@ export const BookingSection = () => {
           key={option.duration}
           className="p-6 bg-background/50 backdrop-blur-sm border-foreground/20 hover:border-foreground/40 transition-all"
         >
-          <div className="flex items-center justify-between gap-6">
+          <div className="flex items-start justify-between gap-6">
             <div className="flex items-center gap-4 flex-1">
               <Clock className="h-8 w-8 text-foreground flex-shrink-0" />
               <div>
@@ -33,7 +33,7 @@ export const BookingSection = () => {
                 <p className="text-foreground/70 text-sm">{option.description}</p>
               </div>
             </div>
-            <div className="flex items-center gap-6">
+            <div className="flex flex-col items-end gap-4">
               <p className="text-2xl font-bold text-foreground">{option.price}</p>
               <Button size="lg" className="whitespace-nowrap">
                 Book Now
