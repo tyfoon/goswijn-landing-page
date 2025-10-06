@@ -13,6 +13,7 @@ import eyeoLogo from "@/assets/eyeo.png";
 import googleLogo from "@/assets/google.png";
 import microsoftLogo from "@/assets/microsoft.png";
 import tridionLogo from "@/assets/tridion.png";
+import googleCloudLogo from "@/assets/google-cloud.svg";
 import { useEffect, useState } from "react";
 
 const Index = () => {
@@ -251,12 +252,13 @@ const Index = () => {
           <div className="flex flex-wrap items-center justify-center gap-8 md:gap-12 lg:gap-16">
             <img src={googleLogo} alt="" className="h-7 md:h-9 w-auto max-w-[120px] object-contain grayscale opacity-60 hover:opacity-80 transition-opacity" />
             <img src={microsoftLogo} alt="" className="h-8 md:h-10 w-auto max-w-[120px] object-contain grayscale opacity-60 hover:opacity-80 transition-opacity" />
-            <img src={doubleclickLogo} alt="" className="h-11 md:h-14 w-auto max-w-[120px] object-contain grayscale opacity-60 hover:opacity-80 transition-opacity" />
-            <img src={eyeoLogo} alt="" className="h-6 md:h-8 w-auto max-w-[120px] object-contain grayscale opacity-60 hover:opacity-80 transition-opacity" />
-            <img src={adblockLogo} alt="" className="h-6 md:h-8 w-auto max-w-[120px] object-contain grayscale opacity-60 hover:opacity-80 transition-opacity" />
+            <img src={doubleclickLogo} alt="" className="h-15 md:h-20 w-auto max-w-[120px] object-contain grayscale opacity-60 hover:opacity-80 transition-opacity" />
+            <img src={eyeoLogo} alt="" className="h-5 md:h-6 w-auto max-w-[120px] object-contain grayscale opacity-60 hover:opacity-80 transition-opacity" />
+            <img src={adblockLogo} alt="" className="h-5 md:h-6 w-auto max-w-[120px] object-contain grayscale opacity-60 hover:opacity-80 transition-opacity" />
             <img src={exxonLogo} alt="" className="h-8 md:h-10 w-auto max-w-[120px] object-contain grayscale opacity-60 hover:opacity-80 transition-opacity" />
             <img src={tridionLogo} alt="" className="h-8 md:h-10 w-auto max-w-[120px] object-contain grayscale opacity-60 hover:opacity-80 transition-opacity" />
             <img src={adblockPlusLogo} alt="" className="h-8 md:h-10 w-auto max-w-[120px] object-contain grayscale opacity-60 hover:opacity-80 transition-opacity" />
+            <img src={googleCloudLogo} alt="" className="h-8 md:h-10 w-auto max-w-[120px] object-contain grayscale opacity-60 hover:opacity-80 transition-opacity" />
           </div>
         </div>
       </section>
