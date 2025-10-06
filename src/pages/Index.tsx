@@ -249,14 +249,14 @@ const Index = () => {
       <section className="relative bg-background py-12 px-6 md:px-12 lg:px-16">
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-wrap items-center justify-center gap-8 md:gap-12 lg:gap-16">
-            <img src={googleLogo} alt="" className="h-8 md:h-10 grayscale opacity-60 hover:opacity-80 transition-opacity" />
-            <img src={microsoftLogo} alt="" className="h-8 md:h-10 grayscale opacity-60 hover:opacity-80 transition-opacity" />
-            <img src={doubleclickLogo} alt="" className="h-8 md:h-10 grayscale opacity-60 hover:opacity-80 transition-opacity" />
-            <img src={eyeoLogo} alt="" className="h-8 md:h-10 grayscale opacity-60 hover:opacity-80 transition-opacity" />
-            <img src={adblockLogo} alt="" className="h-8 md:h-10 grayscale opacity-60 hover:opacity-80 transition-opacity" />
-            <img src={exxonLogo} alt="" className="h-8 md:h-10 grayscale opacity-60 hover:opacity-80 transition-opacity" />
-            <img src={tridionLogo} alt="" className="h-8 md:h-10 grayscale opacity-60 hover:opacity-80 transition-opacity" />
-            <img src={adblockPlusLogo} alt="" className="h-8 md:h-10 grayscale opacity-60 hover:opacity-80 transition-opacity" />
+            <img src={googleLogo} alt="" className="h-8 md:h-10 w-auto max-w-[120px] object-contain grayscale opacity-60 hover:opacity-80 transition-opacity" />
+            <img src={microsoftLogo} alt="" className="h-8 md:h-10 w-auto max-w-[120px] object-contain grayscale opacity-60 hover:opacity-80 transition-opacity" />
+            <img src={doubleclickLogo} alt="" className="h-8 md:h-10 w-auto max-w-[120px] object-contain grayscale opacity-60 hover:opacity-80 transition-opacity" />
+            <img src={eyeoLogo} alt="" className="h-8 md:h-10 w-auto max-w-[120px] object-contain grayscale opacity-60 hover:opacity-80 transition-opacity" />
+            <img src={adblockLogo} alt="" className="h-8 md:h-10 w-auto max-w-[120px] object-contain grayscale opacity-60 hover:opacity-80 transition-opacity" />
+            <img src={exxonLogo} alt="" className="h-8 md:h-10 w-auto max-w-[120px] object-contain grayscale opacity-60 hover:opacity-80 transition-opacity" />
+            <img src={tridionLogo} alt="" className="h-8 md:h-10 w-auto max-w-[120px] object-contain grayscale opacity-60 hover:opacity-80 transition-opacity" />
+            <img src={adblockPlusLogo} alt="" className="h-8 md:h-10 w-auto max-w-[120px] object-contain grayscale opacity-60 hover:opacity-80 transition-opacity" />
           </div>
         </div>
       </section>
