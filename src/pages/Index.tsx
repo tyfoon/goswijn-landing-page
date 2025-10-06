@@ -1,14 +1,11 @@
 import { ContactDialog } from "@/components/ContactDialog";
 import backgroundImage from "@/assets/goswijn-background.png";
-
 const Index = () => {
-  return (
-    <div className="relative min-h-screen w-full overflow-hidden">
+  return <div className="relative min-h-screen w-full overflow-hidden">
       {/* Background Image */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: `url(${backgroundImage})` }}
-      />
+      <div className="absolute inset-0 bg-cover bg-center bg-no-repeat" style={{
+      backgroundImage: `url(${backgroundImage})`
+    }} />
       
       {/* Content Container */}
       <div className="relative z-10 flex min-h-screen flex-col">
@@ -23,9 +20,7 @@ const Index = () => {
         <main className="flex flex-1 items-start px-6 pt-16 md:px-12 lg:px-16 md:pt-24">
           <div className="max-w-xl space-y-8">
             <div className="space-y-6">
-              <h2 className="text-4xl font-bold leading-tight tracking-tight text-foreground md:text-5xl lg:text-6xl">
-                Creating real step changes:
-              </h2>
+              <h2 className="text-4xl font-bold leading-tight tracking-tight text-foreground md:text-5xl lg:text-6xl">Real step changes. Proven impact.</h2>
               
               <ul className="relative z-20 space-y-4 text-lg font-medium text-foreground md:text-xl">
                 <li className="flex items-start">
@@ -34,7 +29,7 @@ const Index = () => {
                 </li>
                 <li className="flex items-start">
                   <span className="mr-3 mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-foreground" />
-                  <span>Generating sustainable Revenue growth</span>
+                  <span>Generating sustained revenue growth</span>
                 </li>
                 <li className="flex items-start">
                   <span className="mr-3 mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-foreground" />
@@ -64,8 +59,6 @@ const Index = () => {
           </div>
         </div>
       </div>
-    </div>
-  );
+    </div>;
 };
-
 export default Index;
