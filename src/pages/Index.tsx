@@ -27,7 +27,7 @@ const Index = () => {
                 Creating real step changes:
               </h2>
               
-              <ul className="space-y-4 text-lg font-medium text-foreground md:text-xl">
+              <ul className="relative z-20 space-y-4 text-lg font-medium text-foreground md:text-xl">
                 <li className="flex items-start">
                   <span className="mr-3 mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-foreground" />
                   <span>Building Go to Market strategies</span>
