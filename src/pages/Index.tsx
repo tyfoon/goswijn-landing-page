@@ -3,6 +3,7 @@ import { BookingSection } from "@/components/BookingSection";
 import { Button } from "@/components/ui/button";
 import backgroundImage from "@/assets/goswijn-background.png";
 import portraitImage from "@/assets/goswijn-portrait.png";
+import speakingImage from "@/assets/goswijn-speaking.jpg";
 import linkedinIcon from "@/assets/linkedin-icon.jpg";
 
 const Index = () => {
@@ -105,14 +106,19 @@ const Index = () => {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="relative bg-background py-24 px-6 md:px-12 lg:px-16">
+      <section id="contact" className="relative bg-background py-24 px-6 md:px-12 lg:px-16 overflow-hidden">
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-12 items-end">
-            <div className="flex justify-center lg:justify-start">
-              <img
-                src={portraitImage}
-                alt="Goswijn Thijssen"
-                className="w-full max-w-md rounded-lg shadow-2xl"
+            <div className="flex justify-center lg:justify-start relative">
+              <div 
+                className="w-full max-w-md rounded-lg shadow-2xl overflow-hidden"
+                style={{
+                  backgroundImage: `url(${portraitImage})`,
+                  backgroundSize: 'cover',
+                  backgroundPosition: 'center',
+                  backgroundAttachment: 'fixed',
+                  minHeight: '600px'
+                }}
               />
             </div>
             <div>
@@ -136,14 +142,28 @@ const Index = () => {
         />
 
         <div className="relative z-10 max-w-7xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
-              Book a Session
-            </h2>
-            <p className="text-lg text-foreground/70 max-w-2xl mx-auto">
-              Schedule a focused consultation to discuss your Go-to-Market strategy and growth
-              objectives.
-            </p>
+          <div className="grid lg:grid-cols-2 gap-12 items-center mb-12">
+            <div className="text-center lg:text-left">
+              <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
+                Book a Session
+              </h2>
+              <p className="text-lg text-foreground/70 max-w-2xl">
+                Schedule a focused consultation to discuss your Go-to-Market strategy and growth
+                objectives.
+              </p>
+            </div>
+            <div className="flex justify-center lg:justify-end relative">
+              <div 
+                className="w-full max-w-md rounded-lg shadow-2xl overflow-hidden"
+                style={{
+                  backgroundImage: `url(${speakingImage})`,
+                  backgroundSize: 'cover',
+                  backgroundPosition: 'center',
+                  backgroundAttachment: 'fixed',
+                  minHeight: '500px'
+                }}
+              />
+            </div>
           </div>
           <BookingSection />
         </div>
