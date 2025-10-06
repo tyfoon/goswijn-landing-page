@@ -15,7 +15,7 @@ const Index = () => {
   return (
     <div className="relative w-full">
       {/* Fixed Header */}
-      <header className="fixed top-0 left-0 right-0 z-50 px-6 py-3 md:px-12 lg:px-16 bg-background/80 backdrop-blur-sm border-b border-foreground/10">
+      <header className="fixed top-0 left-0 right-0 z-50 px-6 py-2 md:px-12 lg:px-16 bg-background/80 backdrop-blur-sm border-b border-foreground/10">
         <div className="flex items-center gap-3">
           <button
             onClick={() => scrollToSection("hero")}
@@ -46,7 +46,7 @@ const Index = () => {
         />
 
         {/* Content Container */}
-        <div className="relative z-10 flex min-h-screen flex-col pt-16">
+        <div className="relative z-10 flex min-h-screen flex-col pt-14">
           {/* Main Content */}
           <main className="flex flex-1 items-start px-6 pt-16 md:px-12 lg:px-16 md:pt-24">
             <div className="max-w-xl space-y-8">
