@@ -110,12 +110,13 @@ const Index = () => {
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-12 items-end">
             <div className="flex justify-center lg:justify-start">
-              <img
-                src={portraitImage}
-                alt="Goswijn Thijssen"
-                className="w-full max-w-md h-[600px] object-cover rounded-lg shadow-2xl"
+              <div 
+                className="w-full max-w-md h-[600px] rounded-lg shadow-2xl"
                 style={{
-                  objectPosition: 'center'
+                  backgroundImage: `url(${portraitImage})`,
+                  backgroundSize: 'cover',
+                  backgroundPosition: 'center',
+                  backgroundAttachment: 'fixed'
                 }}
               />
             </div>
@@ -151,12 +152,13 @@ const Index = () => {
               </p>
             </div>
             <div className="flex justify-center lg:justify-end">
-              <img
-                src={speakingImage}
-                alt="Goswijn Thijssen Speaking"
-                className="w-full max-w-md h-[500px] object-cover rounded-lg shadow-2xl"
+              <div 
+                className="w-full max-w-md h-[500px] rounded-lg shadow-2xl"
                 style={{
-                  objectPosition: 'center'
+                  backgroundImage: `url(${speakingImage})`,
+                  backgroundSize: 'cover',
+                  backgroundPosition: 'center',
+                  backgroundAttachment: 'fixed'
                 }}
               />
             </div>
