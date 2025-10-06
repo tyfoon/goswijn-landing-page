@@ -24,6 +24,8 @@ export const BookingSection = () => {
   const [isBooking, setIsBooking] = useState(false);
   const [attendeeName, setAttendeeName] = useState("");
   const [attendeeEmail, setAttendeeEmail] = useState("");
+  const [description, setDescription] = useState("");
+  const [attachment, setAttachment] = useState<File | null>(null);
   const { toast } = useToast();
 
   const bookingOptions = [
@@ -73,10 +75,12 @@ export const BookingSection = () => {
     setSelectedSlot(null);
     setAttendeeName("");
     setAttendeeEmail("");
+    setDescription("");
+    setAttachment(null);
   };
 
   const handleBooking = async () => {
-    if (!selectedSlot || !attendeeName || !attendeeEmail || !selectedDuration) {
+    if (!selectedSlot || !attendeeName || !attendeeEmail || !selectedDuration || !description) {
       toast({
         title: "Missing information",
         description: "Please fill in all fields and select a time slot",
@@ -87,6 +91,22 @@ export const BookingSection = () => {
 
     setIsBooking(true);
     try {
+      let attachmentPath = null;
+
+      // Upload attachment if provided
+      if (attachment) {
+        const fileExt = attachment.name.split('.').pop();
+        const fileName = `${Date.now()}-${Math.random().toString(36).substring(7)}.${fileExt}`;
+        const filePath = `${fileName}`;
+
+        const { error: uploadError } = await supabase.storage
+          .from('booking-attachments')
+          .upload(filePath, attachment);
+
+        if (uploadError) throw uploadError;
+        attachmentPath = filePath;
+      }
+
       const { data, error } = await supabase.functions.invoke(
         "calendar-booking/book",
         {
@@ -96,6 +116,8 @@ export const BookingSection = () => {
             duration: selectedDuration,
             attendeeEmail,
             attendeeName,
+            description,
+            attachmentPath,
           },
         }
       );
@@ -104,7 +126,7 @@ export const BookingSection = () => {
 
       toast({
         title: "Booking confirmed!",
-        description: data.message || "You will receive a calendar invite shortly.",
+        description: data.message || "You will receive a confirmation email shortly.",
       });
 
       setIsDialogOpen(false);
@@ -222,6 +244,30 @@ export const BookingSection = () => {
                     placeholder="your.email@example.com"
                   />
                 </div>
+                <div>
+                  <Label htmlFor="description">What would you like to discuss?</Label>
+                  <textarea
+                    id="description"
+                    value={description}
+                    onChange={(e) => setDescription(e.target.value)}
+                    placeholder="Brief description of what you'd like to talk about..."
+                    className="w-full min-h-[100px] px-3 py-2 rounded-md border border-input bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2"
+                  />
+                </div>
+                <div>
+                  <Label htmlFor="attachment">Attachment (optional)</Label>
+                  <Input
+                    id="attachment"
+                    type="file"
+                    onChange={(e) => setAttachment(e.target.files?.[0] || null)}
+                    className="cursor-pointer"
+                  />
+                  {attachment && (
+                    <p className="text-sm text-muted-foreground mt-1">
+                      Selected: {attachment.name}
+                    </p>
+                  )}
+                </div>
               </div>
             </div>
 
@@ -261,7 +307,7 @@ export const BookingSection = () => {
 
             <Button
               onClick={handleBooking}
-              disabled={!selectedSlot || !attendeeName || !attendeeEmail || isBooking}
+              disabled={!selectedSlot || !attendeeName || !attendeeEmail || !description || isBooking}
               className="w-full"
               size="lg"
             >

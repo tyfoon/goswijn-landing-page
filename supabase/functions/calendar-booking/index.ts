@@ -1,5 +1,6 @@
 import { serve } from "https://deno.land/std@0.190.0/http/server.ts";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2.39.3";
+import { Resend } from "https://esm.sh/resend@4.0.0";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -24,6 +25,8 @@ interface BookingRequest {
   duration: number;
   attendeeEmail: string;
   attendeeName: string;
+  description: string;
+  attachmentPath?: string;
 }
 
 async function createJWT(credentials: GoogleCredentials): Promise<string> {
@@ -146,7 +149,8 @@ async function bookSlot(
   accessToken: string,
   calendarId: string,
   booking: BookingRequest,
-  originalEvent: any
+  originalEvent: any,
+  supabaseClient: any
 ): Promise<void> {
   const startTime = new Date(booking.slotStart);
   const endTime = new Date(startTime.getTime() + booking.duration * 60 * 1000);
@@ -154,7 +158,7 @@ async function bookSlot(
   // Create the booking event without automatic invites (to avoid Domain-Wide Delegation requirement)
   const bookingEvent = {
     summary: `Consultation with ${booking.attendeeName}`,
-    description: `${booking.duration}-minute consultation booked via website\n\nAttendee Details:\nName: ${booking.attendeeName}\nEmail: ${booking.attendeeEmail}\n\n⚠️ Action Required: Please manually send a calendar invite to ${booking.attendeeEmail}`,
+    description: `${booking.duration}-minute consultation booked via website\n\nAttendee Details:\nName: ${booking.attendeeName}\nEmail: ${booking.attendeeEmail}\n\nDiscussion Topic:\n${booking.description}${booking.attachmentPath ? '\n\nAttachment: See email for details' : ''}\n\n⚠️ Action Required: Please manually send a calendar invite to ${booking.attendeeEmail}`,
     start: {
       dateTime: startTime.toISOString(),
       timeZone: originalEvent.start.timeZone || "Europe/Amsterdam",
@@ -234,6 +238,95 @@ async function bookSlot(
       }
     );
   }
+
+  // Send emails
+  const resend = new Resend(Deno.env.get("RESEND_API_KEY"));
+  
+  // Get attachment if provided
+  let attachmentData = null;
+  if (booking.attachmentPath) {
+    try {
+      const { data: fileData, error: downloadError } = await supabaseClient.storage
+        .from('booking-attachments')
+        .download(booking.attachmentPath);
+      
+      if (!downloadError && fileData) {
+        const buffer = await fileData.arrayBuffer();
+        const uint8Array = new Uint8Array(buffer);
+        const base64 = btoa(String.fromCharCode(...uint8Array));
+        attachmentData = {
+          filename: booking.attachmentPath.split('/').pop() || 'attachment',
+          content: base64,
+        };
+      }
+    } catch (error) {
+      console.error("Error downloading attachment:", error);
+    }
+  }
+
+  // Send confirmation email to booker
+  try {
+    await resend.emails.send({
+      from: "Goswijn Thijssen <onboarding@resend.dev>",
+      to: [booking.attendeeEmail],
+      subject: "Booking Confirmation - Consultation with Goswijn Thijssen",
+      html: `
+        <h1>Booking Confirmed!</h1>
+        <p>Dear ${booking.attendeeName},</p>
+        <p>Your ${booking.duration}-minute consultation has been confirmed.</p>
+        <p><strong>Date & Time:</strong> ${new Date(startTime).toLocaleString('en-US', { 
+          weekday: 'long', 
+          year: 'numeric', 
+          month: 'long', 
+          day: 'numeric',
+          hour: '2-digit',
+          minute: '2-digit',
+          timeZone: originalEvent.start.timeZone || 'Europe/Amsterdam'
+        })}</p>
+        <p><strong>Discussion Topic:</strong> ${booking.description}</p>
+        <p>You will receive a calendar invite shortly with the meeting details.</p>
+        <p>Best regards,<br>Goswijn Thijssen</p>
+      `,
+    });
+  } catch (error) {
+    console.error("Error sending confirmation email:", error);
+  }
+
+  // Send notification email to Goswijn with attachment
+  try {
+    const emailPayload: any = {
+      from: "Booking System <onboarding@resend.dev>",
+      to: ["goswijn.thijssen@gmail.com"],
+      subject: `New Booking: ${booking.attendeeName} - ${new Date(startTime).toLocaleDateString()}`,
+      html: `
+        <h1>New Consultation Booking</h1>
+        <p><strong>Name:</strong> ${booking.attendeeName}</p>
+        <p><strong>Email:</strong> ${booking.attendeeEmail}</p>
+        <p><strong>Date & Time:</strong> ${new Date(startTime).toLocaleString('en-US', { 
+          weekday: 'long', 
+          year: 'numeric', 
+          month: 'long', 
+          day: 'numeric',
+          hour: '2-digit',
+          minute: '2-digit',
+          timeZone: originalEvent.start.timeZone || 'Europe/Amsterdam'
+        })}</p>
+        <p><strong>Duration:</strong> ${booking.duration} minutes</p>
+        <p><strong>Discussion Topic:</strong></p>
+        <p>${booking.description.replace(/\n/g, '<br>')}</p>
+        ${booking.attachmentPath ? '<p><strong>Attachment included in this email</strong></p>' : ''}
+        <p>The booking has been added to your calendar. Please send a calendar invite to ${booking.attendeeEmail}</p>
+      `,
+    };
+
+    if (attachmentData) {
+      emailPayload.attachments = [attachmentData];
+    }
+
+    await resend.emails.send(emailPayload);
+  } catch (error) {
+    console.error("Error sending notification email:", error);
+  }
 }
 
 const handler = async (req: Request): Promise<Response> => {
@@ -249,6 +342,11 @@ const handler = async (req: Request): Promise<Response> => {
 
     const credentials: GoogleCredentials = JSON.parse(credentialsJson);
     const calendarId = "goswijn.thijssen@gmail.com";
+    
+    const supabaseClient = createClient(
+      Deno.env.get("SUPABASE_URL") ?? "",
+      Deno.env.get("SUPABASE_SERVICE_ROLE_KEY") ?? ""
+    );
     
     const accessToken = await getAccessToken(credentials);
     const url = new URL(req.url);
@@ -269,7 +367,7 @@ const handler = async (req: Request): Promise<Response> => {
       const booking: BookingRequest = await req.json();
       
       // Validate input
-      if (!booking.attendeeEmail || !booking.attendeeName || !booking.slotId || !booking.duration || !booking.slotStart) {
+      if (!booking.attendeeEmail || !booking.attendeeName || !booking.slotId || !booking.duration || !booking.slotStart || !booking.description) {
         throw new Error("Missing required booking information");
       }
       
@@ -291,7 +389,7 @@ const handler = async (req: Request): Promise<Response> => {
       
       const originalEvent = await eventResponse.json();
       
-      await bookSlot(accessToken, calendarId, booking, originalEvent);
+      await bookSlot(accessToken, calendarId, booking, originalEvent, supabaseClient);
       
       return new Response(
         JSON.stringify({ success: true, message: "Booking confirmed! The appointment has been added to the calendar. You will be contacted shortly with meeting details." }),
