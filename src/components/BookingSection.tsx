@@ -1,12 +1,13 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Clock, Calendar, Loader2 } from "lucide-react";
+import { Clock, Calendar, Loader2, CheckCircle2 } from "lucide-react";
 import { useState, useEffect } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
+import { SkeletonLoader } from "./SkeletonLoader";
 
 interface TimeSlot {
   id: string;
@@ -26,6 +27,7 @@ export const BookingSection = () => {
   const [attendeeEmail, setAttendeeEmail] = useState("");
   const [description, setDescription] = useState("");
   const [attachment, setAttachment] = useState<File | null>(null);
+  const [showSuccess, setShowSuccess] = useState(false);
   const { toast } = useToast();
 
   const bookingOptions = [
@@ -124,12 +126,16 @@ export const BookingSection = () => {
 
       if (error) throw error;
 
+      setShowSuccess(true);
+      setTimeout(() => {
+        setShowSuccess(false);
+        setIsDialogOpen(false);
+      }, 2000);
+
       toast({
         title: "Booking confirmed!",
         description: data.message || "You will receive a confirmation email shortly.",
       });
-
-      setIsDialogOpen(false);
     } catch (error: any) {
       console.error("Error booking slot:", error);
       toast({
@@ -185,16 +191,19 @@ export const BookingSection = () => {
   return (
     <>
       <div className="space-y-6">
-        {bookingOptions.map((option) => (
+        {bookingOptions.map((option, index) => (
           <Card
             key={option.duration}
-            className="p-6 bg-background/50 backdrop-blur-sm border-foreground/20 hover:border-foreground/40 transition-all"
+            className="group p-6 bg-background/50 backdrop-blur-sm border-border/50 hover:border-foreground/40 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 cursor-pointer animate-on-scroll"
+            style={{ animationDelay: `${index * 0.1}s` }}
           >
             <div className="flex items-start justify-between gap-6">
               <div className="flex items-center gap-4 flex-1">
-                <Clock className="h-8 w-8 text-foreground flex-shrink-0" />
+                <div className="p-3 rounded-full bg-muted group-hover:bg-foreground/10 transition-colors duration-300">
+                  <Clock className="h-6 w-6 text-foreground" />
+                </div>
                 <div>
-                  <h3 className="text-xl font-bold text-foreground mb-1">
+                  <h3 className="text-xl font-bold text-foreground mb-1 group-hover:text-foreground/80 transition-colors">
                     {option.duration} minutes
                   </h3>
                   <p className="text-foreground/70 text-sm">{option.description}</p>
@@ -204,7 +213,7 @@ export const BookingSection = () => {
                 <p className="text-2xl font-bold text-foreground">{option.price}</p>
                 <Button
                   size="lg"
-                  className="whitespace-nowrap"
+                  className="whitespace-nowrap shadow-md hover:shadow-xl transition-all duration-300"
                   onClick={() => handleBookNow(option.duration)}
                 >
                   Book Now
@@ -219,9 +228,19 @@ export const BookingSection = () => {
         <DialogContent className="max-w-2xl max-h-[80vh] overflow-y-auto">
           <DialogHeader>
             <DialogTitle>Book a {selectedDuration}-minute consultation</DialogTitle>
+            <DialogDescription>
+              Fill in your details and select a time slot for your consultation.
+            </DialogDescription>
           </DialogHeader>
 
-          <div className="space-y-6 mt-4">
+          {showSuccess ? (
+            <div className="flex flex-col items-center justify-center py-12 animate-success-pop">
+              <CheckCircle2 className="h-16 w-16 text-green-600 mb-4" />
+              <h3 className="text-2xl font-bold text-foreground mb-2">Booking Confirmed!</h3>
+              <p className="text-foreground/70">Check your email for details</p>
+            </div>
+          ) : (
+            <div className="space-y-6 mt-4">
             <div className="space-y-4">
               <Label>Your Information</Label>
               <div className="space-y-3">
@@ -274,23 +293,23 @@ export const BookingSection = () => {
             <div className="space-y-4">
               <Label>Select a Time Slot</Label>
               {isLoadingSlots ? (
-                <div className="flex items-center justify-center py-8">
-                  <Loader2 className="h-8 w-8 animate-spin text-foreground" />
-                </div>
+                <SkeletonLoader />
               ) : getAvailableSlotsForDuration().length === 0 ? (
-                <p className="text-foreground/70 py-8 text-center">
-                  No available slots found. Please try again later or choose a different duration.
-                </p>
+                <div className="text-center py-8 px-4 bg-muted/50 rounded-lg">
+                  <p className="text-foreground/70">
+                    No available slots found. Please try again later or choose a different duration.
+                  </p>
+                </div>
               ) : (
                 <div className="grid gap-3">
                   {getAvailableSlotsForDuration().map((slot) => (
                     <button
                       key={slot.id}
                       onClick={() => setSelectedSlot(slot)}
-                      className={`flex items-center gap-3 p-4 rounded-lg border-2 transition-all text-left ${
+                      className={`flex items-center gap-3 p-4 rounded-lg border-2 transition-all duration-300 text-left ${
                         selectedSlot?.id === slot.id
-                          ? "border-foreground bg-foreground/5"
-                          : "border-foreground/20 hover:border-foreground/40"
+                          ? "border-foreground bg-foreground/5 shadow-md scale-[1.02]"
+                          : "border-border hover:border-foreground/40 hover:shadow-sm hover:scale-[1.01]"
                       }`}
                     >
                       <Calendar className="h-5 w-5 text-foreground flex-shrink-0" />
@@ -308,7 +327,7 @@ export const BookingSection = () => {
             <Button
               onClick={handleBooking}
               disabled={!selectedSlot || !attendeeName || !attendeeEmail || !description || isBooking}
-              className="w-full"
+              className="w-full shadow-md hover:shadow-lg transition-all duration-300"
               size="lg"
             >
               {isBooking ? (
@@ -321,6 +340,7 @@ export const BookingSection = () => {
               )}
             </Button>
           </div>
+          )}
         </DialogContent>
       </Dialog>
     </>
