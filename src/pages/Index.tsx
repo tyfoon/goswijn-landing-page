@@ -5,6 +5,14 @@ import backgroundImage from "@/assets/goswijn-background.png";
 import portraitImage from "@/assets/goswijn-portrait.png";
 import speakingImage from "@/assets/goswijn-thinking.jpg";
 import linkedinIcon from "@/assets/linkedin-icon.jpg";
+import adblockPlusLogo from "@/assets/adblock-plus.svg";
+import adblockLogo from "@/assets/adblock.svg";
+import doubleclickLogo from "@/assets/doubleclick.jpg";
+import exxonLogo from "@/assets/exxon.png";
+import eyeoLogo from "@/assets/eyeo.png";
+import googleLogo from "@/assets/google.png";
+import microsoftLogo from "@/assets/microsoft.png";
+import tridionLogo from "@/assets/tridion.png";
 import { useEffect, useState } from "react";
 
 const Index = () => {
@@ -160,7 +168,7 @@ const Index = () => {
           {/* Bottom Gradient with Bio */}
           <div className="relative mt-auto pointer-events-none z-20">
             <div className="absolute inset-x-0 bottom-0 h-96 bg-gradient-to-t from-background via-background/95 to-transparent z-10" />
-            <div className="relative px-6 py-12 md:px-12 lg:px-16 pointer-events-auto z-20">
+            <div className="relative px-6 py-8 md:px-12 lg:px-16 pointer-events-auto z-20">
               <p className="w-full text-xs leading-tight text-foreground md:text-sm lg:text-base">
                 I am an entrepreneurial and results-driven commercial executive with extensive
                 leadership experience in technology and SaaS within international scale-ups and
@@ -233,6 +241,22 @@ const Index = () => {
                 }}
               />
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Logos Section */}
+      <section className="relative bg-background py-12 px-6 md:px-12 lg:px-16">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex flex-wrap items-center justify-center gap-8 md:gap-12 lg:gap-16">
+            <img src={googleLogo} alt="" className="h-8 md:h-10 grayscale opacity-60 hover:opacity-80 transition-opacity" />
+            <img src={microsoftLogo} alt="" className="h-8 md:h-10 grayscale opacity-60 hover:opacity-80 transition-opacity" />
+            <img src={doubleclickLogo} alt="" className="h-8 md:h-10 grayscale opacity-60 hover:opacity-80 transition-opacity" />
+            <img src={eyeoLogo} alt="" className="h-8 md:h-10 grayscale opacity-60 hover:opacity-80 transition-opacity" />
+            <img src={adblockLogo} alt="" className="h-8 md:h-10 grayscale opacity-60 hover:opacity-80 transition-opacity" />
+            <img src={exxonLogo} alt="" className="h-8 md:h-10 grayscale opacity-60 hover:opacity-80 transition-opacity" />
+            <img src={tridionLogo} alt="" className="h-8 md:h-10 grayscale opacity-60 hover:opacity-80 transition-opacity" />
+            <img src={adblockPlusLogo} alt="" className="h-8 md:h-10 grayscale opacity-60 hover:opacity-80 transition-opacity" />
           </div>
         </div>
       </section>
