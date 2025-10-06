@@ -5,14 +5,6 @@ import backgroundImage from "@/assets/goswijn-background.png";
 import portraitImage from "@/assets/goswijn-portrait.png";
 import speakingImage from "@/assets/goswijn-thinking.jpg";
 import linkedinIcon from "@/assets/linkedin-icon.jpg";
-import adblockLogo from "@/assets/logos/adblock.svg";
-import adblockPlusLogo from "@/assets/logos/adblock-plus.svg";
-import doubleclickLogo from "@/assets/logos/doubleclick.jpg";
-import exxonLogo from "@/assets/logos/exxon.png";
-import eyeoLogo from "@/assets/logos/eyeo.png";
-import microsoftLogo from "@/assets/logos/microsoft.png";
-import googleLogo from "@/assets/logos/google.png";
-import tridionLogo from "@/assets/logos/tridion.png";
 import { useEffect, useState } from "react";
 
 const Index = () => {
@@ -177,39 +169,6 @@ const Index = () => {
                 breakthrough results through stellar collaboration and operational excellence.
               </p>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Logos Section */}
-      <section className="relative bg-background py-16 px-6 md:px-12 lg:px-16 border-y border-border/50">
-        <div className="max-w-7xl mx-auto">
-          <h3 className="text-center text-sm font-medium text-muted-foreground mb-12 uppercase tracking-wider">
-            Trusted by Leading Organizations
-          </h3>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 items-center justify-items-center">
-            {[
-              { src: googleLogo, alt: "Google" },
-              { src: microsoftLogo, alt: "Microsoft" },
-              { src: doubleclickLogo, alt: "DoubleClick" },
-              { src: exxonLogo, alt: "ExxonMobil" },
-              { src: eyeoLogo, alt: "eyeo" },
-              { src: adblockLogo, alt: "Adblock" },
-              { src: adblockPlusLogo, alt: "Adblock Plus" },
-              { src: tridionLogo, alt: "Tridion" },
-            ].map((logo, index) => (
-              <div
-                key={logo.alt}
-                className="w-full max-w-[140px] h-16 flex items-center justify-center grayscale opacity-50 hover:opacity-75 transition-opacity duration-300 animate-on-scroll"
-                style={{ animationDelay: `${index * 0.05}s` }}
-              >
-                <img
-                  src={logo.src}
-                  alt={logo.alt}
-                  className="w-full h-full object-contain"
-                />
-              </div>
-            ))}
           </div>
         </div>
       </section>
