@@ -2,3 +2,6 @@ project_id = "xplbvsesptjdsbjfpoih"
 
 [functions.send-contact-email]
 verify_jwt = false
+
+[functions.calendar-booking]
+verify_jwt = false
