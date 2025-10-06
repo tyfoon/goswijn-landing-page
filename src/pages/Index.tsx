@@ -2,7 +2,7 @@ import { ContactForm } from "@/components/ContactForm";
 import { BookingSection } from "@/components/BookingSection";
 import { Button } from "@/components/ui/button";
 import backgroundImage from "@/assets/goswijn-background.png";
-import portraitImage from "@/assets/goswijn-portrait.jpg";
+import portraitImage from "@/assets/goswijn-portrait.png";
 
 const Index = () => {
   const scrollToSection = (id: string) => {
