@@ -1,9 +1,9 @@
 import { ContactForm } from "@/components/ContactForm";
 import { BookingSection } from "@/components/BookingSection";
 import { Button } from "@/components/ui/button";
-import { Linkedin } from "lucide-react";
 import backgroundImage from "@/assets/goswijn-background.png";
 import portraitImage from "@/assets/goswijn-portrait.png";
+import linkedinIcon from "@/assets/linkedin-icon.jpg";
 
 const Index = () => {
   const scrollToSection = (id: string) => {
@@ -35,10 +35,10 @@ const Index = () => {
                 href="https://www.linkedin.com/in/goswijn/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-center w-8 h-8 bg-[#0A66C2] rounded hover:bg-[#004182] transition-colors"
+                className="w-8 h-8 hover:opacity-80 transition-opacity"
                 aria-label="LinkedIn Profile"
               >
-                <Linkedin size={20} className="text-white" fill="white" />
+                <img src={linkedinIcon} alt="LinkedIn" className="w-full h-full rounded" />
               </a>
             </div>
           </header>
