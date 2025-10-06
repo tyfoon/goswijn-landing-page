@@ -1,6 +1,7 @@
 import { ContactForm } from "@/components/ContactForm";
 import { BookingSection } from "@/components/BookingSection";
 import { Button } from "@/components/ui/button";
+import { Linkedin } from "lucide-react";
 import backgroundImage from "@/assets/goswijn-background.png";
 import portraitImage from "@/assets/goswijn-portrait.png";
 
@@ -26,9 +27,20 @@ const Index = () => {
         <div className="relative z-10 flex min-h-screen flex-col">
           {/* Header */}
           <header className="px-6 py-8 md:px-12 lg:px-16">
-            <h1 className="text-2xl font-bold tracking-tight text-foreground">
-              Goswijn Thijssen
-            </h1>
+            <div className="flex items-center gap-3">
+              <h1 className="text-2xl font-bold tracking-tight text-foreground">
+                Goswijn Thijssen
+              </h1>
+              <a
+                href="https://www.linkedin.com/in/goswijn/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-foreground hover:text-primary transition-colors"
+                aria-label="LinkedIn Profile"
+              >
+                <Linkedin size={24} />
+              </a>
+            </div>
           </header>
 
           {/* Main Content */}
