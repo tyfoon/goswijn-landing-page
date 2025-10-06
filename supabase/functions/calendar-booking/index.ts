@@ -264,8 +264,45 @@ async function bookSlot(
     }
   }
 
-  // Send confirmation email to booker
+  // Create .ics calendar file
+  const formatICSDate = (date: Date) => {
+    return date.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
+  };
+
+  const icsContent = [
+    'BEGIN:VCALENDAR',
+    'VERSION:2.0',
+    'PRODID:-//Goswijn Thijssen//Booking System//EN',
+    'CALSCALE:GREGORIAN',
+    'METHOD:REQUEST',
+    'BEGIN:VEVENT',
+    `DTSTART:${formatICSDate(startTime)}`,
+    `DTEND:${formatICSDate(endTime)}`,
+    `DTSTAMP:${formatICSDate(new Date())}`,
+    `ORGANIZER;CN=Goswijn Thijssen:mailto:goswijn.thijssen@gmail.com`,
+    `ATTENDEE;CN=${booking.attendeeName};RSVP=TRUE:mailto:${booking.attendeeEmail}`,
+    `SUMMARY:Consultation with Goswijn Thijssen`,
+    `DESCRIPTION:${booking.description.replace(/\n/g, '\\n')}`,
+    `LOCATION:Online`,
+    `STATUS:CONFIRMED`,
+    `SEQUENCE:0`,
+    `UID:${booking.slotId}-${Date.now()}@booking.goswijn.com`,
+    'BEGIN:VALARM',
+    'TRIGGER:-PT30M',
+    'ACTION:DISPLAY',
+    'DESCRIPTION:Reminder: Meeting in 30 minutes',
+    'END:VALARM',
+    'END:VEVENT',
+    'END:VCALENDAR'
+  ].join('\r\n');
+
+  // Send confirmation email to booker with calendar invite
   try {
+    const emailAttachments: any[] = [{
+      filename: 'meeting.ics',
+      content: btoa(icsContent),
+    }];
+
     await resend.emails.send({
       from: "Goswijn Thijssen <onboarding@resend.dev>",
       to: [booking.attendeeEmail],
@@ -284,9 +321,11 @@ async function bookSlot(
           timeZone: originalEvent.start.timeZone || 'Europe/Amsterdam'
         })}</p>
         <p><strong>Discussion Topic:</strong> ${booking.description}</p>
-        <p>You will receive a calendar invite shortly with the meeting details.</p>
+        <p><strong>📅 Calendar Invite:</strong> A calendar invite is attached to this email. Click on it to add the meeting to your calendar.</p>
+        <p>Looking forward to our conversation!</p>
         <p>Best regards,<br>Goswijn Thijssen</p>
       `,
+      attachments: emailAttachments,
     });
   } catch (error) {
     console.error("Error sending confirmation email:", error);
