@@ -109,15 +109,13 @@ const Index = () => {
       <section id="contact" className="relative bg-background py-24 px-6 md:px-12 lg:px-16 overflow-hidden">
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-12 items-end">
-            <div className="flex justify-center lg:justify-start relative h-[600px]">
-              <div 
-                className="w-full max-w-md rounded-lg shadow-2xl overflow-hidden"
+            <div className="flex justify-center lg:justify-start">
+              <img
+                src={portraitImage}
+                alt="Goswijn Thijssen"
+                className="w-full max-w-md h-[600px] object-cover rounded-lg shadow-2xl"
                 style={{
-                  backgroundImage: `url(${portraitImage})`,
-                  backgroundSize: 'cover',
-                  backgroundPosition: 'center',
-                  backgroundAttachment: 'fixed',
-                  height: '100%'
+                  objectPosition: 'center'
                 }}
               />
             </div>
@@ -152,15 +150,13 @@ const Index = () => {
                 objectives.
               </p>
             </div>
-            <div className="flex justify-center lg:justify-end relative">
-              <div 
-                className="w-full max-w-md rounded-lg shadow-2xl overflow-hidden"
+            <div className="flex justify-center lg:justify-end">
+              <img
+                src={speakingImage}
+                alt="Goswijn Thijssen Speaking"
+                className="w-full max-w-md h-[500px] object-cover rounded-lg shadow-2xl"
                 style={{
-                  backgroundImage: `url(${speakingImage})`,
-                  backgroundSize: 'cover',
-                  backgroundPosition: 'center',
-                  backgroundAttachment: 'fixed',
-                  minHeight: '500px'
+                  objectPosition: 'center'
                 }}
               />
             </div>
