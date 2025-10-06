@@ -109,7 +109,7 @@ const Index = () => {
       <section id="contact" className="relative bg-background py-24 px-6 md:px-12 lg:px-16 overflow-hidden">
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-12 items-end">
-            <div className="flex justify-center lg:justify-start relative">
+            <div className="flex justify-center lg:justify-start relative h-[600px]">
               <div 
                 className="w-full max-w-md rounded-lg shadow-2xl overflow-hidden"
                 style={{
@@ -117,7 +117,7 @@ const Index = () => {
                   backgroundSize: 'cover',
                   backgroundPosition: 'center',
                   backgroundAttachment: 'fixed',
-                  minHeight: '600px'
+                  height: '100%'
                 }}
               />
             </div>
