@@ -113,7 +113,7 @@ const Index = () => {
       <section id="hero" className="relative min-h-screen w-full overflow-hidden">
         {/* Background Image with Parallax */}
         <div
-          className="absolute inset-0 bg-cover bg-center md:bg-top bg-no-repeat md:bg-fixed"
+          className="absolute inset-0 bg-cover bg-top bg-no-repeat bg-fixed"
           style={{
             backgroundImage: `url(${backgroundImage})`,
           }}
