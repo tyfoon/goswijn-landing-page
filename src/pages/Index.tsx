@@ -196,7 +196,7 @@ const Index = () => {
               <img
                 src={portraitImage}
                 alt="Goswijn Thijssen"
-                className="w-full max-w-md h-[600px] object-cover rounded-lg shadow-2xl transition-transform duration-500 hover:scale-[1.02]"
+                className="w-full max-w-sm h-[500px] object-cover rounded-lg shadow-2xl transition-transform duration-500 hover:scale-[1.02]"
                 style={{
                   objectPosition: 'center'
                 }}
