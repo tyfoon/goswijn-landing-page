@@ -250,14 +250,14 @@ export const BookingSection = () => {
                   <Clock className="h-6 w-6 text-foreground" />
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold text-foreground mb-1 group-hover:text-foreground/80 transition-colors">
+                  <h3 className="text-xl text-foreground mb-1 group-hover:text-foreground/80 transition-colors">
                     {option.duration} minutes
                   </h3>
                   <p className="text-foreground/70 text-sm">{option.description}</p>
                 </div>
               </div>
               <div className="flex flex-col items-end gap-4">
-                <p className="text-2xl font-bold text-foreground">{option.price}</p>
+                <p className="text-2xl text-foreground">{option.price}</p>
                 <Button
                   size="lg"
                   className="whitespace-nowrap shadow-md hover:shadow-xl transition-all duration-300 pointer-events-none"
@@ -282,7 +282,7 @@ export const BookingSection = () => {
           {showSuccess ? (
             <div className="flex flex-col items-center justify-center py-12 animate-success-pop">
               <CheckCircle2 className="h-16 w-16 text-green-600 mb-4" />
-              <h3 className="text-2xl font-bold text-foreground mb-2">Booking Confirmed!</h3>
+              <h3 className="text-2xl text-foreground mb-2">Booking Confirmed!</h3>
               <p className="text-foreground/70">Check your email for details</p>
             </div>
           ) : (
@@ -350,7 +350,7 @@ export const BookingSection = () => {
                     >
                       <ChevronLeft className="h-4 w-4" />
                     </Button>
-                    <span className="text-sm font-medium">
+                    <span className="text-sm">
                       {format(currentWeekStart, 'MMM d')} - {format(addDays(currentWeekStart, 4), 'MMM d, yyyy')}
                     </span>
                     <Button
@@ -381,10 +381,10 @@ export const BookingSection = () => {
                               : "border-border bg-muted/30 cursor-not-allowed opacity-50"
                           }`}
                         >
-                          <div className="text-xs font-medium mb-1">
+                          <div className="text-xs mb-1">
                             {format(day, 'EEE')}
                           </div>
-                          <div className="text-lg font-bold">
+                          <div className="text-lg">
                             {format(day, 'd')}
                           </div>
                         </button>
@@ -400,7 +400,7 @@ export const BookingSection = () => {
                           <button
                             key={slot.id}
                             onClick={() => handleSlotSelection(slot)}
-                            className="p-3 rounded-lg border-2 border-border hover:border-foreground/40 hover:bg-foreground/5 transition-all duration-300 text-center font-medium"
+                            className="p-3 rounded-lg border-2 border-border hover:border-foreground/40 hover:bg-foreground/5 transition-all duration-300 text-center"
                           >
                             {formatTime24h(slot.start)}
                           </button>
@@ -430,15 +430,15 @@ export const BookingSection = () => {
               <div className="bg-muted/50 p-4 rounded-lg space-y-2">
                 <div className="flex justify-between items-center">
                   <span className="text-sm text-muted-foreground">Date:</span>
-                  <span className="font-medium">{format(new Date(selectedSlot.start), 'EEEE, MMMM d, yyyy')}</span>
+                  <span className="">{format(new Date(selectedSlot.start), 'EEEE, MMMM d, yyyy')}</span>
                 </div>
                 <div className="flex justify-between items-center">
                   <span className="text-sm text-muted-foreground">Time:</span>
-                  <span className="font-medium">{formatTime24h(selectedSlot.start)}</span>
+                  <span className="">{formatTime24h(selectedSlot.start)}</span>
                 </div>
                 <div className="flex justify-between items-center">
                   <span className="text-sm text-muted-foreground">Duration:</span>
-                  <span className="font-medium">{selectedDuration} minutes</span>
+                  <span className="">{selectedDuration} minutes</span>
                 </div>
               </div>
 
