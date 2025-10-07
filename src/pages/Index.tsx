@@ -68,7 +68,7 @@ const Index = () => {
           <div className="flex items-center gap-3">
             <button
               onClick={() => scrollToSection("hero")}
-              className="text-xl font-bold tracking-tight text-foreground hover:opacity-80 transition-opacity"
+              className="text-xl tracking-tight text-foreground hover:opacity-80 transition-opacity"
             >
               Goswijn Thijssen
             </button>
