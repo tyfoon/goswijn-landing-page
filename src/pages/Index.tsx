@@ -77,7 +77,7 @@ const Index = () => {
           <div className="flex items-center gap-3">
             <button
               onClick={() => scrollToSection("hero")}
-              className="text-xl tracking-tight text-foreground hover:opacity-80 transition-opacity"
+              className="text-sm tracking-tight text-foreground hover:opacity-80 transition-opacity"
             >
               Goswijn Thijssen
             </button>
@@ -85,7 +85,7 @@ const Index = () => {
               href="https://www.linkedin.com/in/goswijn/"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-6 h-6 hover:opacity-80 transition-opacity"
+              className="w-4 h-4 hover:opacity-80 transition-opacity"
               aria-label="LinkedIn Profile"
             >
               <img src={linkedinIcon} alt="LinkedIn" className="w-full h-full rounded" />
