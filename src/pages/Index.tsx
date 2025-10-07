@@ -250,7 +250,7 @@ const Index = () => {
               <BookingSection />
             </div>
             
-            <div className="flex justify-center lg:justify-end animate-on-scroll" style={{ animationDelay: "0.2s" }}>
+            <div className="flex justify-center lg:justify-end animate-on-scroll mt-12" style={{ animationDelay: "0.2s" }}>
               <img
                 src={speakingImage}
                 alt="Goswijn Thijssen Speaking"
