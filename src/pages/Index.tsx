@@ -140,7 +140,7 @@ const Index = () => {
                   <span className="inline-block md:whitespace-nowrap w-fit">Proven impact.</span>
                 </h2>
 
-                <ul className="relative z-30 space-y-4 text-lg font-medium text-foreground md:text-xl">
+                <ul className="relative z-30 space-y-4 text-lg text-foreground md:text-xl">
                   <li className="flex items-start transition-transform duration-300 hover:translate-x-2">
                     <span className="mr-3 mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-foreground" />
                     <span>Building innovative Go to Market strategies</span>
