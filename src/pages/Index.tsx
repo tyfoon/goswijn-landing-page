@@ -125,7 +125,7 @@ const Index = () => {
           <main className="flex flex-1 items-start px-6 pt-16 md:px-12 lg:px-16 md:pt-24 relative z-30">
             <div className="max-w-xl space-y-8 animate-on-scroll relative z-30">
               <div className="space-y-6 relative z-30">
-                <h2 className="text-4xl font-bold leading-tight tracking-tight text-foreground md:text-5xl lg:text-6xl relative z-30">
+                <h2 className="text-3xl font-bold leading-tight tracking-tight text-foreground md:text-4xl lg:text-5xl relative z-30">
                   <span className="inline-block md:whitespace-nowrap w-fit">Breakthrough changes.</span>
                   <span className="inline-block md:whitespace-nowrap w-fit">Proven impact.</span>
                 </h2>
@@ -194,7 +194,7 @@ const Index = () => {
             </div>
             <div className="animate-on-scroll" style={{ animationDelay: "0.2s" }}>
               <div className="mb-8">
-                <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
+                <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
                   Reach out
                 </h2>
                 <p className="text-lg text-foreground/70">
@@ -224,7 +224,7 @@ const Index = () => {
           <div className="grid lg:grid-cols-2 gap-12 items-start">
             <div className="animate-on-scroll">
               <div className="mb-8">
-                <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
+                <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
                   Book a Session
                 </h2>
                 <div className="space-y-3">
