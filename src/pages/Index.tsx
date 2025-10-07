@@ -126,7 +126,6 @@ const Index = () => {
           style={{
             backgroundImage: `url(${backgroundImage})`,
             transform: `translateY(${scrollY * 0.5}px)`,
-            transition: 'transform 0.1s ease-out',
           }}
         />
 
@@ -229,7 +228,6 @@ const Index = () => {
           style={{
             backgroundImage: `url(${backgroundImage})`,
             transform: `translateY(${(scrollY - 1000) * 0.3}px)`,
-            transition: 'transform 0.1s ease-out',
           }}
         />
 
