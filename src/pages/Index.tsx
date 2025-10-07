@@ -227,9 +227,14 @@ const Index = () => {
                 <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
                   Book a Session
                 </h2>
-                <p className="text-lg text-foreground/70">
-                  Schedule a focused consultation to discuss how you can reach your business goals and take a good look at your Go-to-Market strategy and how it can be improved to create sustained hyper growth.
-                </p>
+                <div className="space-y-3">
+                  <p className="text-lg text-foreground/70">
+                    Schedule a focused consultation to discuss how you can reach your business goals by taking a good look at your Go-to-Market strategy and how it can be improved to create sustained hyper growth.
+                  </p>
+                  <p className="text-lg text-foreground/70">
+                    Feel free to provide me with as much background as possible as this will significantly improve the value of our conversation.
+                  </p>
+                </div>
               </div>
               <BookingSection />
             </div>
