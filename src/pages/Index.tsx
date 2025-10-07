@@ -198,6 +198,14 @@ const Index = () => {
               />
             </div>
             <div className="animate-on-scroll" style={{ animationDelay: "0.2s" }}>
+              <div className="mb-8">
+                <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
+                  Reach out
+                </h2>
+                <p className="text-lg text-foreground/70">
+                  Leave your contact details below and I will get back to you as soon as possible
+                </p>
+              </div>
               <ContactForm />
             </div>
           </div>
@@ -225,8 +233,7 @@ const Index = () => {
                   Book a Session
                 </h2>
                 <p className="text-lg text-foreground/70">
-                  Schedule a focused consultation to discuss your Go-to-Market strategy and growth
-                  objectives.
+                  Schedule a focused consultation to discuss how you can reach your business goals and take a good look at your Go-to-Market strategy and how it can be improved to create sustained hyper growth.
                 </p>
               </div>
               <BookingSection />
