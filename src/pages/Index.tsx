@@ -18,6 +18,7 @@ import { useEffect, useState } from "react";
 
 const Index = () => {
   const [activeSection, setActiveSection] = useState("hero");
+  const [scrollY, setScrollY] = useState(0);
 
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
@@ -25,6 +26,13 @@ const Index = () => {
   };
 
   useEffect(() => {
+    // Parallax scroll handler
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
     // Scroll animation observer
     const observerOptions = {
       threshold: 0.1,
@@ -55,6 +63,7 @@ const Index = () => {
     sections.forEach((section) => sectionObserver.observe(section));
 
     return () => {
+      window.removeEventListener('scroll', handleScroll);
       animatedElements.forEach((el) => observer.unobserve(el));
       sections.forEach((section) => sectionObserver.unobserve(section));
     };
@@ -113,9 +122,11 @@ const Index = () => {
       <section id="hero" className="relative min-h-screen w-full overflow-hidden">
         {/* Background Image with Parallax */}
         <div
-          className="absolute inset-0 bg-cover bg-top bg-no-repeat bg-fixed"
+          className="absolute inset-0 bg-cover bg-top bg-no-repeat"
           style={{
             backgroundImage: `url(${backgroundImage})`,
+            transform: `translateY(${scrollY * 0.5}px)`,
+            transition: 'transform 0.1s ease-out',
           }}
         />
 
@@ -214,9 +225,11 @@ const Index = () => {
       >
         {/* Parallax Background */}
         <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-10 bg-fixed"
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-10"
           style={{
             backgroundImage: `url(${backgroundImage})`,
+            transform: `translateY(${(scrollY - 1000) * 0.3}px)`,
+            transition: 'transform 0.1s ease-out',
           }}
         />
 
