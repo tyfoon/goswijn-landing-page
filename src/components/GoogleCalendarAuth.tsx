@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "./ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "./ui/card";
@@ -9,6 +9,11 @@ export const GoogleCalendarAuth = () => {
   const [isAuthorizing, setIsAuthorizing] = useState(false);
   const [isAuthorized, setIsAuthorized] = useState(false);
   const { toast } = useToast();
+
+  // Check auth status on component mount
+  useEffect(() => {
+    checkAuthStatus();
+  }, []);
 
   const checkAuthStatus = async () => {
     try {

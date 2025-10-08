@@ -155,10 +155,10 @@ async function bookSlot(
   const startTime = new Date(booking.slotStart);
   const endTime = new Date(startTime.getTime() + booking.duration * 60 * 1000);
 
-  // Create the booking event (attendee info in description only - no auto-invite due to service account limitations)
+  // Create the booking event with attendee
   const bookingEvent = {
     summary: `Consultation with ${booking.attendeeName}`,
-    description: `${booking.duration}-minute consultation booked via website\n\nAttendee Details:\nName: ${booking.attendeeName}\nEmail: ${booking.attendeeEmail}\n\nDiscussion Topic:\n${booking.description}${booking.attachmentPath ? '\n\nAttachment: See email for details' : ''}`,
+    description: `${booking.duration}-minute consultation booked via website\n\nDiscussion Topic:\n${booking.description}${booking.attachmentPath ? '\n\nAttachment: See email for details' : ''}`,
     start: {
       dateTime: startTime.toISOString(),
       timeZone: originalEvent.start.timeZone || "Europe/Amsterdam",
@@ -167,6 +167,13 @@ async function bookSlot(
       dateTime: endTime.toISOString(),
       timeZone: originalEvent.end.timeZone || "Europe/Amsterdam",
     },
+    attendees: [
+      {
+        email: booking.attendeeEmail,
+        displayName: booking.attendeeName,
+        responseStatus: "needsAction",
+      }
+    ],
     reminders: {
       useDefault: false,
       overrides: [
