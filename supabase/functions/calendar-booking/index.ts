@@ -155,10 +155,10 @@ async function bookSlot(
   const startTime = new Date(booking.slotStart);
   const endTime = new Date(startTime.getTime() + booking.duration * 60 * 1000);
 
-  // Create the booking event without automatic invites (to avoid Domain-Wide Delegation requirement)
+  // Create the booking event with the attendee added
   const bookingEvent = {
     summary: `Consultation with ${booking.attendeeName}`,
-    description: `${booking.duration}-minute consultation booked via website\n\nAttendee Details:\nName: ${booking.attendeeName}\nEmail: ${booking.attendeeEmail}\n\nDiscussion Topic:\n${booking.description}${booking.attachmentPath ? '\n\nAttachment: See email for details' : ''}\n\n⚠️ Action Required: Please manually send a calendar invite to ${booking.attendeeEmail}`,
+    description: `${booking.duration}-minute consultation booked via website\n\nAttendee Details:\nName: ${booking.attendeeName}\nEmail: ${booking.attendeeEmail}\n\nDiscussion Topic:\n${booking.description}${booking.attachmentPath ? '\n\nAttachment: See email for details' : ''}`,
     start: {
       dateTime: startTime.toISOString(),
       timeZone: originalEvent.start.timeZone || "Europe/Amsterdam",
@@ -167,6 +167,13 @@ async function bookSlot(
       dateTime: endTime.toISOString(),
       timeZone: originalEvent.end.timeZone || "Europe/Amsterdam",
     },
+    attendees: [
+      {
+        email: booking.attendeeEmail,
+        displayName: booking.attendeeName,
+        responseStatus: "needsAction"
+      }
+    ],
     reminders: {
       useDefault: false,
       overrides: [
@@ -174,6 +181,7 @@ async function bookSlot(
         { method: "popup", minutes: 30 },
       ],
     },
+    sendUpdates: "all", // This will send calendar invites to attendees
   };
 
   const createResponse = await fetch(
@@ -274,13 +282,12 @@ async function bookSlot(
     'VERSION:2.0',
     'PRODID:-//Goswijn Thijssen//Booking System//EN',
     'CALSCALE:GREGORIAN',
-    'METHOD:REQUEST',
+    'METHOD:PUBLISH',
     'BEGIN:VEVENT',
     `DTSTART:${formatICSDate(startTime)}`,
     `DTEND:${formatICSDate(endTime)}`,
     `DTSTAMP:${formatICSDate(new Date())}`,
-    `ORGANIZER;CN=Goswijn Thijssen:mailto:goswijn.thijssen@gmail.com`,
-    `ATTENDEE;CN=${booking.attendeeName};RSVP=TRUE:mailto:${booking.attendeeEmail}`,
+    `ORGANIZER;CN=Goswijn Thijssen:MAILTO:goswijn.thijssen@gmail.com`,
     `SUMMARY:Consultation with Goswijn Thijssen`,
     `DESCRIPTION:${booking.description.replace(/\n/g, '\\n')}`,
     `LOCATION:Online`,
@@ -321,7 +328,7 @@ async function bookSlot(
           timeZone: originalEvent.start.timeZone || 'Europe/Amsterdam'
         })}</p>
         <p><strong>Discussion Topic:</strong> ${booking.description}</p>
-        <p><strong>📅 Calendar Invite:</strong> A calendar invite is attached to this email. Click on it to add the meeting to your calendar.</p>
+        <p><strong>📅 Calendar Invite:</strong> You will receive a separate calendar invite from Google Calendar. A calendar file is also attached to this email for your convenience.</p>
         <p>Looking forward to our conversation!</p>
         <p>Best regards,<br>Goswijn Thijssen</p>
       `,
@@ -354,7 +361,7 @@ async function bookSlot(
         <p><strong>Discussion Topic:</strong></p>
         <p>${booking.description.replace(/\n/g, '<br>')}</p>
         ${booking.attachmentPath ? '<p><strong>Attachment included in this email</strong></p>' : ''}
-        <p>The booking has been added to your calendar. Please send a calendar invite to ${booking.attendeeEmail}</p>
+        <p>The booking has been added to your calendar and ${booking.attendeeEmail} has been added as an attendee. They will receive a calendar invite from Google.</p>
       `,
     };
 
