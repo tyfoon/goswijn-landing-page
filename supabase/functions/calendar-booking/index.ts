@@ -155,8 +155,7 @@ async function bookSlot(
   const startTime = new Date(booking.slotStart);
   const endTime = new Date(startTime.getTime() + booking.duration * 60 * 1000);
 
-  // Create the booking event (service accounts can't add attendees without Domain-Wide Delegation)
-  // Attendees receive calendar invite via email instead
+  // Create the booking event with attendee (using OAuth, we can now invite attendees)
   const bookingEvent = {
     summary: `Consultation with ${booking.attendeeName}`,
     description: `${booking.duration}-minute consultation booked via website\n\nDiscussion Topic:\n${booking.description}${booking.attachmentPath ? '\n\nAttachment: See email for details' : ''}`,
@@ -168,6 +167,13 @@ async function bookSlot(
       dateTime: endTime.toISOString(),
       timeZone: originalEvent.end.timeZone || "Europe/Amsterdam",
     },
+    attendees: [
+      {
+        email: booking.attendeeEmail,
+        displayName: booking.attendeeName,
+        responseStatus: "needsAction",
+      }
+    ],
     reminders: {
       useDefault: false,
       overrides: [
@@ -387,12 +393,6 @@ const handler = async (req: Request): Promise<Response> => {
   }
 
   try {
-    const credentialsJson = Deno.env.get("GOOGLE_CALENDAR_CREDENTIALS");
-    if (!credentialsJson) {
-      throw new Error("Google Calendar credentials not configured");
-    }
-
-    const credentials: GoogleCredentials = JSON.parse(credentialsJson);
     const calendarId = "goswijn.thijssen@gmail.com";
     
     const supabaseClient = createClient(
@@ -400,7 +400,24 @@ const handler = async (req: Request): Promise<Response> => {
       Deno.env.get("SUPABASE_SERVICE_ROLE_KEY") ?? ""
     );
     
-    const accessToken = await getAccessToken(credentials);
+    // Get the OAuth access token from the database
+    const { data: tokenData, error: tokenError } = await supabaseClient
+      .from('google_oauth_tokens')
+      .select('access_token, expires_at')
+      .eq('id', 'goswijn.thijssen@gmail.com')
+      .single();
+    
+    if (tokenError || !tokenData) {
+      throw new Error("OAuth token not found. Please authorize Google Calendar first.");
+    }
+    
+    // Check if token is expired
+    const expiresAt = new Date(tokenData.expires_at);
+    if (expiresAt <= new Date()) {
+      throw new Error("OAuth token expired. Please re-authorize Google Calendar.");
+    }
+    
+    const accessToken = tokenData.access_token;
     const url = new URL(req.url);
     
     if (url.pathname.endsWith("/available-slots")) {
