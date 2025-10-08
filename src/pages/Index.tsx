@@ -1,6 +1,5 @@
 import { ContactForm } from "@/components/ContactForm";
 import { BookingSection } from "@/components/BookingSection";
-import { GoogleCalendarAuth } from "@/components/GoogleCalendarAuth";
 import { Button } from "@/components/ui/button";
 import backgroundImage from "@/assets/goswijn-background.png";
 import portraitImage from "@/assets/goswijn-portrait.png";
@@ -249,7 +248,6 @@ const Index = () => {
                 </div>
               </div>
               <div className="space-y-6">
-                <GoogleCalendarAuth />
                 <BookingSection />
               </div>
             </div>

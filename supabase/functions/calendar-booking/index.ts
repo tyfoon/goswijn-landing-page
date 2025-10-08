@@ -311,10 +311,15 @@ async function bookSlot(
       contentType: 'text/calendar; charset=utf-8; method=REQUEST',
     }];
 
+    // Add attachment if available
+    if (attachmentData) {
+      emailAttachments.push(attachmentData);
+    }
+
     const { data: attendeeEmailData, error: attendeeEmailError } = await resend.emails.send({
       from: "Goswijn Thijssen <onboarding@resend.dev>",
       to: [booking.attendeeEmail],
-      subject: "Booking Confirmation - Consultation with Goswijn Thijssen",
+      subject: "Consultation booked with Goswijn Thijssen",
       html: `
         <h1>Booking Confirmed!</h1>
         <p>Dear ${booking.attendeeName},</p>
@@ -347,10 +352,15 @@ async function bookSlot(
 
   // Send notification email to Goswijn with attachment
   try {
+    const ownerAttachments: any[] = [];
+    if (attachmentData) {
+      ownerAttachments.push(attachmentData);
+    }
+
     const emailPayload: any = {
       from: "Booking System <onboarding@resend.dev>",
       to: ["goswijn.thijssen@gmail.com"],
-      subject: `New Booking: ${booking.attendeeName} - ${new Date(startTime).toLocaleDateString()}`,
+      subject: `Consultation booked with Goswijn Thijssen - ${booking.attendeeName}`,
       html: `
         <h1>New Consultation Booking</h1>
         <p><strong>Name:</strong> ${booking.attendeeName}</p>
@@ -370,11 +380,8 @@ async function bookSlot(
         ${booking.attachmentPath ? '<p><strong>Attachment included in this email</strong></p>' : ''}
         <p><strong>⚠️ Action Required:</strong> The booking has been added to your calendar. ${booking.attendeeEmail} has received a confirmation email with a calendar invite file (.ics). They can add it to their calendar by clicking on it.</p>
       `,
+      attachments: ownerAttachments,
     };
-
-    if (attachmentData) {
-      emailPayload.attachments = [attachmentData];
-    }
 
     const { data: ownerEmailData, error: ownerEmailError } = await resend.emails.send(emailPayload);
     if (ownerEmailError) {
