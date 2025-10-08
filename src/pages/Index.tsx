@@ -1,5 +1,6 @@
 import { ContactForm } from "@/components/ContactForm";
 import { BookingSection } from "@/components/BookingSection";
+import { GoogleCalendarAuth } from "@/components/GoogleCalendarAuth";
 import { Button } from "@/components/ui/button";
 import backgroundImage from "@/assets/goswijn-background.png";
 import portraitImage from "@/assets/goswijn-portrait.png";
@@ -247,7 +248,10 @@ const Index = () => {
                   </p>
                 </div>
               </div>
-              <BookingSection />
+              <div className="space-y-6">
+                <GoogleCalendarAuth />
+                <BookingSection />
+              </div>
             </div>
             
             <div className="flex justify-center lg:justify-end animate-on-scroll mt-12" style={{ animationDelay: "0.2s" }}>
