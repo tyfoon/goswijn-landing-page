@@ -152,6 +152,22 @@ async function bookSlot(
   originalEvent: any,
   supabaseClient: any
 ): Promise<void> {
+  // Check rate limiting - max 1 booking per 24 hours per email
+  const { data: recentBooking, error: rateLimitError } = await supabaseClient
+    .from('booking_rate_limits')
+    .select('*')
+    .eq('email', booking.attendeeEmail.toLowerCase())
+    .gte('last_booking_at', new Date(Date.now() - 24 * 60 * 60 * 1000).toISOString())
+    .maybeSingle();
+
+  if (rateLimitError) {
+    console.error('Rate limit check error:', rateLimitError);
+  }
+
+  if (recentBooking) {
+    const hoursRemaining = Math.ceil((new Date(recentBooking.last_booking_at).getTime() + 24 * 60 * 60 * 1000 - Date.now()) / (1000 * 60 * 60));
+    throw new Error(`You can only book one consultation per 24 hours. Please try again in ${hoursRemaining} hour(s).`);
+  }
   const startTime = new Date(booking.slotStart);
   const endTime = new Date(startTime.getTime() + booking.duration * 60 * 1000);
 
@@ -249,7 +265,7 @@ async function bookSlot(
   // Send emails
   const resend = new Resend(Deno.env.get("RESEND_API_KEY"));
   
-  // Get attachment if provided
+  // Get attachment if provided and validate size
   let attachmentData = null;
   if (booking.attachmentPath) {
     try {
@@ -258,7 +274,14 @@ async function bookSlot(
         .download(booking.attachmentPath);
       
       if (!downloadError && fileData) {
+        const maxSize = 5 * 1024 * 1024; // 5MB
         const buffer = await fileData.arrayBuffer();
+        
+        if (buffer.byteLength > maxSize) {
+          console.error("Attachment too large:", buffer.byteLength);
+          throw new Error("Attachment exceeds 5MB limit");
+        }
+        
         const uint8Array = new Uint8Array(buffer);
         const base64 = btoa(String.fromCharCode(...uint8Array));
         attachmentData = {
@@ -268,8 +291,19 @@ async function bookSlot(
       }
     } catch (error) {
       console.error("Error downloading attachment:", error);
+      throw error;
     }
   }
+
+  // Record this booking attempt for rate limiting
+  await supabaseClient
+    .from('booking_rate_limits')
+    .upsert({
+      email: booking.attendeeEmail.toLowerCase(),
+      last_booking_at: new Date().toISOString(),
+    }, {
+      onConflict: 'email',
+    });
 
   // Create .ics calendar file
   const formatICSDate = (date: Date) => {

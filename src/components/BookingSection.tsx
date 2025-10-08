@@ -320,16 +320,34 @@ export const BookingSection = () => {
                   />
                 </div>
                 <div>
-                  <Label htmlFor="attachment">Attachment (optional)</Label>
+                  <Label htmlFor="attachment">Attachment (optional - max 5MB)</Label>
                   <Input
                     id="attachment"
                     type="file"
-                    onChange={(e) => setAttachment(e.target.files?.[0] || null)}
+                    accept=".pdf,.doc,.docx,.txt"
+                    onChange={(e) => {
+                      const file = e.target.files?.[0];
+                      if (file) {
+                        const maxSize = 5 * 1024 * 1024; // 5MB
+                        if (file.size > maxSize) {
+                          toast({
+                            title: "File too large",
+                            description: "Please upload a file smaller than 5MB",
+                            variant: "destructive",
+                          });
+                          e.target.value = '';
+                          return;
+                        }
+                        setAttachment(file);
+                      } else {
+                        setAttachment(null);
+                      }
+                    }}
                     className="cursor-pointer"
                   />
                   {attachment && (
                     <p className="text-sm text-muted-foreground mt-1">
-                      Selected: {attachment.name}
+                      Selected: {attachment.name} ({(attachment.size / 1024 / 1024).toFixed(2)}MB)
                     </p>
                   )}
                 </div>
