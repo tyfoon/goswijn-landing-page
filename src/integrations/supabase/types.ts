@@ -14,6 +14,27 @@ export type Database = {
   }
   public: {
     Tables: {
+      booking_rate_limits: {
+        Row: {
+          created_at: string
+          email: string
+          id: string
+          last_booking_at: string
+        }
+        Insert: {
+          created_at?: string
+          email: string
+          id?: string
+          last_booking_at?: string
+        }
+        Update: {
+          created_at?: string
+          email?: string
+          id?: string
+          last_booking_at?: string
+        }
+        Relationships: []
+      }
       google_oauth_tokens: {
         Row: {
           access_token: string
@@ -46,7 +67,10 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      cleanup_old_rate_limits: {
+        Args: Record<PropertyKey, never>
+        Returns: undefined
+      }
     }
     Enums: {
       [_ in never]: never
