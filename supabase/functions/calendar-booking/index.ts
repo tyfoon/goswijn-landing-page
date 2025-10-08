@@ -173,7 +173,7 @@ async function bookSlot(
 
   // Create the booking event with attendee (using OAuth, we can now invite attendees)
   const bookingEvent = {
-    summary: `Consultation with ${booking.attendeeName}`,
+    summary: `Consultation: ${booking.attendeeName} & Goswijn Thijssen`,
     description: `${booking.duration}-minute consultation booked via website\n\nDiscussion Topic:\n${booking.description}${booking.attachmentPath ? '\n\nAttachment: See email for details' : ''}`,
     start: {
       dateTime: startTime.toISOString(),
