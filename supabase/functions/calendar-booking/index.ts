@@ -300,10 +300,11 @@ async function bookSlot(
   try {
     const emailAttachments: any[] = [{
       filename: 'meeting.ics',
-      content: btoa(icsContent),
+      content: icsContent,
+      contentType: 'text/calendar; charset=utf-8; method=REQUEST',
     }];
 
-    await resend.emails.send({
+    const { data: attendeeEmailData, error: attendeeEmailError } = await resend.emails.send({
       from: "Goswijn Thijssen <onboarding@resend.dev>",
       to: [booking.attendeeEmail],
       subject: "Booking Confirmation - Consultation with Goswijn Thijssen",
@@ -326,7 +327,13 @@ async function bookSlot(
         <p>Best regards,<br>Goswijn Thijssen</p>
       `,
       attachments: emailAttachments,
+      replyTo: "goswijn.thijssen@gmail.com",
     });
+    if (attendeeEmailError) {
+      console.error("Resend attendee email error:", attendeeEmailError);
+    } else {
+      console.log("Resend attendee email sent:", attendeeEmailData);
+    }
   } catch (error) {
     console.error("Error sending confirmation email:", error);
   }
@@ -362,7 +369,12 @@ async function bookSlot(
       emailPayload.attachments = [attachmentData];
     }
 
-    await resend.emails.send(emailPayload);
+    const { data: ownerEmailData, error: ownerEmailError } = await resend.emails.send(emailPayload);
+    if (ownerEmailError) {
+      console.error("Resend owner email error:", ownerEmailError);
+    } else {
+      console.log("Resend owner email sent:", ownerEmailData);
+    }
   } catch (error) {
     console.error("Error sending notification email:", error);
   }
