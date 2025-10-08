@@ -444,7 +444,7 @@ const handler = async (req: Request): Promise<Response> => {
     // Get the OAuth access token from the database
     const { data: tokenData, error: tokenError } = await supabaseClient
       .from('google_oauth_tokens')
-      .select('access_token, expires_at')
+      .select('access_token, expires_at, refresh_token')
       .eq('id', 'main_calendar')
       .single();
     
@@ -452,13 +452,56 @@ const handler = async (req: Request): Promise<Response> => {
       throw new Error("OAuth token not found. Please authorize Google Calendar first.");
     }
     
-    // Check if token is expired
+    let accessToken = tokenData.access_token;
+    
+    // Check if token is expired and refresh if needed
     const expiresAt = new Date(tokenData.expires_at);
     if (expiresAt <= new Date()) {
-      throw new Error("OAuth token expired. Please re-authorize Google Calendar.");
+      console.log("Access token expired, refreshing...");
+      
+      if (!tokenData.refresh_token) {
+        throw new Error("No refresh token available. Please re-authorize Google Calendar.");
+      }
+      
+      // Refresh the access token
+      const refreshResponse = await fetch("https://oauth2.googleapis.com/token", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+        body: new URLSearchParams({
+          client_id: Deno.env.get("GOOGLE_OAUTH_CLIENT_ID") ?? "",
+          client_secret: Deno.env.get("GOOGLE_OAUTH_CLIENT_SECRET") ?? "",
+          refresh_token: tokenData.refresh_token,
+          grant_type: "refresh_token",
+        }),
+      });
+      
+      const refreshData = await refreshResponse.json();
+      
+      if (!refreshResponse.ok) {
+        console.error("Token refresh failed:", refreshData);
+        throw new Error("Failed to refresh OAuth token. Please re-authorize Google Calendar.");
+      }
+      
+      // Update the database with new access token
+      const newExpiresAt = new Date(Date.now() + refreshData.expires_in * 1000);
+      const { error: updateError } = await supabaseClient
+        .from('google_oauth_tokens')
+        .update({
+          access_token: refreshData.access_token,
+          expires_at: newExpiresAt.toISOString(),
+        })
+        .eq('id', 'main_calendar');
+      
+      if (updateError) {
+        console.error("Failed to update token:", updateError);
+      } else {
+        console.log("Access token refreshed successfully");
+      }
+      
+      accessToken = refreshData.access_token;
     }
-    
-    const accessToken = tokenData.access_token;
     const url = new URL(req.url);
     
     if (url.pathname.endsWith("/available-slots")) {
