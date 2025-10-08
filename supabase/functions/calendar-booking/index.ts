@@ -186,7 +186,7 @@ async function bookSlot(
   const createResponse = await fetch(
     `https://www.googleapis.com/calendar/v3/calendars/${encodeURIComponent(
       calendarId
-    )}/events`,
+    )}/events?sendUpdates=all`,
     {
       method: "POST",
       headers: {
@@ -404,7 +404,7 @@ const handler = async (req: Request): Promise<Response> => {
     const { data: tokenData, error: tokenError } = await supabaseClient
       .from('google_oauth_tokens')
       .select('access_token, expires_at')
-      .eq('id', 'goswijn.thijssen@gmail.com')
+      .eq('id', 'main_calendar')
       .single();
     
     if (tokenError || !tokenData) {
