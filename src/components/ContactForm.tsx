@@ -44,36 +44,34 @@ export const ContactForm = () => {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
-      <div className="space-y-4">
-        <div>
-          <Input
-            placeholder="Your Name"
-            value={formData.name}
-            onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-            required
-            className="bg-background/50 backdrop-blur-sm border-foreground/20"
-          />
-        </div>
-        <div>
-          <Input
-            type="email"
-            placeholder="Your Email"
-            value={formData.email}
-            onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-            required
-            className="bg-background/50 backdrop-blur-sm border-foreground/20"
-          />
-        </div>
-        <div>
-          <Textarea
-            placeholder="Your Message"
-            value={formData.message}
-            onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-            required
-            rows={6}
-            className="bg-background/50 backdrop-blur-sm border-foreground/20"
-          />
-        </div>
+      <div>
+        <Input
+          placeholder="Your Name"
+          value={formData.name}
+          onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+          required
+          className="bg-background/50 backdrop-blur-sm border-foreground/20"
+        />
+      </div>
+      <div>
+        <Input
+          type="email"
+          placeholder="Your Email"
+          value={formData.email}
+          onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+          required
+          className="bg-background/50 backdrop-blur-sm border-foreground/20"
+        />
+      </div>
+      <div>
+        <Textarea
+          placeholder="Your Message"
+          value={formData.message}
+          onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+          required
+          rows={6}
+          className="bg-background/50 backdrop-blur-sm border-foreground/20"
+        />
       </div>
       <Button
         type="submit"
