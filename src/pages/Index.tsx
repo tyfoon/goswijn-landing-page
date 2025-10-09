@@ -240,7 +240,7 @@ const Index = () => {
                 />
               </div>
             </div>
-            <div className="animate-on-scroll" style={{ animationDelay: "0.2s" }}>
+            <div className="animate-on-scroll glass-strong rounded-lg p-6 md:p-8" style={{ animationDelay: "0.2s" }}>
               <div className="mb-8">
                 <h2 className="text-3xl md:text-4xl text-foreground mb-4">
                   Reach out
@@ -249,9 +249,7 @@ const Index = () => {
                   Leave your contact details below and I will get back to you as soon as possible
                 </p>
               </div>
-              <div className="glass-strong rounded-lg p-6">
-                <ContactForm />
-              </div>
+              <ContactForm />
             </div>
           </div>
         </div>
