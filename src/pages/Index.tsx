@@ -284,7 +284,7 @@ const Index = () => {
         />
 
         <div className="relative z-10 max-w-7xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-12 items-start">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="animate-on-scroll">
               <div className="mb-8">
                 <h2 className="text-3xl md:text-4xl text-foreground mb-4">
@@ -304,14 +304,14 @@ const Index = () => {
               </div>
             </div>
             
-            <div className="flex justify-center lg:justify-end animate-on-scroll mt-12" style={{ animationDelay: "0.2s" }}>
-              <div className="glass-strong rounded-lg p-1">
+            <div className="flex justify-center lg:justify-end animate-on-scroll" style={{ animationDelay: "0.2s" }}>
+              <div className="glass-strong rounded-lg p-1 w-full max-w-md">
                 <img
                   src={speakingImage}
                   alt="Goswijn Thijssen Speaking"
-                  className="w-full max-w-md h-[500px] object-cover rounded-lg shadow-2xl transition-transform duration-500 hover:scale-[1.02]"
+                  className="w-full h-[500px] object-cover rounded-lg shadow-2xl transition-transform duration-500 hover:scale-[1.02]"
                   style={{
-                    objectPosition: 'center'
+                    objectPosition: 'center top'
                   }}
                 />
               </div>
