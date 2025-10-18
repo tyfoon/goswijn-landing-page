@@ -37,6 +37,11 @@ export const BookingSection = () => {
   const bookingOptions = [
     {
       duration: 30,
+      price: "Free",
+      description: "Explain your challenges and discuss how I could potentially help you",
+    },
+    {
+      duration: 30,
       price: "€200",
       description: "Quick consultation for focused discussions",
     },
