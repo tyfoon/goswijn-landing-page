@@ -38,7 +38,7 @@ export const BookingSection = () => {
     {
       duration: 30,
       price: "Free",
-      description: "Explain your challenges and discuss how I could potentially help you",
+      description: "Share your challenges and let's see if I can add any value",
     },
     {
       duration: 30,
