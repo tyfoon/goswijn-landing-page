@@ -71,50 +71,36 @@ const Index = () => {
 
   return (
     <div className="relative w-full">
-      {/* Fixed Header with Section Indicators - Glassmorphism */}
-      <header className="fixed top-0 left-0 right-0 z-50 px-6 py-2 md:px-12 lg:px-16 glass transition-all duration-300 shadow-lg">
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <button
-              onClick={() => scrollToSection("hero")}
-              className="text-sm font-medium text-foreground hover:opacity-80 transition-opacity"
-            >
-              Goswijn Thijssen
-            </button>
+      {/* Floating Navigation Bar - Palantir Style */}
+      <header className="fixed top-6 right-6 z-50">
+        <div className="flex items-center gap-3">
+          {/* Primary CTA Button */}
+          <Button
+            size="lg"
+            onClick={() => scrollToSection("contact")}
+            className="font-medium shadow-lg hover:shadow-xl transition-all rounded-full px-6 bg-foreground text-background hover:bg-foreground/90"
+          >
+            Get Started
+          </Button>
+          
+          {/* Secondary Actions - Glass Pill */}
+          <div className="hidden md:flex items-center gap-3 glass-strong rounded-full px-4 py-2 shadow-lg">
             <a
               href="https://www.linkedin.com/in/goswijn/"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-4 h-4 hover:opacity-80 transition-opacity"
+              className="w-5 h-5 hover:opacity-80 transition-opacity"
               aria-label="LinkedIn Profile"
             >
               <img src={linkedinIcon} alt="LinkedIn" className="w-full h-full rounded" />
             </a>
+            <button
+              onClick={() => scrollToSection("hero")}
+              className="text-sm font-medium text-foreground hover:opacity-80 transition-opacity"
+            >
+              Home
+            </button>
           </div>
-          
-          {/* Section Navigation Indicators */}
-          <nav className="hidden md:flex items-center gap-6">
-            {[
-              { id: "hero", label: "Home" },
-              { id: "contact", label: "Contact" },
-              { id: "booking", label: "Book" }
-            ].map((section) => (
-              <button
-                key={section.id}
-                onClick={() => scrollToSection(section.id)}
-                className={`text-sm font-medium transition-all duration-300 relative pb-1 ${
-                  activeSection === section.id
-                    ? "text-foreground"
-                    : "text-foreground/60 hover:text-foreground"
-                }`}
-              >
-                {section.label}
-                {activeSection === section.id && (
-                  <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-foreground rounded-full" />
-                )}
-              </button>
-            ))}
-          </nav>
         </div>
       </header>
 
