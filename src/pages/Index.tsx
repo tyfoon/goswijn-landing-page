@@ -73,7 +73,7 @@ const Index = () => {
   return (
     <div className="relative w-full">
       {/* Fixed Header with Palantir-style Glassmorphism */}
-      <header className="fixed top-6 left-6 right-6 z-50 px-6 py-4 md:px-8 lg:px-12 glass rounded-lg transition-all duration-300">
+      <header className="fixed top-6 left-6 right-6 z-50 px-6 py-2 md:px-8 lg:px-12 glass rounded-lg transition-all duration-300">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">
             <button
