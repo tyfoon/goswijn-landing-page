@@ -38,30 +38,29 @@ const Expertise = () => {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative min-h-[60vh] flex items-center justify-center overflow-hidden">
+      <section className="relative min-h-[60vh] flex items-center justify-center overflow-hidden bg-background">
         <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-20"
           style={{
             backgroundImage: `url(${backgroundImage})`,
-            filter: "brightness(0.4)",
           }}
         />
         
         <div className="relative z-10 max-w-7xl mx-auto px-6 py-20 text-center">
-          <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 animate-on-scroll">
+          <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-foreground mb-6 animate-on-scroll">
             Three Pillars of Success
           </h1>
-          <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto mb-8 animate-on-scroll" style={{ animationDelay: "0.1s" }}>
+          <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto mb-8 animate-on-scroll" style={{ animationDelay: "0.1s" }}>
             Building hyper-growth through strategic innovation, scalable execution, and exceptional leadership
           </p>
           <div className="flex flex-wrap justify-center gap-4 animate-on-scroll" style={{ animationDelay: "0.2s" }}>
-            <Button size="lg" onClick={() => scrollToSection("gtm-strategy")} className="glass-strong border-white/20 hover:border-white/40">
+            <Button size="lg" onClick={() => scrollToSection("gtm-strategy")}>
               Go-to-Market Strategy
             </Button>
-            <Button size="lg" variant="outline" onClick={() => scrollToSection("revenue-growth")} className="glass-strong border-white/20 hover:border-white/40 text-white">
+            <Button size="lg" variant="outline" onClick={() => scrollToSection("revenue-growth")}>
               Revenue Growth
             </Button>
-            <Button size="lg" variant="outline" onClick={() => scrollToSection("leadership")} className="glass-strong border-white/20 hover:border-white/40 text-white">
+            <Button size="lg" variant="outline" onClick={() => scrollToSection("leadership")}>
               Leadership
             </Button>
           </div>
