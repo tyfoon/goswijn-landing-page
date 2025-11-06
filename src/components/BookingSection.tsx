@@ -244,7 +244,7 @@ export const BookingSection = () => {
       <div className="space-y-6">
         {bookingOptions.map((option, index) => (
           <Card
-            key={`${option.duration}-${index}`}
+            key={option.duration}
             onClick={() => handleBookNow(option.duration)}
             className="group p-6 bg-background/50 backdrop-blur-sm border-border/50 hover:border-foreground/40 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 cursor-pointer animate-on-scroll"
             style={{ animationDelay: `${index * 0.1}s` }}

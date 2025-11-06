@@ -15,11 +15,10 @@ import microsoftLogo from "@/assets/microsoft.png";
 import tridionLogo from "@/assets/tridion.png";
 import googleCloudLogo from "@/assets/google-cloud.svg";
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+
 const Index = () => {
   const [activeSection, setActiveSection] = useState("hero");
   const [scrollY, setScrollY] = useState(0);
-  const navigate = useNavigate();
 
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
@@ -97,13 +96,12 @@ const Index = () => {
           <nav className="hidden md:flex items-center gap-6">
             {[
               { id: "hero", label: "Home" },
-              { id: "expertise", label: "Expertise", isExternal: true },
               { id: "contact", label: "Contact" },
               { id: "booking", label: "Book" }
             ].map((section) => (
               <button
                 key={section.id}
-                onClick={() => section.isExternal ? navigate('/expertise') : scrollToSection(section.id)}
+                onClick={() => scrollToSection(section.id)}
                 className={`text-sm font-medium transition-all duration-300 relative pb-1 ${
                   activeSection === section.id
                     ? "text-foreground"
