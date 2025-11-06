@@ -9,6 +9,7 @@ const Expertise = () => {
     const observerCallback = (entries: IntersectionObserverEntry[]) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
+          (entry.target as HTMLElement).classList.remove("animate-on-scroll");
           entry.target.classList.add("animate-fade-in");
           observer.unobserve(entry.target as Element);
         }

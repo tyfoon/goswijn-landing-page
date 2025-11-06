@@ -15,10 +15,11 @@ import microsoftLogo from "@/assets/microsoft.png";
 import tridionLogo from "@/assets/tridion.png";
 import googleCloudLogo from "@/assets/google-cloud.svg";
 import { useEffect, useState } from "react";
-
+import { useNavigate } from "react-router-dom";
 const Index = () => {
   const [activeSection, setActiveSection] = useState("hero");
   const [scrollY, setScrollY] = useState(0);
+  const navigate = useNavigate();
 
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
@@ -102,7 +103,7 @@ const Index = () => {
             ].map((section) => (
               <button
                 key={section.id}
-                onClick={() => section.isExternal ? window.location.href = '/expertise' : scrollToSection(section.id)}
+                onClick={() => section.isExternal ? navigate('/expertise') : scrollToSection(section.id)}
                 className={`text-sm font-medium transition-all duration-300 relative pb-1 ${
                   activeSection === section.id
                     ? "text-foreground"
