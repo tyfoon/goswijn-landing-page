@@ -96,12 +96,13 @@ const Index = () => {
           <nav className="hidden md:flex items-center gap-6">
             {[
               { id: "hero", label: "Home" },
+              { id: "expertise", label: "Expertise", isExternal: true },
               { id: "contact", label: "Contact" },
               { id: "booking", label: "Book" }
             ].map((section) => (
               <button
                 key={section.id}
-                onClick={() => scrollToSection(section.id)}
+                onClick={() => section.isExternal ? window.location.href = '/expertise' : scrollToSection(section.id)}
                 className={`text-sm font-medium transition-all duration-300 relative pb-1 ${
                   activeSection === section.id
                     ? "text-foreground"
