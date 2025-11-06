@@ -9,8 +9,8 @@ const Expertise = () => {
     const observerCallback = (entries: IntersectionObserverEntry[]) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          entry.target.classList.add("opacity-100", "translate-y-0");
-          entry.target.classList.remove("opacity-0", "translate-y-10");
+          entry.target.classList.add("animate-fade-in");
+          observer.unobserve(entry.target as Element);
         }
       });
     };
@@ -21,7 +21,7 @@ const Expertise = () => {
     });
 
     document.querySelectorAll(".animate-on-scroll").forEach((el) => {
-      el.classList.add("opacity-0", "translate-y-10", "transition-all", "duration-700");
+      el.classList.add("transition-all", "duration-700");
       observer.observe(el);
     });
 
