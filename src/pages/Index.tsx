@@ -122,7 +122,7 @@ const Index = () => {
       </header>
 
       {/* Mobile: Traditional Top Navigation Bar */}
-      <header className="md:hidden fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border">
+      <header className="md:hidden fixed top-0 left-0 right-0 z-50 glass border-b border-border/20">
         <div className="flex items-center justify-between px-6 py-4">
           <div className="flex items-center gap-3">
             <button
@@ -153,7 +153,7 @@ const Index = () => {
         
         {/* Mobile Menu Dropdown */}
         {mobileMenuOpen && (
-          <nav className="border-t border-border bg-background">
+          <nav className="border-t border-border/20 glass">
             {[
               { id: "hero", label: "Home" },
               { id: "contact", label: "Contact" },
