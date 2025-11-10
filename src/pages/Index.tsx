@@ -16,14 +16,17 @@ import tridionLogo from "@/assets/tridion.png";
 import googleCloudLogo from "@/assets/google-cloud.svg";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Menu, X } from "lucide-react";
 const Index = () => {
   const [activeSection, setActiveSection] = useState("hero");
   const [scrollY, setScrollY] = useState(0);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const navigate = useNavigate();
 
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
     element?.scrollIntoView({ behavior: "smooth" });
+    setMobileMenuOpen(false);
   };
 
   useEffect(() => {
@@ -72,8 +75,8 @@ const Index = () => {
 
   return (
     <div className="relative w-full">
-      {/* Fixed Header with Palantir-style Glassmorphism */}
-      <header className="fixed top-6 left-6 right-6 z-50 px-6 py-2 md:px-8 lg:px-12 glass rounded-lg transition-all duration-300">
+      {/* Desktop: Fixed Floating Header */}
+      <header className="hidden md:block fixed top-6 left-6 right-6 z-50 px-6 py-2 md:px-8 lg:px-12 glass rounded-lg transition-all duration-300">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">
             <button
@@ -93,8 +96,7 @@ const Index = () => {
             </a>
           </div>
           
-          {/* Section Navigation Indicators */}
-          <nav className="hidden md:flex items-center gap-6">
+          <nav className="flex items-center gap-6">
             {[
               { id: "hero", label: "Home" },
               { id: "contact", label: "Contact" },
@@ -117,6 +119,56 @@ const Index = () => {
             ))}
           </nav>
         </div>
+      </header>
+
+      {/* Mobile: Traditional Top Navigation Bar */}
+      <header className="md:hidden fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border">
+        <div className="flex items-center justify-between px-6 py-4">
+          <div className="flex items-center gap-3">
+            <button
+              onClick={() => scrollToSection("hero")}
+              className="text-base font-medium text-foreground"
+            >
+              Goswijn Thijssen
+            </button>
+            <a
+              href="https://www.linkedin.com/in/goswijn/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-4 h-4"
+              aria-label="LinkedIn Profile"
+            >
+              <img src={linkedinIcon} alt="LinkedIn" className="w-full h-full rounded" />
+            </a>
+          </div>
+          
+          <button
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="p-2 text-foreground"
+            aria-label="Toggle menu"
+          >
+            {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </div>
+        
+        {/* Mobile Menu Dropdown */}
+        {mobileMenuOpen && (
+          <nav className="border-t border-border bg-background">
+            {[
+              { id: "hero", label: "Home" },
+              { id: "contact", label: "Contact" },
+              { id: "booking", label: "Book" }
+            ].map((section) => (
+              <button
+                key={section.id}
+                onClick={() => scrollToSection(section.id)}
+                className="block w-full text-left px-6 py-4 text-base font-medium text-foreground hover:bg-accent transition-colors"
+              >
+                {section.label}
+              </button>
+            ))}
+          </nav>
+        )}
       </header>
 
       {/* Hero Section */}
