@@ -22,19 +22,18 @@ const Index = () => {
   const [scrollY, setScrollY] = useState(0);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const navigate = useNavigate();
-
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
-    element?.scrollIntoView({ behavior: "smooth" });
+    element?.scrollIntoView({
+      behavior: "smooth"
+    });
     setMobileMenuOpen(false);
   };
-
   useEffect(() => {
     // Parallax scroll handler
     const handleScroll = () => {
       setScrollY(window.scrollY);
     };
-
     window.addEventListener('scroll', handleScroll);
 
     // Scroll animation observer
@@ -42,81 +41,61 @@ const Index = () => {
       threshold: 0.1,
       rootMargin: "0px 0px -100px 0px"
     };
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add("visible");
         }
       });
     }, observerOptions);
-
     const animatedElements = document.querySelectorAll(".animate-on-scroll");
-    animatedElements.forEach((el) => observer.observe(el));
+    animatedElements.forEach(el => observer.observe(el));
 
     // Section tracking observer
-    const sectionObserver = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
+    const sectionObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
         if (entry.isIntersecting) {
           setActiveSection(entry.target.id);
         }
       });
-    }, { threshold: 0.3 });
-
+    }, {
+      threshold: 0.3
+    });
     const sections = document.querySelectorAll("section[id]");
-    sections.forEach((section) => sectionObserver.observe(section));
-
+    sections.forEach(section => sectionObserver.observe(section));
     return () => {
       window.removeEventListener('scroll', handleScroll);
-      animatedElements.forEach((el) => observer.unobserve(el));
-      sections.forEach((section) => sectionObserver.unobserve(section));
+      animatedElements.forEach(el => observer.unobserve(el));
+      sections.forEach(section => sectionObserver.unobserve(section));
     };
   }, []);
-
-  return (
-    <div className="relative w-full">
+  return <div className="relative w-full">
       {/* Desktop: Fixed Floating Header */}
       <header className="hidden md:block fixed top-6 left-6 right-6 z-50 px-6 py-2 md:px-8 lg:px-12 glass rounded-lg transition-all duration-300">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <button
-              onClick={() => scrollToSection("hero")}
-              className="text-sm font-medium text-foreground hover:opacity-80 transition-opacity"
-            >
+            <button onClick={() => scrollToSection("hero")} className="text-sm font-medium text-foreground hover:opacity-80 transition-opacity">
               Goswijn Thijssen
             </button>
-            <a
-              href="https://www.linkedin.com/in/goswijn/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-4 h-4 hover:opacity-80 transition-opacity"
-              aria-label="LinkedIn Profile"
-            >
+            <a href="https://www.linkedin.com/in/goswijn/" target="_blank" rel="noopener noreferrer" className="w-4 h-4 hover:opacity-80 transition-opacity" aria-label="LinkedIn Profile">
               <img src={linkedinIcon} alt="LinkedIn" className="w-full h-full rounded" />
             </a>
           </div>
           
           <nav className="flex items-center gap-6">
-            {[
-              { id: "hero", label: "Home" },
-              { id: "contact", label: "Contact" },
-              { id: "booking", label: "Book" }
-            ].map((section) => (
-              <button
-                key={section.id}
-                onClick={() => scrollToSection(section.id)}
-                className={`text-sm font-medium transition-all duration-300 relative pb-1 ${
-                  activeSection === section.id
-                    ? "text-foreground"
-                    : "text-foreground/60 hover:text-foreground"
-                }`}
-              >
+            {[{
+            id: "hero",
+            label: "Home"
+          }, {
+            id: "contact",
+            label: "Contact"
+          }, {
+            id: "booking",
+            label: "Book"
+          }].map(section => <button key={section.id} onClick={() => scrollToSection(section.id)} className={`text-sm font-medium transition-all duration-300 relative pb-1 ${activeSection === section.id ? "text-foreground" : "text-foreground/60 hover:text-foreground"}`}>
                 {section.label}
-                {activeSection === section.id && (
-                  <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-foreground rounded-full" />
-                )}
-              </button>
-            ))}
+                {activeSection === section.id && <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-foreground rounded-full" />}
+              </button>)}
           </nav>
         </div>
       </header>
@@ -125,84 +104,56 @@ const Index = () => {
       <header className="md:hidden fixed top-0 left-0 right-0 z-50 glass border-b border-border/20">
         <div className="flex items-center justify-between px-6 py-4">
           <div className="flex items-center gap-3">
-            <button
-              onClick={() => scrollToSection("hero")}
-              className="text-base font-medium text-foreground"
-            >
+            <button onClick={() => scrollToSection("hero")} className="text-base font-medium text-foreground">
               Goswijn Thijssen
             </button>
-            <a
-              href="https://www.linkedin.com/in/goswijn/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-4 h-4"
-              aria-label="LinkedIn Profile"
-            >
+            <a href="https://www.linkedin.com/in/goswijn/" target="_blank" rel="noopener noreferrer" className="w-4 h-4" aria-label="LinkedIn Profile">
               <img src={linkedinIcon} alt="LinkedIn" className="w-full h-full rounded" />
             </a>
           </div>
           
-          <button
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="p-2 text-foreground"
-            aria-label="Toggle menu"
-          >
+          <button onClick={() => setMobileMenuOpen(!mobileMenuOpen)} className="p-2 text-foreground" aria-label="Toggle menu">
             {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
         
         {/* Mobile Menu Dropdown */}
-        {mobileMenuOpen && (
-          <nav className="border-t border-border/20 glass">
-            {[
-              { id: "hero", label: "Home" },
-              { id: "contact", label: "Contact" },
-              { id: "booking", label: "Book" }
-            ].map((section) => (
-              <button
-                key={section.id}
-                onClick={() => scrollToSection(section.id)}
-                className="block w-full text-left px-6 py-4 text-base font-medium text-foreground hover:bg-accent transition-colors"
-              >
+        {mobileMenuOpen && <nav className="border-t border-border/20 glass">
+            {[{
+          id: "hero",
+          label: "Home"
+        }, {
+          id: "contact",
+          label: "Contact"
+        }, {
+          id: "booking",
+          label: "Book"
+        }].map(section => <button key={section.id} onClick={() => scrollToSection(section.id)} className="block w-full text-left px-6 py-4 text-base font-medium text-foreground hover:bg-accent transition-colors">
                 {section.label}
-              </button>
-            ))}
-          </nav>
-        )}
+              </button>)}
+          </nav>}
       </header>
 
       {/* Hero Section */}
       <section id="hero" className="relative min-h-screen w-full overflow-hidden">
         {/* Layered Parallax Backgrounds */}
-        <div
-          className="absolute inset-0 bg-cover bg-top bg-no-repeat"
-          style={{
-            backgroundImage: `url(${backgroundImage})`,
-            transform: `translateY(${scrollY * 0.5}px)`,
-          }}
-        />
+        <div className="absolute inset-0 bg-cover bg-top bg-no-repeat" style={{
+        backgroundImage: `url(${backgroundImage})`,
+        transform: `translateY(${scrollY * 0.5}px)`
+      }} />
         
         {/* Parallax Layer 2 - Overlay with gradient */}
-        <div
-          className="absolute inset-0 bg-gradient-to-b from-transparent via-background/10 to-background/30"
-          style={{
-            transform: `translateY(${scrollY * 0.3}px)`,
-          }}
-        />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/10 to-background/30" style={{
+        transform: `translateY(${scrollY * 0.3}px)`
+      }} />
         
         {/* Parallax Layer 3 - Floating shapes */}
-        <div
-          className="absolute top-1/4 right-1/4 w-64 h-64 rounded-full bg-primary/5 blur-3xl"
-          style={{
-            transform: `translateY(${scrollY * 0.2}px)`,
-          }}
-        />
-        <div
-          className="absolute bottom-1/3 left-1/4 w-96 h-96 rounded-full bg-foreground/5 blur-3xl"
-          style={{
-            transform: `translateY(${scrollY * 0.15}px)`,
-          }}
-        />
+        <div className="absolute top-1/4 right-1/4 w-64 h-64 rounded-full bg-primary/5 blur-3xl" style={{
+        transform: `translateY(${scrollY * 0.2}px)`
+      }} />
+        <div className="absolute bottom-1/3 left-1/4 w-96 h-96 rounded-full bg-foreground/5 blur-3xl" style={{
+        transform: `translateY(${scrollY * 0.15}px)`
+      }} />
 
         {/* Content Container */}
         <div className="relative z-10 flex min-h-screen flex-col pt-14">
@@ -232,19 +183,10 @@ const Index = () => {
               </div>
 
               <div className="relative z-30 pt-4 flex flex-col sm:flex-row gap-4">
-                <Button
-                  size="lg"
-                  onClick={() => scrollToSection("contact")}
-                  className="font-medium shadow-xl hover:shadow-2xl transition-shadow"
-                >
+                <Button size="lg" onClick={() => scrollToSection("contact")} className="font-medium shadow-xl hover:shadow-2xl transition-shadow">
                   Contact Me
                 </Button>
-                <Button
-                  size="lg"
-                  variant="outline"
-                  onClick={() => scrollToSection("booking")}
-                  className="font-medium glass-strong hover:bg-foreground/10 transition-all"
-                >
+                <Button size="lg" variant="outline" onClick={() => scrollToSection("booking")} className="font-medium glass-strong hover:bg-foreground/10 transition-all">
                   Book Time with Me
                 </Button>
               </div>
@@ -256,7 +198,7 @@ const Index = () => {
             <div className="absolute inset-x-0 bottom-0 h-96 bg-gradient-to-t from-background via-background/95 to-transparent z-10" />
             <div className="relative px-6 py-8 md:px-12 lg:px-16 pointer-events-auto z-20">
               <p className="w-full text-xs leading-tight text-foreground md:text-sm lg:text-base">
-                I am an entrepreneurial and results-driven commercial executive with 25+ years of leadership experience in technology and SaaS within international scale-ups and organisations like Google and Microsoft. My core strength lies in building durable and scalable hypergrowth up towards 1B+ revenue. From scratch or within existing business. I do this by developing and executing adaptive, customer focussed Go-to-Market strategies and building teams that deliver breakthrough results through stellar collaboration and operational excellence.
+                I am an entrepreneurial and results-driven commercial executive with 25+ years of leadership experience in technology and SaaS within international scale-ups and organisations like Google and Microsoft. My core strength lies in building durable and scalable hypergrowth up towards 1B+ revenue. From scratch or within existing business. I do this by developing and executing adaptive, customer focussed Go-to-Market strategies and building teams that deliver breakthrough results through stellar collaboration and operational excellence
               </p>
             </div>
           </div>
@@ -266,34 +208,25 @@ const Index = () => {
       {/* Contact Section */}
       <section id="contact" className="relative bg-background py-24 px-6 md:px-12 lg:px-16 overflow-hidden">
         {/* Parallax background elements */}
-        <div
-          className="absolute top-0 left-0 w-72 h-72 rounded-full bg-primary/5 blur-3xl"
-          style={{
-            transform: `translateY(${(scrollY - 800) * 0.1}px)`,
-          }}
-        />
-        <div
-          className="absolute bottom-0 right-0 w-96 h-96 rounded-full bg-foreground/5 blur-3xl"
-          style={{
-            transform: `translateY(${(scrollY - 800) * 0.15}px)`,
-          }}
-        />
+        <div className="absolute top-0 left-0 w-72 h-72 rounded-full bg-primary/5 blur-3xl" style={{
+        transform: `translateY(${(scrollY - 800) * 0.1}px)`
+      }} />
+        <div className="absolute bottom-0 right-0 w-96 h-96 rounded-full bg-foreground/5 blur-3xl" style={{
+        transform: `translateY(${(scrollY - 800) * 0.15}px)`
+      }} />
         
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="grid lg:grid-cols-2 gap-12 items-end">
             <div className="flex justify-center lg:justify-start animate-on-scroll">
               <div className="glass-strong rounded-lg p-1">
-                <img
-                  src={portraitImage}
-                  alt="Goswijn Thijssen"
-                  className="w-full max-w-sm h-[500px] object-cover rounded-lg shadow-2xl transition-transform duration-500 hover:scale-[1.02]"
-                  style={{
-                    objectPosition: 'center'
-                  }}
-                />
+                <img src={portraitImage} alt="Goswijn Thijssen" className="w-full max-w-sm h-[500px] object-cover rounded-lg shadow-2xl transition-transform duration-500 hover:scale-[1.02]" style={{
+                objectPosition: 'center'
+              }} />
               </div>
             </div>
-            <div className="animate-on-scroll glass-strong rounded-lg p-6 md:p-8" style={{ animationDelay: "0.2s" }}>
+            <div className="animate-on-scroll glass-strong rounded-lg p-6 md:p-8" style={{
+            animationDelay: "0.2s"
+          }}>
               <div className="mb-8">
                 <h2 className="text-3xl md:text-4xl text-foreground mb-4">
                   Reach out
@@ -309,32 +242,20 @@ const Index = () => {
       </section>
 
       {/* Booking Section */}
-      <section
-        id="booking"
-        className="relative py-16 px-6 md:px-12 lg:px-16 overflow-hidden"
-      >
+      <section id="booking" className="relative py-16 px-6 md:px-12 lg:px-16 overflow-hidden">
         {/* Layered Parallax Backgrounds */}
-        <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-10"
-          style={{
-            backgroundImage: `url(${backgroundImage})`,
-            transform: `translateY(${(scrollY - 1000) * 0.3}px)`,
-          }}
-        />
+        <div className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-10" style={{
+        backgroundImage: `url(${backgroundImage})`,
+        transform: `translateY(${(scrollY - 1000) * 0.3}px)`
+      }} />
         
         {/* Parallax floating elements */}
-        <div
-          className="absolute top-1/4 left-1/4 w-80 h-80 rounded-full bg-primary/5 blur-3xl"
-          style={{
-            transform: `translateY(${(scrollY - 1200) * 0.2}px)`,
-          }}
-        />
-        <div
-          className="absolute bottom-1/4 right-1/4 w-96 h-96 rounded-full bg-foreground/5 blur-3xl"
-          style={{
-            transform: `translateY(${(scrollY - 1200) * 0.15}px)`,
-          }}
-        />
+        <div className="absolute top-1/4 left-1/4 w-80 h-80 rounded-full bg-primary/5 blur-3xl" style={{
+        transform: `translateY(${(scrollY - 1200) * 0.2}px)`
+      }} />
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 rounded-full bg-foreground/5 blur-3xl" style={{
+        transform: `translateY(${(scrollY - 1200) * 0.15}px)`
+      }} />
 
         <div className="relative z-10 max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -357,16 +278,13 @@ const Index = () => {
               </div>
             </div>
             
-            <div className="flex justify-center lg:justify-end animate-on-scroll" style={{ animationDelay: "0.2s" }}>
+            <div className="flex justify-center lg:justify-end animate-on-scroll" style={{
+            animationDelay: "0.2s"
+          }}>
               <div className="glass-strong rounded-lg p-1 w-full max-w-md">
-                <img
-                  src={speakingImage}
-                  alt="Goswijn Thijssen Speaking"
-                  className="w-full h-[500px] object-cover rounded-lg shadow-2xl transition-transform duration-500 hover:scale-[1.02]"
-                  style={{
-                    objectPosition: 'center top'
-                  }}
-                />
+                <img src={speakingImage} alt="Goswijn Thijssen Speaking" className="w-full h-[500px] object-cover rounded-lg shadow-2xl transition-transform duration-500 hover:scale-[1.02]" style={{
+                objectPosition: 'center top'
+              }} />
               </div>
             </div>
           </div>
@@ -389,8 +307,6 @@ const Index = () => {
           </div>
         </div>
       </section>
-    </div>
-  );
+    </div>;
 };
-
 export default Index;
