@@ -242,7 +242,7 @@ const Index = () => {
       </section>
 
       {/* Booking Section */}
-      <section id="booking" className="relative min-h-screen pt-24 pb-12 px-6 md:px-12 lg:px-16 overflow-hidden animate-on-scroll bg-background">
+      <section id="booking" className="relative min-h-screen pt-24 pb-12 px-6 md:px-12 lg:px-16 -mt-1 overflow-hidden animate-on-scroll bg-background">
         {/* Layered Parallax Backgrounds */}
         <div className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-10" style={{
         backgroundImage: `url(${backgroundImage})`,
