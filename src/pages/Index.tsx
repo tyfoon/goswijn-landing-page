@@ -218,7 +218,7 @@ const Index = () => {
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="grid lg:grid-cols-2 gap-12 items-end">
             <div className="flex justify-center lg:justify-start animate-on-scroll">
-              <div className="glass-strong rounded-lg p-1 transition-all duration-500 hover:shadow-2xl hover:-translate-y-2">
+              <div className="glass-strong rounded-lg p-1">
                 <img src={portraitImage} alt="Goswijn Thijssen" className="w-full max-w-sm h-[500px] object-cover rounded-lg shadow-2xl" style={{
                 objectPosition: 'center'
               }} />
@@ -281,7 +281,7 @@ const Index = () => {
             <div className="flex justify-center lg:justify-end animate-on-scroll" style={{
             animationDelay: "0.2s"
           }}>
-              <div className="glass-strong rounded-lg p-1 w-full max-w-md transition-all duration-500 hover:shadow-2xl hover:-translate-y-2">
+              <div className="glass-strong rounded-lg p-1 w-full max-w-md">
                 <img src={speakingImage} alt="Goswijn Thijssen Speaking" className="w-full h-[380px] object-cover rounded-lg shadow-2xl" style={{
                 objectPosition: 'center top'
               }} />
