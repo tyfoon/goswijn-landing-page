@@ -242,7 +242,7 @@ const Index = () => {
       </section>
 
       {/* Booking Section */}
-      <section id="booking" className="relative py-12 px-6 md:px-12 lg:px-16 overflow-hidden animate-on-scroll">
+      <section id="booking" className="relative min-h-screen py-20 px-6 md:px-12 lg:px-16 overflow-hidden animate-on-scroll bg-background">
         {/* Layered Parallax Backgrounds */}
         <div className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-10" style={{
         backgroundImage: `url(${backgroundImage})`,
@@ -258,22 +258,22 @@ const Index = () => {
       }} />
 
         <div className="relative z-10 max-w-7xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-8 items-center">
+          <div className="grid lg:grid-cols-2 gap-6 items-start">
             <div className="animate-on-scroll">
-              <div className="mb-6">
-                <h2 className="text-3xl md:text-4xl text-foreground mb-3">
+              <div className="mb-4">
+                <h2 className="text-2xl md:text-3xl text-foreground mb-2">
                   Book a Session
                 </h2>
-                <div className="space-y-2">
-                  <p className="text-base text-foreground/70">
+                <div className="space-y-1.5">
+                  <p className="text-sm text-foreground/70">
                     Schedule a focused consultation to discuss how you can reach your business goals by taking a good look at your Go-to-Market strategy and how it can be improved to create sustained hyper growth.
                   </p>
-                  <p className="text-base text-foreground/70">
+                  <p className="text-sm text-foreground/70">
                     Feel free to provide me with as much background as possible as this will significantly improve the value of our conversation.
                   </p>
                 </div>
               </div>
-              <div className="space-y-4">
+              <div className="space-y-3">
                 <BookingSection />
               </div>
             </div>
@@ -282,7 +282,7 @@ const Index = () => {
             animationDelay: "0.2s"
           }}>
               <div className="glass-strong rounded-lg p-1 w-full max-w-md transition-all duration-500 hover:shadow-2xl hover:-translate-y-2">
-                <img src={speakingImage} alt="Goswijn Thijssen Speaking" className="w-full h-[420px] object-cover rounded-lg shadow-2xl" style={{
+                <img src={speakingImage} alt="Goswijn Thijssen Speaking" className="w-full h-[380px] object-cover rounded-lg shadow-2xl" style={{
                 objectPosition: 'center top'
               }} />
               </div>
