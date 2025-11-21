@@ -183,10 +183,10 @@ const Index = () => {
               </div>
 
               <div className="relative z-30 pt-4 flex flex-col sm:flex-row gap-4">
-                <Button size="lg" onClick={() => scrollToSection("contact")} className="font-medium shadow-xl hover:shadow-2xl transition-shadow">
+                <Button size="lg" onClick={() => scrollToSection("contact")} className="font-medium shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300">
                   Contact Me
                 </Button>
-                <Button size="lg" variant="outline" onClick={() => scrollToSection("booking")} className="font-medium glass-strong hover:bg-foreground/10 transition-all">
+                <Button size="lg" variant="outline" onClick={() => scrollToSection("booking")} className="font-medium glass-strong hover:bg-foreground/10 hover:scale-105 transition-all duration-300">
                   Book Time with Me
                 </Button>
               </div>
@@ -206,7 +206,7 @@ const Index = () => {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="relative bg-background py-24 px-6 md:px-12 lg:px-16 overflow-hidden">
+      <section id="contact" className="relative bg-background py-24 px-6 md:px-12 lg:px-16 overflow-hidden animate-on-scroll">
         {/* Parallax background elements */}
         <div className="absolute top-0 left-0 w-72 h-72 rounded-full bg-primary/5 blur-3xl" style={{
         transform: `translateY(${(scrollY - 800) * 0.1}px)`
@@ -218,13 +218,13 @@ const Index = () => {
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="grid lg:grid-cols-2 gap-12 items-end">
             <div className="flex justify-center lg:justify-start animate-on-scroll">
-              <div className="glass-strong rounded-lg p-1">
-                <img src={portraitImage} alt="Goswijn Thijssen" className="w-full max-w-sm h-[500px] object-cover rounded-lg shadow-2xl transition-transform duration-500 hover:scale-[1.02]" style={{
+              <div className="glass-strong rounded-lg p-1 transition-all duration-500 hover:shadow-2xl hover:-translate-y-2">
+                <img src={portraitImage} alt="Goswijn Thijssen" className="w-full max-w-sm h-[500px] object-cover rounded-lg shadow-2xl" style={{
                 objectPosition: 'center'
               }} />
               </div>
             </div>
-            <div className="animate-on-scroll glass-strong rounded-lg p-6 md:p-8" style={{
+            <div className="animate-on-scroll glass-strong rounded-lg p-6 md:p-8 transition-all duration-500 hover:shadow-2xl" style={{
             animationDelay: "0.2s"
           }}>
               <div className="mb-8">
@@ -242,7 +242,7 @@ const Index = () => {
       </section>
 
       {/* Booking Section */}
-      <section id="booking" className="relative py-16 px-6 md:px-12 lg:px-16 overflow-hidden">
+      <section id="booking" className="relative py-16 px-6 md:px-12 lg:px-16 overflow-hidden animate-on-scroll">
         {/* Layered Parallax Backgrounds */}
         <div className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-10" style={{
         backgroundImage: `url(${backgroundImage})`,
@@ -281,8 +281,8 @@ const Index = () => {
             <div className="flex justify-center lg:justify-end animate-on-scroll" style={{
             animationDelay: "0.2s"
           }}>
-              <div className="glass-strong rounded-lg p-1 w-full max-w-md">
-                <img src={speakingImage} alt="Goswijn Thijssen Speaking" className="w-full h-[500px] object-cover rounded-lg shadow-2xl transition-transform duration-500 hover:scale-[1.02]" style={{
+              <div className="glass-strong rounded-lg p-1 w-full max-w-md transition-all duration-500 hover:shadow-2xl hover:-translate-y-2">
+                <img src={speakingImage} alt="Goswijn Thijssen Speaking" className="w-full h-[500px] object-cover rounded-lg shadow-2xl" style={{
                 objectPosition: 'center top'
               }} />
               </div>
@@ -292,18 +292,18 @@ const Index = () => {
       </section>
 
       {/* Logos Section */}
-      <section className="relative bg-background py-12 px-6 md:px-12 lg:px-16">
+      <section className="relative bg-background py-12 px-6 md:px-12 lg:px-16 animate-on-scroll">
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-wrap items-center justify-center gap-8 md:gap-12 lg:gap-16">
-            <img src={googleLogo} alt="" className="h-6 md:h-7 w-auto max-w-[120px] object-contain grayscale opacity-40 hover:opacity-70 transition-opacity" />
-            <img src={googleCloudLogo} alt="" className="h-8 md:h-10 w-auto max-w-[120px] object-contain grayscale opacity-60 hover:opacity-80 transition-opacity" />
-            <img src={microsoftLogo} alt="" className="h-8 md:h-10 w-auto max-w-[120px] object-contain grayscale opacity-60 hover:opacity-80 transition-opacity" />
-            <img src={doubleclickLogo} alt="" className="h-15 md:h-20 w-auto max-w-[120px] object-contain grayscale opacity-60 hover:opacity-80 transition-opacity" />
-            <img src={eyeoLogo} alt="" className="h-5 md:h-6 w-auto max-w-[120px] object-contain grayscale opacity-40 hover:opacity-70 transition-opacity" />
-            <img src={adblockLogo} alt="" className="h-5 md:h-6 w-auto max-w-[120px] object-contain grayscale opacity-60 hover:opacity-80 transition-opacity" />
-            <img src={exxonLogo} alt="" className="h-8 md:h-10 w-auto max-w-[120px] object-contain grayscale opacity-60 hover:opacity-80 transition-opacity" />
-            <img src={tridionLogo} alt="" className="h-8 md:h-10 w-auto max-w-[120px] object-contain grayscale opacity-60 hover:opacity-80 transition-opacity" />
-            <img src={adblockPlusLogo} alt="" className="h-8 md:h-10 w-auto max-w-[120px] object-contain grayscale opacity-60 hover:opacity-80 transition-opacity" />
+            <img src={googleLogo} alt="" className="h-6 md:h-7 w-auto max-w-[120px] object-contain grayscale opacity-40 hover:opacity-70 hover:scale-110 transition-all duration-300" />
+            <img src={googleCloudLogo} alt="" className="h-8 md:h-10 w-auto max-w-[120px] object-contain grayscale opacity-60 hover:opacity-80 hover:scale-110 transition-all duration-300" />
+            <img src={microsoftLogo} alt="" className="h-8 md:h-10 w-auto max-w-[120px] object-contain grayscale opacity-60 hover:opacity-80 hover:scale-110 transition-all duration-300" />
+            <img src={doubleclickLogo} alt="" className="h-15 md:h-20 w-auto max-w-[120px] object-contain grayscale opacity-60 hover:opacity-80 hover:scale-110 transition-all duration-300" />
+            <img src={eyeoLogo} alt="" className="h-5 md:h-6 w-auto max-w-[120px] object-contain grayscale opacity-40 hover:opacity-70 hover:scale-110 transition-all duration-300" />
+            <img src={adblockLogo} alt="" className="h-5 md:h-6 w-auto max-w-[120px] object-contain grayscale opacity-60 hover:opacity-80 hover:scale-110 transition-all duration-300" />
+            <img src={exxonLogo} alt="" className="h-8 md:h-10 w-auto max-w-[120px] object-contain grayscale opacity-60 hover:opacity-80 hover:scale-110 transition-all duration-300" />
+            <img src={tridionLogo} alt="" className="h-8 md:h-10 w-auto max-w-[120px] object-contain grayscale opacity-60 hover:opacity-80 hover:scale-110 transition-all duration-300" />
+            <img src={adblockPlusLogo} alt="" className="h-8 md:h-10 w-auto max-w-[120px] object-contain grayscale opacity-60 hover:opacity-80 hover:scale-110 transition-all duration-300" />
           </div>
         </div>
       </section>
