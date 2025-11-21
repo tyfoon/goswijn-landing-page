@@ -198,7 +198,7 @@ const Index = () => {
             <div className="absolute inset-x-0 bottom-0 h-96 bg-gradient-to-t from-background via-background/95 to-transparent z-10" />
             <div className="relative px-6 py-8 md:px-12 lg:px-16 pointer-events-auto z-20">
               <p className="w-full text-xs leading-tight text-foreground md:text-sm lg:text-base">
-                I am an entrepreneurial and results-driven commercial executive with 25+ years of leadership experience in technology and SaaS within international scale-ups and organisations like Google and Microsoft. My core strength lies in building durable and scalable hypergrowth up towards 1B+ revenue. From scratch or within existing business. I do this by developing and executing adaptive, customer focussed Go-to-Market strategies and building teams that deliver breakthrough results through stellar collaboration and operational excellence
+                I am a commercial executive with 25+ years of leadership in tech and SaaS (Google, Microsoft, start & scale-ups). My core strength is building durable and scalable growth, from scratch or in existing businesses, by grounding strategy in a deep understanding of how technology shapes market and customer needs. I translate these insights into innovative, data-driven, customer-focused GTM strategies and build high-performing teams that deliver results through real value creation, collaboration, and operational excellence.
               </p>
             </div>
           </div>
