@@ -266,12 +266,13 @@ const Index = () => {
             <div className="absolute inset-x-0 bottom-0 h-96 bg-gradient-to-t from-background via-background/95 to-transparent z-10" />
             <div className="relative px-6 py-8 md:px-12 lg:px-16 pointer-events-auto z-20">
               <p className="w-full text-xs leading-tight text-foreground md:text-sm lg:text-base">
-                I am a commercial executive with 25+ years of leadership in tech and SaaS (Google, Microsoft, start &
-                scale-ups). My core strength is building durable and scalable growth, from scratch or in existing
-                businesses, by grounding strategy in a deep understanding of how technology shapes market and customer
-                needs. I translate these insights into innovative, data-driven, customer-focused GTM strategies and
-                build high-performing teams that deliver results through real value creation, collaboration, and
-                operational excellence.
+                Commercial technologist and executive leader with deep expertise in SaaS, Data, and AI ecosystems and
+                25+ years of leadership. I bridge the gap between the rigor of Big Tech (Google, Microsoft) and the
+                agility of PE/VC environments. My core strength is building durable and scalable growth, from scratch or
+                in existing businesses, by grounding strategy in a deep understanding of how technology shapes market
+                and customer needs. I translate these insights into innovative, data-driven, customer-focused GTM
+                strategies and build high-performing teams that deliver results through real value creation,
+                collaboration, and operational excellence.
               </p>
             </div>
           </div>
