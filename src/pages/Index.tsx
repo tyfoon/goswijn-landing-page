@@ -7,7 +7,7 @@ import speakingImage from "@/assets/goswijn-thinking.jpg";
 import linkedinIcon from "@/assets/linkedin-icon.jpg";
 import adblockPlusLogo from "@/assets/adblock-plus.svg";
 import adblockLogo from "@/assets/adblock.svg";
-import doubleclickLogo from "@/assets/doubleclick.jpg";
+import doubleclickLogo from "@/assets/doubleclick.png";
 import exxonLogo from "@/assets/exxon.png";
 import eyeoLogo from "@/assets/eyeo.png";
 import googleLogo from "@/assets/google.png";
