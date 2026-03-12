@@ -441,12 +441,12 @@ const Index = () => {
             <img
               src={tridionLogo}
               alt=""
-              className="h-8 md:h-10 w-auto max-w-[120px] object-contain grayscale opacity-60 hover:opacity-80 hover:scale-110 transition-all duration-300" />
+              className="h-8 md:h-10 w-auto max-w-[120px] object-contain grayscale invert opacity-50 hover:opacity-70 hover:scale-110 transition-all duration-300" />
             
             <img
               src={adblockPlusLogo}
               alt=""
-              className="h-8 md:h-10 w-auto max-w-[120px] object-contain grayscale opacity-60 hover:opacity-80 hover:scale-110 transition-all duration-300" />
+              className="h-8 md:h-10 w-auto max-w-[120px] object-contain grayscale invert opacity-50 hover:opacity-70 hover:scale-110 transition-all duration-300" />
             
           </div>
         </div>
