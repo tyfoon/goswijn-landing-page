@@ -400,7 +400,7 @@ const Index = () => {
       </section>
 
       {/* Logos Section */}
-      <section className="relative bg-background py-12 px-6 md:px-12 lg:px-16 animate-on-scroll">
+      <section className="relative bg-background py-12 px-6 md:px-12 lg:px-16 animate-on-scroll border-t border-border/30">
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-wrap items-center justify-center gap-8 md:gap-12 lg:gap-16">
             <img
