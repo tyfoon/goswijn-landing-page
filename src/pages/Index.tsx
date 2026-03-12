@@ -388,7 +388,6 @@ const Index = () => {
                   objectPosition: "center top"
                 }} />
             </div>
-            </div>
           </div>
         </div>
       </section>
