@@ -214,19 +214,12 @@ const Index = () => {
                   </ul>
                 </div>
 
-                <div className="pt-4 flex flex-col sm:flex-row gap-4">
+                <div className="pt-4">
                   <Button
                     size="lg"
                     onClick={() => scrollToSection("contact")}
-                    className="font-medium shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300">
-                    Contact Me
-                  </Button>
-                  <Button
-                    size="lg"
-                    variant="outline"
-                    onClick={() => scrollToSection("contact")}
-                    className="font-medium glass-strong hover:bg-foreground/10 hover:scale-105 transition-all duration-300">
-                    Book Time with Me
+                    className="font-medium shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300 bg-primary text-primary-foreground">
+                    Let's connect
                   </Button>
                 </div>
 
@@ -279,7 +272,7 @@ const Index = () => {
             {/* Right: Booking + Contact */}
             <div className="animate-on-scroll space-y-8" style={{ animationDelay: "0.2s" }}>
               <div>
-                <h2 className="text-2xl md:text-3xl text-foreground mb-2">Book a Session</h2>
+                <h2 className="text-2xl md:text-3xl text-foreground mb-2">Let's connect</h2>
                 <p className="text-sm text-foreground/70 mb-4">
                   Feel free to provide me with as much background as possible as this will significantly improve the
                   value of our conversation.
@@ -287,13 +280,10 @@ const Index = () => {
                 <BookingSection />
               </div>
 
-              <div className="glass-strong rounded-lg p-6 md:p-8 transition-all duration-500 hover:shadow-2xl">
-                <div className="mb-6">
-                  <h2 className="text-2xl md:text-3xl text-foreground mb-2">Reach out</h2>
-                  <p className="text-sm text-foreground/70">
-                    Leave your contact details below and I will get back to you as soon as possible
-                  </p>
-                </div>
+              <div>
+                <p className="text-sm text-foreground/70 mb-4">
+                  Leave your contact details below and I will get back to you as soon as possible
+                </p>
                 <ContactForm />
               </div>
             </div>
