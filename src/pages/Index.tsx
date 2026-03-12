@@ -406,37 +406,37 @@ const Index = () => {
             <img
               src={googleLogo}
               alt=""
-              className="h-6 md:h-7 w-auto max-w-[120px] object-contain grayscale opacity-40 hover:opacity-70 hover:scale-110 transition-all duration-300" />
+              className="h-6 md:h-7 w-auto max-w-[120px] object-contain grayscale invert opacity-40 hover:opacity-70 hover:scale-110 transition-all duration-300" />
             
             <img
               src={googleCloudLogo}
               alt=""
-              className="h-8 md:h-10 w-auto max-w-[120px] object-contain grayscale opacity-60 hover:opacity-80 hover:scale-110 transition-all duration-300" />
+              className="h-8 md:h-10 w-auto max-w-[120px] object-contain grayscale invert opacity-50 hover:opacity-70 hover:scale-110 transition-all duration-300" />
             
             <img
               src={microsoftLogo}
               alt=""
-              className="h-8 md:h-10 w-auto max-w-[120px] object-contain grayscale opacity-60 hover:opacity-80 hover:scale-110 transition-all duration-300" />
+              className="h-8 md:h-10 w-auto max-w-[120px] object-contain grayscale invert opacity-50 hover:opacity-70 hover:scale-110 transition-all duration-300" />
             
             <img
               src={doubleclickLogo}
               alt=""
-              className="h-15 md:h-20 w-auto max-w-[120px] object-contain grayscale opacity-60 hover:opacity-80 hover:scale-110 transition-all duration-300" />
+              className="h-15 md:h-20 w-auto max-w-[120px] object-contain grayscale invert opacity-50 hover:opacity-70 hover:scale-110 transition-all duration-300" />
             
             <img
               src={eyeoLogo}
               alt=""
-              className="h-5 md:h-6 w-auto max-w-[120px] object-contain grayscale opacity-40 hover:opacity-70 hover:scale-110 transition-all duration-300" />
+              className="h-5 md:h-6 w-auto max-w-[120px] object-contain grayscale invert opacity-40 hover:opacity-70 hover:scale-110 transition-all duration-300" />
             
             <img
               src={adblockLogo}
               alt=""
-              className="h-5 md:h-6 w-auto max-w-[120px] object-contain grayscale opacity-60 hover:opacity-80 hover:scale-110 transition-all duration-300" />
+              className="h-5 md:h-6 w-auto max-w-[120px] object-contain grayscale invert opacity-50 hover:opacity-70 hover:scale-110 transition-all duration-300" />
             
             <img
               src={exxonLogo}
               alt=""
-              className="h-8 md:h-10 w-auto max-w-[120px] object-contain grayscale opacity-60 hover:opacity-80 hover:scale-110 transition-all duration-300" />
+              className="h-8 md:h-10 w-auto max-w-[120px] object-contain grayscale invert opacity-50 hover:opacity-70 hover:scale-110 transition-all duration-300" />
             
             <img
               src={tridionLogo}
