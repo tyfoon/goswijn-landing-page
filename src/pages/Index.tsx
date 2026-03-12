@@ -102,11 +102,7 @@ const Index = () => {
             },
             {
               id: "contact",
-              label: "Contact"
-            },
-            {
-              id: "booking",
-              label: "Book"
+              label: "Contact & Book"
             }].
             map((section) =>
             <button
