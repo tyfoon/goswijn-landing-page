@@ -90,7 +90,7 @@ const Index = () => {
               className="w-4 h-4 hover:opacity-80 transition-opacity"
               aria-label="LinkedIn Profile">
               
-              <img src={linkedinIcon} alt="LinkedIn" className="w-full h-full rounded" />
+              <img src={linkedinIcon} alt="LinkedIn" className="w-full h-full" />
             </a>
           </div>
 
@@ -138,7 +138,7 @@ const Index = () => {
               className="w-4 h-4"
               aria-label="LinkedIn Profile">
               
-              <img src={linkedinIcon} alt="LinkedIn" className="w-full h-full rounded" />
+              <img src={linkedinIcon} alt="LinkedIn" className="w-full h-full" />
             </a>
           </div>
 
@@ -300,16 +300,13 @@ const Index = () => {
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="grid lg:grid-cols-2 gap-12 items-end">
             <div className="flex justify-center lg:justify-start animate-on-scroll">
-              <div className="glass-strong rounded-lg p-1">
-                <img
-                  src={portraitImage}
-                  alt="Goswijn Thijssen"
-                  className="w-full max-w-sm h-[500px] object-cover rounded-lg shadow-2xl"
-                  style={{
-                    objectPosition: "center"
-                  }} />
-                
-              </div>
+              <img
+                src={portraitImage}
+                alt="Goswijn Thijssen"
+                className="w-full max-w-sm h-[500px] object-cover rounded-lg shadow-2xl"
+                style={{
+                  objectPosition: "center"
+                }} />
             </div>
             <div
               className="animate-on-scroll glass-strong rounded-lg p-6 md:p-8 transition-all duration-500 hover:shadow-2xl"
@@ -383,17 +380,13 @@ const Index = () => {
               style={{
                 animationDelay: "0.2s"
               }}>
-              
-              <div className="glass-strong rounded-lg p-1 w-full max-w-md">
-                <img
-                  src={speakingImage}
-                  alt="Goswijn Thijssen Speaking"
-                  className="w-full h-[480px] object-cover rounded-lg shadow-2xl"
-                  style={{
-                    objectPosition: "center top"
-                  }} />
-                
-              </div>
+              <img
+                src={speakingImage}
+                alt="Goswijn Thijssen Speaking"
+                className="w-full h-[480px] object-cover rounded-lg shadow-2xl"
+                style={{
+                  objectPosition: "center top"
+                }} />
             </div>
           </div>
         </div>
