@@ -181,95 +181,80 @@ const Index = () => {
       </header>
 
       {/* Hero Section */}
-      <section id="hero" className="relative min-h-screen w-full overflow-hidden">
-        {/* Layered Parallax Backgrounds */}
-        <div
-          className="absolute inset-0 bg-cover bg-top bg-no-repeat"
-          style={{
-            backgroundImage: `url(${backgroundImage})`,
-            transform: `translateY(${scrollY * 0.5}px)`
-          }} />
-        
-
-        {/* Parallax Layer 2 - Overlay with gradient */}
-        <div
-          className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/30 to-background/80"
-          style={{
-            transform: `translateY(${scrollY * 0.3}px)`
-          }} />
-        
-
-        {/* Parallax Layer 3 - Floating shapes */}
+      <section id="hero" className="relative min-h-screen w-full overflow-hidden bg-background">
+        {/* Subtle floating shapes */}
         <div
           className="absolute top-1/4 right-1/4 w-64 h-64 rounded-full bg-primary/5 blur-3xl"
           style={{
             transform: `translateY(${scrollY * 0.2}px)`
           }} />
-        
         <div
           className="absolute bottom-1/3 left-1/4 w-96 h-96 rounded-full bg-foreground/5 blur-3xl"
           style={{
             transform: `translateY(${scrollY * 0.15}px)`
           }} />
-        
 
         {/* Content Container */}
         <div className="relative z-10 flex min-h-screen flex-col pt-14">
           {/* Main Content */}
-          <main className="flex flex-1 items-start px-6 pt-16 md:px-12 lg:px-16 md:pt-24 relative z-30">
-            <div className="max-w-xl space-y-8 animate-on-scroll relative z-30">
-              <div className="space-y-6 relative z-30">
-                <h2 className="text-3xl leading-tight tracking-tight text-foreground md:text-4xl lg:text-5xl relative z-30">
-                  <span className="inline-block md:whitespace-nowrap w-fit">Breakthrough changes.</span>
-                  <span className="inline-block md:whitespace-nowrap w-fit">Proven impact.</span>
-                </h2>
+          <main className="flex flex-1 items-center px-6 md:px-12 lg:px-16 relative z-30">
+            <div className="max-w-7xl mx-auto w-full grid lg:grid-cols-2 gap-12 items-center">
+              <div className="space-y-8 animate-on-scroll">
+                <div className="space-y-6">
+                  <h2 className="text-3xl leading-tight tracking-tight text-foreground md:text-4xl lg:text-5xl">
+                    <span className="inline-block md:whitespace-nowrap w-fit">Breakthrough changes.</span>
+                    <span className="inline-block md:whitespace-nowrap w-fit">Proven impact.</span>
+                  </h2>
 
-                <ul className="relative z-30 space-y-4 text-lg text-foreground md:text-xl">
-                  <li className="flex items-start transition-transform duration-300 hover:translate-x-2">
-                    <span className="mr-3 mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-primary" />
-                    <span>Building innovative Go to Market strategies</span>
-                  </li>
-                  <li className="flex items-start transition-transform duration-300 hover:translate-x-2">
-                    <span className="mr-3 mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-primary" />
-                    <span>Creating durable and scalable growth</span>
-                  </li>
-                  <li className="flex items-start transition-transform duration-300 hover:translate-x-2">
-                    <span className="mr-3 mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-primary" />
-                    <span>Assuring flawless execution across teams</span>
-                  </li>
-                </ul>
+                  <ul className="space-y-4 text-lg text-foreground md:text-xl">
+                    <li className="flex items-start transition-transform duration-300 hover:translate-x-2">
+                      <span className="mr-3 mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-primary" />
+                      <span>Building innovative Go to Market strategies</span>
+                    </li>
+                    <li className="flex items-start transition-transform duration-300 hover:translate-x-2">
+                      <span className="mr-3 mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-primary" />
+                      <span>Creating durable and scalable growth</span>
+                    </li>
+                    <li className="flex items-start transition-transform duration-300 hover:translate-x-2">
+                      <span className="mr-3 mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-primary" />
+                      <span>Assuring flawless execution across teams</span>
+                    </li>
+                  </ul>
+                </div>
+
+                <div className="pt-4 flex flex-col sm:flex-row gap-4">
+                  <Button
+                    size="lg"
+                    onClick={() => scrollToSection("contact")}
+                    className="font-medium shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300">
+                    Contact Me
+                  </Button>
+                  <Button
+                    size="lg"
+                    variant="outline"
+                    onClick={() => scrollToSection("contact")}
+                    className="font-medium glass-strong hover:bg-foreground/10 hover:scale-105 transition-all duration-300">
+                    Book Time with Me
+                  </Button>
+                </div>
+
+                <p className="text-xs leading-tight text-foreground/80 md:text-sm lg:text-base max-w-xl">
+                  Executive Commercial Leader & Technologist with deep expertise in SaaS, Data, AdTech and AI and 25+ years of multi-geo leadership. I bridge the gap between the rigor of Big Tech (Google, Microsoft) and the situational grit of PE/VC environments.
+                </p>
               </div>
 
-              <div className="relative z-30 pt-4 flex flex-col sm:flex-row gap-4">
-                <Button
-                  size="lg"
-                  onClick={() => scrollToSection("contact")}
-                  className="font-medium shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300">
-                  
-                  Contact Me
-                </Button>
-                <Button
-                  size="lg"
-                  variant="outline"
-                  onClick={() => scrollToSection("booking")}
-                  className="font-medium glass-strong hover:bg-foreground/10 hover:scale-105 transition-all duration-300">
-                  
-                  Book Time with Me
-                </Button>
+              <div className="flex justify-center lg:justify-end animate-on-scroll" style={{ animationDelay: "0.2s" }}>
+                <img
+                  src={portraitImage}
+                  alt="Goswijn Thijssen"
+                  className="w-full max-w-md h-[550px] object-cover rounded-lg shadow-2xl"
+                  style={{ objectPosition: "center" }}
+                />
               </div>
             </div>
           </main>
-
-          {/* Bottom Gradient with Bio */}
-          <div className="relative mt-auto pointer-events-none z-20">
-            <div className="absolute inset-x-0 bottom-0 h-96 bg-gradient-to-t from-background via-background/98 to-transparent z-10" />
-            <div className="relative px-6 py-8 md:px-12 lg:px-16 pointer-events-auto z-20">
-              <p className="w-full text-xs leading-tight text-foreground md:text-sm lg:text-base">Executive Commercial Leader & Technologist with deep expertise in SaaS, Data, AdTech and AI and 25+ years of multi-geo leadership. I bridge the gap between the rigor of Big Tech (Google, Microsoft) and the situational grit of PE/VC environments. My strength lies in building durable hypergrowth engines, whether starting from scratch or accelerating existing businesses, by implementing data-driven GTM strategies and leading high-performance teams that combine operational excellence with entrepreneurial speed and innovation.
-
-
-
-
-
+        </div>
+      </section>
 
 
               </p>
