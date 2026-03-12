@@ -25,7 +25,7 @@ const Index = () => {
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
     element?.scrollIntoView({
-      behavior: "smooth",
+      behavior: "smooth"
     });
     setMobileMenuOpen(false);
   };
@@ -39,7 +39,7 @@ const Index = () => {
     // Scroll animation observer
     const observerOptions = {
       threshold: 0.1,
-      rootMargin: "0px 0px -100px 0px",
+      rootMargin: "0px 0px -100px 0px"
     };
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
@@ -61,8 +61,8 @@ const Index = () => {
         });
       },
       {
-        threshold: 0.3,
-      },
+        threshold: 0.3
+      }
     );
     const sections = document.querySelectorAll("section[id]");
     sections.forEach((section) => sectionObserver.observe(section));
@@ -80,8 +80,8 @@ const Index = () => {
           <div className="flex items-center gap-3">
             <button
               onClick={() => scrollToSection("hero")}
-              className="text-sm font-medium text-foreground hover:opacity-80 transition-opacity"
-            >
+              className="text-sm font-medium text-foreground hover:opacity-80 transition-opacity">
+              
               Goswijn Thijssen
             </button>
             <a
@@ -89,38 +89,38 @@ const Index = () => {
               target="_blank"
               rel="noopener noreferrer"
               className="w-4 h-4 hover:opacity-80 transition-opacity"
-              aria-label="LinkedIn Profile"
-            >
+              aria-label="LinkedIn Profile">
+              
               <img src={linkedinIcon} alt="LinkedIn" className="w-full h-full rounded" />
             </a>
           </div>
 
           <nav className="flex items-center gap-6">
             {[
-              {
-                id: "hero",
-                label: "Home",
-              },
-              {
-                id: "contact",
-                label: "Contact",
-              },
-              {
-                id: "booking",
-                label: "Book",
-              },
-            ].map((section) => (
-              <button
-                key={section.id}
-                onClick={() => scrollToSection(section.id)}
-                className={`text-sm font-medium transition-all duration-300 relative pb-1 ${activeSection === section.id ? "text-foreground" : "text-foreground/60 hover:text-foreground"}`}
-              >
+            {
+              id: "hero",
+              label: "Home"
+            },
+            {
+              id: "contact",
+              label: "Contact"
+            },
+            {
+              id: "booking",
+              label: "Book"
+            }].
+            map((section) =>
+            <button
+              key={section.id}
+              onClick={() => scrollToSection(section.id)}
+              className={`text-sm font-medium transition-all duration-300 relative pb-1 ${activeSection === section.id ? "text-foreground" : "text-foreground/60 hover:text-foreground"}`}>
+              
                 {section.label}
-                {activeSection === section.id && (
-                  <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-foreground rounded-full" />
-                )}
+                {activeSection === section.id &&
+              <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-foreground rounded-full" />
+              }
               </button>
-            ))}
+            )}
           </nav>
         </div>
       </header>
@@ -137,8 +137,8 @@ const Index = () => {
               target="_blank"
               rel="noopener noreferrer"
               className="w-4 h-4"
-              aria-label="LinkedIn Profile"
-            >
+              aria-label="LinkedIn Profile">
+              
               <img src={linkedinIcon} alt="LinkedIn" className="w-full h-full rounded" />
             </a>
           </div>
@@ -146,39 +146,39 @@ const Index = () => {
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             className="p-2 text-foreground"
-            aria-label="Toggle menu"
-          >
+            aria-label="Toggle menu">
+            
             {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
 
         {/* Mobile Menu Dropdown */}
-        {mobileMenuOpen && (
-          <nav className="border-t border-border/20 glass">
+        {mobileMenuOpen &&
+        <nav className="border-t border-border/20 glass">
             {[
-              {
-                id: "hero",
-                label: "Home",
-              },
-              {
-                id: "contact",
-                label: "Contact",
-              },
-              {
-                id: "booking",
-                label: "Book",
-              },
-            ].map((section) => (
-              <button
-                key={section.id}
-                onClick={() => scrollToSection(section.id)}
-                className="block w-full text-left px-6 py-4 text-base font-medium text-foreground hover:bg-accent transition-colors"
-              >
+          {
+            id: "hero",
+            label: "Home"
+          },
+          {
+            id: "contact",
+            label: "Contact"
+          },
+          {
+            id: "booking",
+            label: "Book"
+          }].
+          map((section) =>
+          <button
+            key={section.id}
+            onClick={() => scrollToSection(section.id)}
+            className="block w-full text-left px-6 py-4 text-base font-medium text-foreground hover:bg-accent transition-colors">
+            
                 {section.label}
               </button>
-            ))}
+          )}
           </nav>
-        )}
+        }
       </header>
 
       {/* Hero Section */}
@@ -188,31 +188,31 @@ const Index = () => {
           className="absolute inset-0 bg-cover bg-top bg-no-repeat"
           style={{
             backgroundImage: `url(${backgroundImage})`,
-            transform: `translateY(${scrollY * 0.5}px)`,
-          }}
-        />
+            transform: `translateY(${scrollY * 0.5}px)`
+          }} />
+        
 
         {/* Parallax Layer 2 - Overlay with gradient */}
         <div
           className="absolute inset-0 bg-gradient-to-b from-transparent via-background/10 to-background/30"
           style={{
-            transform: `translateY(${scrollY * 0.3}px)`,
-          }}
-        />
+            transform: `translateY(${scrollY * 0.3}px)`
+          }} />
+        
 
         {/* Parallax Layer 3 - Floating shapes */}
         <div
           className="absolute top-1/4 right-1/4 w-64 h-64 rounded-full bg-primary/5 blur-3xl"
           style={{
-            transform: `translateY(${scrollY * 0.2}px)`,
-          }}
-        />
+            transform: `translateY(${scrollY * 0.2}px)`
+          }} />
+        
         <div
           className="absolute bottom-1/3 left-1/4 w-96 h-96 rounded-full bg-foreground/5 blur-3xl"
           style={{
-            transform: `translateY(${scrollY * 0.15}px)`,
-          }}
-        />
+            transform: `translateY(${scrollY * 0.15}px)`
+          }} />
+        
 
         {/* Content Container */}
         <div className="relative z-10 flex min-h-screen flex-col pt-14">
@@ -245,16 +245,16 @@ const Index = () => {
                 <Button
                   size="lg"
                   onClick={() => scrollToSection("contact")}
-                  className="font-medium shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300"
-                >
+                  className="font-medium shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300">
+                  
                   Contact Me
                 </Button>
                 <Button
                   size="lg"
                   variant="outline"
                   onClick={() => scrollToSection("booking")}
-                  className="font-medium glass-strong hover:bg-foreground/10 hover:scale-105 transition-all duration-300"
-                >
+                  className="font-medium glass-strong hover:bg-foreground/10 hover:scale-105 transition-all duration-300">
+                  
                   Book Time with Me
                 </Button>
               </div>
@@ -265,14 +265,14 @@ const Index = () => {
           <div className="relative mt-auto pointer-events-none z-20">
             <div className="absolute inset-x-0 bottom-0 h-96 bg-gradient-to-t from-background via-background/95 to-transparent z-10" />
             <div className="relative px-6 py-8 md:px-12 lg:px-16 pointer-events-auto z-20">
-              <p className="w-full text-xs leading-tight text-foreground md:text-sm lg:text-base">
-                Commercial technologist and executive leader with deep expertise in SaaS, Data, and AI ecosystems and
-                25+ years of leadership. I bridge the gap between the rigor of Big Tech (Google, Microsoft) and the
-                agility of PE/VC environments. My core strength is building durable and scalable growth, from scratch or
-                in existing businesses, by grounding strategy in a deep understanding of how technology shapes market
-                and customer needs. I translate these insights into innovative, data-driven, customer-focused GTM
-                strategies and build high-performing teams that deliver results through real value creation,
-                collaboration, and operational excellence.
+              <p className="w-full text-xs leading-tight text-foreground md:text-sm lg:text-base">Commercial technologist and executive leader with deep expertise in SaaS, Data, and AI ecosystems and 25+ years of leadership. I bridge the gap between the rigor of Big Tech (Google, Microsoft) and the agility of PE/VC environments. My core strength is building durable and scalable growth, from scratch or in existing businesses, by grounding strategy in a deep understanding of how technology shapes market and customer needs. I translate these insights into innovative, data-driven, customer-focused GTM strategies and build high-performing teams that deliver results through real value creation, collaboration, and operational excellence.
+
+
+
+
+
+
+
               </p>
             </div>
           </div>
@@ -282,21 +282,21 @@ const Index = () => {
       {/* Contact Section */}
       <section
         id="contact"
-        className="relative bg-background py-24 px-6 md:px-12 lg:px-16 overflow-hidden animate-on-scroll"
-      >
+        className="relative bg-background py-24 px-6 md:px-12 lg:px-16 overflow-hidden animate-on-scroll">
+        
         {/* Parallax background elements */}
         <div
           className="absolute top-0 left-0 w-72 h-72 rounded-full bg-primary/5 blur-3xl"
           style={{
-            transform: `translateY(${(scrollY - 800) * 0.1}px)`,
-          }}
-        />
+            transform: `translateY(${(scrollY - 800) * 0.1}px)`
+          }} />
+        
         <div
           className="absolute bottom-0 right-0 w-96 h-96 rounded-full bg-foreground/5 blur-3xl"
           style={{
-            transform: `translateY(${(scrollY - 800) * 0.15}px)`,
-          }}
-        />
+            transform: `translateY(${(scrollY - 800) * 0.15}px)`
+          }} />
+        
 
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="grid lg:grid-cols-2 gap-12 items-end">
@@ -307,17 +307,17 @@ const Index = () => {
                   alt="Goswijn Thijssen"
                   className="w-full max-w-sm h-[500px] object-cover rounded-lg shadow-2xl"
                   style={{
-                    objectPosition: "center",
-                  }}
-                />
+                    objectPosition: "center"
+                  }} />
+                
               </div>
             </div>
             <div
               className="animate-on-scroll glass-strong rounded-lg p-6 md:p-8 transition-all duration-500 hover:shadow-2xl"
               style={{
-                animationDelay: "0.2s",
-              }}
-            >
+                animationDelay: "0.2s"
+              }}>
+              
               <div className="mb-8">
                 <h2 className="text-3xl md:text-4xl text-foreground mb-4">Reach out</h2>
                 <p className="text-lg text-foreground/70">
@@ -333,30 +333,30 @@ const Index = () => {
       {/* Booking Section */}
       <section
         id="booking"
-        className="relative min-h-screen pt-24 pb-12 px-6 md:px-12 lg:px-16 -mt-1 overflow-hidden animate-on-scroll bg-background"
-      >
+        className="relative min-h-screen pt-24 pb-12 px-6 md:px-12 lg:px-16 -mt-1 overflow-hidden animate-on-scroll bg-background">
+        
         {/* Layered Parallax Backgrounds */}
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-10"
           style={{
             backgroundImage: `url(${backgroundImage})`,
-            transform: `translateY(${(scrollY - 1000) * 0.3}px)`,
-          }}
-        />
+            transform: `translateY(${(scrollY - 1000) * 0.3}px)`
+          }} />
+        
 
         {/* Parallax floating elements */}
         <div
           className="absolute top-1/4 left-1/4 w-80 h-80 rounded-full bg-primary/5 blur-3xl"
           style={{
-            transform: `translateY(${(scrollY - 1200) * 0.2}px)`,
-          }}
-        />
+            transform: `translateY(${(scrollY - 1200) * 0.2}px)`
+          }} />
+        
         <div
           className="absolute bottom-1/4 right-1/4 w-96 h-96 rounded-full bg-foreground/5 blur-3xl"
           style={{
-            transform: `translateY(${(scrollY - 1200) * 0.15}px)`,
-          }}
-        />
+            transform: `translateY(${(scrollY - 1200) * 0.15}px)`
+          }} />
+        
 
         <div className="relative z-10 max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-6 items-start">
@@ -382,18 +382,18 @@ const Index = () => {
             <div
               className="flex justify-center lg:justify-end animate-on-scroll"
               style={{
-                animationDelay: "0.2s",
-              }}
-            >
+                animationDelay: "0.2s"
+              }}>
+              
               <div className="glass-strong rounded-lg p-1 w-full max-w-md">
                 <img
                   src={speakingImage}
                   alt="Goswijn Thijssen Speaking"
                   className="w-full h-[480px] object-cover rounded-lg shadow-2xl"
                   style={{
-                    objectPosition: "center top",
-                  }}
-                />
+                    objectPosition: "center top"
+                  }} />
+                
               </div>
             </div>
           </div>
@@ -407,52 +407,52 @@ const Index = () => {
             <img
               src={googleLogo}
               alt=""
-              className="h-6 md:h-7 w-auto max-w-[120px] object-contain grayscale opacity-40 hover:opacity-70 hover:scale-110 transition-all duration-300"
-            />
+              className="h-6 md:h-7 w-auto max-w-[120px] object-contain grayscale opacity-40 hover:opacity-70 hover:scale-110 transition-all duration-300" />
+            
             <img
               src={googleCloudLogo}
               alt=""
-              className="h-8 md:h-10 w-auto max-w-[120px] object-contain grayscale opacity-60 hover:opacity-80 hover:scale-110 transition-all duration-300"
-            />
+              className="h-8 md:h-10 w-auto max-w-[120px] object-contain grayscale opacity-60 hover:opacity-80 hover:scale-110 transition-all duration-300" />
+            
             <img
               src={microsoftLogo}
               alt=""
-              className="h-8 md:h-10 w-auto max-w-[120px] object-contain grayscale opacity-60 hover:opacity-80 hover:scale-110 transition-all duration-300"
-            />
+              className="h-8 md:h-10 w-auto max-w-[120px] object-contain grayscale opacity-60 hover:opacity-80 hover:scale-110 transition-all duration-300" />
+            
             <img
               src={doubleclickLogo}
               alt=""
-              className="h-15 md:h-20 w-auto max-w-[120px] object-contain grayscale opacity-60 hover:opacity-80 hover:scale-110 transition-all duration-300"
-            />
+              className="h-15 md:h-20 w-auto max-w-[120px] object-contain grayscale opacity-60 hover:opacity-80 hover:scale-110 transition-all duration-300" />
+            
             <img
               src={eyeoLogo}
               alt=""
-              className="h-5 md:h-6 w-auto max-w-[120px] object-contain grayscale opacity-40 hover:opacity-70 hover:scale-110 transition-all duration-300"
-            />
+              className="h-5 md:h-6 w-auto max-w-[120px] object-contain grayscale opacity-40 hover:opacity-70 hover:scale-110 transition-all duration-300" />
+            
             <img
               src={adblockLogo}
               alt=""
-              className="h-5 md:h-6 w-auto max-w-[120px] object-contain grayscale opacity-60 hover:opacity-80 hover:scale-110 transition-all duration-300"
-            />
+              className="h-5 md:h-6 w-auto max-w-[120px] object-contain grayscale opacity-60 hover:opacity-80 hover:scale-110 transition-all duration-300" />
+            
             <img
               src={exxonLogo}
               alt=""
-              className="h-8 md:h-10 w-auto max-w-[120px] object-contain grayscale opacity-60 hover:opacity-80 hover:scale-110 transition-all duration-300"
-            />
+              className="h-8 md:h-10 w-auto max-w-[120px] object-contain grayscale opacity-60 hover:opacity-80 hover:scale-110 transition-all duration-300" />
+            
             <img
               src={tridionLogo}
               alt=""
-              className="h-8 md:h-10 w-auto max-w-[120px] object-contain grayscale opacity-60 hover:opacity-80 hover:scale-110 transition-all duration-300"
-            />
+              className="h-8 md:h-10 w-auto max-w-[120px] object-contain grayscale opacity-60 hover:opacity-80 hover:scale-110 transition-all duration-300" />
+            
             <img
               src={adblockPlusLogo}
               alt=""
-              className="h-8 md:h-10 w-auto max-w-[120px] object-contain grayscale opacity-60 hover:opacity-80 hover:scale-110 transition-all duration-300"
-            />
+              className="h-8 md:h-10 w-auto max-w-[120px] object-contain grayscale opacity-60 hover:opacity-80 hover:scale-110 transition-all duration-300" />
+            
           </div>
         </div>
       </section>
-    </div>
-  );
+    </div>);
+
 };
 export default Index;
