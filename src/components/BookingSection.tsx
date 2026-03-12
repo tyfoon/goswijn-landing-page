@@ -240,7 +240,7 @@ export const BookingSection = () => {
             className="group p-3 bg-background/50 backdrop-blur-sm border-border/50 hover:border-foreground/40 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 cursor-pointer animate-on-scroll"
             style={{ animationDelay: `${index * 0.1}s` }}
           >
-            <div className="flex items-start justify-between gap-3">
+            <div className="flex items-center justify-between gap-3">
               <div className="flex items-center gap-2.5 flex-1">
                 <div className="p-1.5 rounded-full bg-muted group-hover:bg-foreground/10 transition-colors duration-300">
                   <Clock className="h-4 w-4 text-foreground" />
@@ -249,18 +249,14 @@ export const BookingSection = () => {
                   <h3 className="text-base text-foreground mb-0 group-hover:text-foreground/80 transition-colors">
                     {option.duration} minutes
                   </h3>
-                  <p className="text-foreground/70 text-xs leading-tight">{option.description}</p>
                 </div>
               </div>
-              <div className="flex flex-col items-end gap-1.5">
-                <p className="text-lg font-semibold text-foreground">{option.price}</p>
-                <Button
-                  size="sm"
-                  className="whitespace-nowrap shadow-md hover:shadow-xl transition-all duration-300 pointer-events-none text-xs px-3 py-1 h-7"
-                >
-                  Book Now
-                </Button>
-              </div>
+              <Button
+                size="sm"
+                className="whitespace-nowrap shadow-md hover:shadow-xl transition-all duration-300 pointer-events-none text-xs px-3 py-1 h-7"
+              >
+                Book Now
+              </Button>
             </div>
           </Card>
         ))}
