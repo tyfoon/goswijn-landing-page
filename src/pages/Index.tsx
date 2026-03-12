@@ -12,7 +12,7 @@ import exxonLogo from "@/assets/exxon.png";
 import eyeoLogo from "@/assets/eyeo.png";
 import googleLogo from "@/assets/google.png";
 import microsoftLogo from "@/assets/microsoft.png";
-import tridionLogo from "@/assets/tridion.png";
+import tridionLogo from "@/assets/tridion-transparent.png";
 import googleCloudLogo from "@/assets/google-cloud.svg";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
