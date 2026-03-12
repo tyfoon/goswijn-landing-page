@@ -255,15 +255,7 @@ const Index = () => {
           </main>
         </div>
       </section>
-
-
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Contact Section */}
+      {/* Contact & Booking Section */}
       <section
         id="contact"
         className="relative bg-background py-24 px-6 md:px-12 lg:px-16 overflow-hidden animate-on-scroll">
@@ -274,104 +266,44 @@ const Index = () => {
           style={{
             transform: `translateY(${(scrollY - 800) * 0.1}px)`
           }} />
-        
         <div
           className="absolute bottom-0 right-0 w-96 h-96 rounded-full bg-foreground/5 blur-3xl"
           style={{
             transform: `translateY(${(scrollY - 800) * 0.15}px)`
           }} />
-        
-
-        <div className="max-w-7xl mx-auto relative z-10">
-          <div className="grid lg:grid-cols-2 gap-12 items-end">
-            <div className="flex justify-center lg:justify-start animate-on-scroll">
-              <img
-                src={portraitImage}
-                alt="Goswijn Thijssen"
-                className="w-full max-w-sm h-[500px] object-cover rounded-lg shadow-2xl"
-                style={{
-                  objectPosition: "center"
-                }} />
-            </div>
-            <div
-              className="animate-on-scroll glass-strong rounded-lg p-6 md:p-8 transition-all duration-500 hover:shadow-2xl"
-              style={{
-                animationDelay: "0.2s"
-              }}>
-              
-              <div className="mb-8">
-                <h2 className="text-3xl md:text-4xl text-foreground mb-4">Reach out</h2>
-                <p className="text-lg text-foreground/70">
-                  Leave your contact details below and I will get back to you as soon as possible
-                </p>
-              </div>
-              <ContactForm />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Booking Section */}
-      <section
-        id="booking"
-        className="relative min-h-screen pt-24 pb-12 px-6 md:px-12 lg:px-16 -mt-1 overflow-hidden animate-on-scroll bg-background">
-        
-        {/* Layered Parallax Backgrounds */}
-        <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-10"
-          style={{
-            backgroundImage: `url(${backgroundImage})`,
-            transform: `translateY(${(scrollY - 1000) * 0.3}px)`
-          }} />
-        
-
-        {/* Parallax floating elements */}
-        <div
-          className="absolute top-1/4 left-1/4 w-80 h-80 rounded-full bg-primary/5 blur-3xl"
-          style={{
-            transform: `translateY(${(scrollY - 1200) * 0.2}px)`
-          }} />
-        
-        <div
-          className="absolute bottom-1/4 right-1/4 w-96 h-96 rounded-full bg-foreground/5 blur-3xl"
-          style={{
-            transform: `translateY(${(scrollY - 1200) * 0.15}px)`
-          }} />
-        
 
         <div className="relative z-10 max-w-7xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-6 items-start">
-            <div className="animate-on-scroll">
-              <div className="mb-4">
-                <h2 className="text-2xl md:text-3xl text-foreground mb-2">Book a Session</h2>
-                <div className="space-y-1.5">
-                  <p className="text-sm text-foreground/70">
-
-
-                  </p>
-                  <p className="text-sm text-foreground/70">
-                    Feel free to provide me with as much background as possible as this will significantly improve the
-                    value of our conversation.
-                  </p>
-                </div>
-              </div>
-              <div className="space-y-3">
-                <BookingSection />
-              </div>
-            </div>
-
-            <div
-              className="flex justify-center lg:justify-end animate-on-scroll"
-              style={{
-                animationDelay: "0.2s"
-              }}>
+          <div className="grid lg:grid-cols-2 gap-12 items-start">
+            {/* Left: Image */}
+            <div className="flex justify-center lg:justify-start animate-on-scroll">
               <img
                 src={speakingImage}
                 alt="Goswijn Thijssen Speaking"
-                className="w-full h-[480px] object-cover rounded-lg shadow-2xl"
-                style={{
-                  objectPosition: "center top"
-                }} />
+                className="w-full h-[600px] object-cover rounded-lg shadow-2xl"
+                style={{ objectPosition: "center top" }}
+              />
+            </div>
+
+            {/* Right: Booking + Contact */}
+            <div className="animate-on-scroll space-y-8" style={{ animationDelay: "0.2s" }}>
+              <div>
+                <h2 className="text-2xl md:text-3xl text-foreground mb-2">Book a Session</h2>
+                <p className="text-sm text-foreground/70 mb-4">
+                  Feel free to provide me with as much background as possible as this will significantly improve the
+                  value of our conversation.
+                </p>
+                <BookingSection />
+              </div>
+
+              <div className="glass-strong rounded-lg p-6 md:p-8 transition-all duration-500 hover:shadow-2xl">
+                <div className="mb-6">
+                  <h2 className="text-2xl md:text-3xl text-foreground mb-2">Reach out</h2>
+                  <p className="text-sm text-foreground/70">
+                    Leave your contact details below and I will get back to you as soon as possible
+                  </p>
+                </div>
+                <ContactForm />
+              </div>
             </div>
           </div>
         </div>
