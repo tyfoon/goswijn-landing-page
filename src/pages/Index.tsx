@@ -193,7 +193,7 @@ const Index = () => {
 
         {/* Parallax Layer 2 - Overlay with gradient */}
         <div
-          className="absolute inset-0 bg-gradient-to-b from-transparent via-background/10 to-background/30"
+          className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/30 to-background/80"
           style={{
             transform: `translateY(${scrollY * 0.3}px)`
           }} />
@@ -226,15 +226,15 @@ const Index = () => {
 
                 <ul className="relative z-30 space-y-4 text-lg text-foreground md:text-xl">
                   <li className="flex items-start transition-transform duration-300 hover:translate-x-2">
-                    <span className="mr-3 mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-foreground" />
+                    <span className="mr-3 mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-primary" />
                     <span>Building innovative Go to Market strategies</span>
                   </li>
                   <li className="flex items-start transition-transform duration-300 hover:translate-x-2">
-                    <span className="mr-3 mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-foreground" />
+                    <span className="mr-3 mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-primary" />
                     <span>Creating durable and scalable growth</span>
                   </li>
                   <li className="flex items-start transition-transform duration-300 hover:translate-x-2">
-                    <span className="mr-3 mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-foreground" />
+                    <span className="mr-3 mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-primary" />
                     <span>Assuring flawless execution across teams</span>
                   </li>
                 </ul>
@@ -262,7 +262,7 @@ const Index = () => {
 
           {/* Bottom Gradient with Bio */}
           <div className="relative mt-auto pointer-events-none z-20">
-            <div className="absolute inset-x-0 bottom-0 h-96 bg-gradient-to-t from-background via-background/95 to-transparent z-10" />
+            <div className="absolute inset-x-0 bottom-0 h-96 bg-gradient-to-t from-background via-background/98 to-transparent z-10" />
             <div className="relative px-6 py-8 md:px-12 lg:px-16 pointer-events-auto z-20">
               <p className="w-full text-xs leading-tight text-foreground md:text-sm lg:text-base">Executive Commercial Leader & Technologist with deep expertise in SaaS, Data, AdTech and AI and 25+ years of multi-geo leadership. I bridge the gap between the rigor of Big Tech (Google, Microsoft) and the situational grit of PE/VC environments. My strength lies in building durable hypergrowth engines, whether starting from scratch or accelerating existing businesses, by implementing data-driven GTM strategies and leading high-performance teams that combine operational excellence with entrepreneurial speed and innovation.
 
@@ -400,53 +400,53 @@ const Index = () => {
       </section>
 
       {/* Logos Section */}
-      <section className="relative bg-background py-12 px-6 md:px-12 lg:px-16 animate-on-scroll">
+      <section className="relative bg-background py-12 px-6 md:px-12 lg:px-16 animate-on-scroll border-t border-border/30">
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-wrap items-center justify-center gap-8 md:gap-12 lg:gap-16">
             <img
               src={googleLogo}
               alt=""
-              className="h-6 md:h-7 w-auto max-w-[120px] object-contain grayscale opacity-40 hover:opacity-70 hover:scale-110 transition-all duration-300" />
+              className="h-6 md:h-7 w-auto max-w-[120px] object-contain grayscale invert opacity-40 hover:opacity-70 hover:scale-110 transition-all duration-300" />
             
             <img
               src={googleCloudLogo}
               alt=""
-              className="h-8 md:h-10 w-auto max-w-[120px] object-contain grayscale opacity-60 hover:opacity-80 hover:scale-110 transition-all duration-300" />
+              className="h-8 md:h-10 w-auto max-w-[120px] object-contain grayscale invert opacity-50 hover:opacity-70 hover:scale-110 transition-all duration-300" />
             
             <img
               src={microsoftLogo}
               alt=""
-              className="h-8 md:h-10 w-auto max-w-[120px] object-contain grayscale opacity-60 hover:opacity-80 hover:scale-110 transition-all duration-300" />
+              className="h-8 md:h-10 w-auto max-w-[120px] object-contain grayscale invert opacity-50 hover:opacity-70 hover:scale-110 transition-all duration-300" />
             
             <img
               src={doubleclickLogo}
               alt=""
-              className="h-15 md:h-20 w-auto max-w-[120px] object-contain grayscale opacity-60 hover:opacity-80 hover:scale-110 transition-all duration-300" />
+              className="h-15 md:h-20 w-auto max-w-[120px] object-contain grayscale invert opacity-50 hover:opacity-70 hover:scale-110 transition-all duration-300" />
             
             <img
               src={eyeoLogo}
               alt=""
-              className="h-5 md:h-6 w-auto max-w-[120px] object-contain grayscale opacity-40 hover:opacity-70 hover:scale-110 transition-all duration-300" />
+              className="h-5 md:h-6 w-auto max-w-[120px] object-contain grayscale invert opacity-40 hover:opacity-70 hover:scale-110 transition-all duration-300" />
             
             <img
               src={adblockLogo}
               alt=""
-              className="h-5 md:h-6 w-auto max-w-[120px] object-contain grayscale opacity-60 hover:opacity-80 hover:scale-110 transition-all duration-300" />
+              className="h-5 md:h-6 w-auto max-w-[120px] object-contain grayscale invert opacity-50 hover:opacity-70 hover:scale-110 transition-all duration-300" />
             
             <img
               src={exxonLogo}
               alt=""
-              className="h-8 md:h-10 w-auto max-w-[120px] object-contain grayscale opacity-60 hover:opacity-80 hover:scale-110 transition-all duration-300" />
+              className="h-8 md:h-10 w-auto max-w-[120px] object-contain grayscale invert opacity-50 hover:opacity-70 hover:scale-110 transition-all duration-300" />
             
             <img
               src={tridionLogo}
               alt=""
-              className="h-8 md:h-10 w-auto max-w-[120px] object-contain grayscale opacity-60 hover:opacity-80 hover:scale-110 transition-all duration-300" />
+              className="h-8 md:h-10 w-auto max-w-[120px] object-contain grayscale invert opacity-50 hover:opacity-70 hover:scale-110 transition-all duration-300" />
             
             <img
               src={adblockPlusLogo}
               alt=""
-              className="h-8 md:h-10 w-auto max-w-[120px] object-contain grayscale opacity-60 hover:opacity-80 hover:scale-110 transition-all duration-300" />
+              className="h-8 md:h-10 w-auto max-w-[120px] object-contain grayscale invert opacity-50 hover:opacity-70 hover:scale-110 transition-all duration-300" />
             
           </div>
         </div>
