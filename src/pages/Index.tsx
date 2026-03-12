@@ -364,8 +364,8 @@ const Index = () => {
                 <h2 className="text-2xl md:text-3xl text-foreground mb-2">Book a Session</h2>
                 <div className="space-y-1.5">
                   <p className="text-sm text-foreground/70">
-                    Schedule a focused consultation to discuss how you can reach your business goals by taking a good
-                    look at your Go-to-Market strategy and how it can be improved to create sustained hyper growth.
+
+
                   </p>
                   <p className="text-sm text-foreground/70">
                     Feel free to provide me with as much background as possible as this will significantly improve the
