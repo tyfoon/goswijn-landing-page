@@ -265,7 +265,7 @@ const Index = () => {
           <div className="relative mt-auto pointer-events-none z-20">
             <div className="absolute inset-x-0 bottom-0 h-96 bg-gradient-to-t from-background via-background/95 to-transparent z-10" />
             <div className="relative px-6 py-8 md:px-12 lg:px-16 pointer-events-auto z-20">
-              <p className="w-full text-xs leading-tight text-foreground md:text-sm lg:text-base">Commercial technologist and executive leader with deep expertise in SaaS, Data, and AI ecosystems and 25+ years of leadership. I bridge the gap between the rigor of Big Tech (Google, Microsoft) and the agility of PE/VC environments. My core strength is building durable and scalable growth, from scratch or in existing businesses, by grounding strategy in a deep understanding of how technology shapes market and customer needs. I translate these insights into innovative, data-driven, customer-focused GTM strategies and build high-performing teams that deliver results through real value creation, collaboration, and operational excellence.
+              <p className="w-full text-xs leading-tight text-foreground md:text-sm lg:text-base">Executive Commercial Leader & Technologist with deep expertise in SaaS, Data, AdTech and AI and 25+ years of multi-geo leadership. I bridge the gap between the rigor of Big Tech (Google, Microsoft) and the situational grit of PE/VC environments. My strength lies in building durable hypergrowth engines, whether starting from scratch or accelerating existing businesses, by implementing data-driven GTM strategies and leading high-performance teams that combine operational excellence with entrepreneurial speed and innovation.
 
 
 
