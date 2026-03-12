@@ -138,7 +138,7 @@ const Index = () => {
               className="w-4 h-4"
               aria-label="LinkedIn Profile">
               
-              <img src={linkedinIcon} alt="LinkedIn" className="w-full h-full rounded" />
+              <img src={linkedinIcon} alt="LinkedIn" className="w-full h-full" />
             </a>
           </div>
 
