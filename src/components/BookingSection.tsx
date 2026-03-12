@@ -36,9 +36,6 @@ export const BookingSection = () => {
 
   const bookingOptions = [
     {
-      duration: 15,
-    },
-    {
       duration: 30,
     },
   ];
