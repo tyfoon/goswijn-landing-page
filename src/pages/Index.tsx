@@ -300,10 +300,9 @@ const Index = () => {
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="grid lg:grid-cols-2 gap-12 items-end">
             <div className="flex justify-center lg:justify-start animate-on-scroll">
-              <div className="glass-strong rounded-lg p-1">
-                <img
-                  src={portraitImage}
-                  alt="Goswijn Thijssen"
+              <img
+                src={portraitImage}
+                alt="Goswijn Thijssen"
                   className="w-full max-w-sm h-[500px] object-cover rounded-lg shadow-2xl"
                   style={{
                     objectPosition: "center"
