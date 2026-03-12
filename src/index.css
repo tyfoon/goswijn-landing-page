@@ -123,12 +123,12 @@
     -webkit-backdrop-filter: blur(24px) saturate(180%);
   }
 
-  .burnt-orange-gradient {
-    background: linear-gradient(135deg, hsl(18 85% 45%), hsl(25 90% 55%));
+  .emerald-gradient {
+    background: linear-gradient(135deg, hsl(160 84% 39%), hsl(152 76% 50%));
   }
 
-  .text-burnt-orange-gradient {
-    background: linear-gradient(135deg, hsl(18 85% 45%), hsl(25 90% 55%));
+  .text-emerald-gradient {
+    background: linear-gradient(135deg, hsl(160 84% 39%), hsl(152 76% 50%));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
