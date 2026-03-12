@@ -150,18 +150,14 @@ const Index = () => {
         {/* Mobile Menu Dropdown */}
         {mobileMenuOpen &&
         <nav className="border-t border-border/20 glass">
-            {[
+          {[
           {
             id: "hero",
             label: "Home"
           },
           {
             id: "contact",
-            label: "Contact"
-          },
-          {
-            id: "booking",
-            label: "Book"
+            label: "Contact & Book"
           }].
           map((section) =>
           <button
