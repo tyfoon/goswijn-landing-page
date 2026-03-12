@@ -303,12 +303,10 @@ const Index = () => {
               <img
                 src={portraitImage}
                 alt="Goswijn Thijssen"
-                  className="w-full max-w-sm h-[500px] object-cover rounded-lg shadow-2xl"
-                  style={{
-                    objectPosition: "center"
-                  }} />
-                
-              </div>
+                className="w-full max-w-sm h-[500px] object-cover rounded-lg shadow-2xl"
+                style={{
+                  objectPosition: "center"
+                }} />
             </div>
             <div
               className="animate-on-scroll glass-strong rounded-lg p-6 md:p-8 transition-all duration-500 hover:shadow-2xl"
