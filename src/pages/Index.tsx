@@ -190,32 +190,34 @@ const Index = () => {
         <div className="relative z-10 flex min-h-screen flex-col pt-14">
           {/* Main Content */}
           <main className="flex flex-1 items-center px-6 md:px-12 lg:px-16 relative z-30">
-            <div className="max-w-7xl mx-auto w-full grid lg:grid-cols-2 gap-12 items-center">
-              <div className="space-y-6 animate-on-scroll">
-                <h2 className="text-3xl leading-tight tracking-tight text-foreground md:text-4xl lg:text-5xl">
-                  Executive Commercial Leader &amp; Technologist
-                </h2>
+            <div className="max-w-7xl mx-auto w-full grid lg:grid-cols-2 gap-12 items-stretch">
+              <div className="flex flex-col justify-between animate-on-scroll">
+                <div className="space-y-4">
+                  <h2 className="text-2xl leading-tight tracking-tight text-foreground md:text-3xl lg:text-4xl">
+                    Executive Commercial Leader &amp; Technologist
+                  </h2>
 
-                <ul className="space-y-4 text-lg text-foreground md:text-xl">
-                  <li className="flex items-start transition-transform duration-300 hover:translate-x-2">
-                    <span className="mr-3 mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-primary" />
-                    <span>Building innovative Go to Market strategies</span>
-                  </li>
-                  <li className="flex items-start transition-transform duration-300 hover:translate-x-2">
-                    <span className="mr-3 mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-primary" />
-                    <span>Creating durable and scalable growth</span>
-                  </li>
-                  <li className="flex items-start transition-transform duration-300 hover:translate-x-2">
-                    <span className="mr-3 mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-primary" />
-                    <span>Assuring flawless execution across teams</span>
-                  </li>
-                </ul>
+                  <ul className="space-y-3 text-base text-foreground md:text-lg">
+                    <li className="flex items-start transition-transform duration-300 hover:translate-x-2">
+                      <span className="mr-3 mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-primary" />
+                      <span>Building innovative Go to Market strategies</span>
+                    </li>
+                    <li className="flex items-start transition-transform duration-300 hover:translate-x-2">
+                      <span className="mr-3 mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-primary" />
+                      <span>Creating durable and scalable growth</span>
+                    </li>
+                    <li className="flex items-start transition-transform duration-300 hover:translate-x-2">
+                      <span className="mr-3 mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-primary" />
+                      <span>Assuring flawless execution across teams</span>
+                    </li>
+                  </ul>
 
-                <p className="text-sm leading-relaxed text-foreground/80 md:text-base lg:text-lg max-w-xl">
-                  Deep expertise in SaaS, Data, AdTech and AI and 25+ years of multi-geo leadership. I bridge the gap between the rigor of Big Tech (Google, Microsoft) and the situational grit of PE/VC environments.
-                </p>
+                  <p className="text-xs leading-relaxed text-foreground/80 md:text-sm max-w-xl">
+                    Executive Commercial Leader &amp; Technologist with deep expertise in SaaS, Data, AdTech and AI and 25+ years of multi-geo leadership. I bridge the gap between the rigor of Big Tech (Google, Microsoft) and the situational grit of PE/VC environments. My strength lies in building durable hypergrowth engines, whether starting from scratch or accelerating existing businesses, by implementing data-driven GTM strategies and leading high-performance teams that combine operational excellence with entrepreneurial speed and innovation.
+                  </p>
+                </div>
 
-                <div className="pt-2">
+                <div className="pt-4">
                   <Button
                     size="lg"
                     onClick={() => scrollToSection("contact")}
