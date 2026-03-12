@@ -36,19 +36,10 @@ export const BookingSection = () => {
 
   const bookingOptions = [
     {
-      duration: 30,
-      price: "Free",
-      description: "Share your challenges and let's see if I can add any value",
+      duration: 15,
     },
     {
       duration: 30,
-      price: "€200",
-      description: "Quick consultation for focused discussions",
-    },
-    {
-      duration: 60,
-      price: "€400",
-      description: "In-depth strategy session",
     },
   ];
 
