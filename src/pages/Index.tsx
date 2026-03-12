@@ -187,17 +187,27 @@ const Index = () => {
           }} />
 
         {/* Content Container */}
-        <div className="relative z-10 flex min-h-screen flex-col pt-14">
+        <div className="relative z-10 flex min-h-screen flex-col pt-20 md:pt-14">
           {/* Main Content */}
-          <main className="flex flex-1 items-center px-6 md:px-12 lg:px-16 relative z-30">
-            <div className="max-w-7xl mx-auto w-full grid lg:grid-cols-2 gap-12 items-stretch">
+          <main className="flex flex-1 items-center px-6 md:px-12 lg:px-16 relative z-30 py-6 md:py-0">
+            <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-12 items-stretch">
+              {/* Portrait - show on top for mobile */}
+              <div className="flex justify-center lg:hidden animate-on-scroll">
+                <img
+                  src={portraitImage}
+                  alt="Goswijn Thijssen"
+                  className="w-48 h-48 object-cover rounded-full shadow-2xl"
+                  style={{ objectPosition: "center top" }}
+                />
+              </div>
+
               <div className="flex flex-col justify-between animate-on-scroll">
-                <div className="space-y-6 lg:space-y-8">
-                  <h2 className="text-2xl leading-tight tracking-tight text-foreground md:text-3xl lg:text-4xl">
+                <div className="space-y-4 md:space-y-6 lg:space-y-8">
+                  <h2 className="text-xl leading-tight tracking-tight text-foreground md:text-3xl lg:text-4xl">
                     Executive Commercial Leader &amp; Technologist
                   </h2>
 
-                  <ul className="space-y-4 text-base text-foreground md:text-lg lg:text-xl">
+                  <ul className="space-y-2 md:space-y-4 text-sm text-foreground md:text-lg lg:text-xl">
                     <li className="flex items-start transition-transform duration-300 hover:translate-x-2">
                       <span className="mr-3 mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-primary" />
                       <span>Building innovative Go to Market strategies</span>
@@ -212,7 +222,7 @@ const Index = () => {
                     </li>
                   </ul>
 
-                  <p className="text-sm leading-relaxed text-foreground/80 md:text-base max-w-xl">
+                  <p className="text-xs leading-relaxed text-foreground/80 md:text-base max-w-xl">
                     Executive Commercial Leader &amp; Technologist with deep expertise in SaaS, Data, AdTech and AI and 25+ years of multi-geo leadership. I bridge the gap between the rigor of Big Tech (Google, Microsoft) and the situational grit of PE/VC environments. My strength lies in building durable hypergrowth engines, whether starting from scratch or accelerating existing businesses, by implementing data-driven GTM strategies and leading high-performance teams that combine operational excellence with entrepreneurial speed and innovation.
                   </p>
                 </div>
@@ -227,7 +237,8 @@ const Index = () => {
                 </div>
               </div>
 
-              <div className="flex justify-center lg:justify-end animate-on-scroll" style={{ animationDelay: "0.2s" }}>
+              {/* Portrait - desktop only (right side) */}
+              <div className="hidden lg:flex justify-end animate-on-scroll" style={{ animationDelay: "0.2s" }}>
                 <img
                   src={portraitImage}
                   alt="Goswijn Thijssen"
