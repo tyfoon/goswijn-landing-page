@@ -193,7 +193,7 @@ const Index = () => {
 
         {/* Parallax Layer 2 - Overlay with gradient */}
         <div
-          className="absolute inset-0 bg-gradient-to-b from-transparent via-background/10 to-background/30"
+          className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/30 to-background/80"
           style={{
             transform: `translateY(${scrollY * 0.3}px)`
           }} />
