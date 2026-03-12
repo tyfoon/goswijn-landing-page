@@ -383,10 +383,9 @@ const Index = () => {
                 animationDelay: "0.2s"
               }}>
               
-              <div className="glass-strong rounded-lg p-1 w-full max-w-md">
-                <img
-                  src={speakingImage}
-                  alt="Goswijn Thijssen Speaking"
+              <img
+                src={speakingImage}
+                alt="Goswijn Thijssen Speaking"
                   className="w-full h-[480px] object-cover rounded-lg shadow-2xl"
                   style={{
                     objectPosition: "center top"
