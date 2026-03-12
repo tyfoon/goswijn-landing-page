@@ -380,16 +380,14 @@ const Index = () => {
               style={{
                 animationDelay: "0.2s"
               }}>
-              
               <img
                 src={speakingImage}
                 alt="Goswijn Thijssen Speaking"
-                  className="w-full h-[480px] object-cover rounded-lg shadow-2xl"
-                  style={{
-                    objectPosition: "center top"
-                  }} />
-                
-              </div>
+                className="w-full h-[480px] object-cover rounded-lg shadow-2xl"
+                style={{
+                  objectPosition: "center top"
+                }} />
+            </div>
             </div>
           </div>
         </div>
