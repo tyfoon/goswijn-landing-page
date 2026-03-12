@@ -81,7 +81,7 @@ const Index = () => {
             <button
               onClick={() => scrollToSection("hero")}
               className="text-sm font-medium text-foreground hover:opacity-80 transition-opacity">
-              Goswijn Thijssen-Executive Commercial Leader & Technologist
+              Goswijn Thijssen | Executive Commercial Leader & Technologist
             </button>
             <a
               href="https://www.linkedin.com/in/goswijn/"
