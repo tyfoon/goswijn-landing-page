@@ -261,7 +261,7 @@ const Expertise = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-24 px-6 bg-muted/30">
+      <section className="py-24 px-6 bg-secondary/30">
         <div className="max-w-4xl mx-auto text-center animate-on-scroll">
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
             Ready to Drive Hyper-Growth?

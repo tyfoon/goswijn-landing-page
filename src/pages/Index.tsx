@@ -234,7 +234,7 @@ const Index = () => {
                     <span>Creating durable and scalable growth</span>
                   </li>
                   <li className="flex items-start transition-transform duration-300 hover:translate-x-2">
-                    <span className="mr-3 mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-foreground" />
+                    <span className="mr-3 mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-primary" />
                     <span>Assuring flawless execution across teams</span>
                   </li>
                 </ul>
