@@ -214,19 +214,12 @@ const Index = () => {
                   </ul>
                 </div>
 
-                <div className="pt-4 flex flex-col sm:flex-row gap-4">
+                <div className="pt-4">
                   <Button
                     size="lg"
                     onClick={() => scrollToSection("contact")}
-                    className="font-medium shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300">
-                    Contact Me
-                  </Button>
-                  <Button
-                    size="lg"
-                    variant="outline"
-                    onClick={() => scrollToSection("contact")}
-                    className="font-medium glass-strong hover:bg-foreground/10 hover:scale-105 transition-all duration-300">
-                    Book Time with Me
+                    className="font-medium shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300 bg-primary text-primary-foreground">
+                    Let's connect
                   </Button>
                 </div>
 
