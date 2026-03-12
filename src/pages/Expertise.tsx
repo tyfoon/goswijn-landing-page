@@ -129,7 +129,7 @@ const Expertise = () => {
       </section>
 
       {/* Revenue Growth Section */}
-      <section id="revenue-growth" className="py-24 px-6 bg-muted/30">
+      <section id="revenue-growth" className="py-24 px-6 bg-secondary/30">
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-12 items-center mb-16">
             <div className="order-2 lg:order-1 animate-on-scroll">
