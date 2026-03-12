@@ -257,13 +257,13 @@ const Index = () => {
           }} />
 
         <div className="relative z-10 max-w-7xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-12 items-end">
+          <div className="grid lg:grid-cols-2 gap-12 items-stretch">
             {/* Left: Image */}
-            <div className="flex justify-center lg:justify-start animate-on-scroll">
+            <div className="relative h-[420px] lg:h-auto animate-on-scroll rounded-lg overflow-hidden shadow-2xl">
               <img
                 src={speakingImage}
                 alt="Goswijn Thijssen Speaking"
-                className="w-full object-cover rounded-lg shadow-2xl"
+                className="absolute inset-0 w-full h-full object-cover"
                 style={{ objectPosition: "center top" }}
               />
             </div>
