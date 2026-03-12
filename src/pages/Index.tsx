@@ -191,30 +191,31 @@ const Index = () => {
           {/* Main Content */}
           <main className="flex flex-1 items-center px-6 md:px-12 lg:px-16 relative z-30">
             <div className="max-w-7xl mx-auto w-full grid lg:grid-cols-2 gap-12 items-center">
-              <div className="space-y-8 animate-on-scroll">
-                <div className="space-y-6">
-                  <h2 className="text-3xl leading-tight tracking-tight text-foreground md:text-4xl lg:text-5xl">
-                    <span className="inline-block md:whitespace-nowrap w-fit">Breakthrough changes.</span>
-                    <span className="inline-block md:whitespace-nowrap w-fit">Proven impact.</span>
-                  </h2>
+              <div className="space-y-6 animate-on-scroll">
+                <h2 className="text-3xl leading-tight tracking-tight text-foreground md:text-4xl lg:text-5xl">
+                  Executive Commercial Leader &amp; Technologist
+                </h2>
 
-                  <ul className="space-y-4 text-lg text-foreground md:text-xl">
-                    <li className="flex items-start transition-transform duration-300 hover:translate-x-2">
-                      <span className="mr-3 mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-primary" />
-                      <span>Building innovative Go to Market strategies</span>
-                    </li>
-                    <li className="flex items-start transition-transform duration-300 hover:translate-x-2">
-                      <span className="mr-3 mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-primary" />
-                      <span>Creating durable and scalable growth</span>
-                    </li>
-                    <li className="flex items-start transition-transform duration-300 hover:translate-x-2">
-                      <span className="mr-3 mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-primary" />
-                      <span>Assuring flawless execution across teams</span>
-                    </li>
-                  </ul>
-                </div>
+                <ul className="space-y-4 text-lg text-foreground md:text-xl">
+                  <li className="flex items-start transition-transform duration-300 hover:translate-x-2">
+                    <span className="mr-3 mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-primary" />
+                    <span>Building innovative Go to Market strategies</span>
+                  </li>
+                  <li className="flex items-start transition-transform duration-300 hover:translate-x-2">
+                    <span className="mr-3 mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-primary" />
+                    <span>Creating durable and scalable growth</span>
+                  </li>
+                  <li className="flex items-start transition-transform duration-300 hover:translate-x-2">
+                    <span className="mr-3 mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-primary" />
+                    <span>Assuring flawless execution across teams</span>
+                  </li>
+                </ul>
 
-                <div className="pt-4">
+                <p className="text-sm leading-relaxed text-foreground/80 md:text-base lg:text-lg max-w-xl">
+                  Deep expertise in SaaS, Data, AdTech and AI and 25+ years of multi-geo leadership. I bridge the gap between the rigor of Big Tech (Google, Microsoft) and the situational grit of PE/VC environments.
+                </p>
+
+                <div className="pt-2">
                   <Button
                     size="lg"
                     onClick={() => scrollToSection("contact")}
@@ -222,10 +223,6 @@ const Index = () => {
                     Let's connect
                   </Button>
                 </div>
-
-                <p className="text-xs leading-tight text-foreground/80 md:text-sm lg:text-base max-w-xl">
-                  Executive Commercial Leader & Technologist with deep expertise in SaaS, Data, AdTech and AI and 25+ years of multi-geo leadership. I bridge the gap between the rigor of Big Tech (Google, Microsoft) and the situational grit of PE/VC environments.
-                </p>
               </div>
 
               <div className="flex justify-center lg:justify-end animate-on-scroll" style={{ animationDelay: "0.2s" }}>
