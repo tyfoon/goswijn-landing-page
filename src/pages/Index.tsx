@@ -2,7 +2,7 @@ import { ContactForm } from "@/components/ContactForm";
 import { BookingSection } from "@/components/BookingSection";
 import { Button } from "@/components/ui/button";
 import backgroundImage from "@/assets/goswijn-background.jpg";
-import portraitImage from "@/assets/goswijn-portrait.png";
+import portraitImage from "@/assets/goswijn-portrait-new.png";
 import speakingImage from "@/assets/goswijn-thinking.jpg";
 import linkedinIcon from "@/assets/linkedin-icon.jpg";
 import adblockPlusLogo from "@/assets/adblock-plus.svg";
