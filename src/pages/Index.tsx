@@ -161,6 +161,10 @@ const Index = () => {
             label: "Home"
           },
           {
+            id: "summary",
+            label: "Track Record"
+          },
+          {
             id: "contact",
             label: "Let's connect"
           }].
