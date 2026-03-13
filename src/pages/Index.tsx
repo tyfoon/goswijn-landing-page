@@ -1,5 +1,6 @@
 import { ContactForm } from "@/components/ContactForm";
 import { BookingSection } from "@/components/BookingSection";
+import { AnimatedDotGrid } from "@/components/AnimatedDotGrid";
 import { SummarySection } from "@/components/SummarySection";
 import { OperatingPrinciples } from "@/components/OperatingPrinciples";
 import { Button } from "@/components/ui/button";
