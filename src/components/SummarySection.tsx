@@ -1,4 +1,4 @@
-import { useState, useRef, useCallback, useEffect } from "react";
+import { useState, useRef, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useIsMobile } from "@/hooks/use-mobile";
 
@@ -96,9 +96,6 @@ const SummarySection = () => {
   const [activeCard, setActiveCard] = useState<string | null>(null);
   const sectionRef = useRef<HTMLDivElement>(null);
   const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const triggerRefs = useRef<Record<string, HTMLSpanElement | null>>({});
-  const cardRef = useRef<HTMLDivElement | null>(null);
-  const [lineCoords, setLineCoords] = useState<{ x1: number; y1: number; x2: number; y2: number } | null>(null);
   const isMobile = useIsMobile();
 
   const handleHover = useCallback((id: string) => {
@@ -126,52 +123,6 @@ const SummarySection = () => {
     setActiveCard((prev) => (prev === id ? null : id));
   }, []);
 
-  // Calculate connecting line coordinates
-  useEffect(() => {
-    if (!activeCard || isMobile || !sectionRef.current) {
-      setLineCoords(null);
-      return;
-    }
-
-    const updateLine = () => {
-      const triggerEl = triggerRefs.current[activeCard];
-      const cardEl = cardRef.current;
-      const sectionEl = sectionRef.current;
-
-      if (!triggerEl || !cardEl || !sectionEl) {
-        setLineCoords(null);
-        return;
-      }
-
-      const sectionRect = sectionEl.getBoundingClientRect();
-      const triggerRect = triggerEl.getBoundingClientRect();
-      const cardRect = cardEl.getBoundingClientRect();
-
-      const side = cardSide[activeCard];
-
-      const x1 = side === "right"
-        ? triggerRect.right - sectionRect.left
-        : triggerRect.left - sectionRect.left;
-      const y1 = triggerRect.top + triggerRect.height / 2 - sectionRect.top;
-
-      const x2 = side === "right"
-        ? cardRect.left - sectionRect.left
-        : cardRect.right - sectionRect.left;
-      const y2 = cardRect.top + Math.min(60, cardRect.height / 2) - sectionRect.top;
-
-      setLineCoords({ x1, y1, x2, y2 });
-    };
-
-    const timer = setTimeout(updateLine, 80);
-    return () => clearTimeout(timer);
-  }, [activeCard, isMobile]);
-
-  // Clear line immediately when card closes
-  useEffect(() => {
-    if (!activeCard) {
-      setLineCoords(null);
-    }
-  }, [activeCard]);
 
   const InteractivePhrase = ({
     id,
@@ -181,7 +132,7 @@ const SummarySection = () => {
     children: React.ReactNode;
   }) => (
     <span
-      ref={(el) => { triggerRefs.current[id] = el; }}
+      
       onMouseEnter={!isMobile ? () => handleHover(id) : undefined}
       onMouseLeave={!isMobile ? handleLeave : undefined}
       onClick={isMobile ? () => handleTap(id) : undefined}
@@ -214,39 +165,6 @@ const SummarySection = () => {
         <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] rounded-full bg-accent/[0.03] blur-[100px]" />
       </div>
 
-      {/* Connecting line SVG */}
-      <AnimatePresence>
-        {lineCoords && activeCard && !isMobile && (
-          <motion.svg
-            key="connector-line"
-            className="absolute inset-0 w-full h-full pointer-events-none z-15"
-            style={{ overflow: "visible" }}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.15 }}
-          >
-            <motion.path
-              d={`M ${lineCoords.x1} ${lineCoords.y1} C ${(lineCoords.x1 + lineCoords.x2) / 2} ${lineCoords.y1}, ${(lineCoords.x1 + lineCoords.x2) / 2} ${lineCoords.y2}, ${lineCoords.x2} ${lineCoords.y2}`}
-              stroke="hsl(var(--accent) / 0.25)"
-              strokeWidth="1"
-              fill="none"
-              initial={{ pathLength: 0 }}
-              animate={{ pathLength: 1 }}
-              transition={{ duration: 0.4, ease: "easeOut" }}
-            />
-            <motion.circle
-              cx={lineCoords.x1}
-              cy={lineCoords.y1}
-              r="3"
-              fill="hsl(var(--accent) / 0.5)"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.2 }}
-            />
-          </motion.svg>
-        )}
-      </AnimatePresence>
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 lg:px-16 py-24 md:py-32">
         {/* Section label */}
@@ -315,7 +233,7 @@ const SummarySection = () => {
                   damping: 30,
                   mass: 0.8,
                 }}
-                ref={cardRef}
+                
                 onMouseEnter={handleCardEnter}
                 onMouseLeave={handleCardLeave}
                 className={`absolute z-20 hidden lg:block -top-4 ${

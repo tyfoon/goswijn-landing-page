@@ -39,7 +39,7 @@ const Index = () => {
           if (entry.isIntersecting) setActiveSection(entry.target.id);
         });
       },
-      { threshold: 0.3 }
+      { threshold: 0.15 }
     );
     const sections = document.querySelectorAll("section[id]");
     sections.forEach((section) => sectionObserver.observe(section));
