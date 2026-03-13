@@ -214,39 +214,6 @@ const SummarySection = () => {
         <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] rounded-full bg-accent/[0.03] blur-[100px]" />
       </div>
 
-      {/* Connecting line SVG */}
-      <AnimatePresence>
-        {lineCoords && activeCard && !isMobile && (
-          <motion.svg
-            key="connector-line"
-            className="absolute inset-0 w-full h-full pointer-events-none z-15"
-            style={{ overflow: "visible" }}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.15 }}
-          >
-            <motion.path
-              d={`M ${lineCoords.x1} ${lineCoords.y1} C ${(lineCoords.x1 + lineCoords.x2) / 2} ${lineCoords.y1}, ${(lineCoords.x1 + lineCoords.x2) / 2} ${lineCoords.y2}, ${lineCoords.x2} ${lineCoords.y2}`}
-              stroke="hsl(var(--accent) / 0.25)"
-              strokeWidth="1"
-              fill="none"
-              initial={{ pathLength: 0 }}
-              animate={{ pathLength: 1 }}
-              transition={{ duration: 0.4, ease: "easeOut" }}
-            />
-            <motion.circle
-              cx={lineCoords.x1}
-              cy={lineCoords.y1}
-              r="3"
-              fill="hsl(var(--accent) / 0.5)"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.2 }}
-            />
-          </motion.svg>
-        )}
-      </AnimatePresence>
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 lg:px-16 py-24 md:py-32">
         {/* Section label */}
