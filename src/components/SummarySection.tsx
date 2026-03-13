@@ -96,9 +96,6 @@ const SummarySection = () => {
   const [activeCard, setActiveCard] = useState<string | null>(null);
   const sectionRef = useRef<HTMLDivElement>(null);
   const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const triggerRefs = useRef<Record<string, HTMLSpanElement | null>>({});
-  const cardRef = useRef<HTMLDivElement | null>(null);
-  const [lineCoords, setLineCoords] = useState<{ x1: number; y1: number; x2: number; y2: number } | null>(null);
   const isMobile = useIsMobile();
 
   const handleHover = useCallback((id: string) => {
