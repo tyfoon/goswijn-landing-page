@@ -32,7 +32,7 @@ export const LogoMarquee = () => {
             <img
               src={logo.src}
               alt={logo.alt}
-              className={`${logo.height} w-auto max-w-[120px] object-contain grayscale opacity-50`}
+              className={`${logo.height} w-auto max-w-[120px] object-contain grayscale opacity-40 brightness-200 contrast-50`}
             />
           </div>
         ))}
