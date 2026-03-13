@@ -84,10 +84,10 @@ const evidenceData: Record<string, EvidenceCard> = {
 };
 
 const cardPositionStyles: Record<string, string> = {
-  right: "left-[55%] top-[10%]",
-  left: "right-[55%] top-[15%]",
-  "center-right": "left-[50%] top-[5%]",
-  "center-left": "right-[50%] top-[20%]",
+  "hyper-growth": "left-auto right-0 top-0",
+  "operational-rigor": "right-auto left-0 top-4",
+  "complex-tech": "left-auto right-8 top-8",
+  "gtm-engines": "right-auto left-8 top-0",
 };
 
 const SummarySection = () => {
