@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import { AnimatedDotGrid } from "@/components/AnimatedDotGrid";
 import portraitImage from "@/assets/goswijn-portrait-new.png";
 
 interface HeroSectionProps {
@@ -9,8 +10,7 @@ interface HeroSectionProps {
 export const HeroSection = ({ scrollY, scrollToSection }: HeroSectionProps) => {
   return (
     <section id="hero" className="relative min-h-screen w-full overflow-hidden bg-background">
-      {/* Dot grid pattern */}
-      <div className="absolute inset-0 dot-grid" />
+      <AnimatedDotGrid />
 
       {/* Subtle floating shapes */}
       <div
