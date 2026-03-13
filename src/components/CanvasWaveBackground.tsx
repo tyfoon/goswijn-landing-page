@@ -46,9 +46,9 @@ export const CanvasWaveBackground = () => {
 
           // Wave displacement on Y
           const wave =
-            Math.sin(col * 0.25 + t * 1.8) * 12 +
-            Math.cos(row * 0.3 + t * 1.2) * 8 +
-            Math.sin((col + row) * 0.15 + t * 0.9) * 6;
+            Math.sin(col * 0.25 + t * 1.8) * 22 +
+            Math.cos(row * 0.3 + t * 1.2) * 15 +
+            Math.sin((col + row) * 0.15 + t * 0.9) * 10;
 
           const y3d = wave;
 
