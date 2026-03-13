@@ -132,7 +132,7 @@ const SummarySection = () => {
     children: React.ReactNode;
   }) => (
     <span
-      ref={(el) => { triggerRefs.current[id] = el; }}
+      
       onMouseEnter={!isMobile ? () => handleHover(id) : undefined}
       onMouseLeave={!isMobile ? handleLeave : undefined}
       onClick={isMobile ? () => handleTap(id) : undefined}
