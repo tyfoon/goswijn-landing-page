@@ -1,5 +1,6 @@
 import { useState, useRef, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 interface EvidenceCard {
   id: string;
@@ -99,6 +100,7 @@ const SummarySection = () => {
   const [activeCard, setActiveCard] = useState<string | null>(null);
   const sectionRef = useRef<HTMLDivElement>(null);
   const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const isMobile = useIsMobile();
 
   const handleHover = useCallback((id: string) => {
     if (timeoutRef.current) clearTimeout(timeoutRef.current);
@@ -121,6 +123,11 @@ const SummarySection = () => {
     }, 200);
   }, []);
 
+  // Mobile: tap toggles, tap again closes
+  const handleTap = useCallback((id: string) => {
+    setActiveCard((prev) => (prev === id ? null : id));
+  }, []);
+
   const InteractivePhrase = ({
     id,
     children,
@@ -129,8 +136,9 @@ const SummarySection = () => {
     children: React.ReactNode;
   }) => (
     <span
-      onMouseEnter={() => handleHover(id)}
-      onMouseLeave={handleLeave}
+      onMouseEnter={!isMobile ? () => handleHover(id) : undefined}
+      onMouseLeave={!isMobile ? handleLeave : undefined}
+      onClick={isMobile ? () => handleTap(id) : undefined}
       className={`
         relative cursor-pointer transition-all duration-300
         border-b-2 border-dashed
@@ -151,7 +159,7 @@ const SummarySection = () => {
     <section
       id="summary"
       ref={sectionRef}
-      className="relative bg-[hsl(220,18%,6%)] min-h-screen overflow-hidden"
+      className="relative bg-secondary min-h-screen overflow-hidden"
     >
       {/* Ambient glow */}
       <div className="absolute inset-0 pointer-events-none">
@@ -160,7 +168,7 @@ const SummarySection = () => {
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 lg:px-16 py-24 md:py-32">
-        {/* Section label */}
+        {/* Section label — preserved as requested */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -183,7 +191,7 @@ const SummarySection = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <p className="text-lg md:text-xl lg:text-2xl xl:text-[1.7rem] leading-relaxed md:leading-relaxed lg:leading-[1.9] xl:leading-[2] text-[hsl(40,20%,82%)] font-light max-w-5xl">
+            <p className="text-lg md:text-xl lg:text-2xl xl:text-[1.7rem] leading-relaxed md:leading-relaxed lg:leading-[1.9] xl:leading-[2] text-foreground/85 font-light max-w-5xl">
               <InteractivePhrase id="hyper-growth">
                 Driving sustainable, multi-geo hyper-growth
               </InteractivePhrase>{" "}
@@ -204,12 +212,12 @@ const SummarySection = () => {
               .
             </p>
 
-            <p className="mt-6 text-sm text-[hsl(40,20%,60%)]">
-              ← Hover the highlighted phrases to explore the evidence
+            <p className="mt-6 text-sm text-muted-foreground">
+              {isMobile ? "← Tap" : "← Hover over"} the highlighted phrases to explore the evidence
             </p>
           </motion.div>
 
-          {/* Evidence Card - centered overlay on desktop */}
+          {/* Evidence Card - positioned overlay on desktop */}
           <AnimatePresence mode="wait">
             {currentCard && (
               <motion.div
@@ -228,20 +236,20 @@ const SummarySection = () => {
                 className={`absolute z-20 hidden lg:block pointer-events-none ${cardPositionStyles[currentCard.id] || "left-0 top-0"}`}
                 style={{ maxWidth: "52%" }}
               >
-                <div className="pointer-events-auto w-full max-w-2xl rounded-xl border border-accent/20 bg-[hsl(220,18%,8%)]/[0.97] backdrop-blur-2xl shadow-[0_8px_60px_-12px_hsl(210,70%,45%,0.15)] overflow-hidden">
+                <div className="pointer-events-auto w-full max-w-2xl rounded-xl border border-accent/20 bg-card/[0.97] backdrop-blur-2xl shadow-[0_8px_60px_-12px_hsl(210,70%,45%,0.15)] overflow-hidden">
                   {/* Card header */}
                   <div className="px-8 pt-6 pb-4 border-b border-accent/10 flex items-center justify-between">
                     <div>
                       <h3 className="text-accent text-sm font-mono tracking-[0.15em] uppercase">
                         {currentCard.title}
                       </h3>
-                      <p className="mt-1.5 text-[hsl(40,20%,65%)] text-sm leading-relaxed">
+                      <p className="mt-1.5 text-muted-foreground text-sm leading-relaxed">
                         {currentCard.context}
                       </p>
                     </div>
                   </div>
 
-                  {/* SAR entries - horizontal when 2 items, single when 1 */}
+                  {/* SAR entries */}
                   <div className={`px-8 py-6 ${currentCard.achievements.length > 1 ? 'grid grid-cols-2 gap-6' : ''}`}>
                     {currentCard.achievements.map((sar, i) => (
                       <motion.div
@@ -253,12 +261,12 @@ const SummarySection = () => {
                       >
                         <div className="flex items-start gap-3">
                           <div className="mt-1.5 w-1.5 h-1.5 rounded-full bg-accent/60 flex-shrink-0" />
-                          <p className="text-[hsl(40,20%,60%)] text-xs leading-relaxed">
+                          <p className="text-muted-foreground text-xs leading-relaxed">
                             {sar.situation} {sar.action}
                           </p>
                         </div>
                         <div className="ml-[18px] pl-3 border-l-2 border-accent/30">
-                          <p className="text-[hsl(40,20%,90%)] text-sm font-medium">
+                          <p className="text-foreground text-sm font-medium">
                             → {sar.result}
                           </p>
                         </div>
@@ -281,12 +289,12 @@ const SummarySection = () => {
                 transition={{ type: "spring", stiffness: 300, damping: 30 }}
                 className="lg:hidden mt-8"
               >
-                <div className="rounded-xl border border-accent/20 bg-[hsl(220,16%,10%)]/95 backdrop-blur-xl shadow-2xl overflow-hidden">
+                <div className="rounded-xl border border-accent/20 bg-card/95 backdrop-blur-xl shadow-2xl overflow-hidden">
                   <div className="px-5 pt-5 pb-3 border-b border-accent/10">
                     <h3 className="text-accent text-xs font-mono tracking-[0.15em] uppercase">
                       {currentCard.title}
                     </h3>
-                    <p className="mt-2 text-[hsl(40,20%,70%)] text-xs leading-relaxed">
+                    <p className="mt-2 text-muted-foreground text-xs leading-relaxed">
                       {currentCard.context}
                     </p>
                   </div>
@@ -295,12 +303,12 @@ const SummarySection = () => {
                       <div key={i} className="space-y-1.5">
                         <div className="flex items-start gap-2.5">
                           <div className="mt-1.5 w-1 h-1 rounded-full bg-accent/60 flex-shrink-0" />
-                          <p className="text-[hsl(40,20%,60%)] text-xs leading-relaxed">
+                          <p className="text-muted-foreground text-xs leading-relaxed">
                             {sar.situation} {sar.action}
                           </p>
                         </div>
                         <div className="ml-[14px] pl-3 border-l-2 border-accent/30">
-                          <p className="text-[hsl(40,20%,90%)] text-xs font-medium">
+                          <p className="text-foreground text-xs font-medium">
                             → {sar.result}
                           </p>
                         </div>
