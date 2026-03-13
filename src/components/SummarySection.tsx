@@ -149,13 +149,11 @@ const SummarySection = () => {
 
       const side = cardSide[activeCard];
 
-      // Trigger point: edge of the phrase closest to the card
       const x1 = side === "right"
         ? triggerRect.right - sectionRect.left
         : triggerRect.left - sectionRect.left;
       const y1 = triggerRect.top + triggerRect.height / 2 - sectionRect.top;
 
-      // Card point: edge of card closest to text
       const x2 = side === "right"
         ? cardRect.left - sectionRect.left
         : cardRect.right - sectionRect.left;
@@ -164,10 +162,16 @@ const SummarySection = () => {
       setLineCoords({ x1, y1, x2, y2 });
     };
 
-    // Small delay to let card animate in
     const timer = setTimeout(updateLine, 80);
     return () => clearTimeout(timer);
   }, [activeCard, isMobile]);
+
+  // Clear line immediately when card closes
+  useEffect(() => {
+    if (!activeCard) {
+      setLineCoords(null);
+    }
+  }, [activeCard]);
 
   const InteractivePhrase = ({
     id,
