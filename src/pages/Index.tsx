@@ -60,7 +60,7 @@ const Index = () => {
       {/* Contact & Booking Section */}
       <section
         id="contact"
-        className="relative bg-background py-24 px-6 md:px-12 lg:px-16 overflow-hidden animate-on-scroll"
+        className="relative bg-background py-24 px-6 md:px-12 lg:px-16 overflow-hidden animate-on-scroll dot-grid"
       >
         {/* Parallax background elements */}
         <div
