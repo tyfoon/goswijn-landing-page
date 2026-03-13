@@ -89,10 +89,10 @@ const evidenceData: Record<string, EvidenceCard> = {
 };
 
 const cardPositionStyles: Record<string, string> = {
-  "hyper-growth": "left-auto right-0 top-0",
-  "operational-rigor": "right-auto left-0 top-4",
-  "complex-tech": "left-auto right-8 top-8",
-  "gtm-engines": "right-auto left-8 top-0",
+  "hyper-growth": "right-0 -top-8",
+  "operational-rigor": "left-0 -top-16",
+  "complex-tech": "right-12 -top-4",
+  "gtm-engines": "left-12 -top-12",
 };
 
 const SummarySection = () => {
