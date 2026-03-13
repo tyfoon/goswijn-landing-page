@@ -66,7 +66,7 @@ export const CanvasWaveBackground = () => {
           // Fade dots by depth
           const depthNorm = Math.max(0, Math.min(1, (depth - 50) / (rows * spacingZ)));
           const alpha = 0.04 + (1 - depthNorm) * 0.14;
-          const radius = Math.max(0.4, 1.6 * scale);
+          const radius = Math.max(0.3, 0.9 * scale);
 
           ctx.beginPath();
           ctx.arc(sx, sy, radius, 0, Math.PI * 2);
