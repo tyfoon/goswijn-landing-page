@@ -255,7 +255,7 @@ const SummarySection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="mb-12 flex justify-center"
+          className="mb-12"
         >
           <div>
             <span className="text-accent/60 text-xs md:text-sm font-mono tracking-[0.2em] uppercase">
