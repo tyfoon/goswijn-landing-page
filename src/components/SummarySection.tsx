@@ -1,7 +1,6 @@
-import { useState, useRef, useCallback } from "react";
+import { useState, useRef, useCallback, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useIsMobile } from "@/hooks/use-mobile";
-
 
 interface EvidenceCard {
   id: string;
@@ -12,7 +11,6 @@ interface EvidenceCard {
     action: string;
     result: string;
   }[];
-  position: "left" | "right" | "center-left" | "center-right";
 }
 
 const evidenceData: Record<string, EvidenceCard> = {
@@ -32,7 +30,6 @@ const evidenceData: Record<string, EvidenceCard> = {
         result: "Accelerated YoY revenue growth to >25%, reaching $150M ARR.",
       },
     ],
-    position: "right",
   },
   "operational-rigor": {
     id: "operational-rigor",
@@ -50,7 +47,6 @@ const evidenceData: Record<string, EvidenceCard> = {
         result: "Increased overall network profitability by 82% over 3 years.",
       },
     ],
-    position: "left",
   },
   "complex-tech": {
     id: "complex-tech",
@@ -68,7 +64,6 @@ const evidenceData: Record<string, EvidenceCard> = {
         result: "Translated complex tech into commercial reality, generating >$750M in annual enterprise pipeline.",
       },
     ],
-    position: "center-right",
   },
   "gtm-engines": {
     id: "gtm-engines",
@@ -86,21 +81,24 @@ const evidenceData: Record<string, EvidenceCard> = {
         result: "Delivered highly predictable, sustainable margin growth (20% ARR) without breaking the organizational culture.",
       },
     ],
-    position: "center-left",
   },
 };
 
-const cardPositionStyles: Record<string, string> = {
-  "hyper-growth": "right-0 -top-8",
-  "operational-rigor": "left-0 -top-16",
-  "complex-tech": "right-12 -top-4",
-  "gtm-engines": "left-12 -top-12",
+// Cards on left or right side of viewport
+const cardSide: Record<string, "left" | "right"> = {
+  "hyper-growth": "right",
+  "operational-rigor": "left",
+  "complex-tech": "right",
+  "gtm-engines": "left",
 };
 
 const SummarySection = () => {
   const [activeCard, setActiveCard] = useState<string | null>(null);
   const sectionRef = useRef<HTMLDivElement>(null);
   const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const triggerRefs = useRef<Record<string, HTMLSpanElement | null>>({});
+  const cardRef = useRef<HTMLDivElement | null>(null);
+  const [lineCoords, setLineCoords] = useState<{ x1: number; y1: number; x2: number; y2: number } | null>(null);
   const isMobile = useIsMobile();
 
   const handleHover = useCallback((id: string) => {
@@ -124,10 +122,52 @@ const SummarySection = () => {
     }, 200);
   }, []);
 
-  // Mobile: tap toggles, tap again closes
   const handleTap = useCallback((id: string) => {
     setActiveCard((prev) => (prev === id ? null : id));
   }, []);
+
+  // Calculate connecting line coordinates
+  useEffect(() => {
+    if (!activeCard || isMobile || !sectionRef.current) {
+      setLineCoords(null);
+      return;
+    }
+
+    const updateLine = () => {
+      const triggerEl = triggerRefs.current[activeCard];
+      const cardEl = cardRef.current;
+      const sectionEl = sectionRef.current;
+
+      if (!triggerEl || !cardEl || !sectionEl) {
+        setLineCoords(null);
+        return;
+      }
+
+      const sectionRect = sectionEl.getBoundingClientRect();
+      const triggerRect = triggerEl.getBoundingClientRect();
+      const cardRect = cardEl.getBoundingClientRect();
+
+      const side = cardSide[activeCard];
+
+      // Trigger point: edge of the phrase closest to the card
+      const x1 = side === "right"
+        ? triggerRect.right - sectionRect.left
+        : triggerRect.left - sectionRect.left;
+      const y1 = triggerRect.top + triggerRect.height / 2 - sectionRect.top;
+
+      // Card point: edge of card closest to text
+      const x2 = side === "right"
+        ? cardRect.left - sectionRect.left
+        : cardRect.right - sectionRect.left;
+      const y2 = cardRect.top + Math.min(60, cardRect.height / 2) - sectionRect.top;
+
+      setLineCoords({ x1, y1, x2, y2 });
+    };
+
+    // Small delay to let card animate in
+    const timer = setTimeout(updateLine, 80);
+    return () => clearTimeout(timer);
+  }, [activeCard, isMobile]);
 
   const InteractivePhrase = ({
     id,
@@ -137,6 +177,7 @@ const SummarySection = () => {
     children: React.ReactNode;
   }) => (
     <span
+      ref={(el) => { triggerRefs.current[id] = el; }}
       onMouseEnter={!isMobile ? () => handleHover(id) : undefined}
       onMouseLeave={!isMobile ? handleLeave : undefined}
       onClick={isMobile ? () => handleTap(id) : undefined}
@@ -155,45 +196,76 @@ const SummarySection = () => {
   );
 
   const currentCard = activeCard ? evidenceData[activeCard] : null;
+  const currentSide = activeCard ? cardSide[activeCard] : null;
 
   return (
     <section
       id="summary"
       ref={sectionRef}
-      className="relative min-h-screen overflow-hidden"
+      className="relative min-h-screen overflow-visible"
     >
-      
       {/* Ambient glow */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] rounded-full bg-accent/[0.04] blur-[120px]" />
         <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] rounded-full bg-accent/[0.03] blur-[100px]" />
       </div>
 
+      {/* Connecting line SVG */}
+      {lineCoords && !isMobile && (
+        <svg
+          className="absolute inset-0 w-full h-full pointer-events-none z-15"
+          style={{ overflow: "visible" }}
+        >
+          <motion.path
+            d={`M ${lineCoords.x1} ${lineCoords.y1} C ${(lineCoords.x1 + lineCoords.x2) / 2} ${lineCoords.y1}, ${(lineCoords.x1 + lineCoords.x2) / 2} ${lineCoords.y2}, ${lineCoords.x2} ${lineCoords.y2}`}
+            stroke="hsl(var(--accent) / 0.25)"
+            strokeWidth="1"
+            fill="none"
+            initial={{ pathLength: 0, opacity: 0 }}
+            animate={{ pathLength: 1, opacity: 1 }}
+            transition={{ duration: 0.4, ease: "easeOut" }}
+          />
+          {/* Dot at trigger end */}
+          <motion.circle
+            cx={lineCoords.x1}
+            cy={lineCoords.y1}
+            r="3"
+            fill="hsl(var(--accent) / 0.5)"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.2 }}
+          />
+        </svg>
+      )}
+
       <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 lg:px-16 py-24 md:py-32">
-        {/* Section label — preserved as requested */}
+        {/* Section label */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="mb-12"
+          className="mb-12 flex justify-center"
         >
-          <span className="text-accent/60 text-xs md:text-sm font-mono tracking-[0.2em] uppercase">
-            Track Record
-          </span>
-          <div className="mt-2 w-12 h-[2px] bg-accent/30" />
+          <div>
+            <span className="text-accent/60 text-xs md:text-sm font-mono tracking-[0.2em] uppercase">
+              Track Record
+            </span>
+            <div className="mt-2 w-12 h-[2px] bg-accent/30" />
+          </div>
         </motion.div>
 
-        {/* Main content: full-width summary with overlay card */}
+        {/* Main content area */}
         <div className="relative">
-          {/* Summary text - full width */}
+          {/* Summary text - centered, narrower, smaller */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.2 }}
+            className="flex flex-col items-center"
           >
-            <p className="text-lg md:text-xl lg:text-2xl xl:text-[1.7rem] leading-relaxed md:leading-relaxed lg:leading-[1.9] xl:leading-[2] text-foreground/85 font-light max-w-5xl">
+            <p className="text-base md:text-lg lg:text-xl leading-relaxed md:leading-relaxed lg:leading-[1.9] text-foreground/85 font-light max-w-3xl text-center">
               <InteractivePhrase id="hyper-growth">
                 Driving sustainable, multi-geo hyper-growth
               </InteractivePhrase>{" "}
@@ -214,14 +286,14 @@ const SummarySection = () => {
               .
             </p>
 
-            <p className="mt-6 text-sm text-muted-foreground">
+            <p className="mt-6 text-xs text-muted-foreground">
               {isMobile ? "← Tap" : "← Hover over"} the highlighted phrases to explore the evidence
             </p>
           </motion.div>
 
-          {/* Evidence Card - positioned overlay on desktop */}
+          {/* Evidence Card - positioned at edges on desktop */}
           <AnimatePresence mode="wait">
-            {currentCard && (
+            {currentCard && !isMobile && (
               <motion.div
                 key={currentCard.id}
                 initial={{ opacity: 0, y: 24, scale: 0.95 }}
@@ -233,42 +305,43 @@ const SummarySection = () => {
                   damping: 30,
                   mass: 0.8,
                 }}
+                ref={cardRef}
                 onMouseEnter={handleCardEnter}
                 onMouseLeave={handleCardLeave}
-                className={`absolute z-20 hidden lg:block pointer-events-none ${cardPositionStyles[currentCard.id] || "left-0 top-0"}`}
-                style={{ maxWidth: "52%" }}
+                className={`absolute z-20 hidden lg:block top-0 ${
+                  currentSide === "left" ? "left-0" : "right-0"
+                }`}
+                style={{ maxWidth: "380px" }}
               >
-                <div className="pointer-events-auto w-full max-w-2xl rounded-xl border border-accent/20 bg-card/[0.97] backdrop-blur-2xl shadow-[0_8px_60px_-12px_hsl(210,70%,45%,0.15)] overflow-hidden">
+                <div className="w-full rounded-xl border border-accent/20 bg-card/[0.97] backdrop-blur-2xl shadow-[0_8px_60px_-12px_hsl(210,70%,45%,0.15)] overflow-hidden">
                   {/* Card header */}
-                  <div className="px-8 pt-6 pb-4 border-b border-accent/10 flex items-center justify-between">
-                    <div>
-                      <h3 className="text-accent text-sm font-mono tracking-[0.15em] uppercase">
-                        {currentCard.title}
-                      </h3>
-                      <p className="mt-1.5 text-muted-foreground text-sm leading-relaxed">
-                        {currentCard.context}
-                      </p>
-                    </div>
+                  <div className="px-6 pt-5 pb-3 border-b border-accent/10">
+                    <h3 className="text-accent text-xs font-mono tracking-[0.15em] uppercase">
+                      {currentCard.title}
+                    </h3>
+                    <p className="mt-1.5 text-muted-foreground text-xs leading-relaxed">
+                      {currentCard.context}
+                    </p>
                   </div>
 
                   {/* SAR entries */}
-                  <div className={`px-8 py-6 ${currentCard.achievements.length > 1 ? 'grid grid-cols-2 gap-6' : ''}`}>
+                  <div className="px-6 py-4 space-y-4">
                     {currentCard.achievements.map((sar, i) => (
                       <motion.div
                         key={i}
                         initial={{ opacity: 0, y: 8 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.08 + i * 0.08 }}
-                        className="space-y-2"
+                        className="space-y-1.5"
                       >
-                        <div className="flex items-start gap-3">
+                        <div className="flex items-start gap-2.5">
                           <div className="mt-1.5 w-1.5 h-1.5 rounded-full bg-accent/60 flex-shrink-0" />
                           <p className="text-muted-foreground text-xs leading-relaxed">
                             {sar.situation} {sar.action}
                           </p>
                         </div>
-                        <div className="ml-[18px] pl-3 border-l-2 border-accent/30">
-                          <p className="text-foreground text-sm font-medium">
+                        <div className="ml-[16px] pl-3 border-l-2 border-accent/30">
+                          <p className="text-foreground text-xs font-medium">
                             → {sar.result}
                           </p>
                         </div>
@@ -282,7 +355,7 @@ const SummarySection = () => {
 
           {/* Mobile: Cards appear below text */}
           <AnimatePresence mode="wait">
-            {currentCard && (
+            {currentCard && isMobile && (
               <motion.div
                 key={`mobile-${currentCard.id}`}
                 initial={{ opacity: 0, y: 20 }}
