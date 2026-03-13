@@ -84,10 +84,10 @@ const evidenceData: Record<string, EvidenceCard> = {
 };
 
 const cardPositionStyles: Record<string, string> = {
-  right: "left-[55%] top-[10%]",
-  left: "right-[55%] top-[15%]",
-  "center-right": "left-[50%] top-[5%]",
-  "center-left": "right-[50%] top-[20%]",
+  "hyper-growth": "left-auto right-0 top-0",
+  "operational-rigor": "right-auto left-0 top-4",
+  "complex-tech": "left-auto right-8 top-8",
+  "gtm-engines": "right-auto left-8 top-0",
 };
 
 const SummarySection = () => {
@@ -220,7 +220,8 @@ const SummarySection = () => {
                 }}
                 onMouseEnter={handleCardEnter}
                 onMouseLeave={handleCardLeave}
-                className="absolute z-20 inset-x-0 top-4 hidden lg:flex justify-center pointer-events-none"
+                className={`absolute z-20 hidden lg:block pointer-events-none ${cardPositionStyles[currentCard.id] || "left-0 top-0"}`}
+                style={{ maxWidth: "40%" }}
               >
                 <div className="pointer-events-auto w-full max-w-2xl rounded-xl border border-accent/20 bg-[hsl(220,18%,8%)]/[0.97] backdrop-blur-2xl shadow-[0_8px_60px_-12px_hsl(210,70%,45%,0.15)] overflow-hidden">
                   {/* Card header */}
