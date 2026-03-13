@@ -1,6 +1,6 @@
 import { ContactForm } from "@/components/ContactForm";
 import { BookingSection } from "@/components/BookingSection";
-import { AnimatedBackground } from "@/components/AnimatedBackground";
+import { CanvasWaveBackground } from "@/components/CanvasWaveBackground";
 import { SummarySection } from "@/components/SummarySection";
 import { OperatingPrinciples } from "@/components/OperatingPrinciples";
 import { Button } from "@/components/ui/button";
