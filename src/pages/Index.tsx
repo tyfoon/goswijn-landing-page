@@ -1,5 +1,6 @@
 import { ContactForm } from "@/components/ContactForm";
 import { BookingSection } from "@/components/BookingSection";
+import { AnimatedDotGrid } from "@/components/AnimatedDotGrid";
 import { SummarySection } from "@/components/SummarySection";
 import { OperatingPrinciples } from "@/components/OperatingPrinciples";
 import { Button } from "@/components/ui/button";
@@ -63,8 +64,9 @@ const Index = () => {
       {/* Contact & Booking Section */}
       <section
         id="contact"
-        className="relative bg-background py-24 px-6 md:px-12 lg:px-16 overflow-hidden animate-on-scroll dot-grid"
+        className="relative bg-background py-24 px-6 md:px-12 lg:px-16 overflow-hidden animate-on-scroll"
       >
+        <AnimatedDotGrid />
         {/* Parallax background elements */}
         <div
           className="absolute top-0 left-0 w-72 h-72 rounded-full bg-primary/5 blur-3xl"

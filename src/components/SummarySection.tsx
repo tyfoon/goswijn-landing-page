@@ -1,6 +1,7 @@
 import { useState, useRef, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useIsMobile } from "@/hooks/use-mobile";
+import { AnimatedDotGrid } from "@/components/AnimatedDotGrid";
 
 interface EvidenceCard {
   id: string;
@@ -159,8 +160,9 @@ const SummarySection = () => {
     <section
       id="summary"
       ref={sectionRef}
-      className="relative bg-background min-h-screen overflow-hidden dot-grid"
+      className="relative bg-background min-h-screen overflow-hidden"
     >
+      <AnimatedDotGrid />
       {/* Ambient glow */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] rounded-full bg-accent/[0.04] blur-[120px]" />
