@@ -1,5 +1,6 @@
 import { ContactForm } from "@/components/ContactForm";
 import { BookingSection } from "@/components/BookingSection";
+import { SummarySection } from "@/components/SummarySection";
 import { Button } from "@/components/ui/button";
 
 import portraitImage from "@/assets/goswijn-portrait-new.png";
@@ -101,6 +102,10 @@ const Index = () => {
               label: "Home"
             },
             {
+              id: "summary",
+              label: "Track Record"
+            },
+            {
               id: "contact",
               label: "Let's connect"
             }].
@@ -154,6 +159,10 @@ const Index = () => {
           {
             id: "hero",
             label: "Home"
+          },
+          {
+            id: "summary",
+            label: "Track Record"
           },
           {
             id: "contact",
@@ -250,6 +259,9 @@ const Index = () => {
           </main>
         </div>
       </section>
+      {/* Summary Section */}
+      <SummarySection />
+
       {/* Contact & Booking Section */}
       <section
         id="contact"

@@ -1,0 +1,317 @@
+import { useState, useRef, useCallback } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+
+interface EvidenceCard {
+  id: string;
+  title: string;
+  context: string;
+  achievements: {
+    situation: string;
+    action: string;
+    result: string;
+  }[];
+  position: "left" | "right" | "center-left" | "center-right";
+}
+
+const evidenceData: Record<string, EvidenceCard> = {
+  "hyper-growth": {
+    id: "hyper-growth",
+    title: "The Scale-Up & Big Tech",
+    context: "10+ years driving hyper-growth across VC-backed startups and Big Tech platforms.",
+    achievements: [
+      {
+        situation: "VC-backed startup Tridion needed global marketing built from scratch.",
+        action: "Built and scaled marketing organization from 10 to 150+ FTEs.",
+        result: "Grew from $0 to $30M ARR, leading to successful acquisition.",
+      },
+      {
+        situation: "Google DoubleClick's programmatic business in Benelux was at $1M.",
+        action: "Scaled the programmatic business and built EMEA's fastest-growing unit.",
+        result: "200x growth to >$200M in revenue.",
+      },
+    ],
+    position: "right",
+  },
+  "operational-rigor": {
+    id: "operational-rigor",
+    title: "The Operator",
+    context: "Heavy P&L ownership and turnaround leadership across PE-backed and Fortune 500 environments.",
+    achievements: [
+      {
+        situation: "PE/Founder-backed Eyeo (350M users) needed restructuring of a $30M+ business.",
+        action: "Aligned Product, Engineering, and Sales under unified commercial strategy.",
+        result: "20% ARR growth and 20% EBITDA optimization.",
+      },
+      {
+        situation: "ExxonMobil 30-site retail network ($200M+ revenue) needed profitability improvement.",
+        action: "Optimized full P&L across the entire retail network.",
+        result: "Increased network profitability by 82% over 3 years.",
+      },
+    ],
+    position: "left",
+  },
+  "complex-tech": {
+    id: "complex-tech",
+    title: "The Technologist",
+    context: "Bridging deep technology platforms with Enterprise Sales at Microsoft and Google Cloud.",
+    achievements: [
+      {
+        situation: "Microsoft's complex multi-product portfolio needed accelerated corporate account growth.",
+        action: "Led Corporate Accounts across the full Microsoft stack.",
+        result: "Accelerated YoY revenue growth to >25%, reaching $150M ARR.",
+      },
+      {
+        situation: "Google Cloud EMEA needed to shift Martech focus toward higher-value workloads.",
+        action: "Spearheaded pivot to Security, Data, and AI workloads.",
+        result: "Massively accelerated pipeline velocity across EMEA.",
+      },
+    ],
+    position: "center-right",
+  },
+  "gtm-engines": {
+    id: "gtm-engines",
+    title: "The Execution",
+    context: "Executive matrix leadership under extreme constraints at Google Cloud.",
+    achievements: [
+      {
+        situation: "Full funnel management under flat budget and zero headcount growth.",
+        action: "Seamlessly aligned BDRs, Sales, and CS with shared OKRs.",
+        result: "#1 global productivity, 95% YoY growth, and >$750M pipeline.",
+      },
+    ],
+    position: "center-left",
+  },
+};
+
+const cardPositionStyles: Record<string, string> = {
+  right: "left-[55%] top-[10%]",
+  left: "right-[55%] top-[15%]",
+  "center-right": "left-[50%] top-[5%]",
+  "center-left": "right-[50%] top-[20%]",
+};
+
+const SummarySection = () => {
+  const [activeCard, setActiveCard] = useState<string | null>(null);
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const handleHover = useCallback((id: string) => {
+    if (timeoutRef.current) clearTimeout(timeoutRef.current);
+    setActiveCard(id);
+  }, []);
+
+  const handleLeave = useCallback(() => {
+    timeoutRef.current = setTimeout(() => {
+      setActiveCard(null);
+    }, 200);
+  }, []);
+
+  const handleCardEnter = useCallback(() => {
+    if (timeoutRef.current) clearTimeout(timeoutRef.current);
+  }, []);
+
+  const handleCardLeave = useCallback(() => {
+    timeoutRef.current = setTimeout(() => {
+      setActiveCard(null);
+    }, 200);
+  }, []);
+
+  const InteractivePhrase = ({
+    id,
+    children,
+  }: {
+    id: string;
+    children: React.ReactNode;
+  }) => (
+    <span
+      onMouseEnter={() => handleHover(id)}
+      onMouseLeave={handleLeave}
+      className={`
+        relative cursor-pointer transition-all duration-300
+        border-b-2 border-dashed
+        ${
+          activeCard === id
+            ? "border-accent text-accent"
+            : "border-accent/40 text-foreground/90 hover:text-accent hover:border-accent"
+        }
+      `}
+    >
+      {children}
+    </span>
+  );
+
+  const currentCard = activeCard ? evidenceData[activeCard] : null;
+
+  return (
+    <section
+      id="summary"
+      ref={sectionRef}
+      className="relative bg-[hsl(220,18%,6%)] min-h-[80vh] overflow-hidden"
+    >
+      {/* Ambient glow */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] rounded-full bg-accent/[0.04] blur-[120px]" />
+        <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] rounded-full bg-accent/[0.03] blur-[100px]" />
+      </div>
+
+      <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 lg:px-16 py-24 md:py-32">
+        {/* Section label */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="mb-12"
+        >
+          <span className="text-accent/60 text-xs md:text-sm font-mono tracking-[0.2em] uppercase">
+            Track Record
+          </span>
+          <div className="mt-2 w-12 h-[2px] bg-accent/30" />
+        </motion.div>
+
+        {/* Main content area */}
+        <div className="relative">
+          {/* Summary text - sticky behavior */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="lg:max-w-[55%]"
+          >
+            <p className="text-lg md:text-xl lg:text-2xl leading-relaxed md:leading-relaxed lg:leading-[1.8] text-[hsl(40,20%,82%)] font-light">
+              <InteractivePhrase id="hyper-growth">
+                Driving sustainable, multi-geo hyper-growth
+              </InteractivePhrase>{" "}
+              across Big Tech and high-velocity scale-ups. As a P&L owner, I{" "}
+              <InteractivePhrase id="operational-rigor">
+                combine corporate operational rigor with situational grit
+              </InteractivePhrase>
+              . As a 'Commercial Technologist', I{" "}
+              <InteractivePhrase id="complex-tech">
+                bridge complex tech (AI, Data, Cloud, AdTech) with commercial
+                scaling
+              </InteractivePhrase>
+              ,{" "}
+              <InteractivePhrase id="gtm-engines">
+                building data-driven GTM engines that capture market share and
+                deliver predictable ARR and profitability without breaking
+              </InteractivePhrase>
+              .
+            </p>
+
+            <p className="mt-6 text-sm text-[hsl(40,20%,60%)]">
+              ← Hover the highlighted phrases to explore the evidence
+            </p>
+          </motion.div>
+
+          {/* Evidence Cards - positioned to the right on desktop */}
+          <AnimatePresence mode="wait">
+            {currentCard && (
+              <motion.div
+                key={currentCard.id}
+                initial={{ opacity: 0, y: 20, scale: 0.96 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                exit={{ opacity: 0, y: -10, scale: 0.96 }}
+                transition={{
+                  type: "spring",
+                  stiffness: 300,
+                  damping: 30,
+                  mass: 0.8,
+                }}
+                onMouseEnter={handleCardEnter}
+                onMouseLeave={handleCardLeave}
+                className={`
+                  absolute z-20 w-[420px] max-w-[90vw]
+                  hidden lg:block
+                  ${cardPositionStyles[currentCard.position]}
+                `}
+              >
+                <div className="rounded-xl border border-accent/20 bg-[hsl(220,16%,10%)]/95 backdrop-blur-xl shadow-2xl shadow-accent/[0.08] overflow-hidden">
+                  {/* Card header */}
+                  <div className="px-6 pt-6 pb-4 border-b border-accent/10">
+                    <h3 className="text-accent text-sm font-mono tracking-[0.15em] uppercase">
+                      {currentCard.title}
+                    </h3>
+                    <p className="mt-2 text-[hsl(40,20%,70%)] text-sm leading-relaxed">
+                      {currentCard.context}
+                    </p>
+                  </div>
+
+                  {/* SAR entries */}
+                  <div className="px-6 py-5 space-y-5">
+                    {currentCard.achievements.map((sar, i) => (
+                      <motion.div
+                        key={i}
+                        initial={{ opacity: 0, x: 10 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: 0.1 + i * 0.1 }}
+                        className="space-y-2"
+                      >
+                        <div className="flex items-start gap-3">
+                          <div className="mt-1.5 w-1.5 h-1.5 rounded-full bg-accent/60 flex-shrink-0" />
+                          <p className="text-[hsl(40,20%,60%)] text-xs leading-relaxed">
+                            {sar.situation} {sar.action}
+                          </p>
+                        </div>
+                        <div className="ml-[18px] pl-3 border-l-2 border-accent/30">
+                          <p className="text-[hsl(40,20%,90%)] text-sm font-medium">
+                            → {sar.result}
+                          </p>
+                        </div>
+                      </motion.div>
+                    ))}
+                  </div>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+
+          {/* Mobile: Cards appear below text */}
+          <AnimatePresence mode="wait">
+            {currentCard && (
+              <motion.div
+                key={`mobile-${currentCard.id}`}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+                transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                className="lg:hidden mt-8"
+              >
+                <div className="rounded-xl border border-accent/20 bg-[hsl(220,16%,10%)]/95 backdrop-blur-xl shadow-2xl overflow-hidden">
+                  <div className="px-5 pt-5 pb-3 border-b border-accent/10">
+                    <h3 className="text-accent text-xs font-mono tracking-[0.15em] uppercase">
+                      {currentCard.title}
+                    </h3>
+                    <p className="mt-2 text-[hsl(40,20%,70%)] text-xs leading-relaxed">
+                      {currentCard.context}
+                    </p>
+                  </div>
+                  <div className="px-5 py-4 space-y-4">
+                    {currentCard.achievements.map((sar, i) => (
+                      <div key={i} className="space-y-1.5">
+                        <div className="flex items-start gap-2.5">
+                          <div className="mt-1.5 w-1 h-1 rounded-full bg-accent/60 flex-shrink-0" />
+                          <p className="text-[hsl(40,20%,60%)] text-xs leading-relaxed">
+                            {sar.situation} {sar.action}
+                          </p>
+                        </div>
+                        <div className="ml-[14px] pl-3 border-l-2 border-accent/30">
+                          <p className="text-[hsl(40,20%,90%)] text-xs font-medium">
+                            → {sar.result}
+                          </p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export { SummarySection };
