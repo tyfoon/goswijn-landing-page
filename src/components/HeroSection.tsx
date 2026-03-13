@@ -9,7 +9,8 @@ interface HeroSectionProps {
 export const HeroSection = ({ scrollY, scrollToSection }: HeroSectionProps) => {
   return (
     <section id="hero" className="relative min-h-screen w-full overflow-hidden bg-background">
-      {/* Subtle floating shapes */}
+      {/* Dot grid pattern */}
+      <div className="absolute inset-0 dot-grid" />
 
       {/* Subtle floating shapes */}
       <div
