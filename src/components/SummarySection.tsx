@@ -296,7 +296,7 @@ const SummarySection = () => {
               .
             </p>
 
-            <p className="mt-6 text-xs text-muted-foreground">
+            <p className="mt-6 text-xs text-muted-foreground text-left w-full max-w-3xl">
               {isMobile ? "← Tap" : "← Hover over"} the highlighted phrases to explore the evidence
             </p>
           </motion.div>
