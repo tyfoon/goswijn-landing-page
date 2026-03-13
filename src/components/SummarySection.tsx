@@ -1,7 +1,7 @@
 import { useState, useRef, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useIsMobile } from "@/hooks/use-mobile";
-import { AnimatedDotGrid } from "@/components/AnimatedDotGrid";
+
 
 interface EvidenceCard {
   id: string;
