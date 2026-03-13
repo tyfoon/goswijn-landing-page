@@ -24,7 +24,7 @@ const logos = [
 export const LogoMarquee = () => {
   return (
     <section
-      className="relative bg-background py-12 border-t border-border/30"
+      className="relative py-12 border-t border-border/30"
       aria-label="Companies I've worked with"
     >
       

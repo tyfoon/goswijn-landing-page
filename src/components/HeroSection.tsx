@@ -9,7 +9,7 @@ interface HeroSectionProps {
 
 export const HeroSection = ({ scrollY, scrollToSection }: HeroSectionProps) => {
   return (
-    <section id="hero" className="relative min-h-screen w-full overflow-hidden bg-background">
+    <section id="hero" className="relative min-h-screen w-full overflow-hidden">
       
 
       {/* Subtle floating shapes */}
