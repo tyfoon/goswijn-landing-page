@@ -146,7 +146,7 @@ const SummarySection = () => {
     <section
       id="summary"
       ref={sectionRef}
-      className="relative bg-[hsl(220,18%,6%)] min-h-[80vh] overflow-hidden"
+      className="relative bg-[hsl(220,18%,6%)] min-h-screen overflow-hidden"
     >
       {/* Ambient glow */}
       <div className="absolute inset-0 pointer-events-none">
