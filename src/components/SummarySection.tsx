@@ -226,7 +226,7 @@ const SummarySection = () => {
                 onMouseEnter={handleCardEnter}
                 onMouseLeave={handleCardLeave}
                 className={`absolute z-20 hidden lg:block pointer-events-none ${cardPositionStyles[currentCard.id] || "left-0 top-0"}`}
-                style={{ maxWidth: "40%" }}
+                style={{ maxWidth: "52%" }}
               >
                 <div className="pointer-events-auto w-full max-w-2xl rounded-xl border border-accent/20 bg-[hsl(220,18%,8%)]/[0.97] backdrop-blur-2xl shadow-[0_8px_60px_-12px_hsl(210,70%,45%,0.15)] overflow-hidden">
                   {/* Card header */}
