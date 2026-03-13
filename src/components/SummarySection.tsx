@@ -123,52 +123,6 @@ const SummarySection = () => {
     setActiveCard((prev) => (prev === id ? null : id));
   }, []);
 
-  // Calculate connecting line coordinates
-  useEffect(() => {
-    if (!activeCard || isMobile || !sectionRef.current) {
-      setLineCoords(null);
-      return;
-    }
-
-    const updateLine = () => {
-      const triggerEl = triggerRefs.current[activeCard];
-      const cardEl = cardRef.current;
-      const sectionEl = sectionRef.current;
-
-      if (!triggerEl || !cardEl || !sectionEl) {
-        setLineCoords(null);
-        return;
-      }
-
-      const sectionRect = sectionEl.getBoundingClientRect();
-      const triggerRect = triggerEl.getBoundingClientRect();
-      const cardRect = cardEl.getBoundingClientRect();
-
-      const side = cardSide[activeCard];
-
-      const x1 = side === "right"
-        ? triggerRect.right - sectionRect.left
-        : triggerRect.left - sectionRect.left;
-      const y1 = triggerRect.top + triggerRect.height / 2 - sectionRect.top;
-
-      const x2 = side === "right"
-        ? cardRect.left - sectionRect.left
-        : cardRect.right - sectionRect.left;
-      const y2 = cardRect.top + Math.min(60, cardRect.height / 2) - sectionRect.top;
-
-      setLineCoords({ x1, y1, x2, y2 });
-    };
-
-    const timer = setTimeout(updateLine, 80);
-    return () => clearTimeout(timer);
-  }, [activeCard, isMobile]);
-
-  // Clear line immediately when card closes
-  useEffect(() => {
-    if (!activeCard) {
-      setLineCoords(null);
-    }
-  }, [activeCard]);
 
   const InteractivePhrase = ({
     id,
