@@ -233,7 +233,7 @@ const SummarySection = () => {
                   damping: 30,
                   mass: 0.8,
                 }}
-                ref={cardRef}
+                
                 onMouseEnter={handleCardEnter}
                 onMouseLeave={handleCardLeave}
                 className={`absolute z-20 hidden lg:block -top-4 ${
