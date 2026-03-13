@@ -251,6 +251,9 @@ const Index = () => {
           </main>
         </div>
       </section>
+      {/* Summary Section */}
+      <SummarySection />
+
       {/* Contact & Booking Section */}
       <section
         id="contact"
