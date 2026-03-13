@@ -40,7 +40,7 @@ export const OperatingPrinciples = () => {
       id="principles"
       className="relative bg-background py-24 md:py-32 px-6 md:px-12 lg:px-16 overflow-hidden"
     >
-      <AnimatedDotGrid />
+      
       {/* Ambient radial glow */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full bg-accent/[0.03] blur-[150px]" />

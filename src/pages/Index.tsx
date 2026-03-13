@@ -53,6 +53,7 @@ const Index = () => {
 
   return (
     <div className="relative w-full">
+      <AnimatedBackground />
       <SiteHeader activeSection={activeSection} scrollToSection={scrollToSection} />
 
       <HeroSection scrollY={scrollY} scrollToSection={scrollToSection} />
