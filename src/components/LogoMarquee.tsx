@@ -23,7 +23,7 @@ const logos = [
 export const LogoMarquee = () => {
   return (
     <section
-      className="relative bg-background py-12 border-t border-border/30"
+      className="relative bg-background py-12 border-t border-border/30 dot-grid"
       aria-label="Companies I've worked with"
     >
       <div className="flex flex-wrap items-center justify-center gap-8 md:gap-12 lg:gap-16 max-w-5xl mx-auto px-6">
