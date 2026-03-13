@@ -28,7 +28,6 @@ export const LogoMarquee = () => {
       aria-label="Companies I've worked with"
     >
       <AnimatedDotGrid />
-    >
       <div className="flex flex-wrap items-center justify-center gap-8 md:gap-12 lg:gap-16 max-w-5xl mx-auto px-6">
         {logos.map((logo, i) => (
           <div key={i} className="flex items-center justify-center">
