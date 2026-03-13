@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { AnimatedDotGrid } from "@/components/AnimatedDotGrid";
+
 import portraitImage from "@/assets/goswijn-portrait-new.png";
 
 interface HeroSectionProps {
