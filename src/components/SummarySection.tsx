@@ -169,17 +169,16 @@ const SummarySection = () => {
           <div className="mt-2 w-12 h-[2px] bg-accent/30" />
         </motion.div>
 
-        {/* Main content area */}
+        {/* Main content: full-width summary with overlay card */}
         <div className="relative">
-          {/* Summary text - sticky behavior */}
+          {/* Summary text - full width */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="lg:max-w-[55%]"
           >
-            <p className="text-lg md:text-xl lg:text-2xl leading-relaxed md:leading-relaxed lg:leading-[1.8] text-[hsl(40,20%,82%)] font-light">
+            <p className="text-lg md:text-xl lg:text-2xl xl:text-[1.7rem] leading-relaxed md:leading-relaxed lg:leading-[1.9] xl:leading-[2] text-[hsl(40,20%,82%)] font-light max-w-5xl">
               <InteractivePhrase id="hyper-growth">
                 Driving sustainable, multi-geo hyper-growth
               </InteractivePhrase>{" "}
@@ -205,14 +204,14 @@ const SummarySection = () => {
             </p>
           </motion.div>
 
-          {/* Evidence Cards - positioned to the right on desktop */}
+          {/* Evidence Card - centered overlay on desktop */}
           <AnimatePresence mode="wait">
             {currentCard && (
               <motion.div
                 key={currentCard.id}
-                initial={{ opacity: 0, y: 20, scale: 0.96 }}
+                initial={{ opacity: 0, y: 24, scale: 0.95 }}
                 animate={{ opacity: 1, y: 0, scale: 1 }}
-                exit={{ opacity: 0, y: -10, scale: 0.96 }}
+                exit={{ opacity: 0, y: -12, scale: 0.97 }}
                 transition={{
                   type: "spring",
                   stiffness: 300,
@@ -221,31 +220,29 @@ const SummarySection = () => {
                 }}
                 onMouseEnter={handleCardEnter}
                 onMouseLeave={handleCardLeave}
-                className={`
-                  absolute z-20 w-[420px] max-w-[90vw]
-                  hidden lg:block
-                  ${cardPositionStyles[currentCard.position]}
-                `}
+                className="absolute z-20 inset-x-0 top-4 hidden lg:flex justify-center pointer-events-none"
               >
-                <div className="rounded-xl border border-accent/20 bg-[hsl(220,16%,10%)]/95 backdrop-blur-xl shadow-2xl shadow-accent/[0.08] overflow-hidden">
+                <div className="pointer-events-auto w-full max-w-2xl rounded-xl border border-accent/20 bg-[hsl(220,18%,8%)]/[0.97] backdrop-blur-2xl shadow-[0_8px_60px_-12px_hsl(210,70%,45%,0.15)] overflow-hidden">
                   {/* Card header */}
-                  <div className="px-6 pt-6 pb-4 border-b border-accent/10">
-                    <h3 className="text-accent text-sm font-mono tracking-[0.15em] uppercase">
-                      {currentCard.title}
-                    </h3>
-                    <p className="mt-2 text-[hsl(40,20%,70%)] text-sm leading-relaxed">
-                      {currentCard.context}
-                    </p>
+                  <div className="px-8 pt-6 pb-4 border-b border-accent/10 flex items-center justify-between">
+                    <div>
+                      <h3 className="text-accent text-sm font-mono tracking-[0.15em] uppercase">
+                        {currentCard.title}
+                      </h3>
+                      <p className="mt-1.5 text-[hsl(40,20%,65%)] text-sm leading-relaxed">
+                        {currentCard.context}
+                      </p>
+                    </div>
                   </div>
 
-                  {/* SAR entries */}
-                  <div className="px-6 py-5 space-y-5">
+                  {/* SAR entries - horizontal when 2 items, single when 1 */}
+                  <div className={`px-8 py-6 ${currentCard.achievements.length > 1 ? 'grid grid-cols-2 gap-6' : ''}`}>
                     {currentCard.achievements.map((sar, i) => (
                       <motion.div
                         key={i}
-                        initial={{ opacity: 0, x: 10 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: 0.1 + i * 0.1 }}
+                        initial={{ opacity: 0, y: 8 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.08 + i * 0.08 }}
                         className="space-y-2"
                       >
                         <div className="flex items-start gap-3">
