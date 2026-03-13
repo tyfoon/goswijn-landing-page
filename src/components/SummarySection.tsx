@@ -255,7 +255,7 @@ const SummarySection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="mb-12 flex justify-center"
+          className="mb-12"
         >
           <div>
             <span className="text-accent/60 text-xs md:text-sm font-mono tracking-[0.2em] uppercase">
@@ -275,7 +275,7 @@ const SummarySection = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="flex flex-col items-center"
           >
-            <p className="text-base md:text-lg lg:text-xl leading-relaxed md:leading-relaxed lg:leading-[1.9] text-foreground/85 font-light max-w-3xl text-center">
+            <p className="text-base md:text-lg lg:text-xl leading-relaxed md:leading-relaxed lg:leading-[1.9] text-foreground/85 font-light max-w-3xl text-left">
               <InteractivePhrase id="hyper-growth">
                 Driving sustainable, multi-geo hyper-growth
               </InteractivePhrase>{" "}
@@ -296,7 +296,7 @@ const SummarySection = () => {
               .
             </p>
 
-            <p className="mt-6 text-xs text-muted-foreground">
+            <p className="mt-6 text-xs text-muted-foreground text-left w-full max-w-3xl">
               {isMobile ? "← Tap" : "← Hover over"} the highlighted phrases to explore the evidence
             </p>
           </motion.div>
