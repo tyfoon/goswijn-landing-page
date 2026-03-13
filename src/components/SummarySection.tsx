@@ -144,6 +144,7 @@ const SummarySection = () => {
 
   return (
     <section
+      id="summary"
       ref={sectionRef}
       className="relative bg-[hsl(220,18%,6%)] min-h-[80vh] overflow-hidden"
     >
