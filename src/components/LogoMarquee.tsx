@@ -21,21 +21,18 @@ const logos = [
 ];
 
 export const LogoMarquee = () => {
-  // Duplicate logos for seamless infinite scroll
-  const allLogos = [...logos, ...logos];
-
   return (
     <section
-      className="relative bg-background py-12 overflow-hidden border-t border-border/30"
+      className="relative bg-background py-12 border-t border-border/30"
       aria-label="Companies I've worked with"
     >
-      <div className="flex animate-marquee w-max">
-        {allLogos.map((logo, i) => (
-          <div key={i} className="flex items-center justify-center px-8 md:px-12 lg:px-16 flex-shrink-0">
+      <div className="flex flex-wrap items-center justify-center gap-8 md:gap-12 lg:gap-16 max-w-5xl mx-auto px-6">
+        {logos.map((logo, i) => (
+          <div key={i} className="flex items-center justify-center">
             <img
               src={logo.src}
               alt={logo.alt}
-              className={`${logo.height} w-auto max-w-[120px] object-contain brightness-75 opacity-50 hover:opacity-80 hover:brightness-100 transition-all duration-300`}
+              className={`${logo.height} w-auto max-w-[120px] object-contain grayscale opacity-50`}
             />
           </div>
         ))}
