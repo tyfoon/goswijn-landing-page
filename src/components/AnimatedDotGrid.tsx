@@ -8,6 +8,7 @@ export const AnimatedDotGrid = ({ className = "" }: AnimatedDotGridProps) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const animationRef = useRef<number>(0);
   const startTimeRef = useRef<number>(0);
+  const fgColorRef = useRef<string>("");
 
   const draw = useCallback((timestamp: number) => {
     const canvas = canvasRef.current;
@@ -17,7 +18,7 @@ export const AnimatedDotGrid = ({ className = "" }: AnimatedDotGridProps) => {
     if (!ctx) return;
 
     if (!startTimeRef.current) startTimeRef.current = timestamp;
-    const elapsed = (timestamp - startTimeRef.current) * 0.0003; // very slow
+    const t = (timestamp - startTimeRef.current) * 0.00015; // very slow time progression
 
     const dpr = window.devicePixelRatio || 1;
     const w = canvas.clientWidth;
@@ -26,36 +27,42 @@ export const AnimatedDotGrid = ({ className = "" }: AnimatedDotGridProps) => {
     if (canvas.width !== w * dpr || canvas.height !== h * dpr) {
       canvas.width = w * dpr;
       canvas.height = h * dpr;
-      ctx.scale(dpr, dpr);
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+      // Cache foreground color on resize
+      const style = getComputedStyle(canvas);
+      fgColorRef.current = style.getPropertyValue("--foreground").trim();
     }
 
     ctx.clearRect(0, 0, w, h);
 
     const spacing = 32;
-    const cols = Math.ceil(w / spacing) + 1;
-    const rows = Math.ceil(h / spacing) + 1;
-
-    // Read CSS custom property for foreground color
-    const style = getComputedStyle(canvas);
-    const fg = style.getPropertyValue("--foreground").trim();
+    const cols = Math.ceil(w / spacing) + 2;
+    const rows = Math.ceil(h / spacing) + 2;
+    const fg = fgColorRef.current;
 
     for (let row = 0; row < rows; row++) {
       for (let col = 0; col < cols; col++) {
-        const x = col * spacing;
-        const y = row * spacing;
+        const baseX = col * spacing;
+        const baseY = row * spacing;
 
-        // 3D wave: combine two sine waves at different angles for organic feel
-        const wave1 = Math.sin(x * 0.008 + elapsed * 1.2) * Math.cos(y * 0.006 + elapsed * 0.8);
-        const wave2 = Math.sin((x + y) * 0.005 + elapsed * 0.6) * 0.5;
-        const wave = (wave1 + wave2) / 1.5; // normalise to ~[-1, 1]
+        // Two overlapping waves travelling diagonally across the grid
+        // Using grid indices (not pixels) for visible spatial variation
+        const wave1 = Math.sin(col * 0.4 + row * 0.3 + t * 2.0);
+        const wave2 = Math.sin(col * 0.25 - row * 0.35 + t * 1.4) * 0.6;
+        const wave = (wave1 + wave2) / 1.6; // range ~[-1, 1]
 
-        // Map wave to opacity (0.02 – 0.09) and subtle size variation
-        const opacity = 0.035 + wave * 0.03;
-        const radius = 0.8 + wave * 0.25;
+        // Positional displacement — dots drift slightly for a 3D ripple feel
+        const dx = wave * 1.8;
+        const dy = Math.cos(col * 0.3 + row * 0.4 + t * 1.6) * 1.5;
+
+        // Opacity and size modulation
+        const opacity = 0.04 + wave * 0.035;
+        const radius = 0.8 + wave * 0.3;
 
         ctx.beginPath();
-        ctx.arc(x, y, radius, 0, Math.PI * 2);
-        ctx.fillStyle = `hsl(${fg} / ${opacity})`;
+        ctx.arc(baseX + dx, baseY + dy, Math.max(0.3, radius), 0, Math.PI * 2);
+        ctx.fillStyle = `hsl(${fg} / ${Math.max(0.01, opacity)})`;
         ctx.fill();
       }
     }

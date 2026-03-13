@@ -5,6 +5,7 @@ import linkedinIcon from "@/assets/linkedin-icon.jpg";
 const NAV_ITEMS = [
   { id: "hero", label: "Home" },
   { id: "summary", label: "Track Record" },
+  { id: "principles", label: "Principles" },
   { id: "contact", label: "Let's connect" },
 ];
 
