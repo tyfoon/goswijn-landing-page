@@ -38,7 +38,7 @@ export const OperatingPrinciples = () => {
   return (
     <section
       id="principles"
-      className="relative bg-secondary/30 py-24 md:py-32 px-6 md:px-12 lg:px-16 overflow-hidden"
+      className="relative bg-background py-24 md:py-32 px-6 md:px-12 lg:px-16 overflow-hidden"
     >
       <AnimatedDotGrid />
       {/* Ambient radial glow */}
