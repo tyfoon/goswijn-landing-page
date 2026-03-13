@@ -1,5 +1,6 @@
 import { ContactForm } from "@/components/ContactForm";
 import { BookingSection } from "@/components/BookingSection";
+import { SummarySection } from "@/components/SummarySection";
 import { Button } from "@/components/ui/button";
 
 import portraitImage from "@/assets/goswijn-portrait-new.png";
