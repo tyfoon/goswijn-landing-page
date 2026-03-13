@@ -149,13 +149,11 @@ const SummarySection = () => {
 
       const side = cardSide[activeCard];
 
-      // Trigger point: edge of the phrase closest to the card
       const x1 = side === "right"
         ? triggerRect.right - sectionRect.left
         : triggerRect.left - sectionRect.left;
       const y1 = triggerRect.top + triggerRect.height / 2 - sectionRect.top;
 
-      // Card point: edge of card closest to text
       const x2 = side === "right"
         ? cardRect.left - sectionRect.left
         : cardRect.right - sectionRect.left;
@@ -164,10 +162,16 @@ const SummarySection = () => {
       setLineCoords({ x1, y1, x2, y2 });
     };
 
-    // Small delay to let card animate in
     const timer = setTimeout(updateLine, 80);
     return () => clearTimeout(timer);
   }, [activeCard, isMobile]);
+
+  // Clear line immediately when card closes
+  useEffect(() => {
+    if (!activeCard) {
+      setLineCoords(null);
+    }
+  }, [activeCard]);
 
   const InteractivePhrase = ({
     id,
@@ -211,32 +215,38 @@ const SummarySection = () => {
       </div>
 
       {/* Connecting line SVG */}
-      {lineCoords && !isMobile && (
-        <svg
-          className="absolute inset-0 w-full h-full pointer-events-none z-15"
-          style={{ overflow: "visible" }}
-        >
-          <motion.path
-            d={`M ${lineCoords.x1} ${lineCoords.y1} C ${(lineCoords.x1 + lineCoords.x2) / 2} ${lineCoords.y1}, ${(lineCoords.x1 + lineCoords.x2) / 2} ${lineCoords.y2}, ${lineCoords.x2} ${lineCoords.y2}`}
-            stroke="hsl(var(--accent) / 0.25)"
-            strokeWidth="1"
-            fill="none"
-            initial={{ pathLength: 0, opacity: 0 }}
-            animate={{ pathLength: 1, opacity: 1 }}
-            transition={{ duration: 0.4, ease: "easeOut" }}
-          />
-          {/* Dot at trigger end */}
-          <motion.circle
-            cx={lineCoords.x1}
-            cy={lineCoords.y1}
-            r="3"
-            fill="hsl(var(--accent) / 0.5)"
+      <AnimatePresence>
+        {lineCoords && activeCard && !isMobile && (
+          <motion.svg
+            key="connector-line"
+            className="absolute inset-0 w-full h-full pointer-events-none z-15"
+            style={{ overflow: "visible" }}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 0.2 }}
-          />
-        </svg>
-      )}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.15 }}
+          >
+            <motion.path
+              d={`M ${lineCoords.x1} ${lineCoords.y1} C ${(lineCoords.x1 + lineCoords.x2) / 2} ${lineCoords.y1}, ${(lineCoords.x1 + lineCoords.x2) / 2} ${lineCoords.y2}, ${lineCoords.x2} ${lineCoords.y2}`}
+              stroke="hsl(var(--accent) / 0.25)"
+              strokeWidth="1"
+              fill="none"
+              initial={{ pathLength: 0 }}
+              animate={{ pathLength: 1 }}
+              transition={{ duration: 0.4, ease: "easeOut" }}
+            />
+            <motion.circle
+              cx={lineCoords.x1}
+              cy={lineCoords.y1}
+              r="3"
+              fill="hsl(var(--accent) / 0.5)"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.2 }}
+            />
+          </motion.svg>
+        )}
+      </AnimatePresence>
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 lg:px-16 py-24 md:py-32">
         {/* Section label */}
@@ -308,40 +318,42 @@ const SummarySection = () => {
                 ref={cardRef}
                 onMouseEnter={handleCardEnter}
                 onMouseLeave={handleCardLeave}
-                className={`absolute z-20 hidden lg:block top-0 ${
-                  currentSide === "left" ? "left-0" : "right-0"
+                className={`absolute z-20 hidden lg:block -top-4 ${
+                  currentSide === "left" ? "-left-8 xl:-left-16" : "-right-8 xl:-right-16"
                 }`}
-                style={{ maxWidth: "380px" }}
+                style={{ maxWidth: "560px", minWidth: "480px" }}
               >
                 <div className="w-full rounded-xl border border-accent/20 bg-card/[0.97] backdrop-blur-2xl shadow-[0_8px_60px_-12px_hsl(210,70%,45%,0.15)] overflow-hidden">
                   {/* Card header */}
-                  <div className="px-6 pt-5 pb-3 border-b border-accent/10">
-                    <h3 className="text-accent text-xs font-mono tracking-[0.15em] uppercase">
-                      {currentCard.title}
-                    </h3>
-                    <p className="mt-1.5 text-muted-foreground text-xs leading-relaxed">
-                      {currentCard.context}
-                    </p>
+                  <div className="px-8 pt-6 pb-4 border-b border-accent/10 flex items-center justify-between">
+                    <div>
+                      <h3 className="text-accent text-sm font-mono tracking-[0.15em] uppercase">
+                        {currentCard.title}
+                      </h3>
+                      <p className="mt-1.5 text-muted-foreground text-sm leading-relaxed">
+                        {currentCard.context}
+                      </p>
+                    </div>
                   </div>
 
-                  {/* SAR entries */}
-                  <div className="px-6 py-4 space-y-4">
+                  {/* SAR entries - horizontal layout */}
+                  <div className={`px-8 py-6 ${currentCard.achievements.length > 1 ? 'grid grid-cols-2 gap-6' : ''}`}>
                     {currentCard.achievements.map((sar, i) => (
                       <motion.div
                         key={i}
                         initial={{ opacity: 0, y: 8 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.08 + i * 0.08 }}
-                        className="space-y-1.5"
+                        className="space-y-2"
                       >
-                        <div className="flex items-start gap-2.5">
+                        <div className="flex items-start gap-3">
                           <div className="mt-1.5 w-1.5 h-1.5 rounded-full bg-accent/60 flex-shrink-0" />
                           <p className="text-muted-foreground text-xs leading-relaxed">
                             {sar.situation} {sar.action}
                           </p>
                         </div>
-                        <div className="ml-[16px] pl-3 border-l-2 border-accent/30">
-                          <p className="text-foreground text-xs font-medium">
+                        <div className="ml-[18px] pl-3 border-l-2 border-accent/30">
+                          <p className="text-foreground text-sm font-medium">
                             → {sar.result}
                           </p>
                         </div>
