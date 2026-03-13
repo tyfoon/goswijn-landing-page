@@ -1,4 +1,4 @@
-import { AnimatedDotGrid } from "@/components/AnimatedDotGrid";
+
 import adblockPlusLogo from "@/assets/adblock-plus.svg";
 import adblockLogo from "@/assets/adblock.svg";
 import doubleclickLogo from "@/assets/doubleclick.png";
