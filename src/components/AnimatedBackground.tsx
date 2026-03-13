@@ -3,7 +3,7 @@ import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 export const AnimatedBackground = () => {
   return (
     <div
-      className="fixed inset-0 w-full h-full pointer-events-none opacity-30"
+      className="fixed inset-0 w-full h-full pointer-events-none opacity-[0.07]"
       style={{ zIndex: 0 }}
     >
       <DotLottieReact
