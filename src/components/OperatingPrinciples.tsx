@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Layers, Network, Compass } from "lucide-react";
+import { AnimatedDotGrid } from "@/components/AnimatedDotGrid";
 
 const principles = [
   {
