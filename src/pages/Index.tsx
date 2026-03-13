@@ -1,6 +1,6 @@
 import { ContactForm } from "@/components/ContactForm";
 import { BookingSection } from "@/components/BookingSection";
-import { AnimatedBackground } from "@/components/AnimatedBackground";
+import { CanvasWaveBackground } from "@/components/CanvasWaveBackground";
 import { SummarySection } from "@/components/SummarySection";
 import { OperatingPrinciples } from "@/components/OperatingPrinciples";
 import { Button } from "@/components/ui/button";
@@ -53,7 +53,7 @@ const Index = () => {
 
   return (
     <div className="relative w-full">
-      <AnimatedBackground />
+      <CanvasWaveBackground />
       <SiteHeader activeSection={activeSection} scrollToSection={scrollToSection} />
 
       <HeroSection scrollY={scrollY} scrollToSection={scrollToSection} />
