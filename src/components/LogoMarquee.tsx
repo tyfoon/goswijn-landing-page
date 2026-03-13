@@ -24,8 +24,10 @@ const logos = [
 export const LogoMarquee = () => {
   return (
     <section
-      className="relative bg-background py-12 border-t border-border/30 dot-grid"
+      className="relative bg-background py-12 border-t border-border/30"
       aria-label="Companies I've worked with"
+    >
+      <AnimatedDotGrid />
     >
       <div className="flex flex-wrap items-center justify-center gap-8 md:gap-12 lg:gap-16 max-w-5xl mx-auto px-6">
         {logos.map((logo, i) => (
