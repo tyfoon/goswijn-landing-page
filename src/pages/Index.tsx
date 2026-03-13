@@ -58,6 +58,8 @@ const Index = () => {
 
       <SummarySection />
 
+      <OperatingPrinciples />
+
       {/* Contact & Booking Section */}
       <section
         id="contact"
