@@ -1,6 +1,6 @@
 import { ContactForm } from "@/components/ContactForm";
 import { BookingSection } from "@/components/BookingSection";
-import { AnimatedDotGrid } from "@/components/AnimatedDotGrid";
+import { AnimatedBackground } from "@/components/AnimatedBackground";
 import { SummarySection } from "@/components/SummarySection";
 import { OperatingPrinciples } from "@/components/OperatingPrinciples";
 import { Button } from "@/components/ui/button";
@@ -53,6 +53,7 @@ const Index = () => {
 
   return (
     <div className="relative w-full">
+      <AnimatedBackground />
       <SiteHeader activeSection={activeSection} scrollToSection={scrollToSection} />
 
       <HeroSection scrollY={scrollY} scrollToSection={scrollToSection} />
@@ -66,7 +67,7 @@ const Index = () => {
         id="contact"
         className="relative bg-background py-24 px-6 md:px-12 lg:px-16 overflow-hidden animate-on-scroll"
       >
-        <AnimatedDotGrid />
+        
         {/* Parallax background elements */}
         <div
           className="absolute top-0 left-0 w-72 h-72 rounded-full bg-primary/5 blur-3xl"
