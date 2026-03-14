@@ -27,11 +27,11 @@ export const LogoMarquee = () => {
   return (
     <section
       className="relative py-12 border-t border-border/30"
-      aria-label="Companies I've worked with"
+      aria-label="Companies I've worked for"
     >
       {/* Visible label */}
       <p className="text-center text-xs section-label tracking-widest uppercase text-muted-foreground/50 mb-8">
-        Companies I've worked with
+        Companies I've worked for
       </p>
 
       <div className="flex flex-wrap items-center justify-center gap-8 md:gap-12 lg:gap-16 max-w-5xl mx-auto px-6">
