@@ -72,7 +72,7 @@ const SummarySection = () => {
         <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] rounded-full bg-accent/[0.03] blur-[100px]" />
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 lg:px-16 py-24 md:py-32">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 lg:px-16 py-20 md:py-24">
         {/* Section label */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
