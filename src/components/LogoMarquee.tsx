@@ -6,7 +6,7 @@ import exxonLogo from "@/assets/exxon.png";
 import eyeoLogo from "@/assets/eyeo.png";
 import googleLogo from "@/assets/google.png";
 import microsoftLogo from "@/assets/microsoft.png";
-import tridionLogo from "@/assets/tridion-new.svg";
+import tridionLogo from "@/assets/tridion-v2.svg";
 import googleCloudLogo from "@/assets/google-cloud.svg";
 
 const logos = [
