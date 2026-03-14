@@ -11,7 +11,7 @@ import googleCloudLogo from "@/assets/google-cloud.svg";
 import eqtLogo from "@/assets/eqt.png";
 
 const logos = [
-  { src: googleLogo, alt: "Google", height: "h-6 md:h-7", brightness: "brightness-150" },
+  { src: googleLogo, alt: "Google", height: "h-6 md:h-7", brightness: "brightness-200" },
   { src: googleCloudLogo, alt: "Google Cloud", height: "h-8 md:h-10", brightness: "brightness-200" },
   { src: microsoftLogo, alt: "Microsoft", height: "h-8 md:h-10", brightness: "brightness-200" },
   { src: doubleclickLogo, alt: "DoubleClick", height: "h-15 md:h-20", brightness: "brightness-200" },
@@ -20,7 +20,7 @@ const logos = [
   { src: exxonLogo, alt: "ExxonMobil", height: "h-8 md:h-10", brightness: "brightness-200" },
   { src: tridionLogo, alt: "Tridion", height: "h-8 md:h-10", brightness: "brightness-150" },
   { src: adblockPlusLogo, alt: "Adblock Plus", height: "h-8 md:h-10", brightness: "brightness-150" },
-  { src: eqtLogo, alt: "EQT", height: "h-6 md:h-8", brightness: "brightness-200" },
+  { src: eqtLogo, alt: "EQT", height: "h-3 md:h-4", brightness: "brightness-200" },
 ];
 
 export const LogoMarquee = () => {
