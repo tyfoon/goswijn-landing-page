@@ -38,7 +38,7 @@ export const SiteHeader = ({ activeSection, scrollToSection }: SiteHeaderProps) 
   return (
     <>
       {/* Desktop */}
-      <header className="hidden md:block fixed top-6 left-6 right-6 z-50 px-6 py-2 md:px-8 lg:px-12 glass rounded-lg transition-all duration-300">
+      <header className="hidden lg:block fixed top-6 left-6 right-6 z-50 px-6 py-2 md:px-8 lg:px-12 glass rounded-lg transition-all duration-300">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">
             <button
