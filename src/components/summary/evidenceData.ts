@@ -121,7 +121,7 @@ export const evidenceData: Record<string, EvidenceCard> = {
         result: "Achieved this under a strict flat budget.",
       },
       {
-        heading: "Eyeo",
+        heading: "Eyeo (AdBlock)",
         action: "Overhauled the entire SaaS P&L, breaking down operational silos.",
         result: "Unified an 80+ FTE organization across functions.",
       },
