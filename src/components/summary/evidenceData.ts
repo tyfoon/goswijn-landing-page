@@ -41,7 +41,7 @@ export const evidenceData: Record<string, EvidenceCard> = {
       { label: "Tridion", detail: "Global Marketing" },
       { label: "Google DoubleClick", detail: "Benelux and Nordics" },
       { label: "Google Cloud", detail: "DACH, CEE, Nordics" },
-      { label: "Eyeo", detail: "Global Managing Director" },
+      { label: "Eyeo (AdBlock)", detail: "Global Managing Director" },
     ],
   },
   "big-tech": {
