@@ -77,7 +77,7 @@ export const ContactForm = () => {
         type="submit"
         disabled={isSubmitting}
         size="lg"
-        className="w-full"
+        className="w-full shadow-lg hover:shadow-xl hover:scale-[1.02] active:scale-[0.98] transition-all duration-300"
       >
         {isSubmitting ? "Sending..." : "Send Message"}
       </Button>

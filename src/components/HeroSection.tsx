@@ -66,7 +66,7 @@ export const HeroSection = ({ scrollY, scrollToSection }: HeroSectionProps) => {
                 <Button
                   size="lg"
                   onClick={() => scrollToSection("summary")}
-                  className="font-medium shadow-xl hover:shadow-2xl hover:scale-105 active:scale-95 transition-all duration-300 bg-primary text-primary-foreground"
+                  className="font-medium shadow-lg hover:shadow-xl hover:scale-105 active:scale-95 transition-all duration-300 bg-primary text-primary-foreground"
                 >
                   View Track Record
                 </Button>
@@ -74,7 +74,7 @@ export const HeroSection = ({ scrollY, scrollToSection }: HeroSectionProps) => {
                   size="lg"
                   variant="outline"
                   onClick={() => scrollToSection("contact")}
-                  className="font-medium shadow-xl hover:shadow-2xl hover:scale-105 active:scale-95 transition-all duration-300 border-foreground/20 text-foreground hover:bg-foreground/10"
+                  className="font-medium shadow-lg hover:shadow-xl hover:scale-105 active:scale-95 transition-all duration-300 border-foreground/20 text-foreground hover:bg-foreground/10"
                 >
                   Let's connect
                 </Button>
@@ -85,7 +85,8 @@ export const HeroSection = ({ scrollY, scrollToSection }: HeroSectionProps) => {
             <div className="hidden lg:flex justify-end animate-on-scroll" style={{ animationDelay: "0.2s" }}>
               <img
                 src={portraitImage}
-                alt="Goswijn Thijssen, Executive Commercial Leader"
+                alt="Goswijn Thijssen — multi-geo commercial leader and technologist"
+                loading="lazy"
                 className="w-full max-w-md h-[550px] object-cover rounded-lg shadow-2xl"
                 style={{ objectPosition: "center" }}
               />

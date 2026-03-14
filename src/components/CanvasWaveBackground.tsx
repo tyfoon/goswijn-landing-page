@@ -70,7 +70,8 @@ export const CanvasWaveBackground = () => {
 
           ctx.beginPath();
           ctx.arc(sx, sy, radius, 0, Math.PI * 2);
-          ctx.fillStyle = `rgba(148, 163, 184, ${alpha})`;
+          // Use accent-aligned blue-grey for dark theme
+          ctx.fillStyle = `hsla(210, 20%, 65%, ${alpha})`;
           ctx.fill();
         }
       }
