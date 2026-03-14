@@ -3,7 +3,7 @@ import { BookingSection } from "@/components/BookingSection";
 import { CanvasWaveBackground } from "@/components/CanvasWaveBackground";
 import { SummarySection } from "@/components/SummarySection";
 import { OperatingPrinciples } from "@/components/OperatingPrinciples";
-import { Button } from "@/components/ui/button";
+
 import { HeroSection } from "@/components/HeroSection";
 import { LogoMarquee } from "@/components/LogoMarquee";
 import { SiteHeader } from "@/components/SiteHeader";
@@ -21,7 +21,7 @@ const Index = () => {
   };
 
   useEffect(() => {
-    const handleScroll = () => setScrollY(window.scrollY);
+    const handleScroll = () => requestAnimationFrame(() => setScrollY(window.scrollY));
     window.addEventListener("scroll", handleScroll);
 
     const observerOptions = { threshold: 0.1, rootMargin: "0px 0px -100px 0px" };

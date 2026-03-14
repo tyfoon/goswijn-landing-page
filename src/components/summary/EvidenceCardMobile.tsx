@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import type { EvidenceCard } from "./evidenceData";
+import { SARRow, LegendItem } from "./SARComponents";
 
 interface Props {
   card: EvidenceCard;
@@ -40,64 +41,34 @@ export const EvidenceCardMobile = ({ card }: Props) => (
             {card.columns.map((col, i) => (
               <div
                 key={i}
-                className="rounded-lg border border-border/60 p-3.5 space-y-3.5 border-l-2"
-                style={{
-                  backgroundColor: "rgba(31, 34, 41, 0.5)",
-                  borderLeftColor: "rgba(34, 115, 195, 0.25)",
-                }}
+                className="rounded-lg border border-border/60 p-3.5 space-y-3.5 border-l-2 bg-sar-card/50 border-l-sar-accent/25"
               >
-                <h4 className="text-foreground font-semibold tracking-wide uppercase border-b border-accent/15 pb-1.5" style={{ fontSize: "13px" }}>
+                <h4
+                  className="text-foreground font-semibold tracking-wide uppercase border-b border-accent/15 pb-1.5"
+                  style={{ fontSize: "13px" }}
+                >
                   {col.heading}
                 </h4>
                 {col.situation && (
-                  <MobileSARRow label="S" color="text-accent" text={col.situation} />
+                  <SARRow label="S" color="text-accent" text={col.situation} size="sm" />
                 )}
-                <MobileSARRow label="A" color="text-yellow-500" text={col.action} />
-                <MobileSARRow label="R" color="text-green-500" text={col.result} />
+                <SARRow label="A" color="text-yellow-500" text={col.action} size="sm" />
+                <SARRow label="R" color="text-green-500" text={col.result} size="sm" />
               </div>
             ))}
           </div>
         )}
       </div>
 
-      {/* S/A/R Legend — only for SAR cards */}
       {card.layout === "sar" && (
-        <div className="px-5 py-3 border-t" style={{ borderColor: "rgba(39, 44, 52, 0.5)" }}>
+        <div className="px-5 py-3 border-t border-sar-border/50">
           <div className="flex items-center gap-4">
-            <MobileLegendItem label="S" color="text-accent" text="Situation" />
-            <MobileLegendItem label="A" color="text-yellow-500" text="Action" />
-            <MobileLegendItem label="R" color="text-green-500" text="Result" />
+            <LegendItem label="S" color="text-accent" text="Situation" size="sm" />
+            <LegendItem label="A" color="text-yellow-500" text="Action" size="sm" />
+            <LegendItem label="R" color="text-green-500" text="Result" size="sm" />
           </div>
         </div>
       )}
     </div>
   </motion.div>
 );
-
-function MobileLegendItem({ label, color, text }: { label: string; color: string; text: string }) {
-  return (
-    <div className="flex items-center gap-1.5">
-      <span
-        className={`flex-shrink-0 w-4 h-4 rounded flex items-center justify-center text-[9px] font-bold ${color} bg-muted/80 border border-border/40`}
-      >
-        {label}
-      </span>
-      <span className="text-[10px]" style={{ color: "rgba(239, 236, 231, 0.4)", fontFamily: "'General Sans', system-ui, sans-serif", fontWeight: 400 }}>
-        {text}
-      </span>
-    </div>
-  );
-}
-
-function MobileSARRow({ label, color, text }: { label: string; color: string; text: string }) {
-  return (
-    <div className="flex items-start gap-2">
-      <span
-        className={`flex-shrink-0 mt-0.5 w-4 h-4 rounded flex items-center justify-center text-[9px] font-bold ${color} bg-muted/80 border border-border/40`}
-      >
-        {label}
-      </span>
-      <p className="text-foreground/80 leading-[20px]" style={{ fontSize: "13px" }}>{text}</p>
-    </div>
-  );
-}
