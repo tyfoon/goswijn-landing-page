@@ -20,17 +20,54 @@ export const EvidenceCardMobile = ({ card }: Props) => (
           {card.title}
         </h3>
       </div>
-      <div className="px-5 py-4 space-y-3">
-        {card.bullets.map((bullet, i) => (
-          <div key={i} className="flex items-start gap-2.5">
-            <div className="mt-1.5 w-1 h-1 rounded-full bg-accent/60 flex-shrink-0" />
-            <p className="text-foreground/90 text-xs leading-relaxed">
-              <span className="font-semibold text-foreground">{bullet.label}:</span>{" "}
-              {bullet.detail}
-            </p>
+      <div className="px-5 py-4">
+        {card.layout === "simple" ? (
+          <div className="space-y-3">
+            {card.bullets.map((b, i) => (
+              <div key={i} className="flex items-start gap-2.5">
+                <div className="mt-1.5 w-1 h-1 rounded-full bg-accent/60 flex-shrink-0" />
+                <p className="text-foreground/90 text-xs leading-relaxed">
+                  <span className="font-semibold text-foreground">{b.label}:</span> {b.detail}
+                </p>
+              </div>
+            ))}
           </div>
-        ))}
+        ) : (
+          <div className="space-y-4">
+            <p className="text-foreground/70 text-xs italic leading-relaxed">
+              {card.context}
+            </p>
+            {card.columns.map((col, i) => (
+              <div
+                key={i}
+                className="rounded-lg border border-border/60 bg-muted/30 p-3.5 space-y-2.5"
+              >
+                <h4 className="text-foreground text-xs font-semibold tracking-wide uppercase border-b border-accent/15 pb-1.5">
+                  {col.heading}
+                </h4>
+                {col.situation && (
+                  <MobileSARRow label="S" color="text-blue-400" text={col.situation} />
+                )}
+                <MobileSARRow label="A" color="text-amber-400" text={col.action} />
+                <MobileSARRow label="R" color="text-emerald-400" text={col.result} />
+              </div>
+            ))}
+          </div>
+        )}
       </div>
     </div>
   </motion.div>
 );
+
+function MobileSARRow({ label, color, text }: { label: string; color: string; text: string }) {
+  return (
+    <div className="flex items-start gap-2">
+      <span
+        className={`flex-shrink-0 mt-0.5 w-4 h-4 rounded flex items-center justify-center text-[9px] font-bold ${color} bg-muted/80 border border-border/40`}
+      >
+        {label}
+      </span>
+      <p className="text-foreground/80 text-[11px] leading-relaxed">{text}</p>
+    </div>
+  );
+}
