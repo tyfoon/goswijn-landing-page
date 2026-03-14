@@ -260,7 +260,7 @@ export const BookingSection = () => {
       </div>
 
       <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
-        <DialogContent className="max-w-2xl max-h-[80vh] overflow-y-auto">
+        <DialogContent className="max-w-2xl max-h-[85vh] overflow-y-auto w-[95vw] sm:w-auto">
           <DialogHeader>
             <DialogTitle>Book a {selectedDuration}-minute consultation</DialogTitle>
             <DialogDescription>
@@ -369,7 +369,7 @@ export const BookingSection = () => {
                     </Button>
                   </div>
 
-                  <div className="grid grid-cols-5 gap-2">
+                  <div className="grid grid-cols-5 gap-1.5 sm:gap-2">
                     {getWorkDays().map((day) => {
                       const slotsCount = getDaySlotsCount(day);
                       const hasSlots = slotsCount > 0;
@@ -380,7 +380,7 @@ export const BookingSection = () => {
                           key={day.toISOString()}
                           onClick={() => hasSlots && setSelectedDay(day)}
                           disabled={!hasSlots}
-                          className={`p-3 rounded-lg border-2 transition-all duration-300 ${
+                          className={`p-2 sm:p-3 rounded-lg border-2 transition-all duration-300 ${
                             isSelected
                               ? "border-foreground bg-foreground/10 shadow-md"
                               : hasSlots
@@ -388,10 +388,10 @@ export const BookingSection = () => {
                               : "border-border bg-muted/30 cursor-not-allowed opacity-50"
                           }`}
                         >
-                          <div className="text-xs mb-1">
+                          <div className="text-[10px] sm:text-xs mb-0.5 sm:mb-1">
                             {format(day, 'EEE')}
                           </div>
-                          <div className="text-lg">
+                          <div className="text-base sm:text-lg">
                             {format(day, 'd')}
                           </div>
                         </button>
@@ -402,7 +402,7 @@ export const BookingSection = () => {
                   {selectedDay && (
                     <div className="space-y-2 mt-4">
                       <Label>Available Times</Label>
-                      <div className="grid grid-cols-3 gap-2">
+                      <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
                         {getSlotsForDay(selectedDay).map((slot) => (
                           <button
                             key={slot.id}
