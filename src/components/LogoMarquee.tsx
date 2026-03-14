@@ -32,15 +32,15 @@ const logos = [
 export const LogoMarquee = () => {
   return (
     <section
-      className="relative py-12 border-t border-border/30"
+      className="relative py-8 border-t border-border/30"
       aria-label="Companies I've worked for"
     >
       {/* Visible label */}
-      <p className="text-center text-xs section-label tracking-widest uppercase text-muted-foreground/50 mb-8">
+      <p className="text-center text-xs section-label tracking-widest uppercase text-muted-foreground/50 mb-4">
         Companies I've worked for
       </p>
 
-      <div className="flex flex-wrap items-center justify-center gap-8 md:gap-12 lg:gap-16 max-w-5xl mx-auto px-6">
+      <div className="flex flex-wrap items-center justify-center gap-6 md:gap-10 lg:gap-12 max-w-5xl mx-auto px-6">
         {logos.map((logo, i) => (
           <div key={i} className="flex items-center justify-center">
             <img
