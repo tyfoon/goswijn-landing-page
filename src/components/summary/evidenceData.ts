@@ -41,7 +41,7 @@ export const evidenceData: Record<string, EvidenceCard> = {
       { label: "Tridion", detail: "Global Marketing" },
       { label: "Google DoubleClick", detail: "Benelux and Nordics" },
       { label: "Google Cloud", detail: "DACH, CEE, Nordics" },
-      { label: "Eyeo", detail: "Global Managing Director" },
+      { label: "Eyeo (AdBlock)", detail: "Global Managing Director" },
     ],
   },
   "big-tech": {
@@ -77,7 +77,7 @@ export const evidenceData: Record<string, EvidenceCard> = {
         result: "Grew revenue to $25M, secured market leadership, and drove a successful exit.",
       },
       {
-        heading: "Eyeo",
+        heading: "Eyeo (AdBlock)",
         situation: "A $30M+ PE/Founder-backed business requiring transition to a mature SaaS model.",
         action: "Restructured an 80+ FTE organization, aligning Product, Engineering, and Sales.",
         result: "Currently driving 20% ARR and EBITDA growth.",
@@ -121,7 +121,7 @@ export const evidenceData: Record<string, EvidenceCard> = {
         result: "Achieved this under a strict flat budget.",
       },
       {
-        heading: "Eyeo",
+        heading: "Eyeo (AdBlock)",
         action: "Overhauled the entire SaaS P&L, breaking down operational silos.",
         result: "Unified an 80+ FTE organization across functions.",
       },
@@ -134,7 +134,7 @@ export const evidenceData: Record<string, EvidenceCard> = {
     context: "Applying relentless discipline across radically different environments.",
     columns: [
       {
-        heading: "Eyeo — Current",
+        heading: "Eyeo (AdBlock) — Current",
         situation: "Preparing a 350M-user global SaaS business for an IPO/Exit.",
         action: "Applying rigorous restructuring and tough organizational realignment.",
         result: "Delivering predictable 20% ARR/EBITDA growth.",
@@ -184,7 +184,7 @@ export const evidenceData: Record<string, EvidenceCard> = {
         result: "Managed 200x hyper-growth without breaking the operation.",
       },
       {
-        heading: "Eyeo",
+        heading: "Eyeo (AdBlock)",
         action: "Architected a connected, data-driven GTM engine.",
         result: "Delivering 20% ARR growth while protecting company culture.",
       },
