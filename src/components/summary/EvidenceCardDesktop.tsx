@@ -51,7 +51,7 @@ function SimpleLayout({ bullets }: { bullets: { label: string; detail: string }[
           transition={{ delay: 0.05 + i * 0.05 }}
           className="flex items-start gap-3"
         >
-          <div className="mt-1.5 w-1.5 h-1.5 rounded-full bg-accent/60 flex-shrink-0" />
+          <div className="mt-1.5 w-1.5 h-1.5 rounded-full bg-blue-400/60 flex-shrink-0" />
           <p className="text-foreground/90 text-xs leading-relaxed">
             <span className="font-semibold text-foreground">{b.label}:</span> {b.detail}
           </p>

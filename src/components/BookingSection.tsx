@@ -394,7 +394,7 @@ export const BookingSection = () => {
                           <button
                             key={slot.id}
                             onClick={() => handleSlotSelection(slot)}
-                            className="p-3 rounded-lg border-2 border-border hover:border-accent/40 hover:bg-accent/5 transition-all duration-300 text-center"
+                            className="p-3 rounded-lg border-2 border-border hover:border-blue-400/40 hover:bg-blue-400/5 transition-all duration-300 text-center"
                           >
                             {formatTime24h(slot.start)}
                           </button>
