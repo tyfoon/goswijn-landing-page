@@ -4,7 +4,7 @@ import adblockLogo from "@/assets/adblock.svg";
 import doubleclickLogo from "@/assets/doubleclick-new.svg";
 import exxonLogo from "@/assets/exxon.png";
 import eyeoLogo from "@/assets/eyeo.png";
-import googleLogo from "@/assets/google.png";
+import googleLogo from "@/assets/google.svg";
 import microsoftLogo from "@/assets/microsoft.png";
 import tridionLogo from "@/assets/tridion-v2.svg";
 import googleCloudLogo from "@/assets/google-cloud.svg";
