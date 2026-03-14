@@ -55,10 +55,10 @@ export const OperatingPrinciples = () => {
           transition={{ duration: 0.6 }}
           className="mb-16"
         >
-          <span className="text-accent/60 text-xs md:text-sm section-label tracking-[0.2em] uppercase">
+          <span className="text-blue-400 text-xs section-label tracking-widest uppercase">
             Operating Principles
           </span>
-          <div className="mt-2 w-12 h-[2px] bg-accent/30" />
+          <div className="mt-2 w-12 h-[2px] bg-blue-400/40" />
           <p className="mt-4 text-muted-foreground text-sm md:text-base max-w-lg">
             How I build, scale, and lead multi-geo organizations.
           </p>
