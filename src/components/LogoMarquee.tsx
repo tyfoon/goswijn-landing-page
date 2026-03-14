@@ -20,6 +20,7 @@ const logos = [
   { src: exxonLogo, alt: "ExxonMobil", height: "h-8 md:h-10", brightness: "brightness-200" },
   { src: tridionLogo, alt: "Tridion", height: "h-8 md:h-10", brightness: "brightness-150" },
   { src: adblockPlusLogo, alt: "Adblock Plus", height: "h-8 md:h-10", brightness: "brightness-150" },
+  { src: eqtLogo, alt: "EQT", height: "h-6 md:h-8", brightness: "brightness-200" },
 ];
 
 export const LogoMarquee = () => {
