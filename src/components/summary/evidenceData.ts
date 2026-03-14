@@ -1,18 +1,41 @@
-export interface EvidenceBullet {
+// --- Types ---
+
+export interface SimpleBullet {
   label: string;
   detail: string;
 }
 
-export interface EvidenceCard {
+export interface SARColumn {
+  heading: string;
+  situation?: string;
+  action: string;
+  result: string;
+}
+
+export interface EvidenceCardSimple {
   id: string;
   title: string;
-  bullets: EvidenceBullet[];
+  layout: "simple";
+  bullets: SimpleBullet[];
 }
+
+export interface EvidenceCardSAR {
+  id: string;
+  title: string;
+  layout: "sar";
+  context: string;
+  columns: SARColumn[];
+}
+
+export type EvidenceCard = EvidenceCardSimple | EvidenceCardSAR;
+
+// --- Data ---
 
 export const evidenceData: Record<string, EvidenceCard> = {
   "multi-geo": {
     id: "multi-geo",
     title: "Multi-Geo Footprint",
+    layout: "simple",
     bullets: [
       { label: "ExxonMobil", detail: "EMEA Product Manager" },
       { label: "Tridion", detail: "Global Marketing" },
@@ -24,126 +47,146 @@ export const evidenceData: Record<string, EvidenceCard> = {
   "big-tech": {
     id: "big-tech",
     title: "Big Tech Impact",
-    bullets: [
+    layout: "sar",
+    context: "Driving massive scale and impact at the world's largest tech firms.",
+    columns: [
       {
-        label: "Google",
-        detail:
-          "Scaled DoubleClick programmatic business 200x to >$200M. Later, as CMO Google Cloud EMEA North, generated >$750M in annual pipeline and achieved #1 global productivity.",
+        heading: "Google",
+        situation: "Hyper-growth scaling for DoubleClick & EMEA GTM restructuring for Cloud.",
+        action: "Scaled programmatic business from scratch and later generated >$750M in annual pipeline as CMO EMEA North.",
+        result: "Achieved 200x growth (to >$200M) and #1 global productivity.",
       },
       {
-        label: "Microsoft",
-        detail:
-          "Led Corporate Accounts across multi-geo footprint, accelerating YoY revenue growth to >25% and reaching $150M ARR.",
+        heading: "Microsoft",
+        situation: "Managing the highly complex Corporate Accounts portfolio across a multi-geo footprint.",
+        action: "Overhauled enterprise sales strategy and ecosystem alignment.",
+        result: "Accelerated YoY revenue growth to >25%, reaching $150M ARR.",
       },
     ],
   },
   "scale-ups": {
     id: "scale-ups",
     title: "High-Velocity Scale-Ups",
-    bullets: [
+    layout: "sar",
+    context: "Building and professionalizing VC/PE-backed growth engines.",
+    columns: [
       {
-        label: "Tridion",
-        detail:
-          "Joined as an early-stage VC-backed startup. Built global marketing from scratch, scaling to 150+ FTEs and $25M revenue, culminating in a successful acquisition.",
+        heading: "Tridion",
+        situation: "Early-stage VC-backed startup needing a global GTM foundation.",
+        action: "Built global marketing from absolute zero, scaling the team to 150+ FTEs.",
+        result: "Grew revenue to $25M, secured market leadership, and drove a successful exit.",
       },
       {
-        label: "Eyeo",
-        detail:
-          "Current Global Managing Director. Restructured an 80+ FTE organization to transition from unpredictable startup motions to a mature SaaS model, driving 20% ARR/EBITDA growth.",
+        heading: "Eyeo",
+        situation: "A $30M+ PE/Founder-backed business requiring transition to a mature SaaS model.",
+        action: "Restructured an 80+ FTE organization, aligning Product, Engineering, and Sales.",
+        result: "Currently driving 20% ARR and EBITDA growth.",
       },
     ],
   },
   "one-to-hundred": {
     id: "one-to-hundred",
-    title: "Scaling from 1 to 100",
-    bullets: [
+    title: "Scaling from 1 → 100",
+    layout: "sar",
+    context: "Taking proven early traction and multiplying it exponentially.",
+    columns: [
       {
-        label: "Google DoubleClick",
-        detail:
-          "Took the programmatic business in Benelux from absolute zero to >$200M ARR, achieving 200x growth and building EMEA's fastest-growing unit.",
+        heading: "Google DoubleClick",
+        situation: "Programmatic advertising was an emerging, complex technology with immense potential.",
+        action: "Architected a localized direct and partner GTM motion for the Benelux.",
+        result: "Scaled from $0 to >$200M ARR (200x growth), building EMEA's fastest-growing unit.",
       },
       {
-        label: "Tridion",
-        detail:
-          "Scaled the commercial engine from $0 to $25M in revenue, securing market leadership and driving a successful exit.",
+        heading: "Tridion",
+        situation: "The commercial engine needed to scale rapidly post-product-market fit.",
+        action: "Executed an aggressive, data-driven global demand generation strategy.",
+        result: "Scaled from $0 to $25M in revenue, capturing dominance.",
       },
     ],
   },
   transformations: {
     id: "transformations",
     title: "Fundamental Transformations",
-    bullets: [
+    layout: "sar",
+    context: "Restructuring complex organizations to unlock trapped value.",
+    columns: [
       {
-        label: "Microsoft License Compliance",
-        detail: "Transformed the GTM motion into a global standard.",
+        heading: "Microsoft License Compliance",
+        action: "Created a brand-new Software Asset Management partner ecosystem.",
+        result: "Adopted globally as a corporate standard.",
       },
       {
-        label: "Microsoft Corporate Accounts",
-        detail:
-          "Overhauled the enterprise sales strategy for complex portfolios.",
+        heading: "Google Cloud (CMO)",
+        action: "Realigned a fragmented multi-geo matrix into a unified engine.",
+        result: "Achieved this under a strict flat budget.",
       },
       {
-        label: "Google Cloud (CMO)",
-        detail:
-          "Realigned a fragmented multi-geo organization into a unified engine under a flat budget.",
-      },
-      {
-        label: "Eyeo",
-        detail:
-          "Restructured the entire SaaS P&L and 80+ FTE team to break down silos.",
+        heading: "Eyeo",
+        action: "Overhauled the entire SaaS P&L, breaking down operational silos.",
+        result: "Unified an 80+ FTE organization across functions.",
       },
     ],
   },
   "pnl-owner": {
     id: "pnl-owner",
     title: "P&L Ownership",
-    bullets: [
+    layout: "sar",
+    context: "Applying relentless discipline across radically different environments.",
+    columns: [
       {
-        label: "Eyeo (Current)",
-        detail:
-          "Holding full P&L responsibility for a $30M+ global SaaS business (350M users), applying rigorous restructuring to prep for IPO/Exit.",
+        heading: "Eyeo — Current",
+        situation: "Preparing a 350M-user global SaaS business for an IPO/Exit.",
+        action: "Applying rigorous restructuring and tough organizational realignment.",
+        result: "Delivering predictable 20% ARR/EBITDA growth.",
       },
       {
-        label: "ExxonMobil (Early Career)",
-        detail:
-          "Thrown into the deep end via forced job rotation, applying raw grit and rigor to manage and optimize a $200M+ retail network P&L.",
+        heading: "ExxonMobil — Early Career",
+        situation: "Thrown into the deep end via forced job rotation with full P&L responsibility for a $200M+ retail network.",
+        action: "Applied raw grit and data-driven management in an unfamiliar context.",
+        result: "Increased network profitability by 82% over 3 years.",
       },
     ],
   },
   "bridge-tech": {
     id: "bridge-tech",
     title: "Commercial Technologist",
-    bullets: [
+    layout: "sar",
+    context: "Translating deep engineering into massive commercial value.",
+    columns: [
       {
-        label: "Complex AI & Cloud",
-        detail:
-          "Spearheaded Google Cloud's Martech/AI initiatives, translating deep technical differentiators (Security, Data, AI workloads) into a >$750M enterprise pipeline.",
+        heading: "AI & Cloud — Google",
+        situation: "Highly complex technical differentiators (Security, Data, AI workloads) needed enterprise adoption.",
+        action: "Spearheaded Martech/AI initiatives and orchestrated bespoke C-suite ABM programs.",
+        result: "Generated >$750M in enterprise pipeline.",
       },
       {
-        label: "AdTech & SaaS",
-        detail:
-          "Bridged the highly complex, emerging technology of programmatic advertising (DoubleClick) with strategic scaling, driving mainstream market adoption.",
+        heading: "AdTech — DoubleClick",
+        situation: "Programmatic AdTech was a highly technical 'black box' for early adopters.",
+        action: "Bridged the technology with strategic scaling and robust partner training.",
+        result: "Drove mainstream market adoption, scaling to >$200M.",
       },
     ],
   },
   "gtm-engines": {
     id: "gtm-engines",
     title: "Data-Driven GTM Engines",
-    bullets: [
+    layout: "sar",
+    context: "Architecting scalable, predictable revenue engines.",
+    columns: [
       {
-        label: "Partner Ecosystem",
-        detail:
-          "At Microsoft, built a brand new Software Asset Management (SAM) partner ecosystem to drive compliance, which was successfully adopted as a global standard.",
+        heading: "Microsoft Compliance",
+        action: "Built a brand-new SAM ecosystem.",
+        result: "Adopted as the global corporate standard.",
       },
       {
-        label: "Scaling without breaking",
-        detail:
-          "At Google DoubleClick, managed 200x hyper-growth by continuously adapting the organizational design and building robust parallel partner ecosystems.",
+        heading: "Google DoubleClick",
+        action: "Continuously adapted org design and built parallel partner ecosystems.",
+        result: "Managed 200x hyper-growth without breaking the operation.",
       },
       {
-        label: "Predictable ARR",
-        detail:
-          "At Eyeo, architected a connected, data-driven GTM engine that delivers highly predictable, sustainable margin growth (20% ARR) without breaking the company culture.",
+        heading: "Eyeo",
+        action: "Architected a connected, data-driven GTM engine.",
+        result: "Delivering 20% ARR growth while protecting company culture.",
       },
     ],
   },
