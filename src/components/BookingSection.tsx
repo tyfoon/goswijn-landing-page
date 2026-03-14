@@ -226,8 +226,8 @@ export const BookingSection = () => {
           >
             <div className="flex items-center justify-between gap-3">
               <div className="flex items-center gap-2.5 flex-1">
-                <div className="p-1.5 rounded-full bg-muted group-hover:bg-blue-400/10 transition-colors duration-300">
-                  <Clock className="h-4 w-4 text-blue-400" />
+                <div className="p-1.5 rounded-full bg-muted group-hover:bg-accent/10 transition-colors duration-300">
+                  <Clock className="h-4 w-4 text-accent" />
                 </div>
                 <div>
                   <h3 className="text-base text-foreground mb-0 group-hover:text-foreground/80 transition-colors">
