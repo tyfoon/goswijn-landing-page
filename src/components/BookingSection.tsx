@@ -257,7 +257,7 @@ export const BookingSection = () => {
 
           {showSuccess ? (
             <div className="flex flex-col items-center justify-center py-12 animate-success-pop">
-              <CheckCircle2 className="h-16 w-16 text-green-600 mb-4" />
+              <CheckCircle2 className="h-16 w-16 text-green-500 mb-4" />
               <h3 className="text-2xl text-foreground mb-2">Booking Confirmed!</h3>
               <p className="text-foreground/70">Check your email for details</p>
             </div>
