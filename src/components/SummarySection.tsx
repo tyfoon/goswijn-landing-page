@@ -45,11 +45,11 @@ const SummarySection = () => {
       onClick={isMobile ? () => handleTap(id) : undefined}
       className={`
         relative cursor-pointer transition-all duration-300
-        border-b-2 border-dashed
+        border-b-2 border-dashed cursor-pointer
         ${
           activeCard === id
             ? "border-accent text-accent"
-            : "border-accent/40 text-foreground/90 hover:text-accent hover:border-accent"
+            : "border-accent/50 text-foreground/90 hover:text-accent hover:border-accent"
         }
       `}
     >
