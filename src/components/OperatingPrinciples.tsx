@@ -74,15 +74,15 @@ export const OperatingPrinciples = () => {
               whileInView="visible"
               viewport={{ once: true, margin: "-60px" }}
               variants={cardVariants}
-              className="group relative rounded-xl border border-border/50 bg-card/80 backdrop-blur-sm p-8 transition-all duration-500 hover:border-accent/30 hover:shadow-[0_8px_40px_-12px_hsl(210,70%,45%,0.12)] hover:-translate-y-1"
+              className="group relative rounded-xl border border-white/10 bg-card/80 backdrop-blur-sm p-8 transition-all duration-500 hover:border-blue-400/30 hover:shadow-lg shadow-black/40 hover:-translate-y-1"
             >
               {/* Icon */}
-              <div className="mb-6 inline-flex items-center justify-center w-11 h-11 rounded-lg bg-accent/10 text-accent transition-colors duration-300 group-hover:bg-accent/15">
-                <principle.icon className="w-5 h-5" strokeWidth={1.5} />
+              <div className="mb-6 inline-flex items-center justify-center w-11 h-11 rounded-lg bg-blue-400/10 text-blue-400 transition-colors duration-300 group-hover:bg-blue-400/15">
+                <principle.icon className="w-7 h-7" strokeWidth={1.5} />
               </div>
 
               {/* Title */}
-              <h3 className="text-lg font-semibold text-foreground mb-3 tracking-tight">
+              <h3 className="text-xl font-semibold text-foreground mb-3 tracking-tight">
                 {principle.title}
               </h3>
 
