@@ -45,28 +45,36 @@ export const HeroSection = ({ scrollY, scrollToSection }: HeroSectionProps) => {
                 <ul className="space-y-2 md:space-y-4 text-base text-foreground md:text-lg lg:text-xl">
                   <li className="flex items-start transition-transform duration-300 hover:translate-x-2">
                     <span className="mr-3 mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-primary" />
-                    <span>Building innovative Go to Market strategies</span>
+                    <span>Scaling from 1 to 100 &amp; driving fundamental transformations</span>
                   </li>
                   <li className="flex items-start transition-transform duration-300 hover:translate-x-2">
                     <span className="mr-3 mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-primary" />
-                    <span>Creating durable and scalable growth</span>
+                    <span>Translating complex tech (AI, Data, SaaS) into predictable ARR</span>
                   </li>
                   <li className="flex items-start transition-transform duration-300 hover:translate-x-2">
                     <span className="mr-3 mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-primary" />
-                    <span>Assuring flawless execution across teams</span>
+                    <span>Combining Big Tech operational rigor with PE/VC situational grit</span>
                   </li>
                 </ul>
 
                 <p className="text-xs leading-relaxed text-muted-foreground sm:text-sm md:text-base max-w-xl">
-                  Executive Commercial Leader &amp; Technologist with deep expertise in SaaS, Data, AdTech and AI and 25+ years of multi-geo leadership. I bridge the gap between the rigor of Big Tech (Google, Microsoft) and the situational grit of PE/VC environments. My strength lies in building durable hypergrowth engines, whether starting from scratch or accelerating existing businesses, by implementing data-driven GTM strategies and leading high-performance teams that combine operational excellence with entrepreneurial speed and innovation.
+                  With 25+ years of multi-geo leadership across Google, Microsoft, and high-velocity scale-ups, I build data-driven GTM engines that capture market share. I bridge the gap between deep technical complexity and commercial strategy, delivering durable growth and profitability without breaking the organization.
                 </p>
               </div>
 
-              <div className="pt-4">
+              <div className="pt-4 flex gap-3">
                 <Button
                   size="lg"
-                  onClick={() => scrollToSection("contact")}
+                  onClick={() => scrollToSection("summary")}
                   className="font-medium shadow-xl hover:shadow-2xl hover:scale-105 active:scale-95 transition-all duration-300 bg-primary text-primary-foreground"
+                >
+                  View Track Record
+                </Button>
+                <Button
+                  size="lg"
+                  variant="outline"
+                  onClick={() => scrollToSection("contact")}
+                  className="font-medium shadow-xl hover:shadow-2xl hover:scale-105 active:scale-95 transition-all duration-300 border-foreground/20 text-foreground hover:bg-foreground/10"
                 >
                   Let's connect
                 </Button>
