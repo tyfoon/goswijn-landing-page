@@ -369,7 +369,7 @@ export const BookingSection = () => {
                     </Button>
                   </div>
 
-                  <div className="grid grid-cols-5 gap-2">
+                  <div className="grid grid-cols-5 gap-1.5 sm:gap-2">
                     {getWorkDays().map((day) => {
                       const slotsCount = getDaySlotsCount(day);
                       const hasSlots = slotsCount > 0;
