@@ -221,7 +221,7 @@ export const BookingSection = () => {
           <Card
             key={`${option.duration}-${index}`}
             onClick={() => handleBookNow(option.duration)}
-            className="group p-3 bg-background/50 backdrop-blur-sm border-border/50 hover:border-accent/40 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 cursor-pointer animate-on-scroll"
+            className="group p-3 bg-background/50 backdrop-blur-sm border-white/10 hover:border-blue-400/40 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 cursor-pointer animate-on-scroll"
             style={{ animationDelay: `${index * 0.1}s` }}
           >
             <div className="flex items-center justify-between gap-3">
