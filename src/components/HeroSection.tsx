@@ -38,7 +38,7 @@ export const HeroSection = ({ scrollY, scrollToSection }: HeroSectionProps) => {
 
             <div className="flex flex-col justify-between animate-on-scroll">
               <div className="space-y-4 md:space-y-6 lg:space-y-8">
-                <h1 className="text-2xl leading-tight tracking-tight text-foreground md:text-3xl lg:text-4xl">
+                <h1 className="text-4xl leading-tight tracking-tight text-foreground md:text-5xl lg:text-6xl font-medium">
                   Executive Commercial Leader &amp; Technologist
                 </h1>
 
