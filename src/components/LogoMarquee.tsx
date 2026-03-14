@@ -1,6 +1,8 @@
 
 import adblockPlusLogo from "@/assets/adblock-plus.svg";
 import adblockLogo from "@/assets/adblock.svg";
+import breinLogo from "@/assets/brein.svg";
+import bsaLogo from "@/assets/bsa.svg";
 import doubleclickLogo from "@/assets/doubleclick-new.svg";
 import exxonLogo from "@/assets/exxon.png";
 import eyeoLogo from "@/assets/eyeo.png";
@@ -9,6 +11,7 @@ import microsoftLogo from "@/assets/microsoft.png";
 import tridionLogo from "@/assets/tridion-v2.svg";
 import googleCloudLogo from "@/assets/google-cloud.svg";
 import eqtLogo from "@/assets/eqt.png";
+import nvpiLogo from "@/assets/nvpi.svg";
 
 const logos = [
   { src: googleLogo, alt: "Google", height: "h-6 md:h-7", brightness: "brightness-200" },
@@ -21,6 +24,9 @@ const logos = [
   { src: tridionLogo, alt: "Tridion", height: "h-8 md:h-10", brightness: "brightness-150" },
   { src: adblockPlusLogo, alt: "Adblock Plus", height: "h-8 md:h-10", brightness: "brightness-150" },
   { src: eqtLogo, alt: "EQT", height: "h-3 md:h-4", brightness: "brightness-200" },
+  { src: nvpiLogo, alt: "NVPI", height: "h-6 md:h-7", brightness: "brightness-150" },
+  { src: bsaLogo, alt: "BSA", height: "h-6 md:h-7", brightness: "brightness-150" },
+  { src: breinLogo, alt: "BREIN", height: "h-6 md:h-7", brightness: "brightness-150" },
 ];
 
 export const LogoMarquee = () => {
