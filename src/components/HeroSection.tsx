@@ -65,6 +65,7 @@ export const HeroSection = ({ scrollY, scrollToSection }: HeroSectionProps) => {
               <div className="pt-4 flex gap-3">
                 <Button
                   size="lg"
+                  onClick={() => scrollToSection("summary")}
                   className="font-medium shadow-xl hover:shadow-2xl hover:scale-105 active:scale-95 transition-all duration-300 bg-primary text-primary-foreground"
                 >
                   View Track Record
