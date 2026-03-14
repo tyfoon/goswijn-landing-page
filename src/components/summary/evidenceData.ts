@@ -184,7 +184,7 @@ export const evidenceData: Record<string, EvidenceCard> = {
         result: "Managed 200x hyper-growth without breaking the operation.",
       },
       {
-        heading: "Eyeo",
+        heading: "Eyeo (AdBlock)",
         action: "Architected a connected, data-driven GTM engine.",
         result: "Delivering 20% ARR growth while protecting company culture.",
       },
