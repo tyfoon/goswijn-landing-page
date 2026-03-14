@@ -96,7 +96,7 @@ function SARLayout({
             className="rounded-lg border border-border/60 bg-muted/30 p-4 space-y-3"
           >
             {/* Column heading */}
-            <h4 className="text-foreground text-xs font-semibold tracking-wide uppercase border-b border-blue-400/15 pb-2">
+            <h4 className="text-foreground text-xs font-semibold tracking-wide uppercase border-b border-accent/15 pb-2">
               {col.heading}
             </h4>
 
