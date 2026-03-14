@@ -38,7 +38,7 @@ export const OperatingPrinciples = () => {
   return (
     <section
       id="principles"
-      className="relative py-24 md:py-32 px-6 md:px-12 lg:px-16 overflow-hidden"
+      className="relative py-20 md:py-24 px-6 md:px-12 lg:px-16 overflow-hidden"
     >
       
       {/* Ambient radial glow */}
