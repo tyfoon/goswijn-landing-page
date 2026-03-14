@@ -82,10 +82,10 @@ const SummarySection = () => {
           className="mb-12"
         >
           <div>
-            <span className="text-blue-400 text-xs section-label tracking-widest uppercase">
+            <span className="text-accent text-xs section-label tracking-widest uppercase">
               Track Record
             </span>
-            <div className="mt-2 w-12 h-[2px] bg-blue-400/40" />
+            <div className="mt-2 w-12 h-[2px] bg-accent/40" />
           </div>
         </motion.div>
 
