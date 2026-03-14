@@ -37,11 +37,11 @@ export const evidenceData: Record<string, EvidenceCard> = {
     title: "Multi-Geo Footprint",
     layout: "simple",
     bullets: [
+      { label: "Google", detail: "Director (Cloud EMEA North & DoubleClick)" },
+      { label: "Microsoft", detail: "Enterprise Leadership (Corporate Accounts & Compliance)" },
+      { label: "Eyeo", detail: "Global Managing Director" },
+      { label: "Tridion", detail: "Global Marketing Director" },
       { label: "ExxonMobil", detail: "EMEA Product Manager" },
-      { label: "Tridion", detail: "Global Marketing" },
-      { label: "Google DoubleClick", detail: "Benelux and Nordics" },
-      { label: "Google Cloud", detail: "DACH, CEE, Nordics" },
-      { label: "Eyeo (AdBlock)", detail: "Global Managing Director" },
     ],
   },
   "big-tech": {
@@ -53,13 +53,13 @@ export const evidenceData: Record<string, EvidenceCard> = {
       {
         heading: "Google",
         situation: "Hyper-growth scaling for DoubleClick & EMEA GTM restructuring for Cloud.",
-        action: "Scaled programmatic business from scratch and later generated >$750M in annual pipeline as CMO EMEA North.",
+        action: "Scaled programmatic business from scratch (managing 80+ FTE across 7 countries) and later generated >$750M in annual pipeline as CMO EMEA North (leading a 40+ FTE multi-geo org).",
         result: "Achieved 200x growth (to >$200M) and #1 global productivity.",
       },
       {
         heading: "Microsoft",
         situation: "Managing the highly complex Corporate Accounts portfolio across a multi-geo footprint.",
-        action: "Overhauled enterprise sales strategy and ecosystem alignment.",
+        action: "Overhauled enterprise sales strategy, leading direct and indirect cross-functional teams (20+ FTE including senior sales, solution specialists, and marketing).",
         result: "Accelerated YoY revenue growth to >25%, reaching $150M ARR.",
       },
     ],
