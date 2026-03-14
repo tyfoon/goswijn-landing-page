@@ -93,8 +93,8 @@ export const OperatingPrinciples = () => {
 
               {/* Subtle corner accent on hover */}
               <div className="absolute top-0 right-0 w-16 h-16 overflow-hidden rounded-tr-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                <div className="absolute top-0 right-0 w-[1px] h-8 bg-gradient-to-b from-blue-400/40 to-transparent" />
-                <div className="absolute top-0 right-0 h-[1px] w-8 bg-gradient-to-l from-blue-400/40 to-transparent" />
+                <div className="absolute top-0 right-0 w-[1px] h-8 bg-gradient-to-b from-accent/40 to-transparent" />
+                <div className="absolute top-0 right-0 h-[1px] w-8 bg-gradient-to-l from-accent/40 to-transparent" />
               </div>
             </motion.div>
           ))}

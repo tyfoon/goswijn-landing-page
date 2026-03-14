@@ -48,8 +48,8 @@ const SummarySection = () => {
         border-b-2 border-dashed
         ${
           activeCard === id
-            ? "border-blue-400 text-blue-400"
-            : "border-blue-400/40 text-foreground/90 hover:text-blue-400 hover:border-blue-400"
+            ? "border-accent text-accent"
+            : "border-accent/40 text-foreground/90 hover:text-accent hover:border-accent"
         }
       `}
     >
