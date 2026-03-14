@@ -254,7 +254,9 @@ export const BookingSection = () => {
           <DialogHeader>
             <DialogTitle>Book a {selectedDuration}-minute consultation</DialogTitle>
             <DialogDescription>
-              Fill in your details and select a time slot for your consultation.
+              {step === "time"
+                ? "Select a day and time for your consultation."
+                : "Fill in your details to complete the booking."}
             </DialogDescription>
           </DialogHeader>
 
@@ -264,10 +266,101 @@ export const BookingSection = () => {
               <h3 className="text-2xl text-foreground mb-2">Booking Confirmed!</h3>
               <p className="text-foreground/70">Check your email for details</p>
             </div>
+          ) : step === "time" ? (
+            /* ── Step 1: Pick day & time ── */
+            <div className="space-y-4 mt-4">
+              <Label>Select a Day</Label>
+              {isLoadingSlots ? (
+                <SkeletonLoader />
+              ) : (
+                <>
+                  <div className="flex items-center justify-between mb-2">
+                    <Button
+                      variant="outline"
+                      size="icon"
+                      onClick={() => navigateWeek('prev')}
+                    >
+                      <ChevronLeft className="h-4 w-4" />
+                    </Button>
+                    <span className="text-sm">
+                      {format(currentWeekStart, 'MMM d')} - {format(addDays(currentWeekStart, 4), 'MMM d, yyyy')}
+                    </span>
+                    <Button
+                      variant="outline"
+                      size="icon"
+                      onClick={() => navigateWeek('next')}
+                    >
+                      <ChevronRight className="h-4 w-4" />
+                    </Button>
+                  </div>
+
+                  <div className="grid grid-cols-5 gap-1.5 sm:gap-2">
+                    {getWorkDays().map((day) => {
+                      const slotsCount = getDaySlotsCount(day);
+                      const hasSlots = slotsCount > 0;
+                      const isSelected = selectedDay && isSameDay(day, selectedDay);
+
+                      return (
+                        <button
+                          key={day.toISOString()}
+                          onClick={() => hasSlots && setSelectedDay(day)}
+                          disabled={!hasSlots}
+                          className={`p-2 sm:p-3 rounded-lg border-2 transition-all duration-300 ${
+                            isSelected
+                              ? "border-accent bg-accent/10 shadow-md"
+                              : hasSlots
+                              ? "border-green-500 bg-green-500/10 hover:bg-green-500/20 cursor-pointer"
+                              : "border-border bg-muted/30 cursor-not-allowed opacity-50"
+                          }`}
+                        >
+                          <div className="text-[10px] sm:text-xs mb-0.5 sm:mb-1">
+                            {format(day, 'EEE')}
+                          </div>
+                          <div className="text-base sm:text-lg">
+                            {format(day, 'd')}
+                          </div>
+                        </button>
+                      );
+                    })}
+                  </div>
+
+                  {selectedDay && (
+                    <div className="space-y-2 mt-4">
+                      <Label>Available Times</Label>
+                      <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
+                        {getSlotsForDay(selectedDay).map((slot) => (
+                          <button
+                            key={slot.id}
+                            onClick={() => handleSlotSelection(slot)}
+                            className="p-3 rounded-lg border-2 border-border hover:border-accent/40 hover:bg-accent/5 transition-all duration-300 text-center"
+                          >
+                            {formatTime24h(slot.start)}
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                </>
+              )}
+            </div>
           ) : (
+            /* ── Step 2: Details form ── */
             <div className="space-y-6 mt-4">
-            <div className="space-y-4">
-              <Label>Your Information</Label>
+              {/* Selected slot summary */}
+              {selectedSlot && (
+                <div className="bg-muted/50 p-3 rounded-lg flex items-center justify-between">
+                  <div className="text-sm">
+                    <span className="text-muted-foreground">Selected: </span>
+                    <span className="font-medium">
+                      {format(new Date(selectedSlot.start), 'EEE, MMM d')} at {formatTime24h(selectedSlot.start)}
+                    </span>
+                  </div>
+                  <Button variant="ghost" size="sm" onClick={() => setStep("time")} className="text-xs">
+                    Change
+                  </Button>
+                </div>
+              )}
+
               <div className="space-y-3">
                 <div>
                   <Label htmlFor="name">Name</Label>
@@ -331,84 +424,20 @@ export const BookingSection = () => {
                   )}
                 </div>
               </div>
+
+              <div className="flex gap-3">
+                <Button variant="outline" onClick={() => setStep("time")} className="flex-1">
+                  Back
+                </Button>
+                <Button
+                  onClick={() => setShowConfirmation(true)}
+                  disabled={!attendeeName || !attendeeEmail || !description}
+                  className="flex-1"
+                >
+                  Review & Confirm
+                </Button>
+              </div>
             </div>
-
-            <div className="space-y-4">
-              <Label>Select a Day</Label>
-              {isLoadingSlots ? (
-                <SkeletonLoader />
-              ) : (
-                <>
-                  <div className="flex items-center justify-between mb-2">
-                    <Button
-                      variant="outline"
-                      size="icon"
-                      onClick={() => navigateWeek('prev')}
-                    >
-                      <ChevronLeft className="h-4 w-4" />
-                    </Button>
-                    <span className="text-sm">
-                      {format(currentWeekStart, 'MMM d')} - {format(addDays(currentWeekStart, 4), 'MMM d, yyyy')}
-                    </span>
-                    <Button
-                      variant="outline"
-                      size="icon"
-                      onClick={() => navigateWeek('next')}
-                    >
-                      <ChevronRight className="h-4 w-4" />
-                    </Button>
-                  </div>
-
-                  <div className="grid grid-cols-5 gap-1.5 sm:gap-2">
-                    {getWorkDays().map((day) => {
-                      const slotsCount = getDaySlotsCount(day);
-                      const hasSlots = slotsCount > 0;
-                      const isSelected = selectedDay && isSameDay(day, selectedDay);
-
-                      return (
-                        <button
-                          key={day.toISOString()}
-                          onClick={() => hasSlots && setSelectedDay(day)}
-                          disabled={!hasSlots}
-                         className={`p-2 sm:p-3 rounded-lg border-2 transition-all duration-300 ${
-                            isSelected
-                              ? "border-accent bg-accent/10 shadow-md"
-                              : hasSlots
-                              ? "border-green-500 bg-green-500/10 hover:bg-green-500/20 cursor-pointer"
-                              : "border-border bg-muted/30 cursor-not-allowed opacity-50"
-                          }`}
-                        >
-                          <div className="text-[10px] sm:text-xs mb-0.5 sm:mb-1">
-                            {format(day, 'EEE')}
-                          </div>
-                          <div className="text-base sm:text-lg">
-                            {format(day, 'd')}
-                          </div>
-                        </button>
-                      );
-                    })}
-                  </div>
-
-                  {selectedDay && (
-                    <div className="space-y-2 mt-4">
-                      <Label>Available Times</Label>
-                      <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
-                        {getSlotsForDay(selectedDay).map((slot) => (
-                          <button
-                            key={slot.id}
-                            onClick={() => handleSlotSelection(slot)}
-                            className="p-3 rounded-lg border-2 border-border hover:border-accent/40 hover:bg-accent/5 transition-all duration-300 text-center"
-                          >
-                            {formatTime24h(slot.start)}
-                          </button>
-                        ))}
-                      </div>
-                    </div>
-                  )}
-                </>
-              )}
-            </div>
-          </div>
           )}
         </DialogContent>
       </Dialog>
