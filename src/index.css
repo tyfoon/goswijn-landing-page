@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Playfair Display is preloaded in index.html */
+/* Cormorant Garamond & JetBrains Mono are preloaded in index.html */
 
 /* Executive Dark Design System */
 
@@ -94,10 +94,14 @@
   }
 
   h1, h2, h3 {
-    font-family: 'Playfair Display', 'General Sans', serif;
+    font-family: 'Cormorant Garamond', 'General Sans', serif;
     letter-spacing: -0.02em;
   }
-}
+  }
+
+  .section-label {
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+  }
 
 @layer utilities {
   .animate-on-scroll {

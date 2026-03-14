@@ -82,7 +82,7 @@ const SummarySection = () => {
           className="mb-12"
         >
           <div>
-            <span className="text-accent/60 text-xs md:text-sm font-mono tracking-[0.2em] uppercase">
+            <span className="text-accent/60 text-xs md:text-sm section-label tracking-[0.2em] uppercase">
               Track Record
             </span>
             <div className="mt-2 w-12 h-[2px] bg-accent/30" />

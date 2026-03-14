@@ -16,7 +16,7 @@ export const EvidenceCardMobile = ({ card }: Props) => (
   >
     <div className="rounded-xl border border-accent/20 bg-card/95 backdrop-blur-xl shadow-2xl overflow-hidden">
       <div className="px-5 pt-5 pb-3 border-b border-accent/10">
-        <h3 className="text-accent text-xs font-mono tracking-[0.15em] uppercase">
+        <h3 className="text-accent text-xs section-label tracking-[0.15em] uppercase">
           {card.title}
         </h3>
       </div>
