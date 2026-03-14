@@ -247,7 +247,7 @@ export const BookingSection = () => {
       </div>
 
       <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
-        <DialogContent className="max-w-2xl max-h-[85vh] overflow-y-auto w-[95vw] sm:w-auto">
+        <DialogContent className="w-[95vw] max-w-2xl max-h-[85dvh] overflow-y-auto overflow-x-hidden p-4 sm:p-6">
           <DialogHeader>
             <DialogTitle>Book a {selectedDuration}-minute consultation</DialogTitle>
             <DialogDescription>
