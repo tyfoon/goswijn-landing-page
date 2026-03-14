@@ -17,10 +17,7 @@ export const EvidenceCardDesktop = ({ card, side, onMouseEnter, onMouseLeave }: 
     transition={{ type: "spring", stiffness: 300, damping: 30, mass: 0.8 }}
     onMouseEnter={onMouseEnter}
     onMouseLeave={onMouseLeave}
-    className={`absolute z-20 hidden lg:block -top-4 ${
-      side === "left" ? "-left-8 xl:-left-16" : "-right-8 xl:-right-16"
-    }`}
-    style={{ maxWidth: "520px", minWidth: "400px" }}
+    className="mt-10 z-20 hidden lg:block w-full max-w-3xl"
   >
     <div className="w-full rounded-xl border border-accent/20 bg-card/[0.97] backdrop-blur-2xl shadow-[0_8px_60px_-12px_hsl(210,70%,45%,0.15)] overflow-hidden">
       <div className="px-7 pt-5 pb-3 border-b border-accent/10">
