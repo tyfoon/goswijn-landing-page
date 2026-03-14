@@ -27,13 +27,18 @@ export const LogoMarquee = () => {
       className="relative py-12 border-t border-border/30"
       aria-label="Companies I've worked with"
     >
-      
+      {/* Visible label */}
+      <p className="text-center text-xs font-mono tracking-[0.2em] uppercase text-muted-foreground/50 mb-8">
+        Companies I've worked with
+      </p>
+
       <div className="flex flex-wrap items-center justify-center gap-8 md:gap-12 lg:gap-16 max-w-5xl mx-auto px-6">
         {logos.map((logo, i) => (
           <div key={i} className="flex items-center justify-center">
             <img
               src={logo.src}
               alt={logo.alt}
+              loading="lazy"
               className={`${logo.height} w-auto max-w-[120px] object-contain grayscale opacity-40 brightness-200 contrast-50`}
             />
           </div>

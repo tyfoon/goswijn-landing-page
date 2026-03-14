@@ -105,7 +105,6 @@ export const BookingSection = () => {
     try {
       let attachmentPath = null;
 
-      // Upload attachment if provided
       if (attachment) {
         const fileExt = attachment.name.split('.').pop();
         const fileName = `${Date.now()}-${Math.random().toString(36).substring(7)}.${fileExt}`;
@@ -158,17 +157,6 @@ export const BookingSection = () => {
     }
   };
 
-  const formatDate = (dateString: string) => {
-    const date = new Date(dateString);
-    return new Intl.DateTimeFormat("en-US", {
-      weekday: "short",
-      month: "short",
-      day: "numeric",
-      hour: "2-digit",
-      minute: "2-digit",
-    }).format(date);
-  };
-
   const formatTime24h = (dateString: string) => {
     return format(new Date(dateString), "HH:mm");
   };
@@ -208,7 +196,6 @@ export const BookingSection = () => {
       const end = new Date(slot.end);
       const slotDuration = (end.getTime() - start.getTime()) / (1000 * 60);
       
-      // Generate multiple slots if the available time is longer than the booking duration
       const numberOfSlots = Math.floor(slotDuration / selectedDuration);
       
       for (let i = 0; i < numberOfSlots; i++) {
@@ -234,12 +221,12 @@ export const BookingSection = () => {
           <Card
             key={`${option.duration}-${index}`}
             onClick={() => handleBookNow(option.duration)}
-            className="group p-3 bg-background/50 backdrop-blur-sm border-border/50 hover:border-foreground/40 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 cursor-pointer animate-on-scroll"
+            className="group p-3 bg-background/50 backdrop-blur-sm border-border/50 hover:border-accent/40 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 cursor-pointer animate-on-scroll"
             style={{ animationDelay: `${index * 0.1}s` }}
           >
             <div className="flex items-center justify-between gap-3">
               <div className="flex items-center gap-2.5 flex-1">
-                <div className="p-1.5 rounded-full bg-muted group-hover:bg-foreground/10 transition-colors duration-300">
+                <div className="p-1.5 rounded-full bg-muted group-hover:bg-accent/10 transition-colors duration-300">
                   <Clock className="h-4 w-4 text-foreground" />
                 </div>
                 <div>
@@ -250,7 +237,7 @@ export const BookingSection = () => {
               </div>
               <Button
                 size="sm"
-                className="whitespace-nowrap shadow-md hover:shadow-xl transition-all duration-300 pointer-events-none text-xs px-3 py-1 h-7"
+                className="whitespace-nowrap shadow-md hover:shadow-lg transition-all duration-300 pointer-events-none text-xs px-3 py-1 h-7"
               >
                 Book Now
               </Button>
@@ -317,7 +304,7 @@ export const BookingSection = () => {
                     onChange={(e) => {
                       const file = e.target.files?.[0];
                       if (file) {
-                        const maxSize = 5 * 1024 * 1024; // 5MB
+                        const maxSize = 5 * 1024 * 1024;
                         if (file.size > maxSize) {
                           toast({
                             title: "File too large",
@@ -382,7 +369,7 @@ export const BookingSection = () => {
                           disabled={!hasSlots}
                           className={`p-2 sm:p-3 rounded-lg border-2 transition-all duration-300 ${
                             isSelected
-                              ? "border-foreground bg-foreground/10 shadow-md"
+                              ? "border-accent bg-accent/10 shadow-md"
                               : hasSlots
                               ? "border-green-500 bg-green-500/10 hover:bg-green-500/20 cursor-pointer"
                               : "border-border bg-muted/30 cursor-not-allowed opacity-50"
@@ -407,7 +394,7 @@ export const BookingSection = () => {
                           <button
                             key={slot.id}
                             onClick={() => handleSlotSelection(slot)}
-                            className="p-3 rounded-lg border-2 border-border hover:border-foreground/40 hover:bg-foreground/5 transition-all duration-300 text-center"
+                            className="p-3 rounded-lg border-2 border-border hover:border-accent/40 hover:bg-accent/5 transition-all duration-300 text-center"
                           >
                             {formatTime24h(slot.start)}
                           </button>
@@ -437,15 +424,15 @@ export const BookingSection = () => {
               <div className="bg-muted/50 p-4 rounded-lg space-y-2">
                 <div className="flex justify-between items-center">
                   <span className="text-sm text-muted-foreground">Date:</span>
-                  <span className="">{format(new Date(selectedSlot.start), 'EEEE, MMMM d, yyyy')}</span>
+                  <span>{format(new Date(selectedSlot.start), 'EEEE, MMMM d, yyyy')}</span>
                 </div>
                 <div className="flex justify-between items-center">
                   <span className="text-sm text-muted-foreground">Time:</span>
-                  <span className="">{formatTime24h(selectedSlot.start)}</span>
+                  <span>{formatTime24h(selectedSlot.start)}</span>
                 </div>
                 <div className="flex justify-between items-center">
                   <span className="text-sm text-muted-foreground">Duration:</span>
-                  <span className="">{selectedDuration} minutes</span>
+                  <span>{selectedDuration} minutes</span>
                 </div>
               </div>
 

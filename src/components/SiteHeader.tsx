@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import linkedinIcon from "@/assets/linkedin-icon.jpg";
 
@@ -16,11 +16,24 @@ interface SiteHeaderProps {
 
 export const SiteHeader = ({ activeSection, scrollToSection }: SiteHeaderProps) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const menuRef = useRef<HTMLElement>(null);
 
   const handleNav = (id: string) => {
     scrollToSection(id);
     setMobileMenuOpen(false);
   };
+
+  // Close mobile menu on click outside
+  useEffect(() => {
+    if (!mobileMenuOpen) return;
+    const handleClickOutside = (e: MouseEvent) => {
+      if (menuRef.current && !menuRef.current.contains(e.target as Node)) {
+        setMobileMenuOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, [mobileMenuOpen]);
 
   return (
     <>
@@ -41,7 +54,7 @@ export const SiteHeader = ({ activeSection, scrollToSection }: SiteHeaderProps) 
               className="w-4 h-4 hover:opacity-80 transition-opacity"
               aria-label="LinkedIn Profile"
             >
-              <img src={linkedinIcon} alt="LinkedIn" className="w-full h-full" />
+              <img src={linkedinIcon} alt="" className="w-full h-full" aria-hidden="true" />
             </a>
           </div>
 
@@ -67,7 +80,7 @@ export const SiteHeader = ({ activeSection, scrollToSection }: SiteHeaderProps) 
       </header>
 
       {/* Mobile */}
-      <header className="md:hidden fixed top-0 left-0 right-0 z-50 glass border-b border-border/20">
+      <header ref={menuRef} className="md:hidden fixed top-0 left-0 right-0 z-50 glass border-b border-border/20">
         <div className="flex items-center justify-between px-6 py-4">
           <div className="flex items-center gap-3">
             <button onClick={() => handleNav("hero")} className="text-base font-medium text-foreground">
@@ -80,7 +93,7 @@ export const SiteHeader = ({ activeSection, scrollToSection }: SiteHeaderProps) 
               className="w-4 h-4"
               aria-label="LinkedIn Profile"
             >
-              <img src={linkedinIcon} alt="LinkedIn" className="w-full h-full" />
+              <img src={linkedinIcon} alt="" className="w-full h-full" aria-hidden="true" />
             </a>
           </div>
 
@@ -88,6 +101,7 @@ export const SiteHeader = ({ activeSection, scrollToSection }: SiteHeaderProps) 
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             className="p-2 text-foreground min-w-[44px] min-h-[44px] flex items-center justify-center"
             aria-label="Toggle menu"
+            aria-expanded={mobileMenuOpen}
           >
             {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
