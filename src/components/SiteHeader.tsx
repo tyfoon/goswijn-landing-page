@@ -81,7 +81,7 @@ export const SiteHeader = ({ activeSection, scrollToSection }: SiteHeaderProps) 
 
       {/* Mobile */}
       <header ref={menuRef} className="lg:hidden !fixed inset-x-0 top-0 z-[60] w-full glass border-b border-border/20">
-        <div className="flex items-center justify-between px-4 py-4">
+        <div className="flex items-center justify-between px-4 py-2.5">
           <div className="flex items-center gap-3">
             <button onClick={() => handleNav("hero")} className="text-base font-medium text-foreground">
               Goswijn Thijssen
@@ -113,7 +113,7 @@ export const SiteHeader = ({ activeSection, scrollToSection }: SiteHeaderProps) 
               <button
                 key={section.id}
                 onClick={() => handleNav(section.id)}
-                className="block w-full text-left px-6 py-4 text-base font-medium text-foreground hover:bg-accent/10 transition-colors min-h-[48px]"
+                className="block w-full text-right px-6 py-4 text-base font-medium text-foreground hover:bg-accent/10 transition-colors min-h-[48px]"
               >
                 {section.label}
               </button>
