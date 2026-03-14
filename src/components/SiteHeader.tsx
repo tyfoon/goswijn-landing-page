@@ -81,7 +81,7 @@ export const SiteHeader = ({ activeSection, scrollToSection }: SiteHeaderProps) 
 
       {/* Mobile */}
       <header ref={menuRef} className="lg:hidden !fixed inset-x-0 top-0 z-[60] w-full glass border-b border-border/20">
-        <div className="flex items-center justify-between px-4 py-4">
+        <div className="flex items-center justify-between px-4 py-2.5">
           <div className="flex items-center gap-3">
             <button onClick={() => handleNav("hero")} className="text-base font-medium text-foreground">
               Goswijn Thijssen
