@@ -8,6 +8,7 @@ import googleLogo from "@/assets/google.png";
 import microsoftLogo from "@/assets/microsoft.png";
 import tridionLogo from "@/assets/tridion-v2.svg";
 import googleCloudLogo from "@/assets/google-cloud.svg";
+import eqtLogo from "@/assets/eqt.png";
 
 const logos = [
   { src: googleLogo, alt: "Google", height: "h-6 md:h-7", brightness: "brightness-150" },
