@@ -66,7 +66,7 @@ export const HeroSection = ({ scrollY, scrollToSection }: HeroSectionProps) => {
                 <Button
                   size="lg"
                   onClick={() => scrollToSection("summary")}
-                  className="font-medium shadow-lg hover:shadow-xl hover:scale-105 active:scale-95 transition-all duration-300 bg-primary text-primary-foreground"
+                  className="font-semibold shadow-lg hover:shadow-xl hover:scale-105 active:scale-95 transition-all duration-300 bg-blue-500 hover:bg-blue-600 text-white"
                 >
                   View Track Record
                 </Button>
@@ -74,7 +74,7 @@ export const HeroSection = ({ scrollY, scrollToSection }: HeroSectionProps) => {
                   size="lg"
                   variant="outline"
                   onClick={() => scrollToSection("contact")}
-                  className="font-medium shadow-lg hover:shadow-xl hover:scale-105 active:scale-95 transition-all duration-300 border-foreground/20 text-foreground hover:bg-foreground/10"
+                  className="font-medium shadow-lg hover:shadow-xl hover:scale-105 active:scale-95 transition-all duration-300 border-white/30 text-foreground hover:bg-foreground/10"
                 >
                   Let's connect
                 </Button>
