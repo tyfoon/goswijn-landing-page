@@ -37,11 +37,11 @@ export const evidenceData: Record<string, EvidenceCard> = {
     title: "Multi-Geo Footprint",
     layout: "simple",
     bullets: [
+      { label: "Google", detail: "Director (Cloud EMEA North & DoubleClick)" },
+      { label: "Microsoft", detail: "Enterprise Leadership (Corporate Accounts & Compliance)" },
+      { label: "Eyeo", detail: "Global Managing Director" },
+      { label: "Tridion", detail: "Global Marketing Director" },
       { label: "ExxonMobil", detail: "EMEA Product Manager" },
-      { label: "Tridion", detail: "Global Marketing" },
-      { label: "Google DoubleClick", detail: "Benelux and Nordics" },
-      { label: "Google Cloud", detail: "DACH, CEE, Nordics" },
-      { label: "Eyeo (AdBlock)", detail: "Global Managing Director" },
     ],
   },
   "big-tech": {
