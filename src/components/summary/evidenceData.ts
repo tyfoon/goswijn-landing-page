@@ -77,7 +77,7 @@ export const evidenceData: Record<string, EvidenceCard> = {
         result: "Grew revenue to $25M, secured market leadership, and drove a successful exit.",
       },
       {
-        heading: "Eyeo",
+        heading: "Eyeo (AdBlock)",
         situation: "A $30M+ PE/Founder-backed business requiring transition to a mature SaaS model.",
         action: "Restructured an 80+ FTE organization, aligning Product, Engineering, and Sales.",
         result: "Currently driving 20% ARR and EBITDA growth.",
