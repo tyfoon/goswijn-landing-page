@@ -8,6 +8,7 @@ import googleLogo from "@/assets/google.png";
 import microsoftLogo from "@/assets/microsoft.png";
 import tridionLogo from "@/assets/tridion-v2.svg";
 import googleCloudLogo from "@/assets/google-cloud.svg";
+import eqtLogo from "@/assets/eqt.png";
 
 const logos = [
   { src: googleLogo, alt: "Google", height: "h-6 md:h-7", brightness: "brightness-150" },
@@ -19,6 +20,7 @@ const logos = [
   { src: exxonLogo, alt: "ExxonMobil", height: "h-8 md:h-10", brightness: "brightness-200" },
   { src: tridionLogo, alt: "Tridion", height: "h-8 md:h-10", brightness: "brightness-150" },
   { src: adblockPlusLogo, alt: "Adblock Plus", height: "h-8 md:h-10", brightness: "brightness-150" },
+  { src: eqtLogo, alt: "EQT", height: "h-6 md:h-8", brightness: "brightness-200" },
 ];
 
 export const LogoMarquee = () => {
