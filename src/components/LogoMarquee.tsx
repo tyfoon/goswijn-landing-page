@@ -10,15 +10,15 @@ import tridionLogo from "@/assets/tridion-v2.svg";
 import googleCloudLogo from "@/assets/google-cloud.svg";
 
 const logos = [
-  { src: googleLogo, alt: "Google", height: "h-6 md:h-7" },
-  { src: googleCloudLogo, alt: "Google Cloud", height: "h-8 md:h-10" },
-  { src: microsoftLogo, alt: "Microsoft", height: "h-8 md:h-10" },
-  { src: doubleclickLogo, alt: "DoubleClick", height: "h-15 md:h-20" },
-  { src: eyeoLogo, alt: "Eyeo", height: "h-5 md:h-6" },
-  { src: adblockLogo, alt: "Adblock", height: "h-5 md:h-6" },
-  { src: exxonLogo, alt: "ExxonMobil", height: "h-8 md:h-10" },
-  { src: tridionLogo, alt: "Tridion", height: "h-8 md:h-10" },
-  { src: adblockPlusLogo, alt: "Adblock Plus", height: "h-8 md:h-10" },
+  { src: googleLogo, alt: "Google", height: "h-6 md:h-7", brightness: "brightness-150" },
+  { src: googleCloudLogo, alt: "Google Cloud", height: "h-8 md:h-10", brightness: "brightness-200" },
+  { src: microsoftLogo, alt: "Microsoft", height: "h-8 md:h-10", brightness: "brightness-200" },
+  { src: doubleclickLogo, alt: "DoubleClick", height: "h-15 md:h-20", brightness: "brightness-200" },
+  { src: eyeoLogo, alt: "Eyeo", height: "h-5 md:h-6", brightness: "brightness-150" },
+  { src: adblockLogo, alt: "Adblock", height: "h-5 md:h-6", brightness: "brightness-150" },
+  { src: exxonLogo, alt: "ExxonMobil", height: "h-8 md:h-10", brightness: "brightness-200" },
+  { src: tridionLogo, alt: "Tridion", height: "h-8 md:h-10", brightness: "brightness-150" },
+  { src: adblockPlusLogo, alt: "Adblock Plus", height: "h-8 md:h-10", brightness: "brightness-150" },
 ];
 
 export const LogoMarquee = () => {
@@ -39,7 +39,7 @@ export const LogoMarquee = () => {
               src={logo.src}
               alt={logo.alt}
               loading="lazy"
-              className={`${logo.height} w-auto max-w-[120px] object-contain grayscale opacity-40 brightness-200 contrast-50`}
+              className={`${logo.height} w-auto max-w-[120px] object-contain grayscale opacity-40 ${logo.brightness} contrast-50`}
             />
           </div>
         ))}
