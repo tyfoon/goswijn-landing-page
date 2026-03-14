@@ -32,6 +32,8 @@ export const BookingSection = () => {
   const [currentWeekStart, setCurrentWeekStart] = useState(() => startOfWeek(new Date(), { weekStartsOn: 1 }));
   const [selectedDay, setSelectedDay] = useState<Date | null>(null);
   const [showConfirmation, setShowConfirmation] = useState(false);
+  // Step flow: "time" → "details"
+  const [step, setStep] = useState<"time" | "details">("time");
   const { toast } = useToast();
 
   const bookingOptions = [
@@ -56,7 +58,7 @@ export const BookingSection = () => {
       if (error) throw error;
 
       setAvailableSlots(data.slots || []);
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error("Error fetching slots:", error);
       toast({
         title: "Error",
@@ -78,12 +80,13 @@ export const BookingSection = () => {
     setAttendeeEmail("");
     setDescription("");
     setAttachment(null);
+    setStep("time");
     setCurrentWeekStart(startOfWeek(new Date(), { weekStartsOn: 1 }));
   };
 
   const handleSlotSelection = (slot: TimeSlot) => {
     setSelectedSlot(slot);
-    setShowConfirmation(true);
+    setStep("details");
   };
 
   const handleConfirmBooking = () => {
