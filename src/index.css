@@ -97,7 +97,11 @@
     font-family: 'Cormorant Garamond', 'General Sans', serif;
     letter-spacing: -0.02em;
   }
-}
+  }
+
+  .section-label {
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+  }
 
 @layer utilities {
   .animate-on-scroll {
