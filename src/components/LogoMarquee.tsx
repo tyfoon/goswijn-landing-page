@@ -24,6 +24,9 @@ const logos = [
   { src: tridionLogo, alt: "Tridion", height: "h-8 md:h-10", brightness: "brightness-150" },
   { src: adblockPlusLogo, alt: "Adblock Plus", height: "h-8 md:h-10", brightness: "brightness-150" },
   { src: eqtLogo, alt: "EQT", height: "h-3 md:h-4", brightness: "brightness-200" },
+  { src: nvpiLogo, alt: "NVPI", height: "h-6 md:h-7", brightness: "brightness-150" },
+  { src: bsaLogo, alt: "BSA", height: "h-6 md:h-7", brightness: "brightness-150" },
+  { src: breinLogo, alt: "BREIN", height: "h-6 md:h-7", brightness: "brightness-150" },
 ];
 
 export const LogoMarquee = () => {
