@@ -66,7 +66,7 @@ export const HeroSection = ({ scrollY, scrollToSection }: HeroSectionProps) => {
                 <Button
                   size="lg"
                   onClick={() => scrollToSection("summary")}
-                  className="font-semibold shadow-lg hover:shadow-xl hover:scale-105 active:scale-95 transition-all duration-300 bg-blue-500 hover:bg-blue-600 text-white"
+                  className="font-semibold shadow-lg hover:shadow-xl hover:scale-105 active:scale-95 transition-all duration-300 bg-accent text-accent-foreground"
                 >
                   View Track Record
                 </Button>
