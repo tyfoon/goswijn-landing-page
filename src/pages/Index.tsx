@@ -81,7 +81,7 @@ const Index = () => {
         <div className="relative z-10 max-w-7xl mx-auto">
           {/* Section label — consistent with Track Record & Principles */}
           <div className="mb-12 animate-on-scroll">
-            <span className="text-accent/60 text-xs md:text-sm font-mono tracking-[0.2em] uppercase">
+            <span className="text-accent/60 text-xs md:text-sm section-label tracking-[0.2em] uppercase">
               Let's Connect
             </span>
             <div className="mt-2 w-12 h-[2px] bg-accent/30" />
