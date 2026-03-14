@@ -6,17 +6,17 @@ const principles = [
   {
     icon: Layers,
     title: "Radical Alignment",
-    text: "I don't believe in silos. Whether it's connecting Product and Engineering with Sales, or aligning BDRs with Customer Success, I build unified GTM engines. I implement shared OKRs and relentless operational rigor to ensure the entire organization moves as one revenue-generating machine.",
+    text: "I build unified GTM engines by ruthlessly aligning Product, Engineering, and Sales. I make data-driven decisions, but I refuse to be data-paralyzed. I actively demand pushback from my teams and believe that constructive friction is essential to maintain momentum and build a scalable revenue machine.",
   },
   {
     icon: Network,
     title: "Translating Complexity",
-    text: "Deep technology (AI, Cloud, programmatic AdTech) only holds value if the market understands it. My core competency is bridging the gap between highly complex engineering and C-suite business value, turning technical differentiators into scalable, predictable pipeline velocity.",
+    text: "Deep technology (AI, Cloud, AdTech) only holds value if the market understands it. When it comes to business transformation, my primary role is curation. I ruthlessly filter out the organizational noise to bridge the gap between highly complex engineering and C-suite business value, turning technical differentiators into predictable pipeline.",
   },
   {
     icon: Compass,
     title: "Situational Grit",
-    text: "Having navigated everything from forced job rotations at ExxonMobil and dot-com crash startups to matrixed Big Tech environments with flat budgets, I adapt my leadership to the context. I lead with transparency, empower teams with data, and am never afraid to dive into the operational trenches when the business requires it.",
+    text: "What you see is what you get. I adapt my leadership to the context—whether navigating dot-com crashes, flat corporate budgets, or PE-backed turnarounds. I lead with transparency, and when the situation demands it, I will gladly get in the trenches to rebuild things from the ground up.",
   },
 ];
 
