@@ -102,7 +102,7 @@ function SARLayout({
 
             {/* S-A-R rows */}
             {col.situation && (
-              <SARRow label="S" color="text-blue-400" text={col.situation} />
+              <SARRow label="S" color="text-accent" text={col.situation} />
             )}
             <SARRow label="A" color="text-yellow-500" text={col.action} />
             <SARRow label="R" color="text-green-500" text={col.result} />
