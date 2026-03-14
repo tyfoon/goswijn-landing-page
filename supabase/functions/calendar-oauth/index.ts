@@ -88,9 +88,9 @@ serve(async (req) => {
         return new Response(`Error storing tokens: ${dbError.message}`, { status: 500 });
       }
 
-      // Redirect to success page
+      // Notify opener and close popup
       return new Response(
-        `<html><body><h1>Authorization Successful!</h1><p>You can close this window and return to the app.</p><script>window.close();</script></body></html>`,
+        `<html><body><h1>Authorization Successful!</h1><p>You can close this window.</p><script>if(window.opener){window.opener.postMessage({type:"google-oauth-callback",success:true},"*")}window.close();</script></body></html>`,
         { headers: { "Content-Type": "text/html" } }
       );
     }

@@ -10,7 +10,6 @@ export const GoogleCalendarAuth = () => {
   const [isAuthorized, setIsAuthorized] = useState(false);
   const { toast } = useToast();
 
-  // Check auth status on component mount
   useEffect(() => {
     checkAuthStatus();
   }, []);
@@ -18,61 +17,62 @@ export const GoogleCalendarAuth = () => {
   const checkAuthStatus = async () => {
     try {
       const { data, error } = await supabase.functions.invoke("calendar-oauth/token");
-      
+
       if (!error && data?.access_token) {
         setIsAuthorized(true);
         return true;
       }
       return false;
-    } catch (error) {
+    } catch {
       return false;
     }
   };
 
+  useEffect(() => {
+    const handleMessage = async (event: MessageEvent) => {
+      if (event.data?.type === "google-oauth-callback" && event.data?.success) {
+        setIsAuthorizing(false);
+        const authorized = await checkAuthStatus();
+        if (authorized) {
+          toast({
+            title: "Success!",
+            description: "Google Calendar has been authorized successfully.",
+          });
+        }
+      }
+    };
+
+    window.addEventListener("message", handleMessage);
+    return () => window.removeEventListener("message", handleMessage);
+  }, [toast]);
+
   const handleAuthorize = async () => {
     setIsAuthorizing(true);
-    
+
     try {
       const { data, error } = await supabase.functions.invoke("calendar-oauth/init");
-      
+
       if (error) throw error;
-      
+
       if (data?.authUrl) {
-        // Open OAuth flow in popup
         const width = 600;
         const height = 700;
         const left = window.screenX + (window.outerWidth - width) / 2;
         const top = window.screenY + (window.outerHeight - height) / 2;
-        
-        const popup = window.open(
+
+        window.open(
           data.authUrl,
           "Google Calendar Authorization",
           `width=${width},height=${height},left=${left},top=${top}`
         );
-
-        // Poll for completion
-        const checkPopup = setInterval(async () => {
-          if (popup?.closed) {
-            clearInterval(checkPopup);
-            setIsAuthorizing(false);
-            
-            // Check if authorization was successful
-            const authorized = await checkAuthStatus();
-            if (authorized) {
-              toast({
-                title: "Success!",
-                description: "Google Calendar has been authorized successfully.",
-              });
-            }
-          }
-        }, 500);
       }
-    } catch (error: any) {
+    } catch (error: unknown) {
+      const message = error instanceof Error ? error.message : "Failed to authorize Google Calendar";
       console.error("Authorization error:", error);
       toast({
         variant: "destructive",
         title: "Authorization Failed",
-        description: error.message || "Failed to authorize Google Calendar",
+        description: message,
       });
       setIsAuthorizing(false);
     }

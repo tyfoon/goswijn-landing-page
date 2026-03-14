@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import type { EvidenceCard } from "./evidenceData";
+import { SARRow, LegendItem } from "./SARComponents";
 
 interface Props {
   card: EvidenceCard;
@@ -46,10 +47,9 @@ export const EvidenceCardDesktop = ({ card, onMouseEnter, onMouseLeave }: Props)
   );
 };
 
-// --- S/A/R Legend ---
 function SARLegend() {
   return (
-    <div className="px-7 py-3 border-t" style={{ borderColor: "rgba(39, 44, 52, 0.5)" }}>
+    <div className="px-7 py-3 border-t border-sar-border/50">
       <div className="flex items-center gap-5">
         <LegendItem label="S" color="text-accent" text="Situation" />
         <LegendItem label="A" color="text-yellow-500" text="Action" />
@@ -59,22 +59,6 @@ function SARLegend() {
   );
 }
 
-function LegendItem({ label, color, text }: { label: string; color: string; text: string }) {
-  return (
-    <div className="flex items-center gap-1.5">
-      <span
-        className={`flex-shrink-0 w-5 h-5 rounded flex items-center justify-center text-[10px] font-bold ${color} bg-muted/80 border border-border/40`}
-      >
-        {label}
-      </span>
-      <span className="text-[10px]" style={{ color: "rgba(239, 236, 231, 0.4)", fontFamily: "'General Sans', system-ui, sans-serif", fontWeight: 400 }}>
-        {text}
-      </span>
-    </div>
-  );
-}
-
-// --- Simple bullet list (Trigger 1) ---
 function SimpleLayout({ bullets }: { bullets: { label: string; detail: string }[] }) {
   return (
     <div className="space-y-2.5">
@@ -96,7 +80,6 @@ function SimpleLayout({ bullets }: { bullets: { label: string; detail: string }[
   );
 }
 
-// --- S-A-R executive dashboard layout ---
 function SARLayout({
   context,
   columns,
@@ -106,7 +89,6 @@ function SARLayout({
 }) {
   return (
     <div className="space-y-5">
-      {/* Context */}
       <motion.p
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -117,7 +99,6 @@ function SARLayout({
         {context}
       </motion.p>
 
-      {/* Column grid */}
       <div
         className={`grid gap-4 ${
           columns.length === 3 ? "grid-cols-3" : "grid-cols-2"
@@ -129,18 +110,15 @@ function SARLayout({
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 + i * 0.08 }}
-            className="rounded-lg border border-border/60 p-4 space-y-4 border-l-2"
-            style={{
-              backgroundColor: "rgba(31, 34, 41, 0.5)",
-              borderLeftColor: "rgba(34, 115, 195, 0.25)",
-            }}
+            className="rounded-lg border border-border/60 p-4 space-y-4 border-l-2 bg-sar-card/50 border-l-sar-accent/25"
           >
-            {/* Column heading */}
-            <h4 className="text-foreground font-semibold tracking-wide uppercase border-b border-accent/15 pb-2" style={{ fontSize: "13px" }}>
+            <h4
+              className="text-foreground font-semibold tracking-wide uppercase border-b border-accent/15 pb-2"
+              style={{ fontSize: "13px" }}
+            >
               {col.heading}
             </h4>
 
-            {/* S-A-R rows */}
             {col.situation && (
               <SARRow label="S" color="text-accent" text={col.situation} />
             )}
@@ -149,19 +127,6 @@ function SARLayout({
           </motion.div>
         ))}
       </div>
-    </div>
-  );
-}
-
-function SARRow({ label, color, text }: { label: string; color: string; text: string }) {
-  return (
-    <div className="flex items-start gap-2">
-      <span
-        className={`flex-shrink-0 mt-0.5 w-5 h-5 rounded flex items-center justify-center text-[10px] font-bold ${color} bg-muted/80 border border-border/40`}
-      >
-        {label}
-      </span>
-      <p className="text-foreground/80 leading-[20px]" style={{ fontSize: "13px" }}>{text}</p>
     </div>
   );
 }

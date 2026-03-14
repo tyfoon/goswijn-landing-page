@@ -3,6 +3,7 @@ import { useEffect, useRef } from "react";
 export const CanvasWaveBackground = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const animRef = useRef<number>(0);
+  const isVisibleRef = useRef(true);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -23,18 +24,23 @@ export const CanvasWaveBackground = () => {
     const rows = 30;
     const perspective = 600;
     const cameraY = -120;
-    const tiltX = 0.55; // radians – slight forward tilt
+    const tiltX = 0.55;
 
     const cosT = Math.cos(tiltX);
     const sinT = Math.sin(tiltX);
 
     const draw = (time: number) => {
-      const t = time * 0.0003; // very slow
+      if (!isVisibleRef.current) {
+        animRef.current = requestAnimationFrame(draw);
+        return;
+      }
+
+      const t = time * 0.0003;
       const w = window.innerWidth;
       const h = window.innerHeight;
       ctx.clearRect(0, 0, w, h);
 
-      const spacingX = w / (cols - 1) * 1.4;
+      const spacingX = (w / (cols - 1)) * 1.4;
       const spacingZ = 28;
       const offsetX = w / 2;
       const offsetZ = -rows * spacingZ * 0.35;
@@ -44,7 +50,6 @@ export const CanvasWaveBackground = () => {
           const x3d = (col - cols / 2) * spacingX;
           const z3d = row * spacingZ + offsetZ;
 
-          // Wave displacement on Y
           const wave =
             Math.sin(col * 0.25 + t * 1.8) * 22 +
             Math.cos(row * 0.3 + t * 1.2) * 15 +
@@ -52,7 +57,6 @@ export const CanvasWaveBackground = () => {
 
           const y3d = wave;
 
-          // Apply tilt rotation around X-axis
           const ry = (y3d - cameraY) * cosT - z3d * sinT;
           const rz = (y3d - cameraY) * sinT + z3d * cosT;
 
@@ -63,14 +67,12 @@ export const CanvasWaveBackground = () => {
           const sx = x3d * scale + offsetX;
           const sy = ry * scale + h * 0.55;
 
-          // Fade dots by depth
           const depthNorm = Math.max(0, Math.min(1, (depth - 50) / (rows * spacingZ)));
           const alpha = 0.04 + (1 - depthNorm) * 0.14;
           const radius = Math.max(0.3, 0.9 * scale);
 
           ctx.beginPath();
           ctx.arc(sx, sy, radius, 0, Math.PI * 2);
-          // Use accent-aligned blue-grey for dark theme
           ctx.fillStyle = `hsla(210, 20%, 65%, ${alpha})`;
           ctx.fill();
         }
@@ -81,9 +83,19 @@ export const CanvasWaveBackground = () => {
 
     animRef.current = requestAnimationFrame(draw);
 
+    // Pause animation when canvas is off-screen
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        isVisibleRef.current = entry.isIntersecting;
+      },
+      { threshold: 0 }
+    );
+    observer.observe(canvas);
+
     return () => {
       window.removeEventListener("resize", resize);
       cancelAnimationFrame(animRef.current);
+      observer.disconnect();
     };
   }, []);
 

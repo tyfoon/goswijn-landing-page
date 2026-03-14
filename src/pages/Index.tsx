@@ -21,7 +21,7 @@ const Index = () => {
   };
 
   useEffect(() => {
-    const handleScroll = () => setScrollY(window.scrollY);
+    const handleScroll = () => requestAnimationFrame(() => setScrollY(window.scrollY));
     window.addEventListener("scroll", handleScroll);
 
     const observerOptions = { threshold: 0.1, rootMargin: "0px 0px -100px 0px" };
