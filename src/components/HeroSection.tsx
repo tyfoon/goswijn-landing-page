@@ -57,7 +57,7 @@ export const HeroSection = ({ scrollY, scrollToSection }: HeroSectionProps) => {
                   </li>
                 </ul>
 
-                <p className="text-sm leading-relaxed text-muted-foreground md:text-base max-w-xl">
+                <p className="text-xs leading-relaxed text-muted-foreground sm:text-sm md:text-base max-w-xl">
                   Executive Commercial Leader &amp; Technologist with deep expertise in SaaS, Data, AdTech and AI and 25+ years of multi-geo leadership. I bridge the gap between the rigor of Big Tech (Google, Microsoft) and the situational grit of PE/VC environments. My strength lies in building durable hypergrowth engines, whether starting from scratch or accelerating existing businesses, by implementing data-driven GTM strategies and leading high-performance teams that combine operational excellence with entrepreneurial speed and innovation.
                 </p>
               </div>

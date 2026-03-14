@@ -65,7 +65,7 @@ const Index = () => {
       {/* Contact & Booking Section */}
       <section
         id="contact"
-        className="relative py-24 px-6 md:px-12 lg:px-16 overflow-hidden animate-on-scroll"
+        className="relative py-16 md:py-24 px-6 md:px-12 lg:px-16 overflow-hidden animate-on-scroll"
       >
         
         {/* Parallax background elements */}
@@ -79,19 +79,29 @@ const Index = () => {
         />
 
         <div className="relative z-10 max-w-7xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-12 items-stretch">
-            {/* Left: Image */}
-            <div className="relative h-[420px] lg:h-auto animate-on-scroll rounded-lg overflow-hidden shadow-2xl">
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-stretch">
+            {/* Image: circle on mobile, full rectangle on desktop */}
+            <div className="animate-on-scroll flex justify-center lg:block">
+              {/* Mobile: circular portrait */}
               <img
                 src={speakingImage}
                 alt="Goswijn Thijssen in a thoughtful moment during a business discussion"
-                className="absolute inset-0 w-full h-full object-cover"
+                className="lg:hidden w-40 h-40 rounded-full object-cover shadow-2xl"
                 style={{ objectPosition: "center top" }}
               />
+              {/* Desktop: full image */}
+              <div className="hidden lg:block relative h-full min-h-[400px] rounded-lg overflow-hidden shadow-2xl">
+                <img
+                  src={speakingImage}
+                  alt="Goswijn Thijssen in a thoughtful moment during a business discussion"
+                  className="absolute inset-0 w-full h-full object-cover"
+                  style={{ objectPosition: "center top" }}
+                />
+              </div>
             </div>
 
             {/* Right: Booking + Contact */}
-            <div className="animate-on-scroll space-y-8" style={{ animationDelay: "0.2s" }}>
+            <div className="animate-on-scroll space-y-6 md:space-y-8" style={{ animationDelay: "0.2s" }}>
               <div>
                 <h2 className="text-2xl md:text-3xl text-foreground mb-2">Let's connect</h2>
                 <p className="text-sm text-muted-foreground mb-4">

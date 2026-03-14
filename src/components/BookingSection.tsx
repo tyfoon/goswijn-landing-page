@@ -402,7 +402,7 @@ export const BookingSection = () => {
                   {selectedDay && (
                     <div className="space-y-2 mt-4">
                       <Label>Available Times</Label>
-                      <div className="grid grid-cols-3 gap-2">
+                      <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
                         {getSlotsForDay(selectedDay).map((slot) => (
                           <button
                             key={slot.id}
