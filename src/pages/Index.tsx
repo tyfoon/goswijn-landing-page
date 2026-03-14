@@ -81,10 +81,10 @@ const Index = () => {
         <div className="relative z-10 max-w-7xl mx-auto">
           {/* Section label — consistent with Track Record & Principles */}
           <div className="mb-12 animate-on-scroll">
-            <span className="text-blue-400 text-xs section-label tracking-widest uppercase">
+            <span className="text-accent text-xs section-label tracking-widest uppercase">
               Let's Connect
             </span>
-            <div className="mt-2 w-12 h-[2px] bg-blue-400/40" />
+            <div className="mt-2 w-12 h-[2px] bg-accent/40" />
             <p className="mt-4 text-muted-foreground text-sm md:text-base max-w-lg">
               Feel free to provide me with as much background as possible as this will significantly improve the value of our conversation.
             </p>
