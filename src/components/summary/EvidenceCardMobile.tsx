@@ -46,10 +46,10 @@ export const EvidenceCardMobile = ({ card }: Props) => (
                   {col.heading}
                 </h4>
                 {col.situation && (
-                  <MobileSARRow label="S" color="text-blue-400" text={col.situation} />
+                  <MobileSARRow label="S" color="text-accent" text={col.situation} />
                 )}
-                <MobileSARRow label="A" color="text-amber-400" text={col.action} />
-                <MobileSARRow label="R" color="text-emerald-400" text={col.result} />
+                <MobileSARRow label="A" color="text-yellow-500" text={col.action} />
+                <MobileSARRow label="R" color="text-green-500" text={col.result} />
               </div>
             ))}
           </div>

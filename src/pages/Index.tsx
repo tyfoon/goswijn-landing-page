@@ -65,7 +65,7 @@ const Index = () => {
       {/* Contact & Booking Section */}
       <section
         id="contact"
-        className="relative py-16 md:py-24 px-6 md:px-12 lg:px-16 overflow-hidden animate-on-scroll"
+        className="relative py-24 md:py-32 px-6 md:px-12 lg:px-16 overflow-hidden animate-on-scroll"
       >
         
         {/* Parallax background elements */}
@@ -79,13 +79,25 @@ const Index = () => {
         />
 
         <div className="relative z-10 max-w-7xl mx-auto">
+          {/* Section label — consistent with Track Record & Principles */}
+          <div className="mb-12 animate-on-scroll">
+            <span className="text-accent/60 text-xs md:text-sm font-mono tracking-[0.2em] uppercase">
+              Let's Connect
+            </span>
+            <div className="mt-2 w-12 h-[2px] bg-accent/30" />
+            <p className="mt-4 text-muted-foreground text-sm md:text-base max-w-lg">
+              Feel free to provide me with as much background as possible as this will significantly improve the value of our conversation.
+            </p>
+          </div>
+
           <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-stretch">
             {/* Image: circle on mobile, full rectangle on desktop */}
             <div className="animate-on-scroll flex justify-center lg:block">
               {/* Mobile: circular portrait */}
               <img
                 src={speakingImage}
-                alt="Goswijn Thijssen in a thoughtful moment during a business discussion"
+                alt="Goswijn Thijssen during a strategic business discussion"
+                loading="lazy"
                 className="lg:hidden w-40 h-40 rounded-full object-cover shadow-2xl"
                 style={{ objectPosition: "center top" }}
               />
@@ -93,7 +105,8 @@ const Index = () => {
               <div className="hidden lg:block relative h-full min-h-[400px] rounded-lg overflow-hidden shadow-2xl">
                 <img
                   src={speakingImage}
-                  alt="Goswijn Thijssen in a thoughtful moment during a business discussion"
+                  alt="Goswijn Thijssen during a strategic business discussion"
+                  loading="lazy"
                   className="absolute inset-0 w-full h-full object-cover"
                   style={{ objectPosition: "center top" }}
                 />
@@ -103,11 +116,6 @@ const Index = () => {
             {/* Right: Booking + Contact */}
             <div className="animate-on-scroll space-y-6 md:space-y-8" style={{ animationDelay: "0.2s" }}>
               <div>
-                <h2 className="text-2xl md:text-3xl text-foreground mb-2">Let's connect</h2>
-                <p className="text-sm text-muted-foreground mb-4">
-                  Feel free to provide me with as much background as possible as this will significantly improve the
-                  value of our conversation.
-                </p>
                 <BookingSection />
               </div>
 
