@@ -65,7 +65,7 @@ const Index = () => {
       {/* Contact & Booking Section */}
       <section
         id="contact"
-        className="relative py-24 md:py-32 px-6 md:px-12 lg:px-16 overflow-hidden animate-on-scroll"
+        className="relative py-20 md:py-24 px-6 md:px-12 lg:px-16 overflow-hidden animate-on-scroll"
       >
         
         {/* Parallax background elements */}
@@ -81,10 +81,10 @@ const Index = () => {
         <div className="relative z-10 max-w-7xl mx-auto">
           {/* Section label — consistent with Track Record & Principles */}
           <div className="mb-12 animate-on-scroll">
-            <span className="text-accent/60 text-xs md:text-sm section-label tracking-[0.2em] uppercase">
+            <span className="text-accent text-xs section-label tracking-widest uppercase">
               Let's Connect
             </span>
-            <div className="mt-2 w-12 h-[2px] bg-accent/30" />
+            <div className="mt-2 w-12 h-[2px] bg-accent/40" />
             <p className="mt-4 text-muted-foreground text-sm md:text-base max-w-lg">
               Feel free to provide me with as much background as possible as this will significantly improve the value of our conversation.
             </p>

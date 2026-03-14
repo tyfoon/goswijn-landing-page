@@ -38,7 +38,7 @@ export const HeroSection = ({ scrollY, scrollToSection }: HeroSectionProps) => {
 
             <div className="flex flex-col justify-between animate-on-scroll">
               <div className="space-y-4 md:space-y-6 lg:space-y-8">
-                <h1 className="text-2xl leading-tight tracking-tight text-foreground md:text-3xl lg:text-4xl">
+                <h1 className="text-4xl leading-tight tracking-tight text-foreground md:text-5xl lg:text-6xl font-medium">
                   Executive Commercial Leader &amp; Technologist
                 </h1>
 
@@ -57,7 +57,7 @@ export const HeroSection = ({ scrollY, scrollToSection }: HeroSectionProps) => {
                   </li>
                 </ul>
 
-                <p className="text-xs leading-relaxed text-muted-foreground sm:text-sm md:text-base max-w-xl">
+                <p className="text-xs leading-relaxed text-foreground/80 sm:text-sm md:text-base max-w-xl">
                   With 25+ years of multi-geo leadership—including as a Director at Google and executive at Microsoft—I build data-driven GTM engines that capture market share. I bridge the gap between deep technical complexity and commercial strategy, delivering durable growth and profitability without breaking the organization.
                 </p>
               </div>
@@ -66,7 +66,7 @@ export const HeroSection = ({ scrollY, scrollToSection }: HeroSectionProps) => {
                 <Button
                   size="lg"
                   onClick={() => scrollToSection("summary")}
-                  className="font-medium shadow-lg hover:shadow-xl hover:scale-105 active:scale-95 transition-all duration-300 bg-primary text-primary-foreground"
+                  className="font-semibold shadow-lg hover:shadow-xl hover:scale-105 active:scale-95 transition-all duration-300 bg-accent text-accent-foreground"
                 >
                   View Track Record
                 </Button>
@@ -74,7 +74,7 @@ export const HeroSection = ({ scrollY, scrollToSection }: HeroSectionProps) => {
                   size="lg"
                   variant="outline"
                   onClick={() => scrollToSection("contact")}
-                  className="font-medium shadow-lg hover:shadow-xl hover:scale-105 active:scale-95 transition-all duration-300 border-foreground/20 text-foreground hover:bg-foreground/10"
+                  className="font-medium shadow-lg hover:shadow-xl hover:scale-105 active:scale-95 transition-all duration-300 border-white/30 text-foreground hover:bg-foreground/10"
                 >
                   Let's connect
                 </Button>

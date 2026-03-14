@@ -19,10 +19,10 @@ export const EvidenceCardDesktop = ({ card, onMouseEnter, onMouseLeave }: Props)
     onMouseLeave={onMouseLeave}
     className="mt-10 z-20 hidden lg:block w-full"
   >
-    <div className="w-full rounded-xl border border-accent/20 bg-card/[0.97] backdrop-blur-2xl shadow-[0_8px_60px_-12px_hsl(210,70%,45%,0.15)] overflow-hidden">
+    <div className="w-full rounded-xl border border-white/10 bg-card/[0.97] backdrop-blur-2xl shadow-lg shadow-black/40 overflow-hidden">
       {/* Header */}
       <div className="px-7 pt-5 pb-3 border-b border-accent/10">
-        <h3 className="text-accent text-sm section-label tracking-[0.15em] uppercase">
+        <h3 className="text-accent text-xs section-label tracking-widest uppercase">
           {card.title}
         </h3>
       </div>

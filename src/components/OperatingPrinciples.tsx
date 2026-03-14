@@ -38,7 +38,7 @@ export const OperatingPrinciples = () => {
   return (
     <section
       id="principles"
-      className="relative py-24 md:py-32 px-6 md:px-12 lg:px-16 overflow-hidden"
+      className="relative py-20 md:py-24 px-6 md:px-12 lg:px-16 overflow-hidden"
     >
       
       {/* Ambient radial glow */}
@@ -55,10 +55,10 @@ export const OperatingPrinciples = () => {
           transition={{ duration: 0.6 }}
           className="mb-16"
         >
-          <span className="text-accent/60 text-xs md:text-sm section-label tracking-[0.2em] uppercase">
+          <span className="text-accent text-xs section-label tracking-widest uppercase">
             Operating Principles
           </span>
-          <div className="mt-2 w-12 h-[2px] bg-accent/30" />
+          <div className="mt-2 w-12 h-[2px] bg-accent/40" />
           <p className="mt-4 text-muted-foreground text-sm md:text-base max-w-lg">
             How I build, scale, and lead multi-geo organizations.
           </p>
@@ -74,15 +74,15 @@ export const OperatingPrinciples = () => {
               whileInView="visible"
               viewport={{ once: true, margin: "-60px" }}
               variants={cardVariants}
-              className="group relative rounded-xl border border-border/50 bg-card/80 backdrop-blur-sm p-8 transition-all duration-500 hover:border-accent/30 hover:shadow-[0_8px_40px_-12px_hsl(210,70%,45%,0.12)] hover:-translate-y-1"
+              className="group relative rounded-xl border border-white/10 bg-card/80 backdrop-blur-sm p-8 transition-all duration-500 hover:border-accent/30 hover:shadow-lg shadow-black/40 hover:-translate-y-1"
             >
               {/* Icon */}
               <div className="mb-6 inline-flex items-center justify-center w-11 h-11 rounded-lg bg-accent/10 text-accent transition-colors duration-300 group-hover:bg-accent/15">
-                <principle.icon className="w-5 h-5" strokeWidth={1.5} />
+                <principle.icon className="w-7 h-7" strokeWidth={1.5} />
               </div>
 
               {/* Title */}
-              <h3 className="text-lg font-semibold text-foreground mb-3 tracking-tight">
+              <h3 className="text-xl font-semibold text-foreground mb-3 tracking-tight">
                 {principle.title}
               </h3>
 

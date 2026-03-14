@@ -221,13 +221,13 @@ export const BookingSection = () => {
           <Card
             key={`${option.duration}-${index}`}
             onClick={() => handleBookNow(option.duration)}
-            className="group p-3 bg-background/50 backdrop-blur-sm border-border/50 hover:border-accent/40 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 cursor-pointer animate-on-scroll"
+            className="group p-3 bg-background/50 backdrop-blur-sm border-white/10 hover:border-accent/40 hover:shadow-lg shadow-black/40 hover:-translate-y-1 cursor-pointer animate-on-scroll"
             style={{ animationDelay: `${index * 0.1}s` }}
           >
             <div className="flex items-center justify-between gap-3">
               <div className="flex items-center gap-2.5 flex-1">
                 <div className="p-1.5 rounded-full bg-muted group-hover:bg-accent/10 transition-colors duration-300">
-                  <Clock className="h-4 w-4 text-foreground" />
+                  <Clock className="h-4 w-4 text-accent" />
                 </div>
                 <div>
                   <h3 className="text-base text-foreground mb-0 group-hover:text-foreground/80 transition-colors">
@@ -257,7 +257,7 @@ export const BookingSection = () => {
 
           {showSuccess ? (
             <div className="flex flex-col items-center justify-center py-12 animate-success-pop">
-              <CheckCircle2 className="h-16 w-16 text-green-600 mb-4" />
+              <CheckCircle2 className="h-16 w-16 text-green-500 mb-4" />
               <h3 className="text-2xl text-foreground mb-2">Booking Confirmed!</h3>
               <p className="text-foreground/70">Check your email for details</p>
             </div>
@@ -367,7 +367,7 @@ export const BookingSection = () => {
                           key={day.toISOString()}
                           onClick={() => hasSlots && setSelectedDay(day)}
                           disabled={!hasSlots}
-                          className={`p-2 sm:p-3 rounded-lg border-2 transition-all duration-300 ${
+                         className={`p-2 sm:p-3 rounded-lg border-2 transition-all duration-300 ${
                             isSelected
                               ? "border-accent bg-accent/10 shadow-md"
                               : hasSlots
