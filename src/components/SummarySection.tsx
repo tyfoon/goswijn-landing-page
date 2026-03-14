@@ -96,7 +96,7 @@ const SummarySection = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="flex flex-col items-center"
+            className="flex flex-col"
           >
             <p className="text-base md:text-lg lg:text-xl leading-relaxed md:leading-relaxed lg:leading-[1.9] text-foreground/85 font-light max-w-3xl text-left">
               Driving sustainable,{" "}
