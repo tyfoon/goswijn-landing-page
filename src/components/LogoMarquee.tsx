@@ -39,7 +39,7 @@ export const LogoMarquee = () => {
               src={logo.src}
               alt={logo.alt}
               loading="lazy"
-              className={`${logo.height} w-auto max-w-[120px] object-contain grayscale opacity-40 brightness-200 contrast-50`}
+              className={`${logo.height} w-auto max-w-[120px] object-contain grayscale opacity-40 ${logo.brightness} contrast-50`}
             />
           </div>
         ))}
