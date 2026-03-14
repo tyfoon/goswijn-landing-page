@@ -3,7 +3,7 @@ import { BookingSection } from "@/components/BookingSection";
 import { CanvasWaveBackground } from "@/components/CanvasWaveBackground";
 import { SummarySection } from "@/components/SummarySection";
 import { OperatingPrinciples } from "@/components/OperatingPrinciples";
-import { Button } from "@/components/ui/button";
+
 import { HeroSection } from "@/components/HeroSection";
 import { LogoMarquee } from "@/components/LogoMarquee";
 import { SiteHeader } from "@/components/SiteHeader";
