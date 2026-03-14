@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import type { EvidenceCard } from "./evidenceData";
-import { SARRow, LegendItem } from "./SARComponents";
+import { EvidenceRow } from "./SARComponents";
 
 interface Props {
   card: EvidenceCard;
@@ -36,28 +36,13 @@ export const EvidenceCardDesktop = ({ card, onMouseEnter, onMouseLeave }: Props)
           {card.layout === "simple" ? (
             <SimpleLayout bullets={card.bullets} />
           ) : (
-            <SARLayout context={card.context} columns={card.columns} />
+            <ColumnLayout context={card.context} columns={card.columns} />
           )}
         </div>
-
-        {/* S/A/R Legend — only for SAR cards */}
-        {card.layout === "sar" && <SARLegend />}
       </div>
     </motion.div>
   );
 };
-
-function SARLegend() {
-  return (
-    <div className="px-7 py-3 border-t border-sar-border/50">
-      <div className="flex items-center gap-5">
-        <LegendItem label="S" color="text-accent" text="Situation" />
-        <LegendItem label="A" color="text-yellow-500" text="Action" />
-        <LegendItem label="R" color="text-green-500" text="Result" />
-      </div>
-    </div>
-  );
-}
 
 function SimpleLayout({ bullets }: { bullets: { label: string; detail: string }[] }) {
   return (
@@ -80,7 +65,7 @@ function SimpleLayout({ bullets }: { bullets: { label: string; detail: string }[
   );
 }
 
-function SARLayout({
+function ColumnLayout({
   context,
   columns,
 }: {
@@ -110,7 +95,7 @@ function SARLayout({
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 + i * 0.08 }}
-            className="rounded-lg border border-border/60 p-4 space-y-4 border-l-2 bg-sar-card/50 border-l-sar-accent/25"
+            className="rounded-lg border border-border/60 p-4 space-y-3 border-l-2 bg-sar-card/50 border-l-sar-accent/25"
           >
             <h4
               className="text-foreground font-semibold tracking-wide uppercase border-b border-accent/15 pb-2"
@@ -120,10 +105,10 @@ function SARLayout({
             </h4>
 
             {col.situation && (
-              <SARRow label="S" color="text-accent" text={col.situation} />
+              <EvidenceRow text={col.situation} />
             )}
-            <SARRow label="A" color="text-yellow-500" text={col.action} />
-            <SARRow label="R" color="text-green-500" text={col.result} />
+            <EvidenceRow text={col.action} />
+            <EvidenceRow text={col.result} variant="result" />
           </motion.div>
         ))}
       </div>

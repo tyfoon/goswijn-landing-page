@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import type { EvidenceCard } from "./evidenceData";
-import { SARRow, LegendItem } from "./SARComponents";
+import { EvidenceRow } from "./SARComponents";
 
 interface Props {
   card: EvidenceCard;
@@ -41,7 +41,7 @@ export const EvidenceCardMobile = ({ card }: Props) => (
             {card.columns.map((col, i) => (
               <div
                 key={i}
-                className="rounded-lg border border-border/60 p-3.5 space-y-3.5 border-l-2 bg-sar-card/50 border-l-sar-accent/25"
+                className="rounded-lg border border-border/60 p-3.5 space-y-3 border-l-2 bg-sar-card/50 border-l-sar-accent/25"
               >
                 <h4
                   className="text-foreground font-semibold tracking-wide uppercase border-b border-accent/15 pb-1.5"
@@ -50,25 +50,15 @@ export const EvidenceCardMobile = ({ card }: Props) => (
                   {col.heading}
                 </h4>
                 {col.situation && (
-                  <SARRow label="S" color="text-accent" text={col.situation} size="sm" />
+                  <EvidenceRow text={col.situation} size="sm" />
                 )}
-                <SARRow label="A" color="text-yellow-500" text={col.action} size="sm" />
-                <SARRow label="R" color="text-green-500" text={col.result} size="sm" />
+                <EvidenceRow text={col.action} size="sm" />
+                <EvidenceRow text={col.result} variant="result" size="sm" />
               </div>
             ))}
           </div>
         )}
       </div>
-
-      {card.layout === "sar" && (
-        <div className="px-5 py-3 border-t border-sar-border/50">
-          <div className="flex items-center gap-4">
-            <LegendItem label="S" color="text-accent" text="Situation" size="sm" />
-            <LegendItem label="A" color="text-yellow-500" text="Action" size="sm" />
-            <LegendItem label="R" color="text-green-500" text="Result" size="sm" />
-          </div>
-        </div>
-      )}
     </div>
   </motion.div>
 );
