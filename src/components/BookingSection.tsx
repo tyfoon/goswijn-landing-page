@@ -367,9 +367,9 @@ export const BookingSection = () => {
                           key={day.toISOString()}
                           onClick={() => hasSlots && setSelectedDay(day)}
                           disabled={!hasSlots}
-                          className={`p-2 sm:p-3 rounded-lg border-2 transition-all duration-300 ${
+                         className={`p-2 sm:p-3 rounded-lg border-2 transition-all duration-300 ${
                             isSelected
-                              ? "border-accent bg-accent/10 shadow-md"
+                              ? "border-blue-400 bg-blue-400/10 shadow-md"
                               : hasSlots
                               ? "border-green-500 bg-green-500/10 hover:bg-green-500/20 cursor-pointer"
                               : "border-border bg-muted/30 cursor-not-allowed opacity-50"
