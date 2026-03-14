@@ -65,7 +65,7 @@ const Index = () => {
       {/* Contact & Booking Section */}
       <section
         id="contact"
-        className="relative py-24 md:py-32 px-6 md:px-12 lg:px-16 overflow-hidden animate-on-scroll"
+        className="relative py-20 md:py-24 px-6 md:px-12 lg:px-16 overflow-hidden animate-on-scroll"
       >
         
         {/* Parallax background elements */}
