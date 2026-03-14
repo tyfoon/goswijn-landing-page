@@ -46,6 +46,10 @@
     --glass-bg: 0 0% 100% / 0.05;
     --glass-border: 0 0% 100% / 0.1;
     --glass-blur: 10px;
+
+    --sar-card: 222 14% 14%;
+    --sar-accent: 210 70% 45%;
+    --sar-border: 217 14% 18%;
   }
 
   .dark {
