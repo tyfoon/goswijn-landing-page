@@ -134,7 +134,7 @@ export const evidenceData: Record<string, EvidenceCard> = {
     context: "Applying relentless discipline across radically different environments.",
     columns: [
       {
-        heading: "Eyeo — Current",
+        heading: "Eyeo (AdBlock) — Current",
         situation: "Preparing a 350M-user global SaaS business for an IPO/Exit.",
         action: "Applying rigorous restructuring and tough organizational realignment.",
         result: "Delivering predictable 20% ARR/EBITDA growth.",
