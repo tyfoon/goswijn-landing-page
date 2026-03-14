@@ -28,7 +28,7 @@ export const LogoMarquee = () => {
       aria-label="Companies I've worked with"
     >
       {/* Visible label */}
-      <p className="text-center text-xs font-mono tracking-[0.2em] uppercase text-muted-foreground/50 mb-8">
+      <p className="text-center text-xs section-label tracking-[0.2em] uppercase text-muted-foreground/50 mb-8">
         Companies I've worked with
       </p>
 
