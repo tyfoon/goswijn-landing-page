@@ -1,6 +1,8 @@
 
 import adblockPlusLogo from "@/assets/adblock-plus.svg";
 import adblockLogo from "@/assets/adblock.svg";
+import breinLogo from "@/assets/brein.svg";
+import bsaLogo from "@/assets/bsa.svg";
 import doubleclickLogo from "@/assets/doubleclick-new.svg";
 import exxonLogo from "@/assets/exxon.png";
 import eyeoLogo from "@/assets/eyeo.png";
@@ -9,6 +11,7 @@ import microsoftLogo from "@/assets/microsoft.png";
 import tridionLogo from "@/assets/tridion-v2.svg";
 import googleCloudLogo from "@/assets/google-cloud.svg";
 import eqtLogo from "@/assets/eqt.png";
+import nvpiLogo from "@/assets/nvpi.svg";
 
 const logos = [
   { src: googleLogo, alt: "Google", height: "h-6 md:h-7", brightness: "brightness-200" },
