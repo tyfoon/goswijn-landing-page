@@ -113,7 +113,7 @@ export const SiteHeader = ({ activeSection, scrollToSection }: SiteHeaderProps) 
               <button
                 key={section.id}
                 onClick={() => handleNav(section.id)}
-                className="block w-full text-left px-6 py-4 text-base font-medium text-foreground hover:bg-accent/10 transition-colors min-h-[48px]"
+                className="block w-full text-right px-6 py-4 text-base font-medium text-foreground hover:bg-accent/10 transition-colors min-h-[48px]"
               >
                 {section.label}
               </button>
