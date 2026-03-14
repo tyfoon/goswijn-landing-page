@@ -57,7 +57,7 @@ export const HeroSection = ({ scrollY, scrollToSection }: HeroSectionProps) => {
                   </li>
                 </ul>
 
-                <p className="text-xs leading-relaxed text-slate-300 sm:text-sm md:text-base max-w-xl">
+                <p className="text-xs leading-relaxed text-foreground/80 sm:text-sm md:text-base max-w-xl">
                   With 25+ years of multi-geo leadership—including as a Director at Google and executive at Microsoft—I build data-driven GTM engines that capture market share. I bridge the gap between deep technical complexity and commercial strategy, delivering durable growth and profitability without breaking the organization.
                 </p>
               </div>
