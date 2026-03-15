@@ -159,6 +159,8 @@ const SummarySection = () => {
             )}
           </AnimatePresence>
         </div>
+
+        <LogoBanner />
       </div>
     </section>
   );

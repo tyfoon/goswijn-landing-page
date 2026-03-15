@@ -130,7 +130,7 @@ const Index = () => {
         </div>
       </section>
 
-      <LogoMarquee />
+      
     </div>
   );
 };
