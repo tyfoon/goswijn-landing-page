@@ -160,8 +160,8 @@ const SummarySection = () => {
           </AnimatePresence>
         </div>
 
-        <LogoBanner />
       </div>
+      <LogoBanner />
     </section>
   );
 };
