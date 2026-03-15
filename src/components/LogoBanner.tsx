@@ -99,7 +99,7 @@ const MarqueeContent = () => (
 );
 
 export const LogoBanner = () => (
-  <div className="sticky bottom-0 z-0 bg-background/80 backdrop-blur-sm border-t border-white/5">
+  <div className="sticky bottom-0 z-0">
     <div className="relative overflow-hidden py-3">
       {/* Fade edges */}
       <div className="absolute left-0 top-0 bottom-0 w-20 z-10 bg-gradient-to-r from-background to-transparent pointer-events-none" />
