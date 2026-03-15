@@ -131,7 +131,6 @@ const Index = () => {
         </div>
       </section>
 
-      <LogoBanner />
     </div>
   );
 };
