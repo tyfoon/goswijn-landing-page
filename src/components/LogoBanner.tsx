@@ -99,13 +99,7 @@ const MarqueeContent = () => (
 );
 
 export const LogoBanner = () => (
-  <motion.div
-    initial={{ opacity: 0 }}
-    whileInView={{ opacity: 1 }}
-    viewport={{ once: true }}
-    transition={{ duration: 0.8, delay: 0.3 }}
-    className="sticky bottom-0 z-0 bg-background/80 backdrop-blur-sm border-t border-white/5"
-  >
+  <div className="sticky bottom-0 z-0 bg-background/80 backdrop-blur-sm border-t border-white/5">
     <div className="relative overflow-hidden py-3">
       {/* Fade edges */}
       <div className="absolute left-0 top-0 bottom-0 w-20 z-10 bg-gradient-to-r from-background to-transparent pointer-events-none" />
@@ -113,11 +107,11 @@ export const LogoBanner = () => (
 
       <div
         className="flex items-end gap-16 md:gap-24 w-max animate-marquee"
-        style={{ animationDuration: "40s" }}
+        style={{ animationDuration: "40s", willChange: "transform" }}
       >
         <MarqueeContent />
         <MarqueeContent />
       </div>
     </div>
-  </motion.div>
+  </div>
 );
