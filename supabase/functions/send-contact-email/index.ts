@@ -27,12 +27,17 @@ const handler = async (req: Request): Promise<Response> => {
     const { name, email, message }: ContactEmailRequest = await req.json();
     console.log("Processing contact form from:", email);
 
+    const isCVRequest = message.startsWith("[CV/Resume Request]");
+    const subject = isCVRequest
+      ? `CV/Resume Request from ${name}`
+      : `New contact form submission from ${name}`;
+
     // Send email to Goswijn
     const emailResponse = await resend.emails.send({
       from: "Contact Form <onboarding@resend.dev>",
       to: ["goswijn.thijssen@gmail.com"],
       replyTo: email,
-      subject: `New contact form submission from ${name}`,
+      subject,
       html: `
         <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto;">
           <h2 style="color: #000; margin-bottom: 24px;">New Contact Form Submission</h2>
