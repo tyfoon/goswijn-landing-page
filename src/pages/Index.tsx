@@ -1,5 +1,5 @@
 import { ContactForm } from "@/components/ContactForm";
-import { LogoBanner } from "@/components/LogoBanner";
+
 import { BookingSection } from "@/components/BookingSection";
 import { CanvasWaveBackground } from "@/components/CanvasWaveBackground";
 import { SummarySection } from "@/components/SummarySection";
