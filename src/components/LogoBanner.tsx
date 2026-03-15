@@ -46,7 +46,7 @@ const advisoryLogos: LogoItem[] = [
   { src: breinLogo, alt: "BREIN", height: "h-5 md:h-6", brightness: "brightness-150" },
   { src: bisbrickLogo, alt: "Bisbrick", height: "h-5 md:h-6", brightness: "brightness-150" },
   { src: endeitLogo, alt: "Endeit", height: "h-5 md:h-6", brightness: "brightness-200" },
-  { src: codesandboxLogo, alt: "CodeSandbox", height: "h-5 md:h-6", brightness: "brightness-200" },
+  { src: codesandboxLogo, alt: "CodeSandbox", height: "h-5 md:h-6", brightness: "brightness-[2.5]" },
 ];
 
 const LogoGrid = ({ logos, label }: { logos: LogoItem[]; label: string }) => (
