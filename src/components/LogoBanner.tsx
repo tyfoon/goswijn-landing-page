@@ -104,7 +104,7 @@ export const LogoBanner = () => (
     whileInView={{ opacity: 1 }}
     viewport={{ once: true }}
     transition={{ duration: 0.8, delay: 0.3 }}
-    className="fixed bottom-0 left-0 right-0 z-10 bg-background/80 backdrop-blur-sm border-t border-white/5"
+    className="sticky bottom-0 z-0 bg-background/80 backdrop-blur-sm border-t border-white/5"
   >
     <div className="relative overflow-hidden py-3">
       {/* Fade edges */}
