@@ -2,21 +2,22 @@ import { motion } from "framer-motion";
 
 import adblockPlusLogo from "@/assets/adblock-plus.svg";
 import adblockLogo from "@/assets/adblock.svg";
+import bisbrickLogo from "@/assets/bisbrick.svg";
+import codesandboxLogo from "@/assets/codesandbox.png";
 import doubleclickLogo from "@/assets/doubleclick-new.svg";
+import endeitLogo from "@/assets/endeit.png";
 import exxonLogo from "@/assets/exxon.png";
 import eyeoLogo from "@/assets/eyeo.png";
 import googleLogo from "@/assets/google.svg";
-import microsoftLogo from "@/assets/microsoft.png";
-import tridionLogo from "@/assets/tridion-v2.svg";
 import googleCloudLogo from "@/assets/google-cloud.svg";
+import microsoftLogo from "@/assets/microsoft.png";
 import shellLogo from "@/assets/shell.svg";
+import tridionLogo from "@/assets/tridion-v2.svg";
 
-import eqtLogo from "@/assets/eqt.png";
-import nvpiLogo from "@/assets/nvpi.svg";
 import bsaLogo from "@/assets/bsa.svg";
 import breinLogo from "@/assets/brein.svg";
-import bisbrickLogo from "@/assets/bisbrick.svg";
-import endeitLogo from "@/assets/endeit.png";
+import eqtLogo from "@/assets/eqt.png";
+import nvpiLogo from "@/assets/nvpi.svg";
 
 interface LogoItem {
   src: string;
@@ -45,6 +46,7 @@ const advisoryLogos: LogoItem[] = [
   { src: breinLogo, alt: "BREIN", height: "h-5 md:h-6", brightness: "brightness-150" },
   { src: bisbrickLogo, alt: "Bisbrick", height: "h-5 md:h-6", brightness: "brightness-150" },
   { src: endeitLogo, alt: "Endeit", height: "h-5 md:h-6", brightness: "brightness-200" },
+  { src: codesandboxLogo, alt: "CodeSandbox", height: "h-5 md:h-6", brightness: "brightness-200" },
 ];
 
 const LogoGrid = ({ logos, label }: { logos: LogoItem[]; label: string }) => (
