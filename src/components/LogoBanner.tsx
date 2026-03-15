@@ -19,7 +19,7 @@ import nvpiLogo from "@/assets/nvpi.svg";
 interface LogoItem {
   src: string;
   alt: string;
-  height: string;
+  height: number; // fixed pixel height for consistent alignment
   brightness: string;
 }
 
@@ -28,51 +28,61 @@ interface LogoGroup {
   logos: LogoItem[];
 }
 
+const LOGO_ROW_HEIGHT = 40; // consistent row height in px
+
 const groups: LogoGroup[] = [
   {
     label: "Executive Leadership",
     logos: [
-      { src: eyeoLogo, alt: "Eyeo", height: "h-4 md:h-5", brightness: "brightness-150" },
-      { src: googleCloudLogo, alt: "Google Cloud", height: "h-7 md:h-8", brightness: "brightness-200" },
-      { src: googleLogo, alt: "Google", height: "h-5 md:h-6", brightness: "brightness-200" },
-      { src: doubleclickLogo, alt: "DoubleClick", height: "h-12 md:h-16", brightness: "brightness-200" },
-      { src: microsoftLogo, alt: "Microsoft", height: "h-7 md:h-8", brightness: "brightness-200" },
-      { src: tridionLogo, alt: "Tridion", height: "h-7 md:h-8", brightness: "brightness-150" },
+      { src: eyeoLogo, alt: "Eyeo", height: 20, brightness: "brightness-150" },
+      { src: googleCloudLogo, alt: "Google Cloud", height: 32, brightness: "brightness-200" },
+      { src: googleLogo, alt: "Google", height: 24, brightness: "brightness-200" },
+      { src: doubleclickLogo, alt: "DoubleClick", height: 48, brightness: "brightness-200" },
+      { src: microsoftLogo, alt: "Microsoft", height: 32, brightness: "brightness-200" },
+      { src: tridionLogo, alt: "Tridion", height: 32, brightness: "brightness-150" },
     ],
   },
   {
     label: "Early Career",
     logos: [
-      { src: exxonLogo, alt: "ExxonMobil", height: "h-7 md:h-8", brightness: "brightness-200" },
-      { src: shellLogo, alt: "Shell", height: "h-9 md:h-10", brightness: "brightness-200" },
+      { src: exxonLogo, alt: "ExxonMobil", height: 32, brightness: "brightness-200" },
+      { src: shellLogo, alt: "Shell", height: 40, brightness: "brightness-200" },
     ],
   },
   {
     label: "Board & Advisory",
     logos: [
-      { src: eqtLogo, alt: "EQT", height: "h-3 md:h-4", brightness: "brightness-200" },
-      { src: nvpiLogo, alt: "NVPI", height: "h-5 md:h-6", brightness: "brightness-150" },
-      { src: bsaLogo, alt: "BSA", height: "h-5 md:h-6", brightness: "brightness-150" },
-      { src: breinLogo, alt: "BREIN", height: "h-5 md:h-6", brightness: "brightness-150" },
-      { src: bisbrickLogo, alt: "Bisbrick", height: "h-5 md:h-6", brightness: "brightness-150" },
-      { src: codesandboxLogo, alt: "CodeSandbox", height: "h-5 md:h-6", brightness: "brightness-[2.5]" },
+      { src: eqtLogo, alt: "EQT", height: 16, brightness: "brightness-200" },
+      { src: nvpiLogo, alt: "NVPI", height: 24, brightness: "brightness-150" },
+      { src: bsaLogo, alt: "BSA", height: 24, brightness: "brightness-150" },
+      { src: breinLogo, alt: "BREIN", height: 24, brightness: "brightness-150" },
+      { src: bisbrickLogo, alt: "Bisbrick", height: 24, brightness: "brightness-150" },
+      { src: codesandboxLogo, alt: "CodeSandbox", height: 24, brightness: "brightness-[2.5]" },
     ],
   },
 ];
 
 const GroupBlock = ({ group }: { group: LogoGroup }) => (
-  <div className="flex-shrink-0 flex flex-col gap-3">
-    <p className="section-label text-xs tracking-widest uppercase text-muted-foreground/60">
+  <div className="flex-shrink-0 flex flex-col">
+    <p className="section-label text-xs tracking-widest uppercase text-muted-foreground/60 mb-3">
       {group.label}
     </p>
-    <div className="flex items-center gap-8 md:gap-12">
+    <div
+      className="flex items-center gap-8 md:gap-12"
+      style={{ height: `${LOGO_ROW_HEIGHT}px` }}
+    >
       {group.logos.map((logo, i) => (
-        <div key={i} className="flex-shrink-0 flex items-center justify-center">
+        <div
+          key={i}
+          className="flex-shrink-0 flex items-center justify-center"
+          style={{ height: `${LOGO_ROW_HEIGHT}px` }}
+        >
           <img
             src={logo.src}
             alt={logo.alt}
             loading="lazy"
-            className={`${logo.height} w-auto max-w-[140px] object-contain grayscale opacity-35 ${logo.brightness} contrast-50 hover:opacity-55 transition-opacity duration-300`}
+            style={{ height: `${logo.height}px` }}
+            className={`w-auto max-w-[140px] object-contain grayscale opacity-35 ${logo.brightness} contrast-50 hover:opacity-55 transition-opacity duration-300`}
           />
         </div>
       ))}
@@ -81,7 +91,7 @@ const GroupBlock = ({ group }: { group: LogoGroup }) => (
 );
 
 const MarqueeContent = () => (
-  <div className="flex items-start gap-16 md:gap-24">
+  <div className="flex items-end gap-16 md:gap-24">
     {groups.map((group, i) => (
       <GroupBlock key={i} group={group} />
     ))}
@@ -90,19 +100,19 @@ const MarqueeContent = () => (
 
 export const LogoBanner = () => (
   <motion.div
-    initial={{ opacity: 0, y: 20 }}
-    whileInView={{ opacity: 1, y: 0 }}
+    initial={{ opacity: 0 }}
+    whileInView={{ opacity: 1 }}
     viewport={{ once: true }}
     transition={{ duration: 0.8, delay: 0.3 }}
-    className="pt-16 md:pt-20 pb-6"
+    className="fixed bottom-0 left-0 right-0 z-40 bg-background/80 backdrop-blur-sm border-t border-white/5"
   >
-    <div className="relative overflow-hidden">
+    <div className="relative overflow-hidden py-3">
       {/* Fade edges */}
-      <div className="absolute left-0 top-0 bottom-0 w-16 z-10 bg-gradient-to-r from-background to-transparent pointer-events-none" />
-      <div className="absolute right-0 top-0 bottom-0 w-16 z-10 bg-gradient-to-l from-background to-transparent pointer-events-none" />
+      <div className="absolute left-0 top-0 bottom-0 w-20 z-10 bg-gradient-to-r from-background to-transparent pointer-events-none" />
+      <div className="absolute right-0 top-0 bottom-0 w-20 z-10 bg-gradient-to-l from-background to-transparent pointer-events-none" />
 
       <div
-        className="flex items-start gap-16 md:gap-24 w-max animate-marquee"
+        className="flex items-end gap-16 md:gap-24 w-max animate-marquee"
         style={{ animationDuration: "40s" }}
       >
         <MarqueeContent />
