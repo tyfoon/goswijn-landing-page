@@ -77,7 +77,7 @@ export const LogoBanner = () => (
     transition={{ duration: 0.8, delay: 0.3 }}
     className="pt-20 md:pt-24 pb-8 space-y-10"
   >
-    <LogoGrid logos={executiveLogos} label="Executive Leadership" />
+    <LogoGrid logos={executiveLogos} label="Executive Leadership & Early Career" />
     <LogoGrid logos={advisoryLogos} label="Board & Advisory" />
   </motion.div>
 );
