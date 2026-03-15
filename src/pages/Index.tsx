@@ -53,7 +53,7 @@ const Index = () => {
   }, []);
 
   return (
-    <div className="relative w-full">
+    <div className="relative w-full pb-20">
       <CanvasWaveBackground />
       <SiteHeader activeSection={activeSection} scrollToSection={scrollToSection} />
 
@@ -131,7 +131,7 @@ const Index = () => {
         </div>
       </section>
 
-      
+      <LogoBanner />
     </div>
   );
 };
