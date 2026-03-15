@@ -12,6 +12,10 @@ import tridionLogo from "@/assets/tridion-v2.svg";
 import googleCloudLogo from "@/assets/google-cloud.svg";
 import eqtLogo from "@/assets/eqt.png";
 import nvpiLogo from "@/assets/nvpi.svg";
+import codesandboxLogo from "@/assets/codesandbox.png";
+import bisbrickLogo from "@/assets/bisbrick.svg";
+import endeitLogo from "@/assets/endeit.png";
+import shellLogo from "@/assets/shell.svg";
 
 const logos = [
   { src: googleLogo, alt: "Google", height: "h-6 md:h-7", brightness: "brightness-200" },
