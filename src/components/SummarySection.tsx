@@ -4,6 +4,7 @@ import { useIsMobile } from "@/hooks/use-mobile";
 import { evidenceData, cardSide } from "./summary/evidenceData";
 import { EvidenceCardDesktop } from "./summary/EvidenceCardDesktop";
 import { EvidenceCardMobile } from "./summary/EvidenceCardMobile";
+import { LogoBanner } from "./LogoBanner";
 
 const SummarySection = () => {
   const [activeCard, setActiveCard] = useState<string | null>(null);
@@ -158,6 +159,8 @@ const SummarySection = () => {
             )}
           </AnimatePresence>
         </div>
+
+        <LogoBanner />
       </div>
     </section>
   );

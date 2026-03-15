@@ -5,7 +5,7 @@ import { SummarySection } from "@/components/SummarySection";
 import { OperatingPrinciples } from "@/components/OperatingPrinciples";
 
 import { HeroSection } from "@/components/HeroSection";
-import { LogoMarquee } from "@/components/LogoMarquee";
+
 import { SiteHeader } from "@/components/SiteHeader";
 
 import speakingImage from "@/assets/goswijn-thinking.jpg";
@@ -130,7 +130,7 @@ const Index = () => {
         </div>
       </section>
 
-      <LogoMarquee />
+      
     </div>
   );
 };
