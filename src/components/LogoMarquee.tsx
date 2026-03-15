@@ -12,6 +12,10 @@ import tridionLogo from "@/assets/tridion-v2.svg";
 import googleCloudLogo from "@/assets/google-cloud.svg";
 import eqtLogo from "@/assets/eqt.png";
 import nvpiLogo from "@/assets/nvpi.svg";
+import codesandboxLogo from "@/assets/codesandbox.png";
+import bisbrickLogo from "@/assets/bisbrick.svg";
+import endeitLogo from "@/assets/endeit.png";
+import shellLogo from "@/assets/shell.svg";
 
 const logos = [
   { src: googleLogo, alt: "Google", height: "h-6 md:h-7", brightness: "brightness-200" },
@@ -27,6 +31,10 @@ const logos = [
   { src: nvpiLogo, alt: "NVPI", height: "h-6 md:h-7", brightness: "brightness-150" },
   { src: bsaLogo, alt: "BSA", height: "h-6 md:h-7", brightness: "brightness-150" },
   { src: breinLogo, alt: "BREIN", height: "h-6 md:h-7", brightness: "brightness-150" },
+  { src: shellLogo, alt: "Shell", height: "h-8 md:h-10", brightness: "brightness-200" },
+  { src: codesandboxLogo, alt: "CodeSandbox", height: "h-6 md:h-7", brightness: "brightness-200" },
+  { src: bisbrickLogo, alt: "Bisbrick", height: "h-6 md:h-7", brightness: "brightness-150" },
+  { src: endeitLogo, alt: "Endeit", height: "h-6 md:h-7", brightness: "brightness-200" },
 ];
 
 export const LogoMarquee = () => {
