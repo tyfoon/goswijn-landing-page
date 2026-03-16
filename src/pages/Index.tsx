@@ -109,7 +109,7 @@ const Index = () => {
                   alt="Goswijn Thijssen during a strategic business discussion"
                   loading="lazy"
                   className="absolute inset-0 w-full h-full object-cover"
-                  style={{ objectPosition: "center top" }}
+                  style={{ objectPosition: "center 20%" }}
                 />
               </div>
             </div>
