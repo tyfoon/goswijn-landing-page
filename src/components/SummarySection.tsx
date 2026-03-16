@@ -142,7 +142,7 @@ const SummarySection = () => {
         </div>
 
         {/* Evidence cards - outside the text block so they don't shift it */}
-        <div className="relative min-h-0">
+        <div className="relative mt-8 lg:mt-10 min-h-[18rem] lg:min-h-[30rem] [overflow-anchor:none]">
           <AnimatePresence mode="wait">
             {currentCard && !isMobile && currentSide && (
               <EvidenceCardDesktop
