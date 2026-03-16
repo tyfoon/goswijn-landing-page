@@ -21,7 +21,7 @@ export const EvidenceCardDesktop = ({ card, onMouseEnter, onMouseLeave }: Props)
       transition={{ type: "spring", stiffness: 300, damping: 30, mass: 0.8 }}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
-      className={`z-20 hidden lg:block w-full ${is3Col ? "max-w-[860px]" : ""}`}
+      className={`mt-10 z-20 hidden lg:block w-full ${is3Col ? "max-w-[860px]" : ""}`}
     >
       <div className="w-full rounded-xl border border-accent/30 bg-card/[0.97] backdrop-blur-2xl shadow-lg shadow-black/40 overflow-hidden">
         {/* Header */}

@@ -13,7 +13,7 @@ export const EvidenceCardMobile = ({ card }: Props) => (
     animate={{ opacity: 1, y: 0 }}
     exit={{ opacity: 0, y: -10 }}
     transition={{ type: "spring", stiffness: 300, damping: 30 }}
-    className="lg:hidden"
+    className="lg:hidden mt-8"
   >
     <div className="rounded-xl border border-accent/30 bg-card/95 backdrop-blur-xl shadow-2xl overflow-hidden">
       <div className="px-5 pt-5 pb-3 border-b border-accent/10">
