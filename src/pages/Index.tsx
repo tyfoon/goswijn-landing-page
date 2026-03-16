@@ -100,7 +100,7 @@ const Index = () => {
                 alt="Goswijn Thijssen during a strategic business discussion"
                 loading="lazy"
                 className="lg:hidden w-40 h-40 rounded-full object-cover shadow-2xl"
-                style={{ objectPosition: "center top" }}
+                style={{ objectPosition: "center 20%" }}
               />
               {/* Desktop: full image */}
               <div className="hidden lg:block relative h-full min-h-[400px] rounded-lg overflow-hidden shadow-2xl">
