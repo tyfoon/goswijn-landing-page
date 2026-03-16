@@ -139,8 +139,10 @@ const SummarySection = () => {
               explore the evidence
             </p>
           </motion.div>
+        </div>
 
-          {/* Desktop evidence card */}
+        {/* Evidence cards - outside the text block so they don't shift it */}
+        <div className="relative min-h-0">
           <AnimatePresence mode="wait">
             {currentCard && !isMobile && currentSide && (
               <EvidenceCardDesktop
@@ -152,7 +154,6 @@ const SummarySection = () => {
             )}
           </AnimatePresence>
 
-          {/* Mobile evidence card */}
           <AnimatePresence mode="wait">
             {currentCard && isMobile && (
               <EvidenceCardMobile card={currentCard} />
