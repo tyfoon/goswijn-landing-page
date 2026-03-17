@@ -66,18 +66,18 @@ const Index = () => {
       {/* Contact & Booking Section */}
       <section
         id="contact"
-        className="relative py-20 md:py-24 px-6 md:px-12 lg:px-16 overflow-hidden animate-on-scroll"
-      >
+        className="relative py-20 md:py-24 px-6 md:px-12 lg:px-16 overflow-hidden animate-on-scroll">
+        
         
         {/* Parallax background elements */}
         <div
           className="absolute top-0 left-0 w-72 h-72 rounded-full bg-primary/5 blur-3xl"
-          style={{ transform: `translateY(${(scrollY - 800) * 0.1}px)` }}
-        />
+          style={{ transform: `translateY(${(scrollY - 800) * 0.1}px)` }} />
+        
         <div
           className="absolute bottom-0 right-0 w-96 h-96 rounded-full bg-foreground/5 blur-3xl"
-          style={{ transform: `translateY(${(scrollY - 800) * 0.15}px)` }}
-        />
+          style={{ transform: `translateY(${(scrollY - 800) * 0.15}px)` }} />
+        
 
         <div className="relative z-10 max-w-7xl mx-auto">
           {/* Section label — consistent with Track Record & Principles */}
@@ -100,8 +100,8 @@ const Index = () => {
                 alt="Goswijn Thijssen during a strategic business discussion"
                 loading="lazy"
                 className="lg:hidden w-40 h-40 rounded-full object-cover shadow-2xl"
-                style={{ objectPosition: "center 20%" }}
-              />
+                style={{ objectPosition: "center 20%" }} />
+              
               {/* Desktop: full image */}
               <div className="hidden lg:block relative h-full min-h-[400px] rounded-lg overflow-hidden shadow-2xl">
                 <img
@@ -109,8 +109,8 @@ const Index = () => {
                   alt="Goswijn Thijssen during a strategic business discussion"
                   loading="lazy"
                   className="absolute inset-0 w-full h-full object-cover"
-                  style={{ objectPosition: "center 20%" }}
-                />
+                  style={{ objectPosition: "center 20%" }} />
+                
               </div>
             </div>
 
@@ -121,8 +121,8 @@ const Index = () => {
               </div>
 
               <div>
-                <p className="text-sm text-muted-foreground mb-4">
-                  Leave your contact details below and I will get back to you as soon as possible
+                <p className="text-sm text-muted-foreground mb-4">Leave your contact detail and topic of conversation below and I will get back to you as soon as possible.
+
                 </p>
                 <ContactForm />
               </div>
@@ -131,8 +131,8 @@ const Index = () => {
         </div>
       </section>
 
-    </div>
-  );
+    </div>);
+
 };
 
 export default Index;
