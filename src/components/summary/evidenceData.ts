@@ -80,9 +80,10 @@ export const evidenceData: Record<string, EvidenceCard> = {
       },
       {
         heading: "Eyeo (AdBlock)",
-        situation: "A $30M+ PE/Founder-backed business requiring transition to a mature SaaS model.",
-        action: "Restructured an 80+ FTE organization, aligning Product, Engineering, and Sales.",
-        result: "Currently driving 20% ARR and EBITDA growth.",
+        situation:
+          "A $30M+ B2C PE/Founder-backed SaaS business requiring transition to a more cost effecient and predictable model.",
+        action: "Restructured an 80+ FTE organization, aligning Marketing, Product, Engineering, and Sales.",
+        result: "Driving ~20% ARR and EBITDA growth.",
       },
     ],
   },
