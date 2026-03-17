@@ -53,13 +53,15 @@ export const evidenceData: Record<string, EvidenceCard> = {
       {
         heading: "Google",
         situation: "Hyper-growth scaling for DoubleClick & EMEA GTM restructuring for Cloud.",
-        action: "Scaled programmatic business from scratch (managing 80+ FTE across 7 countries) and later generated >$750M in annual pipeline as CMO EMEA North (leading a 40+ FTE multi-geo org).",
+        action:
+          "Scaled programmatic business from scratch (managing 80+ FTE across 7 countries) and later generated >$750M in annual pipeline as CMO EMEA North (leading a 40+ FTE multi-geo org).",
         result: "Achieved 200x growth (to >$200M) and #1 global productivity.",
       },
       {
         heading: "Microsoft",
         situation: "Managing the highly complex Corporate Accounts portfolio across a multi-geo footprint.",
-        action: "Overhauled enterprise sales strategy, leading direct and indirect cross-functional teams (20+ FTE including senior sales, solution specialists, and marketing).",
+        action:
+          "Overhauled enterprise sales strategy, leading direct and indirect cross-functional teams (20+ FTE including senior sales, solution specialists, and marketing).",
         result: "Accelerated YoY revenue growth to >25%, reaching $150M ARR.",
       },
     ],
@@ -73,8 +75,8 @@ export const evidenceData: Record<string, EvidenceCard> = {
       {
         heading: "Tridion",
         situation: "Early-stage VC-backed startup needing a global GTM foundation.",
-        action: "Built global marketing from absolute zero, scaling the team to 150+ FTEs.",
-        result: "Grew revenue to $25M, secured market leadership, and drove a successful exit.",
+        action: "Built global marketing from absolute zero to market and category leadership.",
+        result: "Grew revenue to $25M and prepared for a successful exit.",
       },
       {
         heading: "Eyeo (AdBlock)",
@@ -141,7 +143,8 @@ export const evidenceData: Record<string, EvidenceCard> = {
       },
       {
         heading: "ExxonMobil — Early Career",
-        situation: "Thrown into the deep end via forced job rotation with full P&L responsibility for a $200M+ retail network.",
+        situation:
+          "Thrown into the deep end via forced job rotation with full P&L responsibility for a $200M+ retail network.",
         action: "Applied raw grit and data-driven management in an unfamiliar context.",
         result: "Increased network profitability by 82% over 3 years.",
       },
@@ -155,7 +158,8 @@ export const evidenceData: Record<string, EvidenceCard> = {
     columns: [
       {
         heading: "AI & Cloud — Google",
-        situation: "Highly complex technical differentiators (Security, Data, AI workloads) needed enterprise adoption.",
+        situation:
+          "Highly complex technical differentiators (Security, Data, AI workloads) needed enterprise adoption.",
         action: "Spearheaded Martech/AI initiatives and orchestrated bespoke C-suite ABM programs.",
         result: "Generated >$750M in enterprise pipeline.",
       },
