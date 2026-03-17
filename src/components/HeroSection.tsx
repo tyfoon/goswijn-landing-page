@@ -49,7 +49,7 @@ export const HeroSection = ({ scrollY, scrollToSection }: HeroSectionProps) => {
                   </li>
                   <li className="flex items-start transition-transform duration-300 hover:translate-x-2">
                     <span className="mr-3 mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-primary" />
-                    <span>Translating complex tech (AI, Data, SaaS) into predictable ARR</span>
+                    <span>Translating complex tech (AI, Cloud, SaaS) into predictable ARR</span>
                   </li>
                   <li className="flex items-start transition-transform duration-300 hover:translate-x-2">
                     <span className="mr-3 mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-primary" />
