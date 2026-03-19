@@ -34,6 +34,15 @@ const SummarySection = () => {
     setActiveCard((prev) => (prev === id ? null : id));
   }, []);
 
+  // Scroll card into view when it appears
+  useEffect(() => {
+    if (activeCard && cardContainerRef.current) {
+      setTimeout(() => {
+        cardContainerRef.current?.scrollIntoView({ behavior: "smooth", block: "nearest" });
+      }, 100);
+    }
+  }, [activeCard]);
+
   const InteractivePhrase = ({
     id,
     children,
