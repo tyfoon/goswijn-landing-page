@@ -1,4 +1,4 @@
-import { useState, useRef, useCallback } from "react";
+import { useState, useRef, useCallback, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { evidenceData, cardSide } from "./summary/evidenceData";
@@ -9,6 +9,7 @@ import { LogoBanner } from "./LogoBanner";
 const SummarySection = () => {
   const [activeCard, setActiveCard] = useState<string | null>(null);
   const sectionRef = useRef<HTMLDivElement>(null);
+  const cardContainerRef = useRef<HTMLDivElement>(null);
   const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const isMobile = useIsMobile();
 
@@ -32,6 +33,15 @@ const SummarySection = () => {
   const handleTap = useCallback((id: string) => {
     setActiveCard((prev) => (prev === id ? null : id));
   }, []);
+
+  // Scroll card into view when it appears
+  useEffect(() => {
+    if (activeCard && cardContainerRef.current) {
+      setTimeout(() => {
+        cardContainerRef.current?.scrollIntoView({ behavior: "smooth", block: "nearest" });
+      }, 100);
+    }
+  }, [activeCard]);
 
   const InteractivePhrase = ({
     id,
@@ -140,7 +150,7 @@ const SummarySection = () => {
         </motion.div>
 
         {/* Evidence cards — independent centered container */}
-        <div className="flex justify-center">
+        <div ref={cardContainerRef} className="flex justify-center">
           <AnimatePresence mode="wait">
             {currentCard && !isMobile && currentSide && (
               <EvidenceCardDesktop
