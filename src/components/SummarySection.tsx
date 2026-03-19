@@ -161,7 +161,7 @@ const SummarySection = () => {
         </motion.div>
 
         {/* Evidence cards — independent centered container */}
-        <div ref={cardContainerRef} className="flex justify-center">
+        <div ref={cardContainerRef} className="relative z-30 flex justify-center">
           <AnimatePresence mode="wait">
             {currentCard && !isMobile && currentSide && (
               <EvidenceCardDesktop
