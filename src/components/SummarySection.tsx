@@ -34,12 +34,23 @@ const SummarySection = () => {
     setActiveCard((prev) => (prev === id ? null : id));
   }, []);
 
-  // Scroll card into view when it appears
+  // Position card so it stays within viewport, overlapping text upward if needed
   useEffect(() => {
     if (activeCard && cardContainerRef.current) {
-      setTimeout(() => {
-        cardContainerRef.current?.scrollIntoView({ behavior: "smooth", block: "nearest" });
-      }, 100);
+      const container = cardContainerRef.current;
+      const child = container.firstElementChild as HTMLElement | null;
+      if (!child) return;
+
+      // Reset first to measure natural position
+      child.style.marginTop = '';
+
+      requestAnimationFrame(() => {
+        const rect = child.getBoundingClientRect();
+        const overflow = rect.bottom - window.innerHeight + 16; // 16px padding from bottom
+        if (overflow > 0) {
+          child.style.marginTop = `-${overflow}px`;
+        }
+      });
     }
   }, [activeCard]);
 
