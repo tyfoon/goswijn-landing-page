@@ -9,6 +9,7 @@ import { LogoBanner } from "./LogoBanner";
 const SummarySection = () => {
   const [activeCard, setActiveCard] = useState<string | null>(null);
   const sectionRef = useRef<HTMLDivElement>(null);
+  const cardContainerRef = useRef<HTMLDivElement>(null);
   const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const isMobile = useIsMobile();
 
