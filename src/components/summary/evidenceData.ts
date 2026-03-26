@@ -1,4 +1,4 @@
-// --- Types ---
+DACHG; // --- Types ---
 
 export interface SimpleBullet {
   label: string;
@@ -37,7 +37,8 @@ export const evidenceData: Record<string, EvidenceCard> = {
     title: "Multi-Geo Footprint",
     layout: "simple",
     bullets: [
-      { label: "Google", detail: "Director (Cloud EMEA North & DoubleClick)" },
+      { label: "Google Cloud", detail: "Director DACH, CEE, Nordics" },
+      { label: "Google Doubleclick", detail: "Director Sales Benelux, Nodics" },
       { label: "Microsoft", detail: "Enterprise Leadership (Corporate Accounts & Compliance)" },
       { label: "Eyeo", detail: "Global Managing Director" },
       { label: "Tridion", detail: "Global Marketing Director" },
