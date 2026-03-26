@@ -1,4 +1,4 @@
-DACHG; // --- Types ---
+// --- Types ---
 
 export interface SimpleBullet {
   label: string;
