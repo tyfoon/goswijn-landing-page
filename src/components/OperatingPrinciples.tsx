@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
 import { Layers, Network, Compass } from "lucide-react";
 
-
 const principles = [
   {
     icon: Layers,
@@ -16,7 +15,7 @@ const principles = [
   {
     icon: Compass,
     title: "Situational Grit",
-    text: "What you see is what you get. I adapt my leadership to the context—whether navigating dot-com crashes, flat corporate budgets, or PE-backed turnarounds. I lead with transparency, and when the situation demands it, I will gladly get in the trenches to rebuild things from the ground up.",
+    text: "What you see is what you get. I adapt my leadership to the context, whether navigating dot-com crashes, flat corporate budgets, or PE-backed turnarounds. I lead with transparency, and when the situation demands it, I will gladly get in the trenches to rebuild things from the ground up.",
   },
 ];
 
@@ -36,11 +35,7 @@ const cardVariants = {
 
 export const OperatingPrinciples = () => {
   return (
-    <section
-      id="principles"
-      className="relative py-20 md:py-24 px-6 md:px-12 lg:px-16 overflow-hidden"
-    >
-      
+    <section id="principles" className="relative py-20 md:py-24 px-6 md:px-12 lg:px-16 overflow-hidden">
       {/* Ambient radial glow */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full bg-accent/[0.03] blur-[150px]" />
@@ -55,9 +50,7 @@ export const OperatingPrinciples = () => {
           transition={{ duration: 0.6 }}
           className="mb-16"
         >
-          <span className="text-accent text-xs section-label tracking-widest uppercase">
-            Operating Principles
-          </span>
+          <span className="text-accent text-xs section-label tracking-widest uppercase">Operating Principles</span>
           <div className="mt-2 w-12 h-[2px] bg-accent/40" />
           <p className="mt-4 text-muted-foreground text-sm md:text-base max-w-lg">
             How I build, scale, and lead multi-geo organizations.
@@ -82,14 +75,10 @@ export const OperatingPrinciples = () => {
               </div>
 
               {/* Title */}
-              <h3 className="text-xl font-semibold text-foreground mb-3 tracking-tight">
-                {principle.title}
-              </h3>
+              <h3 className="text-xl font-semibold text-foreground mb-3 tracking-tight">{principle.title}</h3>
 
               {/* Text */}
-              <p className="text-sm leading-relaxed text-muted-foreground">
-                {principle.text}
-              </p>
+              <p className="text-sm leading-relaxed text-muted-foreground">{principle.text}</p>
 
               {/* Subtle corner accent on hover */}
               <div className="absolute top-0 right-0 w-16 h-16 overflow-hidden rounded-tr-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500">
