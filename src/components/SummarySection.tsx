@@ -120,9 +120,9 @@ const SummarySection = () => {
           className="flex flex-col items-center"
         >
           <p className="text-base md:text-lg lg:text-xl leading-relaxed md:leading-relaxed lg:leading-[1.9] text-foreground/85 font-light max-w-3xl text-left">
-            Driving sustainable,{" "}
+            Building{" "}
             <InteractivePhrase id="multi-geo">multi-geo</InteractivePhrase>{" "}
-            hyper-growth across{" "}
+            businesses end-to-end across{" "}
             <InteractivePhrase id="big-tech">Big Tech</InteractivePhrase> and{" "}
             <InteractivePhrase id="scale-ups">
               high-velocity scale-ups
@@ -140,7 +140,7 @@ const SummarySection = () => {
               As a P&L owner, I combine corporate operational rigor with
               situational grit
             </InteractivePhrase>
-            . As a 'Commercial Technologist', I{" "}
+            . As a Commercial Technologist, I{" "}
             <InteractivePhrase id="bridge-tech">
               bridge complex tech (AI, SaaS, Cloud, AdTech) with commercial
               strategy and scaling

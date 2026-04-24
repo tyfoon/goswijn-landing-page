@@ -45,15 +45,15 @@ export const HeroSection = ({ scrollY, scrollToSection }: HeroSectionProps) => {
                 <ul className="space-y-2 md:space-y-4 text-base text-foreground md:text-lg lg:text-xl">
                   <li className="flex items-start transition-transform duration-300 hover:translate-x-2">
                     <span className="mr-3 mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-primary" />
-                    <span>Scaling from 1 to 100 &amp; driving fundamental transformations</span>
+                    <span>Builder who started solo at Google and scaled DoubleClick from $500K to $200M+ ARR</span>
                   </li>
                   <li className="flex items-start transition-transform duration-300 hover:translate-x-2">
                     <span className="mr-3 mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-primary" />
-                    <span>Translating complex tech (AI, Cloud, SaaS) into predictable ARR</span>
+                    <span>Commercial Technologist bridging deep tech (AI, SaaS, Cloud, AdTech) with commercial scale</span>
                   </li>
                   <li className="flex items-start transition-transform duration-300 hover:translate-x-2">
                     <span className="mr-3 mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-primary" />
-                    <span>Combining Big Tech operational rigor with PE/VC situational grit</span>
+                    <span>25+ years combining Big Tech rigor with PE/founder-backed grit</span>
                   </li>
                 </ul>
 
