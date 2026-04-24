@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Layers, Network, Compass } from "lucide-react";
+import { Layers, Network, Compass, Code2 } from "lucide-react";
 
 const principles = [
   {
@@ -16,6 +16,11 @@ const principles = [
     icon: Compass,
     title: "Situational Grit",
     text: "What you see is what you get. I adapt my leadership to the context, whether navigating dot-com crashes, flat corporate budgets, or PE-backed turnarounds. I lead with transparency, and when the situation demands it, I will gladly get in the trenches to rebuild things from the ground up.",
+  },
+  {
+    icon: Code2,
+    title: "Hands-On Builder",
+    text: "I am a commercial leader who codes. Nearly 400 GitHub commits last month, hands-on across the AI stack, and I teach vibe coding to executives at Erasmus. This is not a hobby. It lets me bridge product, engineering, and commercial in one mind, and design GTM motions that match how the product really works.",
   },
 ];
 
@@ -58,7 +63,7 @@ export const OperatingPrinciples = () => {
         </motion.div>
 
         {/* Cards grid */}
-        <div className="grid md:grid-cols-3 gap-6 lg:gap-8">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-6">
           {principles.map((principle, i) => (
             <motion.div
               key={principle.title}
@@ -69,13 +74,13 @@ export const OperatingPrinciples = () => {
               variants={cardVariants}
               className="group relative rounded-xl border border-white/10 bg-card/80 backdrop-blur-sm p-8 transition-all duration-500 hover:border-accent/30 hover:shadow-lg shadow-black/40 hover:-translate-y-1"
             >
-              {/* Icon */}
-              <div className="mb-6 inline-flex items-center justify-center w-11 h-11 rounded-lg bg-accent/10 text-accent transition-colors duration-300 group-hover:bg-accent/15">
-                <principle.icon className="w-7 h-7" strokeWidth={1.5} />
+              {/* Header: icon + title side by side to save vertical space */}
+              <div className="flex items-center gap-3 mb-4">
+                <div className="inline-flex items-center justify-center w-11 h-11 shrink-0 rounded-lg bg-accent/10 text-accent transition-colors duration-300 group-hover:bg-accent/15">
+                  <principle.icon className="w-6 h-6" strokeWidth={1.5} />
+                </div>
+                <h3 className="text-lg font-semibold text-foreground tracking-tight">{principle.title}</h3>
               </div>
-
-              {/* Title */}
-              <h3 className="text-xl font-semibold text-foreground mb-3 tracking-tight">{principle.title}</h3>
 
               {/* Text */}
               <p className="text-sm leading-relaxed text-muted-foreground">{principle.text}</p>
