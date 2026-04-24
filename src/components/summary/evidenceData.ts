@@ -56,7 +56,7 @@ export const evidenceData: Record<string, EvidenceCard> = {
         situation: "Hyper-growth scaling for DoubleClick & EMEA GTM restructuring for Cloud.",
         action:
           "Scaled programmatic business from scratch (managing 80+ FTE across 7 countries) and later generated >$750M in annual pipeline as CMO EMEA North (leading a 40+ FTE multi-geo org).",
-        result: "Achieved 200x growth (to >$200M) and #1 global productivity.",
+        result: "Achieved 400x growth (from $500K to >$200M) and #1 global productivity.",
       },
       {
         heading: "Microsoft",
