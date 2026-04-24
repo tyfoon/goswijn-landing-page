@@ -403,7 +403,7 @@ Klein amber label boven elke cluster logo's:
 
 ## 7. Operating Principles-sectie
 
-Derde scherm. Gecentreerd blok met sectielabel + ondertitel, gevolgd door **3 kaarten** naast elkaar (desktop) / onder elkaar (mobiel). Elke kaart heeft een icoon linksboven, titel, en beschrijvende paragraaf. Op hover lichten ze licht op en bewegen omhoog.
+Derde scherm. Gecentreerd blok met sectielabel + ondertitel, gevolgd door **4 kaarten** in een 4-koloms grid op desktop (2-koloms op tablet, gestapeld op mobiel). Elke kaart heeft bovenaan het icoon + titel naast elkaar, daaronder een beschrijvende paragraaf. Op hover lichten ze licht op en bewegen omhoog.
 
 ### 7.1 Sectie-label en ondertitel
 
@@ -414,11 +414,11 @@ Derde scherm. Gecentreerd blok met sectielabel + ondertitel, gevolgd door **3 ka
   - Label: `Operating Principles`
   - Ondertitel: `How I build, scale, and lead multi-geo organizations.`
 
-### 7.2 Drie principes-kaarten
+### 7.2 Vier principes-kaarten
 
-- **Locatie:** `src/components/OperatingPrinciples.tsx:4-20`
-- **Waar op de pagina:** drie kaarten in een rij (desktop) of gestapeld (mobiel). Elk heeft een Lucide-icoon (Layers / Network / Compass), een korte titel en een alinea.
-- **Rol & context:** Goswijn's leiderschapsfilosofie in drie pijlers.
+- **Locatie:** `src/components/OperatingPrinciples.tsx:4-25`
+- **Waar op de pagina:** vier kaarten in een rij (desktop, 4-koloms), 2 kolommen op tablet, gestapeld op mobiel. Elke kaart heeft een Lucide-icoon (Layers / Network / Compass / Code2) naast de titel, en eronder een alinea.
+- **Rol & context:** Goswijn's leiderschapsfilosofie in vier pijlers.
 
 #### Principe 1 — `Radical Alignment` (icoon: Layers)
 
@@ -431,6 +431,10 @@ Derde scherm. Gecentreerd blok met sectielabel + ondertitel, gevolgd door **3 ka
 #### Principe 3 — `Situational Grit` (icoon: Compass)
 
 > What you see is what you get. I adapt my leadership to the context, whether navigating dot-com crashes, flat corporate budgets, or PE-backed turnarounds. I lead with transparency, and when the situation demands it, I will gladly get in the trenches to rebuild things from the ground up.
+
+#### Principe 4 — `Hands-On Builder` (icoon: Code2)
+
+> I am a commercial leader who codes. Nearly 400 GitHub commits last month, hands-on across the AI stack, and I teach vibe coding to executives at Erasmus. This is not a hobby. It lets me bridge product, engineering, and commercial in one mind, and design GTM motions that match how the product really works.
 
 ---
 
