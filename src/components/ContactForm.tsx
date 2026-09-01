@@ -6,7 +6,11 @@ import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
 import { FileText } from "lucide-react";
 
-export const ContactForm = () => {
+interface ContactFormProps {
+  showCVRequest?: boolean;
+}
+
+export const ContactForm = ({ showCVRequest = true }: ContactFormProps) => {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isRequestingCV, setIsRequestingCV] = useState(false);
@@ -122,17 +126,19 @@ export const ContactForm = () => {
         >
           {isSubmitting ? "Sending..." : "Send Message"}
         </Button>
-        <Button
-          type="button"
-          variant="outline"
-          size="sm"
-          disabled={isRequestingCV}
-          onClick={handleRequestCV}
-          className="w-full text-xs gap-1.5 text-muted-foreground hover:text-foreground transition-colors"
-        >
-          <FileText className="h-3.5 w-3.5" />
-          {isRequestingCV ? "Requesting..." : "Request Full CV / Resume"}
-        </Button>
+        {showCVRequest && (
+          <Button
+            type="button"
+            variant="outline"
+            size="sm"
+            disabled={isRequestingCV}
+            onClick={handleRequestCV}
+            className="w-full text-xs gap-1.5 text-muted-foreground hover:text-foreground transition-colors"
+          >
+            <FileText className="h-3.5 w-3.5" />
+            {isRequestingCV ? "Requesting..." : "Request Full CV / Resume"}
+          </Button>
+        )}
       </div>
     </form>
   );
