@@ -3,6 +3,7 @@
 import bisbrickLogo from "@/assets/bisbrick.svg";
 import codesandboxLogo from "@/assets/codesandbox.png";
 import doubleclickLogo from "@/assets/doubleclick-new.svg";
+import elevenlabsLogo from "@/assets/elevenlabs-logo-white.svg";
 import exxonLogo from "@/assets/exxon.png";
 import eyeoLogo from "@/assets/eyeo.png";
 import googleLogo from "@/assets/google.svg";
@@ -34,6 +35,7 @@ const groups: LogoGroup[] = [
   {
     label: "Executive Leadership",
     logos: [
+      { src: elevenlabsLogo, alt: "ElevenLabs", height: 20, brightness: "brightness-150" },
       { src: eyeoLogo, alt: "Eyeo", height: 20, brightness: "brightness-150" },
       { src: googleCloudLogo, alt: "Google Cloud", height: 32, brightness: "brightness-200" },
       { src: googleLogo, alt: "Google", height: 24, brightness: "brightness-200" },
