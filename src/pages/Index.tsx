@@ -117,14 +117,14 @@ const Index = () => {
             {/* Right: Booking + Contact */}
             <div className="animate-on-scroll space-y-6 md:space-y-8" style={{ animationDelay: "0.2s" }}>
               <div>
-                <BookingSection />
+                <BookingSection enabled={false} />
               </div>
 
               <div>
                 <p className="text-sm text-muted-foreground mb-4">Leave your contact detail and topic of conversation below and I will get back to you as soon as possible.
 
                 </p>
-                <ContactForm />
+                <ContactForm showCVRequest={false} />
               </div>
             </div>
           </div>
