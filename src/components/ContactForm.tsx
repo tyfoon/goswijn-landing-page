@@ -6,7 +6,11 @@ import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
 import { FileText } from "lucide-react";
 
-export const ContactForm = () => {
+interface ContactFormProps {
+  showCVRequest?: boolean;
+}
+
+export const ContactForm = ({ showCVRequest = true }: ContactFormProps) => {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isRequestingCV, setIsRequestingCV] = useState(false);
