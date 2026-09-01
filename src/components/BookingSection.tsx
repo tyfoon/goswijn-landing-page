@@ -17,7 +17,13 @@ interface TimeSlot {
   originalSlotId?: string;
 }
 
-export const BookingSection = () => {
+interface BookingSectionProps {
+  enabled?: boolean;
+}
+
+export const BookingSection = ({ enabled = true }: BookingSectionProps) => {
+  if (!enabled) return null;
+
   const [selectedDuration, setSelectedDuration] = useState<number | null>(null);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [availableSlots, setAvailableSlots] = useState<TimeSlot[]>([]);
